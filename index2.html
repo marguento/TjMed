@@ -92,7 +92,7 @@
 							<!-- Top Items --> 
 							<ul class="top-items">
 								<li><i class="fa fa-lightbulb-o"></i>
-								<li><a href="#"> Regístrate</a> - <a href="#"> Inicia sesión</a></li>
+								<li><a href="#"> Regístrate</a> - <a href="#" data-toggle="modal" data-target="#myModal"> Inicia sesión</a></li>
 							</ul>
 							<!-- Top Items End --> 
 						</div>
@@ -310,6 +310,31 @@
 			</div>
 		</footer>       
 		<!-- Footer End --> 
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Inicia Sesión</h4>
+			  </div>
+			  <div class="modal-body">
+				<center><form role="form">
+				  <div class="form-group">
+					<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico">
+				  </div>
+				  <div class="form-group">
+					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+				  </div>
+				  <button type="submit" class="btn btn-primary">Iniciar sesión con correo</button><br><br>
+				  <button type="submit" class="btn btn-primary"><img src="images/facebook.png" style="width:20px; margin-right:5px;">Iniciar sesión con Facebook</button>
+				</form>
+				</center>
+			  </div>
+			</div>
+		  </div>
+		</div>
 	  
 	  <a href="#" class="back-to-top" style="display: none;"><span></span></a> 
 

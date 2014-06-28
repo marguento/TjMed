@@ -379,7 +379,7 @@ header {
   border:0px;
   padding:0px;
   margin:0px;
-  z-index:99999;
+  z-index:1000;
   background:#f7fcff;
   -webkit-border-radius: 0px; 
      -moz-border-radius: 0px; 
