@@ -543,8 +543,9 @@ header {
 }
 
 .navbar .nav > li > ul > li > ul > li {
-  background:#2e343e;
-  border-bottom:1px solid #3f4755;
+  color:#7a828f;
+  background:#e6edf2;
+  border-bottom:1px solid #ffffff;
 }
 
 .navbar .nav > li > ul > li > ul > li:last-child {
@@ -562,11 +563,12 @@ header {
 
 .navbar .nav > li > ul > li > ul > li > a:hover {
 	color:#fff;
+	background: #0fa2d5;
 }
     
 .navbar .nav > li > ul > li > ul > li.selected > a {
 	color:#fff;
-  border-left:5px solid #ff4b64;
+  border-left:5px solid background: #0fa2d5;
   padding-left:30px;
 }   
 
