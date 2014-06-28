@@ -380,7 +380,8 @@ header {
   padding:0px;
   margin:0px;
   z-index:1000;
-  background:#f7fcff;
+  background:#ffffff;
+  
   -webkit-border-radius: 0px; 
      -moz-border-radius: 0px; 
        -o-border-radius: 0px; 
