@@ -2,6 +2,11 @@
 /*  Base  */
 /* --------------------------------------------------------	*/
 
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+} 
+
 html {
 	overflow-y:scroll;
   overflow-x:hidden;
@@ -2720,7 +2725,7 @@ ul li a:hover, ul li a:hover i {
   
 .divider {
   height:9px;
-  background:url(../img/divider.png) top left repeat-x;
+  background:url(../images/divider.png) top left repeat-x;
 }
   
 .divider-2 {
