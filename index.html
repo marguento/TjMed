@@ -145,11 +145,12 @@
 		
 		<!-- Slider -->
 		<ul class="bxslider">
-			<!--<li><img src="blap.jpg" height="250px"/></li>
-			<li><img src="dr.jpg" height="250px"/></li>
-			<li><img src="02.jpg" height="250px"/></li>
-			<li><img src="03.jpg"height="250px" /></li>-->
+			<li><img src="images/banner_up.png" height="500px"/>
+			<div style="float:left; margin-top:-400px; margin-right:60px; z-index:100; position:absolute; right:0px; color:#FFFFFF">
+			<center><h1>"Los mejores médicos <br>al alcance de un click.<br> ¡TJMed te ayuda <br>a encontrarlos!"</h1></center></div></li>
+			<li><img src="images/banner_up2.png" height="500px"/></li>
 		</ul>
+
         <!-- Slider End -->
 		
 
@@ -380,7 +381,9 @@
 	$(document).ready(function(){
 	  $('.bxslider').bxSlider({
 		auto: true,
-		mode: 'fade'
+		mode: 'fade',
+		pause: 5000,
+		slideWidth: 5000
 	  });
 	});
 	</script>
