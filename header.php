@@ -15,42 +15,64 @@
 
 		<!-- Header -->
 		<header> 
-			<div class="container">   
- 				<div class="row">
-					<div class="col-md-12">
-						<div class="top-container">
+
+ 				<div class="row" style="margin-right: 0px; margin-left: 0px;">
+					<div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
+						<div class="top-container" style="margin-top: 0px; margin-bottom: 0px;height: 132px;">
 							
+							<!--Enmientras menu -->
+							<div class="imagenFondo">
+								<div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 40px;">
+									<nav class="navbar" role="navigation">
+										<div class="navbar-inner">
+											<div class="container" style="margin-left:200px">    
+												<ul class="nav navbar-nav l_tinynav1" id="nav"><br><br>
+													<li id="inicio" style="margin-left:100px;"><a href="index.php" title="">Inicio</a></li>
+													<li id="acerca" style="margin-left:178px; width: 200px;"><a href="index.php?opcion=acerca" title="">¿Quiénes somos?</a></li>	                				
+													<li id="negocios" style="margin-left:339px;"><a href="index.php?opcion=negocios" title="">Doctores</a></li>		     					
+													<li id="categorias" style="margin-left:441px;width: 200px;"><a href="index.php?opcion=categorias" title="">Especialidades Médicas</a></li>
+					           						<li id="articulos" style="margin-left:638px;width: 200px;"><a href="index.php?opcion=articulos" title="">Vida Saludable</a></li>
+					            					<li id="servicios" style="margin-left:778px;width: 200px;"><a href="index.php?opcion=servicios" title="">Servicios</a></li> 
+					            					<li id="contacto" style="margin-left:880px;"><a href="index.php?opcion=contacto" title="">Contacto</a></li> 
+												</ul>
+											</div>
+										</div>
+									</nav>
+								</div>
+							</div>
+							<!--Enmientras menu END-->
+
 							<!-- Logo -->                       
-							<a href="index.php" class="logo" title="Home">
-								<img src="images/tjn.png" style="width: 80px; vertical-align:text-bottom" alt="">   
-								<h5 style="margin-top:-40px; margin-left:90px;">La manera correcta de encontrar tu solución médica</h5>
-							</a>
+							<!--<a href="index.php" class="logo" title="Home">-->
+								<img src="images/menu solo.png" style="width: 1265px; height:132px; vertical-align:text-bottom" alt="">   
+								<!--<h5 style="margin-top:-40px; margin-left:90px;">La manera correcta de encontrar tu solución médica</h5>-->
+							<!--</a>-->
 	 
-							<!-- Top Items --> 
+							<!-- 
 							<ul class="top-items">
 								<li><i class="fa fa-lightbulb-o"></i>
 								<li><a href="#"> Regístrate</a> - <a href="#" data-toggle="modal" data-target="#myModal"> Inicia sesión</a></li>
 							</ul>
 							<!-- Top Items End --> 
+							</div>
 						</div>
 					</div> 
-				</div> 
-			</div>
+				</div> 	
 
-			<!-- Nav -->
+			<!--
 			<div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 40px;">
 				<nav class="navbar" role="navigation">
 					<div class="navbar-inner">
 						<div class="container">    
 							<ul class="nav navbar-nav l_tinynav1" id="nav">
                 				<li id="inicio"><a href="index.php" title="">Inicio</a></li>
-								<li id="negocios"><a href="index.php?opcion=negocios" title="">Negocios</a></li>		     
 								<li id="acerca"><a href="index.php?opcion=acerca" title="">¿Quiénes somos?</a> 
 									<ul>
 										<li><a href="index.php?opcion=acerca#Mision" title="">Misión</a></li>
 										<li><a href="index.php?opcion=acerca#Vision" title="">Visión</a></li>
 									</ul>	
-								</li>						
+								</li>	                				
+								<li id="negocios"><a href="index.php?opcion=negocios" title="">Doctores</a></li>		     					
 								<li id="categorias"><a href="index.php?opcion=categorias" title="">Especialidades Médicas</a>			
 									<ul>
 										<li><a href="index.php?opcion=categorias#Especialidad1" title="">Especialidades Clínicas</a></li>
@@ -59,13 +81,14 @@
 										<li><a href="index.php?opcion=categorias#Especialidad4" title="">Especialidades de Laboratorio</a></li>																				
 									</ul>	
 								</li>
-           						<li id="articulos"><a href="index.php?opcion=articulos" title="">Artículos</a></li>
+           						<li id="articulos"><a href="index.php?opcion=articulos" title="">Vida Saludable</a></li>
             					<li id="servicios"><a href="index.php?opcion=servicios" title="">Servicios</a></li> 
             					<li id="contacto"><a href="index.php?opcion=contacto" title="">Contacto</a></li> 
          					</ul>
 
 							<!-- Search bar -->
-							<div style="float:right;width:250px;height:40px;margin-left:30px;margin-right:30px;">
+							<!--
+							<div style="float:right;width:250px;height:40px;margin-left:0px;margin-right:0px;">
 								<div class="input-group">
 									<input type="text" class="form-control" placeholder="Estoy buscando ... ">
 									<div class="input-group-btn">
@@ -79,12 +102,12 @@
 									</div>
 								</div>
 							</div>
+						-->
 						</div> 
 					</div>  
 				</nav>
 			</div>
-			<!-- Nav End -->
-			
+			<!-- Nav End -->	
 		</header>
 		<!-- Header End -->
 

@@ -1,10 +1,17 @@
 <!-- Slider -->
+
+    <div class="bxslider">
+      <img src="images/banner principa.jpg"/>
+    </div>
+
+    <!--
 		<ul class="bxslider">
-			<li><img src="images/banner_up.png" height="500px"/>
+			<li><img src="images/prueba_tamano.jpg"/>
 			<div style="float:left; margin-top:-400px; margin-right:60px; z-index:100; position:absolute; right:0px; color:#FFFFFF">
 			<center><h1>"Los mejores médicos <br>al alcance de un click.<br> ¡TJMed te ayuda <br>a encontrarlos!"</h1></center></div></li>
 			<li><img src="images/banner_up2.png" height="500px"/></li>
 		</ul>
+  -->
 
         <div class="space40"></div>
 

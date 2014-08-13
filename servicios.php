@@ -1,19 +1,19 @@
-<div class="space60"></div>
+    <div class="space60"></div>
 
 <A name="Especialidad1"></A>
 <div class="container">
     <div class="row">
-		<div class="col-md-12">
-        	<h1>Servicios</h1>
-      	</div>
+    <div class="col-md-12">
+          <h1>Servicios</h1>
+        </div>
      </div>
 </div>
 
 <div class="container">
     <div class="row">
-		<div class="col-md-12" align="justify">
-        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consectetur faucibus felis nec egestas. Nam sit amet mauris et nibh dictum aliquet. Proin posuere nunc non augue faucibus fringilla. Ut molestie, neque at pretium auctor, augue dolor iaculis elit, eu ultrices arcu lectus sed odio. Vestibulum ullamcorper dapibus aliquet. Cras augue sapien, interdum eget accumsan ut, feugiat vitae magna. Duis libero orci, congue eget tincidunt eleifend, aliquet eget turpis. Maecenas eu ante eu felis porttitor venenatis. Vivamus at consequat diam. Mauris lacus elit, facilisis ut quam commodo, tempus placerat ipsum. Phasellus vulputate, purus ac sagittis dictum, risus ligula hendrerit mi, a dignissim risus risus non tortor. Aliquam erat volutpat. Nullam sed felis nec nibh ullamcorper fermentum. Donec commodo sed tortor vel auctor. </p>
-      	</div>
+    <div class="col-md-12" align="justify">
+          <p>Quieres formar parte de nuestra red?, ocup </p>
+        </div>
      </div>
 
     <div class="row pricing-tables">
@@ -23,12 +23,12 @@
             <tr>
               <th>
                 <div class="plan-title">
-                 Plan Basico
+                 Pagina Web
                 </div>
                 <div class="price">
-                  $100 MXN
+                  Paquete 1
                   <span class="price2">
-                    Mensual
+                    Por paquete
                   </span>                     
                 </div>                      
               </th>
@@ -37,62 +37,62 @@
           <tbody>  
             <tr>
               <td>
-                $0
+                Template Statico
               </td>
             </tr>
             <tr>
               <td>
-                $25 MXN
+                Conexiones Con Redes
               </td>
             </tr>
             <tr>
               <td>
-                $75 MXN
+                Secciones Limitadas
               </td>
             </tr>
             <tr>
               <td>
-                Ilimitado
+                Interfaz a Usuario Final
               </td>
             </tr>
             <tr>
               <td>
-                ---
+                Responsivo 
               </td>
             </tr>
             <tr>
               <td>
-                ---
+                Contacto
               </td>
             </tr>
             <tr>
               <td>
-                ---
+                Gestion de Hosting
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Gestion de Dominio
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                No Imagenes Digitales
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+               Estilo, colores, Font y Tamaños
               </td>
             </tr>
             <tr>
               <td>
-                ---
+                Cambios Limitados
               </td>
             </tr>
             <tr>
               <td class="table-footer">
-               Seleccionar Plan 
+              Plan Standart
               </td>
             </tr>
           </tbody>
@@ -105,76 +105,77 @@
             <tr>
               <th>
                 <div class="plan-title">
-                  Standard Plan
+                  Diseño
                 </div>
                 <div class="price">
-                  $150 MXN
+                  Paquete 2
                   <span class="price2">
-                    Mensual
+                    Por Servicios
                   </span>                     
                 </div>                      
               </th>
             </tr>
           </thead>
-          <tbody>  
+          <tbody> 
+
             <tr>
               <td>
-                $0
+                Logotipo
               </td>
             </tr>
             <tr>
               <td>
-                $50 MXN
+               Diseño de Imagen Corporativa.
               </td>
             </tr>
             <tr>
               <td>
-                $100 MXN
+                Tarjetas de Presentación
               </td>
             </tr>
             <tr>
               <td>
-                Limitado
+                Papeleria (sobres, folders, etc)
               </td>
             </tr>
             <tr>
               <td>
-                ---
+                Publicidad (digital e impresa)
               </td>
             </tr>
             <tr>
               <td>
-                1 Articulo
+                Para redes sociales(digital)
               </td>
             </tr>
             <tr>
               <td>
-                ---
+                Publicidad (digital e impresa)
               </td>
             </tr>
             <tr>
               <td>
-                ---
+                Flyers, tripticos,cartel, catálogo, etc.
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Fotografía
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Publicitaria o conceptual - sesión
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Video y edición
               </td>
             </tr>
             <tr>
               <td class="table-footer">
-                Seleccionar Plan
+                Spots
               </td>
             </tr>
           </tbody>
@@ -187,12 +188,12 @@
             <tr>
               <th>
                 <div class="plan-title">
-                  Premium Plan
+                  Administracion
                 </div>
                 <div class="price">
-                  $200 MXN
+                  Paquete 3
                   <span class="price2">
-                    Mensual
+                    Por Funcionalidad
                   </span>                     
                 </div>                      
               </th>
@@ -269,12 +270,12 @@
             <tr>
               <th>
                 <div class="plan-title">
-                  Extra Plan
+                  Web Manager
                 </div>
                 <div class="price">
-                  $300 MXN
+                  Paquete 4
                   <span class="price2">
-                    Mensual
+                    Por Horas
                   </span>                     
                 </div>                      
               </th>
@@ -283,62 +284,62 @@
           <tbody>  
             <tr>
               <td>
-                $100 MXN
+                Actualizar Contenidos
               </td>
             </tr>
             <tr>
               <td> 
-                $100 MXN
+               Altas, Bajas y Consultas
               </td>
             </tr>
             <tr>
               <td>
-                $100 MXN
+                Publicacion de Secciones
               </td>
             </tr>
             <tr>
               <td>
-                Ilimitado
+                Moficaciones de Pagina
               </td>
             </tr>
             <tr>
               <td>
-                Ilimitado
+               Funcionamiento Apropiado
               </td>
             </tr>
             <tr>
               <td>
-                Ilimitado
+                Administración de Domninios
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+               Cuentas de Email
               </td>
             </tr>
             <tr>
               <td>
-                Ilimitado
+                Seguimiento con Usuarios
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Informes Estadisticos
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Gestion de Hosting
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Gestion de Archivos
               </td>
             </tr>
             <tr>
               <td class="table-footer">
-                Seleccionar Plan
+                Plan Manager
               </td>
             </tr>
           </tbody>
@@ -347,5 +348,5 @@
     </div>     
   </div>
 
-		<div class="space60"></div>
-		<!-- Content End -->
+    <div class="space60"></div>
+    <!-- Content End -->

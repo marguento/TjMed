@@ -6,13 +6,12 @@
 
 			<!-- Parallax --> 
 
-			<div id="parallax-one" class="parallax" style="background-image: url(images/imagen_abajo.jpg); 
+			<div id="parallax-one" class="parallax" style="background-image: url(images/foto_nueva_abajo.jpg); 
 													background-position: 50% 23px;">
 			 <div class="footer-promo">
 			  <div class="container">
                <div class="row">
                 <div class="col-md-12">
-				 <h2>TjMed</h2>
 				 <h4>"Lo mas importante tu salud, nuestro compromiso la honestidad"</h4>
 				</div>
 			   </div>

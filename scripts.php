@@ -2,7 +2,7 @@
 	  <script type="text/javascript" src="js/jquery-1.10.2.js"></script>                                                       
 	  <script type="text/javascript" src="js/bootstrap.js"></script>  
 	  <script type="text/javascript" src="js/jquery.easing.js"></script>  
-	  <script type="text/javascript" src="js/jquery.sticky.js"></script>
+	  <!--<script type="text/javascript" src="js/jquery.sticky.js"></script>-->
 	  <script type="text/javascript" src="js/tinynav.min.js"></script>      
 	  <script type="text/javascript" src="js/animate.js"></script>
 	  <script type="text/javascript" src="js/jquery.fitvids.js"></script> 

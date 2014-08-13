@@ -1,6 +1,42 @@
 /* --------------------------------------------------------	*/
 /*  Base  */
 /* --------------------------------------------------------	*/
+.imagenFondo {
+    position: relative;
+
+}
+.imagenFondo span {
+    position: absolute;
+    left: 0;
+}
+.imagenFondo div{
+    position: absolute;
+    left: 0;
+}
+.imagenFondo nav{
+    position: absolute;
+    left: 0;
+}
+.imagenFondo ul{
+    position: absolute;
+    left: 0;
+}
+.imagenFondo a{
+    position: absolute;
+    left: 0;
+}
+.imagenFondo div nav div div ul > li > a{
+    position: absolute;
+    left: 0;
+}
+.imagenFondo div nav div div ul > li {
+    position: absolute;
+    left: 0;
+}
+.imagenFondo div nav div div ul li a{
+    position: absolute;
+    left: 0;
+}
 
 .rating > span:hover:before {
    content: "\2605";
@@ -421,8 +457,8 @@ header {
 	font-family:'Open Sans', Helvetica,Arial,sans-serifserif;
   font-size:14px;
   line-height:40px;
-	color:#7a828f;
-  background:#e6edf2;
+	color:#ffffff;
+  background:#0ab2db;
   padding:0px 20px;
   margin:0px;
   margin-right:1px;
@@ -435,22 +471,22 @@ header {
 
 .navbar .nav > li:hover > a {
 	color:#fff;
-  background:#0fa2d5;
+  background:#083d5c;
 }
                          
 .navbar .nav > li.selected > a {
 	color:#fff;
-  background:#0fa2d5; 
+  background:#083d5c; 
 }
 
 .navbar .nav > li.selected > a:hover {
   color:#fff;
-  background:#0fa2d5;
+  background:#083d5c;
 }
 
 .navbar .nav > li.selected:hover > a {
   color:#fff;
-  background: #0fa2d5;
+  background: #083d5c;
 }
 
 .navbar .dark {
@@ -465,7 +501,7 @@ header {
 
 .navbar .dark .nav > li.selected > a {
 
-  background:#0fa2d5; 
+  background:#083d5c; 
 }
 
 /* --------------------------------------------------------	*/

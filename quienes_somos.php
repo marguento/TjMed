@@ -5,7 +5,6 @@
       
       <div class="col-md-8">  
 	<!--Acordion-->	
-	      <h4>Nuestra Historia</h4>
 		<div class="accordion" id="accordion2">
           <div class="accordion-group">
             <div class="accordion-heading">
