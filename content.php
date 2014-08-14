@@ -14,18 +14,163 @@
   -->
 
         <div class="space40"></div>
-
         <!-- Slider End -->
+<div class="container popup-gallery">
+    <div class="row">
+            <div class="col-md-9">
+      <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Especialidades Medicas</h3>
+      </div>  
+    </div>
+  </div>
+
+      <article class="col-md-3 col-sm-3 boxed-project">
+        <div class="img-container">
+          <!-- Item Link -->  
+          <a href="img/gallery/01.jpg" title="Photo Title">
+            <!-- Image -->
+            <img src="img/gallery/01@2x.jpg" alt="" width="263" height="263">
+            <!-- Icon -->  
+            <i class="fa fa-arrows-alt"></i>
+          </a>
+          <!-- Item Link End -->          
+        </div>
+        <div class="title">
+          <a href="index.php?opcion=categorias">
+          <h4>Especialidades <br> Clínicas</h4>
+          <h6>Explorar</h6>
+        </a>
+        </div>
+      </article> 
+      <article class="col-md-3 col-sm-3 boxed-project">
+        <div class="img-container">
+          <!-- Item Link -->  
+          <a href="img/gallery/02.jpg" title="Photo Title">
+            <!-- Image -->
+            <img src="img/gallery/02@2x.jpg" alt="" width="263" height="263">
+            <!-- Icon -->  
+            <i class="fa fa-arrows-alt"></i>
+          </a>
+          <!-- Item Link End -->          
+        </div>
+        <div class="title">
+          <a href="index.php?opcion=categorias">          
+          <h4>Especialidades <br> Quirúrgicas</h4>
+          <h6>Webdesign</h6>
+        </a>
+        </div>
+      </article> 
+      <article class="col-md-3 col-sm-3 boxed-project">
+        <div class="img-container">
+          <!-- Item Link -->  
+          <a href="img/gallery/03.jpg" title="Photo Title">
+            <!-- Image -->
+            <img src="img/gallery/03@2x.jpg" alt="" width="263" height="263">
+            <!-- Icon -->  
+            <i class="fa fa-arrows-alt"></i>
+          </a>
+          <!-- Item Link End -->          
+        </div>
+        <div class="title">
+          <a href="index.php?opcion=categorias">          
+          <h4>Especialidades Médico Quirúrgicas</h4>
+          <h6>Webdesign</h6>
+        </a>
+        </div>
+      </article> 
+      <article class="col-md-3 col-sm-3 boxed-project">
+        <div class="img-container">
+          <!-- Item Link -->  
+          <a href="img/gallery/04.jpg" title="Photo Title">
+            <!-- Image -->
+            <img src="img/gallery/04@2x.jpg" alt="" width="263" height="263">
+            <!-- Icon -->  
+            <i class="fa fa-arrows-alt"></i>
+          </a>
+          <!-- Item Link End -->          
+        </div>
+        <div class="title">
+          <a href="index.php?opcion=categorias">
+          <h4>Especialidades de Laboratorio</h4>
+          <h6>Webdesign</h6>
+        </a>
+        </div>
+      </article> 
+      </div>
+
+<div class="col-md-3">
+        <!-- Progress Bar -->
+        <h3> Categorias</h3>
+        <div class="progress-bar-shortcode">
+          <div class="progress">          
+            <div class="progress-bar" role="progressbar" data-percentage="80" style="width: 80%;">
+              <span class="progress-bar-span">Bariatría 82%</span>
+            </div>
+          </div>  
+   
+          <div class="progress">         
+            <div class="progress-bar" role="progressbar" data-percentage="60" style="width: 60%;">
+              <span class="progress-bar-span">Cardiología 70%</span>
+            </div>
+          </div>  
+  
+          <div class="progress">          
+            <div class="progress-bar" role="progressbar" data-percentage="90" style="width: 90%;">
+              <span class="progress-bar-span">Coloproctología 90%</span>
+            </div>
+          </div>  
+ 
+          <div class="progress">          
+            <div class="progress-bar" role="progressbar" data-percentage="100" style="width: 100%;">
+              <span class="progress-bar-span">Gastroenterología 100%</span>
+            </div>
+          </div>  
+   
+          <div class="progress">          
+            <div class="progress-bar" role="progressbar" data-percentage="85" style="width: 85%;">
+              <span class="progress-bar-span">Endocrinología 85%</span>
+            </div>
+          </div>  
+          
+          <div class="progress">          
+            <div class="progress-bar" role="progressbar" data-percentage="73" style="width: 73%;">
+              <span class="progress-bar-span">Geriatría 73%</span>
+            </div>
+          </div>  
+        </div>  
+        <!-- Progress Bar End -->
+        <div class="space40"></div>  
+      </div>
+
+    </div>
+  </div>
+
 
 <div class="container">
     <div class="row">
     
       <div class="col-md-3">
+              <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Spot TjMed</h3>
+      </div>  
+    </div>
+  </div>
 		<iframe width="250" height="200" src="//www.youtube.com/embed/tYraOn7zHR8" frameborder="0" allowfullscreen></iframe>
         <div class="space40"></div>    
       </div>
       
-      <div class="col-md-9">  
+      <div class="col-md-6"> 
+            <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Nosotros</h3>
+      </div>  
+    </div>
+  </div> 
         <div class="accordion" id="accordion2">
           <div class="accordion-group">
             <div class="accordion-heading">
@@ -46,14 +191,118 @@
         </div>   
         <!-- Accordion End -->  
         <div class="space40"></div>  
+      </div>
+            <div class="col-md-3">
+      <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Mi Perfil</h3>
       </div>  
+    </div>
+  </div>
+        <!-- Blockquote -->
+        <blockquote> 
+          <h4>Eira Rangel</h4>
+          <img src="images/profile_pic.png" style="width: 60px;"> 
+          <p>
+            <strong> 0 </strong> Favoritos <br>
+            <strong> 0 </strong> Reviews <br>
+            <strong> 0 </strong> Pictures <br>
+          </p>
+
+           <button type="button" class="btn btn-primary">Ir a mi perfil</button>
+             </blockquote>
+        <!-- Blockquote End -->
+        <div class="space40"></div>
+        
+      </div>     
 	  </div>
 	  </div>
       
-	
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Vida Saluable</h3>
+      </div>  
+    </div>
+  </div>
+
 <div class="container">
     <div class="row popup-gallery">
-    
+ 
+<div class="col-md-3 col-sm-6">  
+      
+        <div class="item-box">
+          <div class="media-container">
+            <img src="cel_mad2.jpg" alt="">
+            <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
+            <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
+          </div>
+          <div class="info-container">
+            <h3>Celulas Madres</h3>
+            <h4>10 May 2014 | Comments</h4>
+            <p>Solit anie wafer wypas candy canes toffee. Co adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="space40"></div>  
+        
+      </div>
+
+      <div class="col-md-3 col-sm-6">  
+      
+        <div class="item-box">
+          <div class="media-container">
+            <img src="celula.jpeg" weight="20%" alt="">
+            <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
+            <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
+          </div>
+          <div class="info-container">
+            <h3>Un Corazon Inmortal</h3>
+            <h4>21 May 2014 | Comments</h4>
+            <p>Solit anie wafer wypas candy canes toffee. Co adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="space40"></div>  
+        
+      </div>
+
+      <div class="col-md-3 col-sm-6">  
+      
+        <div class="item-box">
+          <div class="media-container">
+            <img src="neurona.jpg" alt="">
+            <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
+            <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
+          </div>
+          <div class="info-container">
+            <h3>Las Neuronas</h3>
+            <h4>29 Mayo 2014 | Comments</h4>
+            <p>Solit anie wafer wypas candy canes toffee. Co adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="space40"></div>  
+        
+      </div>
+
+      <div class="col-md-3 col-sm-6">  
+      
+        <div class="item-box">
+          <div class="media-container">
+            <img src="algo.jpeg" alt="">
+            <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
+            <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
+          </div>
+          <div class="info-container">
+            <h3>Polimeros</h3>
+            <h4>10 Abril 2014 | Comments</h4>
+            <p>Solit anie wafer wypas candy canes toffee. Co adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="space40"></div>  
+        
+      </div>
+
+<!--    
       <div class="col-md-3 col-sm-6">  
       
         <div class="item-box">
@@ -134,10 +383,136 @@
         <div class="space40"></div>  
 
       </div> 
-
+      -->
     </div>
   </div>		
-  
+
+<div class="promo-box" style="
+    padding-top: 35px;
+    padding-bottom: 35px;
+">
+    <div class="container">  
+      <div class="row">
+        <div class="col-md-8 promo-text">
+          <h4>¡Agrega tu negocio ya! ¿No sabes cómo? Aquí te ayudamos. <br><span class="author">TjMed</span></h4>
+
+        </div>
+        <div class="col-md-4 right">
+          <button class="btn btn-white">Tutorial</button>
+        </div>
+      </div>    
+    </div>   
+  </div>
+
+        <div class="space40"></div>  
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Recientes Reviews</h3>
+      </div>  
+    </div>
+  </div>
+
+    <div class="container">  
+      <div class="row">
+        <div class="col-md-3 promo-text">
+          <div class="blog-comment">
+                    <div class="user-image"><i class="fa fa-user"></i></div> 
+                    <div class="comment-data">
+                      <h4>Pancho Perez</h4>
+                      <p>18 Febrero 2014, 9:43 pm<a href="#" class="reply-link">Responder</a></p>
+                      <p>
+                        Ique torquatos. Vitae inciderint qui cu, cu quo choro denique lobortis. 
+                      </p>
+                      <div class="divider"></div>           
+                    </div> 
+                  </div>
+      </div> 
+
+        <div class="col-md-3 promo-text">
+          <div class="blog-comment">
+                    <div class="user-image"><i class="fa fa-user"></i></div> 
+                    <div class="comment-data">
+            <h4>Ana Trejo</h4>
+            <p>19 Febrero 2014, 5:12 am<a href="#" class="reply-link">Responder</a></p>
+                      <p>
+                        Ique torquatos. Vitae inciderint qui cu, cu quo choro denique lobortis. 
+                      </p>
+                      <div class="divider"></div>           
+                    </div> 
+                  </div>
+      </div>
+
+              <div class="col-md-3 promo-text">
+          <div class="blog-comment">
+                    <div class="user-image"><i class="fa fa-user"></i></div> 
+<div class="comment-data">
+            <h4>Mario Martinez</h4>
+            <p>18 Febrero 2014, 10:02 pm<a href="#" class="reply-link">Responder</a></p>
+                      <p>
+                        Ique torquatos. Vitae inciderint qui cu, cu quo choro denique lobortis. 
+                      </p>
+                      <div class="divider"></div>           
+                    </div> 
+                  </div>
+      </div>
+
+              <div class="col-md-3 promo-text">
+          <div class="blog-comment">
+                    <div class="user-image"><i class="fa fa-user"></i></div> 
+                    <div class="comment-data">
+                          <h4>Israel Villalobos</h4>
+                          <p>23 Febrero 2014, 2:18 pm<a href="#" class="reply-link">Responder</a></p>
+                      <p>
+                        Ique torquatos. Vitae inciderint qui cu, cu quo choro denique lobortis. 
+                      </p>
+                      <div class="divider"></div>           
+                    </div> 
+                  </div>
+      </div>         
+    </div>   
+  </div>
+
+        <div class="space40"></div>  
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Nuestros Clientes</h3>
+      </div>  
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <ul class="partners-6">  
+          <li> 
+            <img src="images/01.png" alt="">
+          </li> 
+          <li> 
+            <img src="images/02.png" alt="">
+          </li> 
+          <li> 
+            <img src="images/03.png" alt="">
+          </li> 
+          <li> 
+            <img src="images/04.png" alt="">
+          </li> 
+          <li> 
+            <img src="images/05.png" alt="">
+          </li> 
+          <li> 
+            <img src="images/06.png" alt="">
+          </li> 
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="row">
      <!-- <div class="col-md-6">
@@ -149,9 +524,11 @@
         <div class="space40"></div>
         
       </div> --> 
+
+        <!-- Tabs -->
+        <!--
       <div class="col-md-12">
       
-        <!-- Tabs -->
         <div class="tabbable">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab1-1" data-toggle="tab"><i class="fa fa-user"></i>Mi cuenta</a></li>
@@ -184,28 +561,11 @@
               </div> 
           </div>
         </div>
+        <div class="space40"></div>   
+      </div>
         <!-- Tabs End -->
-        <div class="space40"></div>
-        
-      </div>     
+
     </div>
   </div>
 
 		<div class="space20"></div>
-
-<div class="promo-box" style="
-    padding-top: 35px;
-    padding-bottom: 35px;
-">
-    <div class="container">  
-      <div class="row">
-        <div class="col-md-8 promo-text">
-          <h4>¡Agrega tu negocio ya! ¿No sabes cómo? No te preocupes, aquí te ayudamos. <span class="author">TjMed</span></h4>
-
-        </div>
-        <div class="col-md-4 right">
-          <button class="btn btn-white">Tutorial</button>
-        </div>
-      </div>    
-    </div>   
-  </div>

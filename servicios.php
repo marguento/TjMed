@@ -28,7 +28,7 @@
                 <div class="price">
                   Paquete 1
                   <span class="price2">
-                    Por paquete
+                    <br>Por paquete
                   </span>                     
                 </div>                      
               </th>
@@ -77,7 +77,7 @@
             </tr>
             <tr>
               <td>
-                No Imagenes Digitales
+                Idiomas
               </td>
             </tr>
             <tr>
@@ -110,7 +110,7 @@
                 <div class="price">
                   Paquete 2
                   <span class="price2">
-                    Por Servicios
+                   <br> Por Servicios
                   </span>                     
                 </div>                      
               </th>
@@ -155,7 +155,7 @@
             </tr>
             <tr>
               <td>
-                Flyers, tripticos,cartel, catálogo, etc.
+                Flyers, tripticos,cartel, catálogo.
               </td>
             </tr>
             <tr>
@@ -183,7 +183,8 @@
       </div>
       
       <div class="col-md-3 col-sm-6">
-        <table class="active">
+        <!--table class="active">-->
+        <table>
           <thead>
             <tr>
               <th>
@@ -193,7 +194,7 @@
                 <div class="price">
                   Paquete 3
                   <span class="price2">
-                    Por Funcionalidad
+                    <br>Por Funcionalidad
                   </span>                     
                 </div>                      
               </th>
@@ -202,57 +203,57 @@
           <tbody>  
             <tr>
               <td>
-                $20 MXN
+                Iniciar Sesión
               </td>
             </tr>
             <tr>
               <td>
-                $80 MXN
+                Modulos de Bajas y Altas
               </td>
             </tr>
             <tr>
               <td>
-                $100 MXN
+                Modulo de Consultas
               </td>
             </tr>
             <tr>
               <td>
-                Ilimitado
+                Reportes del Sistema
               </td>
             </tr>
             <tr>
               <td>
-                Ilimitado
+                Privilegios de Usuarios
               </td>
             </tr>
             <tr>
               <td>
-                2 Articulos
+                Red de Facebook
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Programacion de BD
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Sistema de Registro
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+                Secciones Dinámicas
               </td>
             </tr>
             <tr>
               <td>
-                <i class="fa fa-check"></i>
+               Publicacion de Articulos
               </td>
             </tr>
             <tr>
               <td>
-                ---
+                Comments, Raitings, etc.
               </td>
             </tr>
             <tr>
@@ -275,7 +276,7 @@
                 <div class="price">
                   Paquete 4
                   <span class="price2">
-                    Por Horas
+                    <br>Por Horas
                   </span>                     
                 </div>                      
               </th>
