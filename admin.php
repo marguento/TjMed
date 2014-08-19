@@ -19,6 +19,7 @@
     <title>TjMed Administration</title>
     <link rel="stylesheet" href="styles/admin.bootstrap.min.css">
     <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/admin_style.css" rel="stylesheet">
   </head>
 
   <body>
