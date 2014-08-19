@@ -1,6 +1,6 @@
 <?php   
     include 'header.php';
-    
+
     $option = "";
 
     if(isset($_GET['opcion'])) {
@@ -15,6 +15,7 @@
     		case 'perfil': include 'perfil.php'; break;
     		case 'acerca': include 'quienes_somos.php'; break;
     		case 'servicios': include 'servicios.php'; break;
+            case 'usuario': include 'user_profile.php'; break;
     	}
 
     } else {

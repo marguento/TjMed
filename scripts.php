@@ -27,6 +27,7 @@
 		<script src="js/modernizr.js"></script>
 	<script>
 	$(document).ready(function(){
+		var show_hide = true; //Para manejar los botones de especialidades medicas
 	  $('.bxslider').bxSlider({
 		auto: true,
 		mode: 'fade',
@@ -45,5 +46,22 @@
     		case 'contacto': $('#contacto').addClass('selected'); break;
     		default: $('#inicio').addClass('selected'); break;
     	}
+
+    	/** CATEGORIAS.PHP **/
+    	$('.more_spc').hide();
+
+    	$('.more').click(function() {
+    		if($(this).attr('value')=='Ver más') {
+    			$(this).prop('value', 'Ver menos');
+	    		var spc = $(this).attr('id').substring(4);
+		        $('#cat_'+spc).show();
+		        
+	    	} else {
+	    		$(this).prop('value', 'Ver más');
+	    		var spc = $(this).attr('id').substring(4);
+		        $('#cat_'+spc).hide();
+		         $(document).scrollTop( $("#name_"+spc).offset().top );  
+	    	}
+        });
 	});
 	</script>

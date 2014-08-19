@@ -210,7 +210,7 @@
             <strong> 0 </strong> Pictures <br>
           </p>
 
-           <button type="button" class="btn btn-primary">Ir a mi perfil</button>
+           <a href="index.php?opcion=usuario"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
              </blockquote>
         <!-- Blockquote End -->
         <div class="space40"></div>
