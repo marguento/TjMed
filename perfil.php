@@ -17,7 +17,7 @@
           
           <!-- Blog Post -->
           <div class="space30"></div>
-          <img src="imss2.jpg" alt="" width="734" height="293">
+          <img src="images/imss2.jpg" alt="" width="734" height="293">
           <div class="space25"></div>
           <h2>Galleria</h2>
           <div class="space10"></div>

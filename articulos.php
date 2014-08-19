@@ -1,4 +1,11 @@
-<div class="breadcrumb-container">
+
+
+<div class="container">  
+    <div class="blog-container"> 
+      <div class="row"> 
+      
+        <div class="col-md-8">
+          <div class="breadcrumb-container">
     <div class="container">  
       <div class="row">  
         <div class="col-md-12">
@@ -7,17 +14,11 @@
       </div> 
     </div> 
   </div>
-
-<div class="container">  
-    <div class="blog-container"> 
-      <div class="row"> 
-      
-        <div class="col-md-12">
           <div class="">
           
             <!-- Blog Post -->
             <div class="space30"></div>
-            <img src="cel_mad2.jpg" alt="" width="1140" height="456">
+            <img src="images/cel_mad2.jpg" alt="" width="1140" height="456">
             <div class="space25"></div>
             <h2>Celulas Madres</h2>
             <div class="space10"></div>
@@ -63,7 +64,7 @@
           
             <!-- Blog Post -->
             <div class="space30"></div>
-            <img src="cardiologia2.jpg" alt="" width="1140" height="456">
+            <img src="images/cardiologia2.jpg" alt="" width="1140" height="456">
             <div class="space25"></div>
             <h2>Un Corazon Inmortal</h2>
             <div class="space10"></div>
@@ -109,7 +110,7 @@
           
             <!-- Blog Post -->
             <div class="space30"></div>
-            <img src="neuronas.jpg" alt="" width="1140" height="456">
+            <img src="images/neuronas.jpg" alt="" width="1140" height="456">
             <div class="space25"></div>
             <h2>El Tiempo en las Neuronas</h2>
             <div class="space10"></div>
@@ -155,7 +156,81 @@
 
           </div>  
         </div>
-                        
+  
+<div class="col-md-4">
+<div class="breadcrumb-container">
+    <div class="container">  
+      <div class="row">  
+        <div class="col-md-12">
+          <h1>Seguir Leyendo:</h1>
+        </div>  
+      </div> 
+    </div> 
+  </div>  
+
+        <!-- List -->
+        <ul class="list-3">
+
+        <p> 
+        <h6>Especialidades clínicas</h6>
+          <li>
+             <a href="#"><i class="fa fa-caret-right"></i> Cardiología</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Neumología</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Neurología</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Pediatría</a>
+          </li>
+    </p>
+
+        <p> 
+    <h6>Especialidades Quirúrgicas</h6>
+          <li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Plástica</a>
+          </li><li>
+             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Cardiovascular</a>
+          </li><li>    
+             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Torácica</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Neurocirugía</a>
+          </li>
+    </p>
+
+        <p> 
+    <h6>Especialidades médico quirúrgicas</h6>
+          <li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Estomatología</a>
+          </li><li>
+             <a href="#"><i class="fa fa-caret-right"></i> Oftalmología</a>
+          </li><li>    
+             <a href="#"><i class="fa fa-caret-right"></i> Otorrinolaringología</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Urología</a>
+          </li>
+    </p>
+
+        <p> 
+    <h6>Especialidades de laboratorio o diagnósticas</h6>
+          <li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Inmunología</a>
+          </li><li>
+             <a href="#"><i class="fa fa-caret-right"></i> Patológica</a>
+          </li><li>    
+             <a href="#"><i class="fa fa-caret-right"></i> Microbiología</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Neurofisiología</a>
+          </li>
+    </p>        
+
+        </ul>
+        <!-- List End -->
+        <div class="space20"></div>
+        <div class="divider"></div>
+        <div class="space40"></div>
+        
+      </div>
+
       </div> 
     </div>  
   </div>

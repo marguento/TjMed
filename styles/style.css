@@ -1,42 +1,7 @@
 /* --------------------------------------------------------	*/
 /*  Base  */
 /* --------------------------------------------------------	*/
-.imagenFondo {
-    position: relative;
 
-}
-.imagenFondo span {
-    position: absolute;
-    left: 0;
-}
-.imagenFondo div{
-    position: absolute;
-    left: 0;
-}
-.imagenFondo nav{
-    position: absolute;
-    left: 0;
-}
-.imagenFondo ul{
-    position: absolute;
-    left: 0;
-}
-.imagenFondo a{
-    position: absolute;
-    left: 0;
-}
-.imagenFondo div nav div div ul > li > a{
-    position: absolute;
-    left: 0;
-}
-.imagenFondo div nav div div ul > li {
-    position: absolute;
-    left: 0;
-}
-.imagenFondo div nav div div ul li a{
-    position: absolute;
-    left: 0;
-}
 
 .rating > span:hover:before {
    content: "\2605";
@@ -421,7 +386,7 @@ header {
   padding:0px;
   margin:0px;
   z-index:1000;
-  background:#ffffff;
+  background:#0ab2db;
   
   -webkit-border-radius: 0px; 
      -moz-border-radius: 0px; 
@@ -429,9 +394,10 @@ header {
           border-radius: 0px;   
           
   
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  /*  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);          
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);  
+  */        
 }
 
 .navbar .nav {
@@ -1832,7 +1798,7 @@ ul li i {
 }
 
 ul li a {
-  color:#566174;
+  color:#333;
   text-decoration:none;
 }
 
