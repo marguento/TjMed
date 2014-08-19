@@ -69,7 +69,8 @@
         <br>
         <div class="client-says">
           <div class="client-text">   
-            “Clariteniam, quis nostrud exercitation ullamco laboris. Aute irure dolor in repreh wypas candy canes toffee. Co adipisicing elit, sed do eiusmod tempor incididunt ut laboenderit in voluptate velit esse cillum dudium lectorum. Mirum est notare quam liquam at erat in purus aliquet mollis. Fusce ele velit nibeh.”
+            "La búsqueda de mejores opciones de servicios médicos y la oportunidad de adquirirlos fuera de los Estados Unidos, sin que el desplazamiento genere grandes costos para los habitantes de dicha región, han  propiciado la región de turismo medico con mayor potencial en el mundo.
+Los servicios médicos ofrecidos en el corredor turístico, desde Algodones en el municipio de Mexicali, hasta Ensenada, son de primera calidad y a precios mucho mas accesibles que en el estado de California."
           </div>  
           <div class="client-name">
             <i class="fa fa-quote-right"></i><strong>Omar Tumalan</strong>, TjMed.

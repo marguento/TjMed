@@ -234,7 +234,7 @@
       
         <div class="item-box">
           <div class="media-container">
-            <img src="cel_mad2.jpg" alt="">
+            <img src="images/cel_mad2.jpg" alt="">
             <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
             <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
           </div>
@@ -252,7 +252,7 @@
       
         <div class="item-box">
           <div class="media-container">
-            <img src="celula.jpeg" weight="20%" alt="">
+            <img src="images/celula.jpeg" weight="20%" alt="">
             <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
             <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
           </div>
@@ -270,7 +270,7 @@
       
         <div class="item-box">
           <div class="media-container">
-            <img src="neurona.jpg" alt="">
+            <img src="images/neurona.jpg" alt="">
             <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
             <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
           </div>
@@ -288,7 +288,7 @@
       
         <div class="item-box">
           <div class="media-container">
-            <img src="algo.jpeg" alt="">
+            <img src="images/algo.jpeg" alt="">
             <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
             <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
           </div>
