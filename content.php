@@ -1,7 +1,8 @@
 <!-- Slider -->
 
     <div class="bxslider">
-      <img src="images/banner principa.jpg"/>
+      <img src="images/1bb.png"/>
+      <img src="images/2bb.png"/>
     </div>
 
     <!--
@@ -13,7 +14,7 @@
 		</ul>
   -->
 
-        <div class="space40"></div>
+
         <!-- Slider End -->
 <div class="container popup-gallery">
     <div class="row">
@@ -21,7 +22,7 @@
       <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Especialidades Medicas</h3>
+        <h3>Especialidades Médicas</h3>
       </div>  
     </div>
   </div>
@@ -29,9 +30,9 @@
       <article class="col-md-3 col-sm-3 boxed-project">
         <div class="img-container">
           <!-- Item Link -->  
-          <a href="img/gallery/01.jpg" title="Photo Title">
+          <a href="images/especialidades_clinicas.png" title="Photo Title">
             <!-- Image -->
-            <img src="img/gallery/01@2x.jpg" alt="" width="263" height="263">
+            <img src="images/especialidades_clinicas.png" alt="" width="263" height="263">
             <!-- Icon -->  
             <i class="fa fa-arrows-alt"></i>
           </a>
@@ -44,12 +45,13 @@
         </a>
         </div>
       </article> 
+
       <article class="col-md-3 col-sm-3 boxed-project">
         <div class="img-container">
           <!-- Item Link -->  
-          <a href="img/gallery/02.jpg" title="Photo Title">
+          <a href="images/Especialidades_quirurgicas.png" title="Photo Title">
             <!-- Image -->
-            <img src="img/gallery/02@2x.jpg" alt="" width="263" height="263">
+             <img src="images/Especialidades_quirurgicas.png" alt="" width="263" height="263">
             <!-- Icon -->  
             <i class="fa fa-arrows-alt"></i>
           </a>
@@ -62,12 +64,13 @@
         </a>
         </div>
       </article> 
+
       <article class="col-md-3 col-sm-3 boxed-project">
         <div class="img-container">
           <!-- Item Link -->  
-          <a href="img/gallery/03.jpg" title="Photo Title">
+          <a href="images/Especialidades_medicquirurgicas.png" title="Photo Title">
             <!-- Image -->
-            <img src="img/gallery/03@2x.jpg" alt="" width="263" height="263">
+            <img src="images/Especialidades_medicquirurgicas.png" alt="" width="263" height="263">
             <!-- Icon -->  
             <i class="fa fa-arrows-alt"></i>
           </a>
@@ -80,12 +83,13 @@
         </a>
         </div>
       </article> 
+
       <article class="col-md-3 col-sm-3 boxed-project">
         <div class="img-container">
           <!-- Item Link -->  
-          <a href="img/gallery/04.jpg" title="Photo Title">
+          <a href="images/especialidades laboratorio.png" title="Photo Title">
             <!-- Image -->
-            <img src="img/gallery/04@2x.jpg" alt="" width="263" height="263">
+            <img src="images/especialidades laboratorio.png" alt="" width="263" height="263">
             <!-- Icon -->  
             <i class="fa fa-arrows-alt"></i>
           </a>
@@ -102,7 +106,7 @@
 
 <div class="col-md-3">
         <!-- Progress Bar -->
-        <h3> Categorias</h3>
+        <h3> Categorías</h3>
         <div class="progress-bar-shortcode">
           <div class="progress">          
             <div class="progress-bar" role="progressbar" data-percentage="80" style="width: 80%;">
@@ -183,8 +187,8 @@
 				Somos jóvenes con experiencia el sector de los servicios médicos, 
 				comprometidos con el usuario de los servicios y consientes de la necesidad 
 				de encontrar una solución rápida y confiable a los distintos problemas de salud 
-				que nuestra comunidad presenta. <br><br><center> <h4>“Lo mas importante 
-				tu salud, nuestro compromiso la honestidad”</h4></center>
+				que nuestra comunidad presenta. <br><br><center> <h4>“Lo más importante es
+				tu salud, <br>nuestro compromiso la honestidad”</h4></center>
                </div>
             </div>
           </div>
@@ -202,7 +206,7 @@
   </div>
         <!-- Blockquote -->
         <blockquote> 
-          <h4>Eira Rangel</h4>
+          <h4>Ryan Gosling</h4>
           <img src="images/profile_pic.png" style="width: 60px;"> 
           <p>
             <strong> 0 </strong> Favoritos <br>
@@ -222,7 +226,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Vida Saluable</h3>
+        <h3>Vida Saludable</h3>
       </div>  
     </div>
   </div>
@@ -257,7 +261,7 @@
             <a href="01(1).jpg" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
           </div>
           <div class="info-container">
-            <h3>Un Corazon Inmortal</h3>
+            <h3>Un Corazón Inmortal</h3>
             <h4>21 May 2014 | Comments</h4>
             <p>Solit anie wafer wypas candy canes toffee. Co adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </div>

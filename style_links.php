@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link href="images/icon_tjm.png" rel="icon" type="image/png">
+<link href="images/Logo 16 x 16.png" rel="icon" type="image/png">
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">

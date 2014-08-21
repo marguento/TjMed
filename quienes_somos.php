@@ -63,9 +63,8 @@
       
       <div class="col-md-4">
         <!-- Progress Bar -->
-        <h4>Nosotros</h4>
 
-        <img src="omar_manuel.jpg" alt="Smiley face" width="100%" height="100%">
+        <img src="images/quienes somos.png" alt="Smiley face" width="100%" height="100%">
         <br>
         <div class="client-says">
           <div class="client-text">   
