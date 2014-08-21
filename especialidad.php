@@ -1,9 +1,9 @@
 <div class="space60"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" align="justify">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8" align="justify">
-      	<h4>Especialidad_Medica_#</h4>
+      	 <h4>Especialidad_Medica_#</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nunc erat, auctor ut malesuada at, varius vitae orci. Nullam dictum metus nec turpis molestie consequat aliquam et erat. Donec facilisis volutpat lorem ut imperdiet. Vestibulum ut est sit amet mauris scelerisque ullamcorper. Donec in facilisis orci, id varius mauris. Suspendisse a sapien et erat mollis faucibus a at arcu. Ut facilisis sapien sit amet lorem varius viverra. Mauris sed purus pellentesque, tristique tortor a, suscipit quam. Vestibulum aliquet, ante et interdum faucibus, felis eros dignissim tellus, ac rutrum metus lectus sed magna. Nam bibendum, leo in vehicula rhoncus, sapien metus placerat dui, at mattis dui urna id ligula. Morbi vulputate rutrum leo. Phasellus eget nunc mi. Aliquam in purus sed diam molestie vestibulum vel sed sapien.</p>
 
           <p>Mauris bibendum tellus eget vehicula vulputate. Duis eu malesuada purus. In auctor elit sed dui adipiscing, at commodo lorem fringilla. Pellentesque congue orci in ligula luctus congue. Cras ac magna rhoncus, pulvinar tellus sed, aliquet sem. Aenean et erat id mi congue consequat aliquam eget purus. Donec vel auctor nisi.</p>

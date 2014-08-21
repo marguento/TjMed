@@ -34,7 +34,7 @@
 
 			       				<!-- Menu -->
 			        			<ul class="nav navbar-nav l_tinynav1" id="nav" style="width: 100%;">
-			               			<li id="inicio"><a href="index.php" title="">Inicio</a></li>	                				
+			               			<li id="inicio"><a href="index.php" title=""><b>Inicio</b></a></li>	                				
 									<li id="negocios"><a href="index.php?opcion=negocios" title="">Doctores</a></li>		     					
 									<li id="categorias"><a href="index.php?opcion=categorias" title="">Especialidades Médicas</a>			
 										<ul>
@@ -53,7 +53,7 @@
 									</li>           						
 			            			<li id="contacto"><a href="index.php?opcion=contacto" title="">Contacto</a></li> 
 			            			<!-- Search bar -->
-									<li style="width: 320px;">
+									<li style="width: 250px;">
 										<div class="input-group">
 											<input type="text" class="form-control" placeholder="Estoy buscando ... " style="height: 41px;">
 											<div class="input-group-btn">
