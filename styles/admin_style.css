@@ -117,3 +117,12 @@ body {
     white-space: nowrap;
     margin:10px;
 }
+
+ul li a {
+  color:#333;
+  text-decoration:none;
+}
+
+.form-control {
+  color:#333;
+}
