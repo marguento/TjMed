@@ -126,3 +126,34 @@ ul li a {
 .form-control {
   color:#333;
 }
+
+.dash {
+  font-size:20px;
+  padding-right:10px;
+}
+
+.user_img {
+  width:100%;
+}
+
+.uicon {
+  font-size:22px;
+}
+
+.uedit {
+  padding-right:15px;
+}
+
+.uedit:hover {
+  font-size:25px;
+  color:#0FA1D5;
+}
+
+.udel:hover {
+  font-size:25px;
+  color:#D9534F;
+}
+
+#user_head {
+  width:150px;
+}
