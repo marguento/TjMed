@@ -1,8 +1,4 @@
 <?php   
-    include_once('conexion.php');
-    include_once('mysql_class.php');
-    $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die("Error " . mysqli_error($dbc));
-    $dbc->set_charset('utf8');
 
     include 'header.php';
 

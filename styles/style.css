@@ -437,35 +437,35 @@ header {
 }
 
 .navbar .nav > li:hover > a {
-  color:#0b7297;
+  color:#083d5c;
   /*background:#083d5c;*/ 
-   -webkit-box-shadow: 0 1px 1px #0b7297;
-       -moz-box-shadow: 0 1px 1px #0b7297;
-            box-shadow: 0 5px 0px #0b7297;   
+   -webkit-box-shadow: 0 1px 1px #083d5c;
+       -moz-box-shadow: 0 1px 1px #083d5c;
+            box-shadow: 0 5px 0px #083d5c;   
 }
                          
 .navbar .nav > li.selected > a {
-  color:#0b7297;
+  color:#083d5c;
   /*background:#083d5c;*/ 
-   -webkit-box-shadow: 0 1px 1px #0b7297;
-       -moz-box-shadow: 0 1px 1px #0b7297;
-            box-shadow: 0 5px 0px #0b7297;   
+   -webkit-box-shadow: 0 1px 1px #083d5c;
+       -moz-box-shadow: 0 1px 1px #083d5c;
+            box-shadow: 0 5px 0px #083d5c;   
 }
 
 .navbar .nav > li.selected > a:hover {
-  color:#0b7297;
+  color:#083d5c;
   /*background:#083d5c;*/ 
-   -webkit-box-shadow: 0 1px 1px #0b7297;
-       -moz-box-shadow: 0 1px 1px #0b7297;
-            box-shadow: 0 5px 0px #0b7297;   
+   -webkit-box-shadow: 0 1px 1px #083d5c;
+       -moz-box-shadow: 0 1px 1px #083d5c;
+            box-shadow: 0 5px 0px #083d5c;   
 }
 
 .navbar .nav > li.selected:hover > a {
-  color:#0b7297;
+  color:#083d5c;
   /*background:#083d5c;*/ 
-   -webkit-box-shadow: 0 1px 1px #0b7297;
-       -moz-box-shadow: 0 1px 1px #0b7297;
-            box-shadow: 0 5px 0px #0b7297;  
+   -webkit-box-shadow: 0 1px 1px #083d5c;
+       -moz-box-shadow: 0 1px 1px #083d5c;
+            box-shadow: 0 5px 0px #083d5c;  
 }
 
 .navbar .dark {

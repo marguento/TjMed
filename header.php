@@ -31,11 +31,11 @@
 				 		   	<div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 40px;padding-top: 15px;">	
 					 		   	<nav class="navbar" role="navigation" style="width: 100%;">
 					   	 		 	<div class="navbar-inner">
-						       			<strong>
+						       			
 							        		<ul class="nav navbar-nav l_tinynav1" id="nav" style="width: 100%;">
-							               		<li id="inicio"><a href="index.php" title="" style="font-size: 18px; padding-left: 10px;padding-right: 10px;">Inicio</a></li>	                				
-												<li id="negocios"><a href="index.php?opcion=negocios" title="" style="font-size: 18px; padding-left: 10px;padding-right: 10px;">Doctores</a></li>		     					
-												<li id="categorias"><a href="index.php?opcion=categorias" title="" style="font-size: 18px">Especialidades Médicas</a>			
+							               		<li id="inicio"><a href="index.php" title="" style="font-size: 17px; padding-left: 10px;padding-right: 10px;">Inicio</a></li>	                				
+												<li id="negocios"><a href="index.php?opcion=negocios" title="" style="font-size: 17px; padding-left: 10px;padding-right: 10px;">Doctores</a></li>		     					
+												<li id="categorias"><a href="index.php?opcion=categorias" title="" style="font-size: 17px">Especialidades Médicas</a>			
 													<ul>
 														<li><a href="index.php?opcion=categorias#Especialidad1" title="" style="font-size: 15px">Especialidades Clínicas</a></li>
 														<li><a href="index.php?opcion=categorias#Especialidad2" title="" style="font-size: 15px">Especialidades Quirúrgicas</a></li>
@@ -43,16 +43,16 @@
 														<li><a href="index.php?opcion=categorias#Especialidad4" title="" style="font-size: 15px">Especialidades de Laboratorio</a></li>																				
 													</ul>	
 												</li>
-							           			<li id="articulos"><a href="index.php?opcion=articulos" title="" style="font-size: 18px; padding-left: 10px;padding-right: 10px;">Vida Saludable</a></li>
-												<li id="acerca"><a href="index.php?opcion=acerca" title="" style="font-size: 18px; padding-left: 10px;padding-right: 10px;">¿Quiénes somos?</a> 
+							           			<li id="articulos"><a href="index.php?opcion=articulos" title="" style="font-size: 17px; padding-left: 10px;padding-right: 10px;">Vida Saludable</a></li>
+												<li id="acerca"><a href="index.php?opcion=acerca" title="" style="font-size: 17px; padding-left: 10px;padding-right: 10px;">¿Quiénes somos?</a> 
 													<ul>
 														<li><a href="index.php?opcion=acerca#Mision" title="" style="font-size: 15px">Misión</a></li>
 														<li><a href="index.php?opcion=acerca#Vision" title="" style="font-size: 15px">Visión</a></li>
 													</ul>	
 												</li>           						
-							            		<li id="contacto"><a href="index.php?opcion=contacto" title="" style="font-size: 18px; padding-left: 10px;padding-right: 10px;">Contacto</a></li>
+							            		<li id="contacto"><a href="index.php?opcion=contacto" title="" style="font-size: 17px; padding-left: 10px;padding-right: 10px;">Contacto</a></li>
 							            	</ul>	
-						            	</strong> 
+
 					           		</div>
 					           	</nav>
 				            </div>
