@@ -29,7 +29,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#F5F5F5">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">TjMed Administration</a>
+          <a class="navbar-brand" href="#">TjMed Administración</a>
         </div>
         <div class="nav navbar-nav navbar-right" style="margin-right: 0px;width: 500px;">
           <div class="row">
@@ -42,13 +42,11 @@
          <div class="col-sm-3">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-              Configuración
+              <span class="fa fa-user dash"></span>USER
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mi perfil</a></li>
               <li role="presentation" class="divider"></li>
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cerrar sesión</a></li>
             </ul>
@@ -64,10 +62,12 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li id="doctor"><a href="index.php?opcion=doctores">Doctores</a></li>
-            <li id="articulo"><a href="index.php?opcion=articulos">Artículos</a></li>
-            <li><a href="#">Especialidades</a></li>
-            <li><a href="#">Usuarios</a></li>
+            <li id="dashboard"><a href="index.php"><span class="fa fa-home dash"></span>DASHBOARD</a></li>
+            <li id="usuario"><a href="index.php?opcion=usuarios"><span class="fa fa-users dash"></span>USUARIOS</a></li>
+            <li id="doctor"><a href="index.php?opcion=doctores"><span class="fa fa-user-md dash"></span>DOCTORES</a></li>
+            <li><a href="index.php?opcion=especialidades"><span class="fa fa-stethoscope dash"></span>ESPECIALIDADES</a></li>
+            <li id="articulo"><a href="index.php?opcion=articulos"><span class="fa fa-file-text-o dash"></span>ARTICULOS</a></li>
+            <li><a href="index.php?opcion=comentarios"><span class="fa fa-comments dash"></span>COMENTARIOS</a></li>
           </ul>
           
         </div>
@@ -80,12 +80,14 @@
 
               switch($option) {
                 case 'doctores': include 'admin_doctor.php'; break;
+                case 'doctor_profile': include 'admin_doctor_profile.php'; break;
+                case 'usuarios': include 'admin_users.php'; break;
                 case 'articulos': include 'admin_art.php'; break;
                 case 'new_entry': include 'admin_add_entry.php'; break;
               }
 
             } else {
-               include 'admin_doctor.php';
+               include 'dashboard.php';
             }
           ?>
         </div>
@@ -110,9 +112,10 @@
 
       switch(option) {
         case 'doctores': $('#doctor').addClass('active'); break;
+        case 'usuarios': $('#usuario').addClass('active'); break;
         case 'articulos': $('#articulo').addClass('active'); break;
         case 'new_entry': $('#articulo').addClass('active'); break;
-        default: $('#doctor').addClass('active'); break;
+        default: $('#dashboard').addClass('active'); break;
       }
     });
     </script>
