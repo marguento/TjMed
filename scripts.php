@@ -50,6 +50,7 @@
     	/** CATEGORIAS.PHP **/
     	$('.more_spc').hide();
 
+    	/** TODO: Validar a ingles - espanol */
     	$('.more').click(function() {
     		if($(this).attr('value')=='Ver más') {
     			$(this).prop('value', 'Ver menos');
