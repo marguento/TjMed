@@ -20,11 +20,13 @@
 				<p>
 				Nuestra base de datos será alimentada por las aportaciones, comentarios y calificaciones que nuestros usuarios aporten, dando un valor agregado y sentido de pertenencia a la comunidad, respetando siempre las opiniones con total responsabilidad y legalidad.
 				</p>
+      <!--
 				<div align="right">
 				<strong>C.P. Y MBA Omar V. Tumalan Lemus</strong>
 				<br>
 				<strong>Ing. Y MBA Manuel A. Soto Madinaveitia</strong>
               	</div>
+      -->
               </div>
             </div>
           </div>
