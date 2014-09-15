@@ -3761,3 +3761,56 @@ src: url("../font/MyriadPro-Regular.otf") format("opentype");
   padding-right:10px;
 }
 
+.img_prof {
+  width:40%;
+}
+
+#map-canvas {
+        height: 450px;
+        width:350px;
+        margin: 0px;
+        padding: 0px
+}
+
+#search {
+    height:41px;
+    font-style: normal;
+}
+
+#search:focus {
+  border-color: #083d5c;
+  border:1px solid #083d5c;
+  -webkit-border-radius: 0px; 
+     -moz-border-radius: 0px; 
+       -o-border-radius: 0px; 
+          border-radius: 0px; 
+  -webkit-transition: all 0.3s ease-in-out;
+     -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+       -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+}
+
+#search_button {
+  height: 41px;
+  border-color:#D7DFE4; 
+}
+
+#search_button:hover, #search_button:focus {
+  /*border-color: #083d5c;*/
+  background-color: #0AB2DB; 
+  border:1px solid #083d5c;
+  -webkit-border-radius: 0px; 
+     -moz-border-radius: 0px; 
+       -o-border-radius: 0px; 
+          border-radius: 0px; 
+  -webkit-transition: all 0.3s ease-in-out;
+     -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+       -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+}
+
+#search_caret {
+  color: #D7DFE4;
+}
