@@ -65,8 +65,8 @@
 									<a href="#" data-toggle="modal" data-target="#myModal"> Inicia sesión</a>
 								</li>
 								<li style="padding: 5px 0 10px 0; width: 30%;padding-right:">
-									&nbsp;<a href="index.php?lang=es"><img alt="Us" src="images/icon_es.png" style="width: 40%;"></a>
-									&nbsp;<a href="index.php?lang=en"><img alt="Mx" src="images/icon_in.jpg" style="width: 40%;"></a>
+									&nbsp;<a href="index.php?<?=$url?>lang=es"><img alt="Us" src="images/icon_es.png" style="width: 40%;"></a>
+									&nbsp;<a href="index.php?<?=$url?>lang=en"><img alt="Mx" src="images/icon_in.jpg" style="width: 40%;"></a>
 								</li>
 							</ul>
 							<br>
