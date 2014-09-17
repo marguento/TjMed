@@ -17,7 +17,7 @@
 <link href="http://www.entiri.com/riley-1.3/css/animate.css" rel="stylesheet">
 
 <!-- Font Awesome Style -->
-<link href="http://www.entiri.com/riley-1.3/css/font-awesome.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 			  
 <!-- Entypo Icons -->    
 <link href="http://www.entiri.com/riley-1.3/css/entypo.css" rel="stylesheet">
@@ -44,6 +44,8 @@
 <link href="styles/jquery.bxslider.css" rel="stylesheet" />
 
 <div class="fit-vids-style" id="fit-vids-style" style="display: none;">
+
+<link rel="stylesheet" type="text/css" href="slick-master/slick/slick.css"/>
 <style>                 
 	.fluid-width-video-wrapper {                   
 		width: 100%;                                

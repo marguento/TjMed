@@ -25,6 +25,8 @@
 	  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="js/jquery.bxslider.min.js"></script>
 		<script src="js/modernizr.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script type="text/javascript" src="slick-master/slick/slick.min.js"></script>
 	<script>
 	$(document).ready(function(){
 		var show_hide = true; //Para manejar los botones de especialidades medicas
@@ -39,6 +41,7 @@
 
     	switch(option) {
     		case 'negocios': $('#negocios').addClass('selected'); break;
+    		case 'perfil': $('#negocios').addClass('selected'); break;
     		case 'acerca': $('#acerca').addClass('selected'); break;
     		case 'categorias': $('#categorias').addClass('selected'); break;
     		case 'articulos': $('#articulos').addClass('selected'); break;
@@ -64,5 +67,70 @@
 		         $(document).scrollTop( $("#name_"+spc).offset().top );  
 	    	}
         });
+
+        var geocoder;
+var map;
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var mapOptions = {
+    zoom: 8
+  }
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  codeAddress();
+}
+
+function codeAddress() {
+  var address = document.getElementById('address').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	var id = $('#category').val();
+	console.log(id);
+	var dataString = 'id='+ id;
+
+	$.ajax
+	({
+		type: "POST",
+		url: "getSpecialties.php",
+		data: dataString,
+		cache: false,
+		success: function(html)
+		{
+			$("#speciality").html(html);
+		} 
 	});
-	</script>
+
+	$("#category").change(function()
+	{
+		var id = $(this).val();
+		console.log(id);
+		var dataString = 'id='+ id;
+
+		$.ajax
+		({
+			type: "POST",
+			url: "getSpecialties.php",
+			data: dataString,
+			cache: false,
+			success: function(html)
+			{
+				$("#speciality").html(html);
+			} 
+		});
+	});
+
+	$('.carousel').carousel();
+});
+</script>

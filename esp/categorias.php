@@ -1,6 +1,5 @@
 ﻿<div class="space60"></div>
 <?php
-	header('Content-type: text/html; charset=UTF-8');
     $cat_data = getCategories($dbc);
     $j=0;
     while($cat_row = mysqli_fetch_array($cat_data)) {

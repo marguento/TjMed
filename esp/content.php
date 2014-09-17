@@ -196,6 +196,8 @@
         <!-- Accordion End -->  
         <div class="space40"></div>  
       </div>
+      <?php
+      if(isset($_SESSION['username'])) { ?>
             <div class="col-md-3">
       <div class="container">
     <div class="row">
@@ -206,8 +208,8 @@
   </div>
         <!-- Blockquote -->
         <blockquote> 
-          <h4>Ryan Gosling</h4>
-          <img src="images/profile_pic.png" style="width: 60px;"> 
+          <h4><?=$username?></h4>
+          <img src="images/<?=$_SESSION['profile_image']?>" style="width: 60px;"> 
           <p>
             <strong> 0 </strong> Favoritos <br>
             <strong> 0 </strong> Reviews <br>
@@ -219,7 +221,8 @@
         <!-- Blockquote End -->
         <div class="space40"></div>
         
-      </div>     
+      </div> 
+    <?php } ?>    
 	  </div>
 	  </div>
       
