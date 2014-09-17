@@ -14,6 +14,13 @@
         $url = 'opcion=' . $option . '&';
     }
 
+    $option = "";
+    $url = "";
+    if(isset($_GET['opcion'])) {
+        $option = $_GET['opcion'];
+        $url = "opcion=".$option."&";
+    }
+
     $lang = "";
 
     if(isset($_GET['lang'])) {
@@ -27,7 +34,6 @@
     }
     include $ruta . 'header.php';
 
-    
     	switch($option) {
     		case 'negocios': include $ruta . 'negocios.php'; break;
     		case 'articulos': include $ruta . 'articulos.php'; break;
@@ -38,8 +44,7 @@
     		case 'acerca': include $ruta . 'quienes_somos.php'; break;
     		case 'servicios': include $ruta . 'servicios.php'; break;
             case 'usuario': include $ruta . 'user_profile.php'; break;
-            default: include $ruta . 'content.php';
+            default:  include $ruta . 'content.php';
     	}
-	
 	include $ruta . 'footer.php';
 ?>
