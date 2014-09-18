@@ -112,22 +112,11 @@
 						</div>
 
 		<div class="col-md-3">
-            <h6>Recientes Tweets</h6>               
-            <div class="tweet">
-              <div>Zipsum doet dolore magnot amet, conuis mit etuer adif.</div>
-              <p class="white">2 Days ago</p>
-              <i class="fa fa-twitter"></i>
-            </div>                               
-            <div class="tweet">
-              <div>Tincmmy nibh euio sentiof dondoibh euis mit etugari.</div>
-              <p class="white">3 Days ago</p>
-              <i class="fa fa-twitter"></i>
-            </div>    
-            <div class="tweet">
-              <div>Kapsah retosum doet dolore magnot amet, conuis mitef.</div>
-              <p class="white">2 Days ago</p>
-              <i class="fa fa-twitter"></i>
-            </div>                                             
+			<a class="twitter-timeline" href="https://twitter.com/TJMed_2014" data-widget-id="505521170477621248" data-chrome="transparent">Tweets por @TJMed_2014</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+                                          
             <div class="space20"></div>                   
           </div>
 		</div>

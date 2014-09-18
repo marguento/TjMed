@@ -56,8 +56,8 @@
 				    <div class="col-md-3" style="padding-left: 0px; padding-right: 0px;">
 					    <ul class="top-items" style="width: 100%; padding-left: 35px;">
 							<li style="padding: 5px 0 10px 0;">
-								<a href="#"> Regístrate -</a>  
-								<a href="#" data-toggle="modal" data-target="#myModal"> Inicia sesión</a>
+								<a href="#"> Join -</a>  
+								<a href="#" data-toggle="modal" data-target="#myModal"> Sign In</a>
 							</li>
 							<li style="padding: 5px 0 10px 0; width: 30%;padding-right:">
 								&nbsp;<a href="index.php?<?=$url?>lang=es"><img alt="Us" src="images/icon_es.png" style="width: 40%;"></a>

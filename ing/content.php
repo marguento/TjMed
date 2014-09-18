@@ -15,6 +15,79 @@
   -->
 
 
+<div class="container">
+    <div class="row">
+    
+      <div class="col-md-3">
+              <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Spot TjMed</h3>
+      </div>  
+    </div>
+  </div>
+		<iframe width="250" height="200" src="//www.youtube.com/embed/tYraOn7zHR8" frameborder="0" allowfullscreen></iframe>
+        <div class="space40"></div>    
+      </div>
+      
+      <div class="col-md-6"> 
+            <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>About Us</h3>
+      </div>  
+    </div>
+  </div> 
+        <div class="accordion" id="accordion2">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                Who Are we?
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+              <div class="accordion-inner">
+				        We are a young team with experience in the medical services sector committed to the patient and aware 
+                of the need to offer them a quick and reliable to way to find the right doctor for any type of health 
+                problems in our community. As our slogan says: <br><br><center> <h4>"Your health is first, our commitm
+                ent is honest
+                y”.</h4></center>
+               </div>
+            </div>
+          </div>
+        </div>   
+        <!-- Accordion End -->  
+        <div class="space40"></div>  
+      </div>
+            <div class="col-md-3">
+      <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>My Profile</h3>
+      </div>  
+    </div>
+  </div>
+        <!-- Blockquote -->
+        <blockquote> 
+          <h4>Ryan Gosling</h4>
+          <img src="images/profile_pic.png" style="width: 60px;"> 
+          <p>
+            <strong> 0 </strong> Favoritos <br>
+            <strong> 0 </strong> Reviews <br>
+            <strong> 0 </strong> Pictures <br>
+          </p>
+
+           <a href="index.php?opcion=usuario"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
+             </blockquote>
+        <!-- Blockquote End -->
+        <div class="space40"></div>
+        
+      </div>     
+	  </div>
+	  </div>
+
+
+<!-- second rowd -->
         <!-- Slider End -->
 <div class="container popup-gallery">
     <div class="row">
@@ -22,7 +95,7 @@
       <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Especialidades Médicas</h3>
+        <h3>Medical SPECIALTIES</h3>
       </div>  
     </div>
   </div>
@@ -152,81 +225,11 @@
   </div>
 
 
-<div class="container">
-    <div class="row">
-    
-      <div class="col-md-3">
-              <div class="container">
-    <div class="row">
-      <div class="col-md-12">  
-        <h3>Spot TjMed</h3>
-      </div>  
-    </div>
-  </div>
-		<iframe width="250" height="200" src="//www.youtube.com/embed/tYraOn7zHR8" frameborder="0" allowfullscreen></iframe>
-        <div class="space40"></div>    
-      </div>
-      
-      <div class="col-md-6"> 
-            <div class="container">
-    <div class="row">
-      <div class="col-md-12">  
-        <h3>Nosotros</h3>
-      </div>  
-    </div>
-  </div> 
-        <div class="accordion" id="accordion2">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                ¿Quiénes somos?
-              </a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse in">
-              <div class="accordion-inner">
-				Somos jóvenes con experiencia el sector de los servicios médicos, 
-				comprometidos con el usuario de los servicios y consientes de la necesidad 
-				de encontrar una solución rápida y confiable a los distintos problemas de salud 
-				que nuestra comunidad presenta. <br><br><center> <h4>“Lo más importante es
-				tu salud, <br>nuestro compromiso la honestidad”</h4></center>
-               </div>
-            </div>
-          </div>
-        </div>   
-        <!-- Accordion End -->  
-        <div class="space40"></div>  
-      </div>
-            <div class="col-md-3">
-      <div class="container">
-    <div class="row">
-      <div class="col-md-12">  
-        <h3>Mi Perfil</h3>
-      </div>  
-    </div>
-  </div>
-        <!-- Blockquote -->
-        <blockquote> 
-          <h4>Ryan Gosling</h4>
-          <img src="images/profile_pic.png" style="width: 60px;"> 
-          <p>
-            <strong> 0 </strong> Favoritos <br>
-            <strong> 0 </strong> Reviews <br>
-            <strong> 0 </strong> Pictures <br>
-          </p>
-
-           <a href="index.php?opcion=usuario"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
-             </blockquote>
-        <!-- Blockquote End -->
-        <div class="space40"></div>
-        
-      </div>     
-	  </div>
-	  </div>
       
 <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Vida Saludable</h3>
+        <h3>Healthy Living</h3>
       </div>  
     </div>
   </div>
@@ -413,7 +416,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Recientes Reviews</h3>
+        <h3>Recents Reviews</h3>
       </div>  
     </div>
   </div>
@@ -483,7 +486,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Nuestros Clientes</h3>
+        <h3>Our Clients</h3>
       </div>  
     </div>
   </div>
