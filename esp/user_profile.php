@@ -20,21 +20,17 @@
                 <div class="col-md-4">
                   <!-- Thumbnails -->
                   <div class="thumbnail">
-                    <img alt="" src="images/profile_pic.png">
+                    <img alt="" src="images/<?=$_SESSION['profile_image']?>">
                     <ul class="list-group">
-                      <li class="list-group-item"><span class="glyphicon glyphicon-edit profile"></span><span class="badge">10</span>Reseñas</li>
-                      <li class="list-group-item"><span class="glyphicon glyphicon-picture profile"></span><span class="badge">11</span>Fotos</li>
-                      <li class="list-group-item"><span class="glyphicon glyphicon-star profile"></span><span class="badge">14</span>Favoritos</li>
+                      <li class="list-group-item"><span class="glyphicon glyphicon-edit profile"></span><span class="badge">0</span>Reseñas</li>
+                      <li class="list-group-item"><span class="glyphicon glyphicon-picture profile"></span><span class="badge">0</span>Fotos</li>
+                      <li class="list-group-item"><span class="glyphicon glyphicon-star profile"></span><span class="badge">0</span>Favoritos</li>
                       <li class="list-group-item"><span class="glyphicon glyphicon-open profile"></span>Cambiar foto</li>
                     </ul>
                   </div><!-- /Thumbnails -->    
                 </div>
                 <div class="col-md-8">
-                  <h4>Ryan Gosling</h4>
-                  <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcinim veniam, quis nostrud exerci 
-                    tand mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc. 
-                    Pa ad minim veniam, quis nostrud exerci trum claram, anteposuerit littera ad minim veniam, 
-                    quis nostrud exerci trum formas humanitatud exerci tation ullamcorper susc nostrudexe.
+                  <h4><?=$username?></h4>
                   </p>
                    <button type="button" class="btn btn-primary right">Editar perfil</button>
                 </div>
@@ -46,18 +42,15 @@
 
             <div class="tab-pane" id="tab1-2">
               <h3>Mis favoritos</h3>
-              <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcinim veniam, quis nostrud exerci tand mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc. Pa ad minim veniam, quis nostrud exerci trum claram, anteposuerit littera ad minim veniam, quis nostrud exerci trum formas humanitatud exerci tation ullamcorper susc nostrudexe.</p>
-				
+              <p></p>
 			</div>
             <div class="tab-pane" id="tab1-3">
               <h3>Mi actividad</h3>
-			   <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcinim veniam, quis nostrud exerci tand mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc. Pa ad minim veniam, quis nostrud exerci trum claram, anteposuerit littera ad minim veniam, quis nostrud exerci trum formas humanitatud exerci tation ullamcorper susc nostrudexe.</p>
-				
+			   <p></p>
               </div>
             <div class="tab-pane" id="tab1-4">
               <h3>Mis negocios</h3>
-			   <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcinim veniam, quis nostrud exerci tand mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc. Pa ad minim veniam, quis nostrud exerci trum claram, anteposuerit littera ad minim veniam, quis nostrud exerci trum formas humanitatud exerci tation ullamcorper susc nostrudexe.</p>
-				
+			   <p></p>
               </div> 
           </div>
           

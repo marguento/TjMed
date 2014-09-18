@@ -1,4 +1,18 @@
 <?php   
+    session_start();
+    include_once('conexion.php');
+    include_once('mysql_class.php');
+    $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die("Error " . mysqli_error($dbc));
+    $dbc->set_charset('utf8');
+    
+      
+    $option = "";
+    $url = "";
+
+    if(isset($_GET['opcion'])) {
+        $option = $_GET['opcion'];
+        $url = 'opcion=' . $option . '&';
+    }
 
     $option = "";
     $url = "";
@@ -32,6 +46,5 @@
             case 'usuario': include $ruta . 'user_profile.php'; break;
             default:  include $ruta . 'content.php';
     	}
-
 	include $ruta . 'footer.php';
 ?>

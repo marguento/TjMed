@@ -225,6 +225,84 @@
     </div>
   </div>
 
+<<<<<<< HEAD
+=======
+
+<div class="container">
+    <div class="row">
+    
+      <div class="col-md-3">
+              <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Spot TjMed</h3>
+      </div>  
+    </div>
+  </div>
+		<iframe width="250" height="200" src="//www.youtube.com/embed/tYraOn7zHR8" frameborder="0" allowfullscreen></iframe>
+        <div class="space40"></div>    
+      </div>
+      
+      <div class="col-md-6"> 
+            <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Nosotros</h3>
+      </div>  
+    </div>
+  </div> 
+        <div class="accordion" id="accordion2">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                ¿Quiénes somos?
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+              <div class="accordion-inner">
+				Somos jóvenes con experiencia el sector de los servicios médicos, 
+				comprometidos con el usuario de los servicios y consientes de la necesidad 
+				de encontrar una solución rápida y confiable a los distintos problemas de salud 
+				que nuestra comunidad presenta. <br><br><center> <h4>“Lo más importante es
+				tu salud, <br>nuestro compromiso la honestidad”</h4></center>
+               </div>
+            </div>
+          </div>
+        </div>   
+        <!-- Accordion End -->  
+        <div class="space40"></div>  
+      </div>
+      <?php
+      if(isset($_SESSION['username'])) { ?>
+            <div class="col-md-3">
+      <div class="container">
+    <div class="row">
+      <div class="col-md-12">  
+        <h3>Mi Perfil</h3>
+      </div>  
+    </div>
+  </div>
+        <!-- Blockquote -->
+        <blockquote> 
+          <h4><?=$username?></h4>
+          <img src="images/<?=$_SESSION['profile_image']?>" style="width: 60px;"> 
+          <p>
+            <strong> 0 </strong> Favoritos <br>
+            <strong> 0 </strong> Reviews <br>
+            <strong> 0 </strong> Pictures <br>
+          </p>
+
+           <a href="index.php?opcion=usuario"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
+             </blockquote>
+        <!-- Blockquote End -->
+        <div class="space40"></div>
+        
+      </div> 
+    <?php } ?>    
+	  </div>
+	  </div>
+      
+>>>>>>> FETCH_HEAD
 <div class="container">
     <div class="row">
       <div class="col-md-12">  

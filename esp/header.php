@@ -1,3 +1,10 @@
+<?php
+$username = "";
+if(isset($_SESSION['username'])) {
+   $username = $_SESSION['firstname'] . ' ' . $_SESSION['lastname'];
+}
+?>
+
 <!DOCTYPE html>
 	<html>
 		<head>
@@ -59,24 +66,31 @@
 						</div>
 				       	<!-- Search bar -->
 				        <div class="col-md-3" style="padding-left: 0px; padding-right: 0px;">
-					        <ul class="top-items" style="width: 100%; padding-left: 35px;">
+					        <center><ul class="top-items" style="width: 100%;">
 								<li style="padding: 5px 0 10px 0;">
-									<a href="#"> Regístrate -</a>  
-									<a href="#" data-toggle="modal" data-target="#myModal"> Inicia sesión</a>
+									<?php
+									if($username != "") { ?>
+										<a href="index.php?opcion=usuario"><?=$username?> -</a>
+										<a href="logout.php"> Cerrar sesión</a>  
+									<?php } else { ?>
+										<a href="#"> Regístrate -</a>  
+										<a href="#" data-toggle="modal" data-target="#myModal"> Inicia sesión</a>
+									<?php } ?>
 								</li>
 								<li style="padding: 5px 0 10px 0; width: 30%;padding-right:">
 									&nbsp;<a href="index.php?<?=$url?>lang=es"><img alt="Us" src="images/icon_es.png" style="width: 40%;"></a>
 									&nbsp;<a href="index.php?<?=$url?>lang=en"><img alt="Mx" src="images/icon_in.jpg" style="width: 40%;"></a>
 								</li>
 							</ul>
+							</center>
 							<br>
 							<br>
 							<i>
 							<div class="input-group" style="width: 100%;">
-								<input id="search" type="text" class="form-control" placeholder="Estoy buscando ... " style="height: 41px;">
+								<input id="search" type="text" class="form-control" placeholder="Estoy buscando ... ">
 								<div class="input-group-btn">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="height: 41px;">
-										<span class="caret" style="margin-right:11px;"></span>
+									<button id="search_button" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<span id="search_caret" class="caret" style="margin-right:11px;"></span>
 									</button>
 									<ul class="dropdown-menu dropdown-menu-right" role="menu">
 										<li><a href="#"><img src="images/icono_.especialidades quirurgicas.png" style="width:20px; margin-right:5px;">Dental</a></li>
@@ -93,3 +107,30 @@
 			</div>
 		</header>
 		<!-- Header End -->
+
+		<div class="modal fade" id="myModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title">Inicia Sesión</h4>
+		      </div>
+		      <form role="form" method="post" action="login.php">
+		      <div class="modal-body">
+		      	
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Username</label>
+				    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="Username" style="color:black;">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Password</label>
+				    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" style="color:black;">
+				  </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+		      </div>
+		  </form>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
