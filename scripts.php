@@ -9,7 +9,7 @@
 	  <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
 	  <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
 	  <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script> 
-	  <script type="text/javascript" src="js/retina.js"></script> 
+	  <!--<script type="text/javascript" src="js/retina.js"></script>--> 
 	  <script type="text/javascript" src="js/respond.min.js"></script> 
 	  <script type="text/javascript" src="js/scale.fix.js"></script>
 	  <script type="text/javascript" src="js/jquery.countdown.js"></script> 

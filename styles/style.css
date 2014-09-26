@@ -48,7 +48,7 @@ h3 {
   font-size:24px;
   font-weight:300;
   text-transform:uppercase; 
-  color:#0fa2d5;
+  color:#0ab2db;
 }
 
 h4 {
@@ -76,12 +76,12 @@ p {
 } 
 
 a {
-  color:#0fa1d5;
+  color:#0ab2db;
   text-decoration:none;
 }
 
 a:hover {
-  color:#3c4451;
+  color:#083d5c;
   text-decoration:none;
 }
 
@@ -92,7 +92,7 @@ blockquote {
   padding:20px;
   margin:0px;
   border-left:5px solid #0ab2db; 
-  background: #e6edf2; 
+  background: #eff5f9; 
 }
 
 blockquote h4{
@@ -744,12 +744,12 @@ header {
 
 .btn-primary.color-2, .btn-primary.color-2:focus{
   color:#fff;
-  background:#ff4b64; 
+  background:#0ab2db; 
   border:0px;
 }
 
 .btn-primary.color-2:hover{
-  background:#c2394c; 
+  background:#083d5c; 
 }
 
 .btn-info.color-2, .btn-info.color-2:focus{
@@ -2326,13 +2326,13 @@ ul li a:hover, ul li a:hover i {
 .accordion-group {
   border-radius:0px;
   border:0px; 
-  border-left:5px solid #0ab2db;      
+  /*border-left:5px solid #0ab2db;*/      
   margin-bottom:1px;
 }
 
 .accordion-heading {
   height:60px;
-  background:#e6edf2;
+  background:#eff5f9;
   font-size:16px;
   text-transform:uppercase; 
   padding:20px;   
@@ -2564,7 +2564,7 @@ ul li a:hover, ul li a:hover i {
 .img-container {
   position:relative;
   overflow:hidden; 
-  background:#0fa1d5;
+  background:#eff5f9;
 }
 
 .img-container img {
