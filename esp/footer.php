@@ -7,7 +7,7 @@
 			<!-- Parallax --> 
 
 			<div id="parallax-one" class="parallax" style="background-image: url(images/foto_nueva_abajo.jpg); 
-													background-position: 50% 115px;">
+													background-position: 50% 90px;">
 			 <div class="footer-promo">
 			  <div class="container">
                <div class="row">

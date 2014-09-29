@@ -3,31 +3,29 @@
     <img src="images/1bb.png"/>
     <img src="images/2bb.png"/>
   </div>
+  <div class="space30"></div>
 
 <!--PRIMER RENGLON -->
 <div>
   <div class="container">
     <div class="row"> 
       <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-12">  
-            <center><h3>Primero en Comentar</h3></center>
-          </div>  
-        </div>
-        <p>Cras consequat porttitor tincidunt. Praeonem consuetudium lectorum. Mirum est notare quam littera gothica, 
-          quam nunc putamus parum claram, anteposuerit litterarum formas. Aliquam at erat in purus aliquet mollis. Fu
-          sce elementum velit vent eu <a href="#" data-toggle="tooltip" data-placement="top" title="This is tooltip 1
-          .">tincidunt&nbsp;lacus</a>. Donec ut neque vitae erat congue venenatis. Duis hendrerit lacinia leo in dign
-          issim. Aliquam erat vicus, and mutationem consuetudium lectorum. Mirum est notare quam littera gothica, qua
-          m nuolutpat. <a href="#" data-toggle="tooltip" data-placement="top" title="This is tooltip 2.">Sed&nbsp;dig
-          nissim</a> hendrerit nibh, quis faucibus erat cursus eget. Plum liquorice cookie ice cream caramels oat cak
-          e dragée. <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="This is tool
-          tip 3.">Integer&nbsp;porta</a> nisl vitae felis ruicus, and mutationem consuetudium lectorum. Mirum est not
-          are quam littera gothica, quam nutrum ut mollis felis congue.</p>
+            <center>
+              <h3>
+                Te explicamos como funciona:
+              </h3>
+              <div style="font-size: 20px; line-height:150% ">
+                Con TjMed, puedes buscar en la barra de busqueda, cualquier negocio medico o doctor de tu interes,
+                existe una seccion de Categorias, donde estan todas las descripciones de las especialidades que te
+                ayudaran a buscar un doctor si no sabes lo que buscas.
+                Tjmed, te da opciones, ratings, reviews y comentarios del negocio o doctores que estes buscando, es 
+                simplemente sencillo.
+              </div>
+            </center>
       </div>     
     </div>
   </div>
-  <div class="space40"></div>
+  <div class="space70"></div>
 </div> 
 
 <!-- SEGUNDO RENGLON -->
@@ -46,8 +44,8 @@
 
           <article class="col-md-3 col-sm-3 boxed-project">
             <div class="img-container">
-              <a href="images/especialidades_clinicas.png" title="Photo Title">
-                <img src="images/especialidades_clinicas.png" alt="" width="263" height="263">
+              <a href="images/sm.png" title="Photo Title">
+                <img src="images/sm.png" alt="" width="263" height="263">
                 <i class="fa fa-arrows-alt"></i>
               </a>        
             </div>
@@ -61,8 +59,8 @@
 
           <article class="col-md-3 col-sm-3 boxed-project">
             <div class="img-container">
-              <a href="images/Especialidades_quirurgicas.png" title="Photo Title">
-                <img src="images/Especialidades_quirurgicas.png" alt="" width="263" height="263">
+              <a href="images/sq.png" title="Photo Title">
+                <img src="images/sq.png" alt="" width="263" height="263">
                 <i class="fa fa-arrows-alt"></i>
               </a>         
             </div>

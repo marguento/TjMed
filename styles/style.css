@@ -410,6 +410,7 @@ header {
   float:left;
   padding:0px;
   margin:0px;
+  width: 100%;
 }
 
 .select-menu { 
@@ -3813,4 +3814,8 @@ src: url("../font/MyriadPro-Regular.otf") format("opentype");
 
 #search_caret {
   color: #D7DFE4;
+}
+
+#username-li {
+list-style-type: none; 
 }
