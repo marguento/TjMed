@@ -1,50 +1,49 @@
-<?php   
-    session_start();
-    include_once('conexion.php');
-    include_once('mysql_class.php');
-    $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die("Error " . mysqli_error($dbc));
-    $dbc->set_charset('utf8');
-    
-      
-    $option = "";
-    $url = "";
+<?php
+/**
+ * Laravel - A PHP Framework For Web Artisans
+ *
+ * @package  Laravel
+ * @author   Taylor Otwell <taylorotwell@gmail.com>
+ */
 
-    if(isset($_GET['opcion'])) {
-        $option = $_GET['opcion'];
-        $url = 'opcion=' . $option . '&';
-    }
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so that we do not have to worry about the
+| loading of any our classes "manually". Feels great to relax.
+|
+*/
 
-    $option = "";
-    $url = "";
-    if(isset($_GET['opcion'])) {
-        $option = $_GET['opcion'];
-        $url = "opcion=".$option."&";
-    }
+require __DIR__.'/bootstrap/autoload.php';
 
-    $lang = "";
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let's turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight these users.
+|
+*/
 
-    if(isset($_GET['lang'])) {
-        $lang = $_GET['lang'];
-    }
+$app = require_once __DIR__.'/bootstrap/start.php';
 
-    if($lang == 'en') {
-        $ruta = 'ing/';
-    } else {
-        $ruta = 'esp/';
-    }
-    include $ruta . 'header.php';
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can simply call the run method,
+| which will execute the request and send the response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have whipped up for them.
+|
+*/
 
-    	switch($option) {
-    		case 'negocios': include $ruta . 'negocios.php'; break;
-    		case 'articulos': include $ruta . 'articulos.php'; break;
-    		case 'categorias': include $ruta . 'categorias.php'; break;
-    		case 'contacto': include $ruta . 'contacto.php'; break;
-    		case 'especialidad': include $ruta . 'especialidad.php'; break;
-    		case 'perfil': include $ruta . 'perfil.php'; break;
-    		case 'acerca': include $ruta . 'quienes_somos.php'; break;
-    		case 'servicios': include $ruta . 'servicios.php'; break;
-            case 'usuario': include $ruta . 'user_profile.php'; break;
-            default:  include $ruta . 'content.php';
-    	}
-	include $ruta . 'footer.php';
-?>
+$app->run();
