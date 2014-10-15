@@ -13,14 +13,14 @@
     {{ HTML::style('app/styles/style.css') }}
     {{ HTML::style('app/styles/admin_style.css') }}
     {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}
-    {{ HTML::style('//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.css') }}
+    {{ HTML::style('app/styles/jquery.dataTables.css') }}
     
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js') }}
     {{ HTML::script('app/js/admin.bootstrap.js') }}
     {{ HTML::script('app/js/ckeditor/ckeditor.js') }}
     {{ HTML::script('app/js/tinymce.min.js') }}
-    {{ HTML::script('//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js') }}
+    {{ HTML::script('app/js/jquery.dataTables.min.js') }}
   </head>
 
   <body>

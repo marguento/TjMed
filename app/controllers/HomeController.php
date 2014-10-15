@@ -8,7 +8,7 @@ class HomeController extends BaseController {
 		$comments = BusinessCommentsView::take(3)->get();
 		$articles = Article::orderBy('A_created_at', 'desc')->take(3)->get();
 		return View::make('index', ['articles' => $articles,
-									'business' => $business,
+									'business' => $business,							
 									'comments' => $comments]);
 	}
 
@@ -35,6 +35,11 @@ class HomeController extends BaseController {
 	public function specialties()
 	{
 		return View::make('specialties');
+	}
+
+	public function register()
+	{
+		return View::make('registro');
 	}
 
 }

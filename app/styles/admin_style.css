@@ -157,3 +157,19 @@ ul li a {
 #user_head {
   width:150px;
 }
+
+.btn-primary {
+  color: #fff;
+  background: #0b7297;
+  border: 0px;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background: #0FA1D5;
+  border: 0px;
+}
+
+.error_msg {
+  color:#e74c3c;
+}

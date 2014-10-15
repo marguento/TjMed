@@ -10,15 +10,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public $timestamps = false;
 
-	protected $fillable = ['U_firstname', 'U_lastname', 'U_username', 'U_password', 'U_email'];
+	protected $fillable = ['U_firstname', 'U_lastname', 'U_username', 'U_password','U_email'];
 
-	public $rules = [
-		'U_username'  => 'required',
-		'U_password'  => 'required',
-		'U_firstname' => 'required',
-		'U_lastname'  => 'required',
-		'U_email' 	  => 'required'
-	];
+	
 
 	public $errors;
 
@@ -26,6 +20,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $primaryKey = 'U_username';
 
+	public $rules;
 
 
 	/**
@@ -42,14 +37,30 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('U_password', 'remember_token');
 
-	public function isValid()
+	public function isValid($cur_user)
 	{
-		$validation = Validator::make($this->attributes, $this->rules);
+		$this->rules = array (
+			'U_username'  => 'required|unique:users,U_username,'.$cur_user.',U_username',
+			'U_password'  => 'required|min:8',
+			'U_firstname' => 'required',
+			'U_lastname'  => 'required',
+			'U_email' 	  => 'required|email|unique:users,U_email,'.$cur_user.',U_username'
+		);
+		$messages = array('required' => 'Este campo es obligatorio',
+							'unique' => 'Este campo ya esta registrado con otro usuario.',
+							'email' => 'Incorrecto formato de correo electrónico',
+							'min' => 'Este campo requiere un mínimo de :min caracteres');
+		$validation = Validator::make($this->attributes, $this->rules, $messages);
 
 		if ($validation->passes()) return true;
 
 		$this->errors = $validation->messages();
 		return false;
 	}
+
+	public function profiles()
+    {
+        return $this->hasMany('Profile');
+    }
 
 }

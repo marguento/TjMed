@@ -63,6 +63,17 @@ return array(
 			'prefix'    => '',
 		),
 
+		// 'mysql' => array(
+		// 	'driver'    => 'mysql',
+		// 	'host'      => 'fdb2.awardspace.com',
+		// 	'database'  => 'marguento_tjmed2',
+		// 	'username'  => 'marguento_tjmed2',
+		// 	'password'  => 'caca2121',
+		// 	'charset'   => 'utf8',
+		// 	'collation' => 'utf8_unicode_ci',
+		// 	'prefix'    => '',
+		// ),
+
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',

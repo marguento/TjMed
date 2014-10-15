@@ -223,7 +223,7 @@
   <div class="container">  
     <div class="row">
       <div class="col-md-12">      
-        <div class="alert">
+        <div class="alert_main">
           <button type="button" class="close" data-dismiss="alert">×</button>
             Agrega tu negocio ya! ¿No sabes cómo? Aquí te ayudamos. <br><strong><span class="author">TjMed</span></strong>
         </div>

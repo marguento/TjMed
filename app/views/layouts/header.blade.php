@@ -15,7 +15,7 @@
 						<ul>
 							<li id="username-li">
 								@if ( ! Auth::check())
-									<a href="#" data-toggle="modal" data-target="#registerModal"> Regístrate -</a>  
+									<a href="registrar"> Regístrate -</a>  
 									<a href="#" data-toggle="modal" data-target="#myModal"> Inicia sesión</a>
 								@else
 									<a href="#"> {{ Auth::user()->U_firstname }} {{ Auth::user()->U_lastname }}</a> |
@@ -84,72 +84,25 @@
 		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 		        <h4 class="modal-title">Inicia Sesión</h4>
 		      </div>
-		      {{ Form::open(['route' => 'sessions.store']) }}
-		      <!--<form role="form" method="post" action="login.php">-->
-		      <div class="modal-body">
-		      	
-				  <div class="form-group">
-				  	{{ Form::label('U_username', 'Username: ') }}
-					{{ Form::text('U_username', '', array('class' => 'form-control session', 'placeholder' => 'Nombre usuario')) }}
-				    <!--<label for="exampleInputEmail1">Username</label>
-				    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="Username" style="color:black;">-->
-				  </div>
-				  <div class="form-group">
-				  	{{ Form::label('U_password', 'Password: ') }}
-				  	<br>
-					{{ Form::password('U_password', array('class' => 'form-control session', 'placeholder' => 'Contraseña')) }}
-				    <!--<label for="exampleInputPassword1">Password</label>
-				    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" style="color:black;">-->
-				  </div>
-		      </div>
-		      <div class="modal-footer">
-		      	{{ Form::submit('Iniciar sesión', array('class' => 'btn btn-primary')) }}
-		        <!--<button type="submit" class="btn btn-primary">Iniciar Sesión</button>-->
-		      </div>
-		  {{ Form::close() }}
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-
-		<div class="modal fade" id="registerModal">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		        <h4 class="modal-title">Registro</h4>
-		      </div>
-		      {{ Form::open(['route' => 'users.store']) }}
-		      <div class="modal-body">
-
-		      	<div class="form-group">
-				  	{{ Form::label('U_firstname', 'Nombre: ') }}
-					{{ Form::text('U_firstname', '', array('class' => 'session form-control', 'placeholder' => 'Nombre')) }}
-				  </div>
-				  <div class="form-group">
-				  	{{ Form::label('U_lastname', 'Apellido: ') }}
-				  	<br>
-					{{ Form::text('U_lastname', '', array('class' => 'session form-control', 'placeholder' => 'Apellido')) }}
-				  </div>
-
-		      	<div class="form-group">
-				  	{{ Form::label('U_email', 'Correo Electrónico: ') }}
-					{{ Form::text('U_email', '', array('class' => 'session form-control', 'placeholder' => 'Correo Electrónico')) }}
-				</div>
-		      	
-				  <div class="form-group">
-				  	{{ Form::label('U_username', 'Nombre Usuario: ') }}
-					{{ Form::text('U_username', '', array('class' => 'session form-control', 'placeholder' => 'Nombre usuario')) }}
-				  </div>
-				  <div class="form-group">
-				  	{{ Form::label('U_password', 'Contraseña: ') }}
-				  	<br>
-					{{ Form::password('U_password', array('class' => 'session form-control', 'placeholder' => 'Contraseña')) }}
-				  </div>
-		      </div>
-		      <div class="modal-footer">
-		      	{{ Form::submit('Regístrate', array('class' => 'btn btn-primary')) }}
-		      </div>
-		  {{ Form::close() }}
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+			      {{ Form::open(['route' => 'sessions.store']) }}
+			      <div class="modal-body">
+					  <div class="form-group">
+					  	{{ Form::label('U_username', 'Nombre de usuario: ') }}
+						{{ Form::text('U_username', '', array('class' => 'form-control session', 'placeholder' => 'Ingrese nombre de usuario')) }}
+					</div>
+					  <div class="form-group">
+					  	{{ Form::label('U_password', 'Contraseña: ') }}
+					  	<br>
+						{{ Form::password('U_password', array('class' => 'form-control session', 'placeholder' => 'Ingrese contraseña')) }}
+					   </div>
+			      </div>
+			      <div class="modal-footer">
+			      	
+			      	<span style="float:left">{{ Form::submit('Iniciar sesión', array('class' => 'btn btn-primary')) }}</span>
+			      {{ Form::close() }}
+			      <a href="{{ url('login/fb') }}" ><button class="btn btn-default btn-sm"><span class="fa fa-facebook"></span> Iniciar Sesión con Facebook</butt></a>
+			      </div>
+			  	
+		    </div>
+		  </div>
+		</div>

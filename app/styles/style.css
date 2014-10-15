@@ -1134,7 +1134,7 @@ table a:hover{
 /*  Alerts  */
 /* --------------------------------------------------------	*/
        
-.alert {
+.alert_main {
   margin-bottom:9px;
   padding:20px;
   color:#789ab9;
@@ -1147,7 +1147,7 @@ table a:hover{
   text-shadow:none !important;
 }
   
-.alert-error {
+/*.alert-error {
   color:#93545d;
   background:#ff92a1;
 }
@@ -1160,7 +1160,7 @@ table a:hover{
 .alert-success {
   color:#598157;
   background:#99de95;
-}
+}*/
 
 /* --------------------------------------------------------	*/
 /*  Icons  */
