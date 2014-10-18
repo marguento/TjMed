@@ -11,8 +11,9 @@
 <body>
 	@include('layouts.style_links')
 	@include('layouts.header')
+	@include('layouts.scripts')
 	@yield('content')
 	@include('layouts.footer')
-	@include('layouts.scripts')
+	
 </body>
 </html>

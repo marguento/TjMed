@@ -1,11 +1,15 @@
 <!-- Favicon -->
-<link href="app/images/logo_icon.png" rel="icon" type="image/png">
+<!-- <link href="../app/images/logo_icon.png" rel="icon" type="image/png"> -->
+<!-- <link rel="shortcut icon" href="{{ asset('logo_icon.ico') }}"> -->
+<!-- <link rel="shortcut icon" href="{{ asset('assets/logo_icon.png') }}"> -->
+<!-- <link rel="shortcut icon" href=""> -->
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="app/styles/bootstrap.min.css">
+{{ HTML::style('../app/styles/bootstrap.min.css') }}
 			  
 <!-- Styles -->
-<link href="app/styles/style.css" rel="stylesheet" id="color-style"> 
+{{ HTML::style('../app/styles/style.css') }}
 
 <!-- LayerSlider Styles -->
 <link href="http://www.entiri.com/riley-1.3/layerslider/css/layerslider.css" rel="stylesheet">
@@ -41,7 +45,7 @@
 <link href="http://www.entiri.com/riley-1.3/css/refineslide.css" rel="stylesheet">     
 
 <!-- bxSlider CSS file -->
-<link href="app/styles/jquery.bxslider.css" rel="stylesheet" />
+{{ HTML::style('../app/styles/jquery.bxslider.css') }}
 
 <div class="fit-vids-style" id="fit-vids-style" style="display: none;">
 <style>                 

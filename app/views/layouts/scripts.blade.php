@@ -1,31 +1,31 @@
 	  <!-- JavaScripts -->
-	  <script type="text/javascript" src="app/js/jquery-1.10.2.js"></script>                                                       
-	  <script type="text/javascript" src="app/js/bootstrap.js"></script>  
-	  <script type="text/javascript" src="app/js/jquery.easing.js"></script>  
-	  <!--<script type="text/javascript" src="js/jquery.sticky.js"></script>-->
-	  <script type="text/javascript" src="app/js/tinynav.min.js"></script>      
-	  <script type="text/javascript" src="app/js/animate.js"></script>
-	  <script type="text/javascript" src="app/js/jquery.fitvids.js"></script> 
-	  <script type="text/javascript" src="app/js/jquery.isotope.min.js"></script>
-	  <script type="text/javascript" src="app/js/jquery.parallax-1.1.3.js"></script>
-	  <script type="text/javascript" src="app/js/jquery.magnific-popup.min.js"></script> 
-	  <script type="text/javascript" src="app/js/retina.js"></script> 
-	  <script type="text/javascript" src="app/js/respond.min.js"></script> 
-	  <script type="text/javascript" src="app/js/scale.fix.js"></script>
-	  <script type="text/javascript" src="app/js/jquery.countdown.js"></script> 
-	  <script type="text/javascript" src="app/js/jquery.flexslider-min.js"></script>
-	  <script type="text/javascript" src="app/js/jquery.refineslide.js"></script>
-	  <script type="text/javascript" src="app/js/greensock.js"></script>
-	  <script type="text/javascript" src="app/js/layerslider.transitions.js"></script>
-	  <script type="text/javascript" src="app/js/layerslider.kreaturamedia.jquery.js"></script>
-	  <script type="text/javascript" src="app/js/jquery.themepunch.plugins.min.js"></script>
-	  <script type="text/javascript" src="app/js/jquery.themepunch.revolution.min.js"></script>
-	  <script type="text/javascript" src="app/js/masterslider.js"></script>  
-	  <script type="text/javascript" src="app/js/functions.js"></script>
-	  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="app/js/jquery.bxslider.min.js"></script>
-		<script src="app/js/modernizr.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	  {{ HTML::script("../app/js/jquery-1.10.2.js") }}                                                      
+	  {{ HTML::script("../app/js/bootstrap.js") }}
+	  {{ HTML::script("../app/js/jquery.easing.js") }}
+	  <!--{{ HTML::script("js/jquery.sticky.js") }}-->
+	  {{ HTML::script("../app/js/tinynav.min.js") }}      
+	  {{ HTML::script("../app/js/animate.js") }}
+	  {{ HTML::script("../app/js/jquery.fitvids.js") }}
+	  {{ HTML::script("../app/js/jquery.isotope.min.js") }}
+	  {{ HTML::script("../app/js/jquery.parallax-1.1.3.js") }}
+	  {{ HTML::script("../app/js/jquery.magnific-popup.min.js") }} 
+	  {{ HTML::script("../app/js/retina.js") }} 
+	  {{ HTML::script("../app/js/respond.min.js") }} 
+	  {{ HTML::script("../app/js/scale.fix.js") }}
+	  {{ HTML::script("../app/js/jquery.countdown.js") }} 
+	  {{ HTML::script("../app/js/jquery.flexslider-min.js") }}
+	  {{ HTML::script("../app/js/jquery.refineslide.js") }}
+	  {{ HTML::script("../app/js/greensock.js") }}
+	  {{ HTML::script("../app/js/layerslider.transitions.js") }}
+	  {{ HTML::script("../app/js/layerslider.kreaturamedia.jquery.js") }}
+	  {{ HTML::script("../app/js/jquery.themepunch.plugins.min.js") }}
+	  {{ HTML::script("../app/js/jquery.themepunch.revolution.min.js") }}
+	  {{ HTML::script("../app/js/masterslider.js") }}  
+	  {{ HTML::script("../app/js/functions.js") }}
+	  {{ HTML::script("//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js") }}
+	  {{ HTML::script("../app/js/jquery.bxslider.min.js") }}
+	  {{ HTML::script("../app/js/modernizr.js") }}
+	  {{ HTML::script("https://maps.googleapis.com/maps/api/js?v=3.exp") }}
 	<script>
 	$(document).ready(function(){
 		var show_hide = true; //Para manejar los botones de especialidades medicas
@@ -42,18 +42,10 @@
 			$('.login_buttons').hide();
 		});
 
-	  	var option = "";
-
-    	switch(option) {
-    		case 'negocios': $('#negocios').addClass('selected'); break;
-    		case 'perfil': $('#negocios').addClass('selected'); break;
-    		case 'acerca': $('#acerca').addClass('selected'); break;
-    		case 'categorias': $('#categorias').addClass('selected'); break;
-    		case 'articulos': $('#articulos').addClass('selected'); break;
-    		case 'servicios': $('#servicios').addClass('selected'); break;
-    		case 'contacto': $('#contacto').addClass('selected'); break;
-    		default: $('#inicio').addClass('selected'); break;
-    	}
+		// $('#search_button').click(function() {
+		// 	var search = $('#search').val();
+		// 	window.location.href = 'doctores/' + search;
+		// });
 
     	/** CATEGORIAS.PHP **/
     	$('.more_spc').hide();

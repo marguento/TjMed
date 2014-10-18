@@ -42,9 +42,9 @@
                 @foreach ($users as $user)
                   <tr>
                     @if ($user->U_profile_image == "")
-                      <td><img class="user_img" src="../app/images/default_picture.png"></td>
+                      <td><img class="user_img" src="../../app/images/default_picture.png"></td>
                     @else
-                      <td><img class="user_img" src="../app/images/{{ $user->U_profile_image }}"></td>
+                      <td><img class="user_img" src="../../app/images/{{ $user->U_profile_image }}"></td>
                     @endif
                     <td><a href="editar/{{ $user->U_username }}">{{ $user->U_firstname . ' ' . $user->U_lastname }}</a></td>
                     <td>{{ $user->U_email }}</td>

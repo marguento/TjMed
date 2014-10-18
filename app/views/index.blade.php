@@ -1,12 +1,9 @@
 @extends('layouts.default')
 @section('content')
-
-
-
 <!-- Slider -->
   <div class="bxslider">
-    <img src="app/images/1bb.png"/>
-    <img src="app/images/2bb.png"/>
+    <img src="../app/images/{{ Lang::get('messages.banner1') }}"/>
+    <img src="../app/images/{{ Lang::get('messages.banner2') }}"/>
   </div>
   <div class="space30"></div>
 <!--PRIMER RENGLON -->
@@ -16,14 +13,10 @@
       <div class="col-md-12">
         <center>
               <h3>
-                Te explicamos como funciona:
+                {{ Lang::get('messages.welcome_title') }}
               </h3>
               <div style="font-size: 20px; line-height:150% ">
-                Con TjMed, puedes buscar en la barra de busqueda, cualquier negocio medico o doctor de tu interes,
-                existe una seccion de Categorias, donde estan todas las descripciones de las especialidades que te
-                ayudaran a buscar un doctor si no sabes lo que buscas.
-                Tjmed, te da opciones, ratings, reviews y comentarios del negocio o doctores que estes buscando, es 
-                simplemente sencillo.
+               {{ Lang::get('messages.welcome_content') }}
               </div>
             </center>
       </div>     
@@ -37,94 +30,81 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-
-        <div class="row">
-          <div class="col-md-9">  
-            <h3>Especialidades Médicas</h3>   
+            <h3>{{ link_to("especialidades", 'Especialidades Médicas') }}</h3>   
         
         <div class="row popup-gallery">        
 
-          <article class="col-md-3 col-sm-3 boxed-project">
+          <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-              <a href="app/images/esp_clin.png" title="Photo Title">
-                <img src="app/images/esp_clin.png" alt="" width="263" height="263">
-                <i class="fa fa-arrows-alt"></i>
-              </a>        
+                <img src="../app/images/esp_clin.png" alt="" width="263" height="263">       
             </div>
             <div class="title">
-              <a href="index.php?opcion=categorias">
+              <a href="{{ url('categoria/1') }}">
                 <h4>Especialidades <br> Clínicas</h4>
                 <br>
               </a>
             </div>
           </article> 
 
-          <article class="col-md-3 col-sm-3 boxed-project">
+          <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-              <a href="app/images/esp_quir.png" title="Photo Title">
-                <img src="app/images/esp_quir.png" alt="" width="263" height="263">
-                <i class="fa fa-arrows-alt"></i>
-              </a>         
+                <img src="../app/images/esp_quir.png" alt="" width="263" height="263">         
             </div>
             <div class="title">
-              <a href="index.php?opcion=categorias">          
+              <a href="{{ url('categoria/2') }}">          
                 <h4>Especialidades <br> Quirúrgicas</h4>
                 <br>
               </a>
             </div>
           </article> 
 
-          <article class="col-md-3 col-sm-3 boxed-project">
+          <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-              <a href="app/images/esp_med.png" title="Photo Title">
-                <img src="app/images/esp_med.png" alt="" width="263" height="263">
-                <i class="fa fa-arrows-alt"></i>
-              </a>         
+                <img src="../app/images/esp_med.png" alt="" width="263" height="263">         
             </div>
             <div class="title">
-              <a href="index.php?opcion=categorias">          
+              <a href="{{ url('categoria/3') }}">          
                 <h4>Especialidades Médico Quirúrgicas</h4>
                 <br>
               </a>
             </div>
           </article> 
 
-          <article class="col-md-3 col-sm-3 boxed-project">
+          <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-              <a href="app/images/esp_lab.png" title="Photo Title">
-                <img src="app/images/esp_lab.png" alt="" width="263" height="263"> 
-                <i class="fa fa-arrows-alt"></i>
-              </a>       
+                <img src="../app/images/esp_lab.png" alt="" width="263" height="263">        
             </div>
             <div class="title">
-              <a href="index.php?opcion=categorias">
+              <a href="{{ url('categoria/4') }}">
                 <h4>Especialidades de Laboratorio</h4>
                 <br>
               </a>
             </div>
           </article> 
-           </div>  
-        </div>       
-      
-      <div class="col-md-3">
-          <div class="col-md-12">  
-            <h3>Odontología</h3>
-          <article class="col-md-12 col-sm-12 boxed-project">
+
+          <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-              <a href="app/images/esp_den.png" title="Photo Title">
-                <img src="app/images/esp_den.png" alt="" width="263" height="263"> 
-                <i class="fa fa-arrows-alt"></i>
-              </a>       
+                <img src="../app/images/esp_den.png" alt="" width="263" height="263">   
             </div>
             <div class="title">
-              <a href="index.php?opcion=categorias">
-                <h4>Especialidad de <br>Odontología</h4>
+              <a href="{{ url('especialidad/28') }}">
+                <h4>Odontología</h4>
                 <br>
               </a>
             </div>
           </article> 
-        </div> 
-</div>    
+
+          <article class="col-md-2 col-sm-2 boxed-project">
+            <div class="img-container">
+                <img src="../app/images/esp_den.png" alt="" width="263" height="263">   
+            </div>
+            <div class="title">
+              <a href="{{ url('especialidad/28') }}">
+                <h4>Odontología</h4>
+                <br>
+              </a>
+            </div>
+          </article> 
 
       </div>
 
@@ -151,13 +131,13 @@
           <div class="col-md-4 col-sm-6">    
             <div class="item-box">
               <div class="media-container">
-                <img src="app/images/{{ $article->A_image }}" alt="Article image">
-                <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
-                <a href="app/images/{{ $article->A_image }}" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
+                <img src="../app/images/{{ $article->A_image }}" alt="Article image">
+                <!-- <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
+                <a href="../app/images/{{ $article->A_image }}" class="icon-right"><i class="fa fa-arrows-alt"></i></a> -->
               </div>
               <div class="info-container">
-                <h3>{{ $article->A_title}}</h3>
-                <h4>{{ $article->A_created_at }} | Comments</h4>
+                <a href="{{ url('articulo/' . $article->A_ID) }}"><h3>{{ $article->A_title}}</h3></a>
+                <h4>{{ $article->A_created_at }} | {{ $article->article_count }} Comentario(s)</h4>
                 <p> {{ $article->A_introduction }} </p>
               </div>
             </div>         
@@ -186,7 +166,7 @@
               <strong> 0 </strong> Pictures <br>
             </p>
 
-            <a href="index.php?opcion=usuario"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
+            <a href=""><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
         </blockquote>
         <div class="space40"></div>
       </div>
@@ -194,19 +174,16 @@
       @else
       
       <div class="col-md-3">
-        <div class="row">
-          <div class="col-md-12">  
-            <h3>Mi Perfil</h3>
-          </div>  
-        </div>
-                    
-
         <div class="oslotron">
-          <h2>Hello, World!</h2>
+          <center>
+          <h2>¡Regístrate en TjMed!</h2>
           <p>
-            Labore et dolore magnam aliquam quaerat volupiam, quis nostrud exercitation ullamco labori 
+            ¡Escribe reseñas sobre doctores, calíficalos y recibe otros grandes beneficios de los que podrás disfrutar aquí!
           </p>
-          <button class="btn btn-primary color-2 rounded">Follow Me on Gowalla</button>
+          <a href="{{ url('registrar') }}" >
+          <button class="btn btn-primary color-2 rounded">Registrarme</button>
+        </a>
+        </center>
         </div>      
         <div class="space20"></div>
       </div>
@@ -224,8 +201,11 @@
     <div class="row">
       <div class="col-md-12">      
         <div class="alert_main">
+          
           <button type="button" class="close" data-dismiss="alert">×</button>
-            Agrega tu negocio ya! ¿No sabes cómo? Aquí te ayudamos. <br><strong><span class="author">TjMed</span></strong>
+            Agrega tu negocio ya! ¿No sabes cómo? Aquí te ayudamos. 
+            <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">Agregar negocio</button></a>
+            <div class="space10"></div>
         </div>
       </div>    
     </div> 
@@ -250,20 +230,39 @@
           <div class="col-md-4">    
             <div class="item-box-2">
               <div class="media-container">
-                <img src="app/images/{{ $bus->b_image }}" alt="" width="360" height="360">
+                <img src="../app/images/{{ $bus->b_image }}" alt="" width="360" height="360"><!-- 
                 <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
-                <a href="#" class="icon-right"><i class="fa fa-arrows-alt"></i></a>
+                <a href="#" class="icon-right"><i class="fa fa-arrows-alt"></i></a> -->
               </div>
               <div class="info-container">
+                <a href="{{ url('doctor/'.$bus->B_ID) }}" >
                 <h3>{{ $bus->b_name }}</h3>
-                <h4>Founder</h4> <!--Categorias -->
+              </a>
+                <h4>
+                  <?php $i = 0; ?>
+                  @foreach ($cats as $c)
+                    @if ($bus->B_ID == $c->B_ID)
+                        @if ($i > 0)
+                          ,
+                        @endif
+                       {{ $c->S_name}}
+                       
+                       <?php $i++; ?>
+                    @endif
+                  @endforeach
+                </h4> <!--Categorias -->
                 <p> {{ $bus->b_introduction }} </p>
+                <span> {{ $bus->b_email }} </span><br>
+                <span> {{ $bus->b_telephone }} </span><br>
+                <span> {{ $bus->b_address }} </span>
                 <div class="social-container">
                   <div class="social-2">
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                    @if($bus->b_facebook != '')
+                      <a href="{{ url('www.facebook.com/' . $bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
+                    @endif
+                    @if($bus->b_twitter != '')
+                      <a href="{{ url('www.twitter.com/' . $bus->b_twitter) }}"><i class="fa fa-twitter"></i></a>
+                    @endif
                   </div>  
                 </div> 
               </div>
@@ -304,13 +303,12 @@
             @foreach ($comments as $comment)
               <div class="col-md-4 promo-text">
                 <div class="blog-comment">
-                  <div class="user-image"><img src="app/images/{{ $comment->U_profile_image}}"></div> 
+                  <div class="user-image"><img src="../app/images/{{ $comment->U_profile_image}}"></div> 
                   <div class="comment-data">
                     <h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</h4>
-                    en <h5> {{ $comment->b_name }}</h5>
-                    <p>{{ $comment->C_datetime_created }}<a href="#" class="reply-link">Responder</a></p>
-                    <p>{{ $comment->C_content }}</p>
-                    <div class="divider"></div>           
+                    en  <a href="{{ url('doctor/' . $comment->B_ID) }}">{{ $comment->b_name }}</a>
+                    <p style="font-size:12px;">{{ $comment->C_datetime_created }}</p>
+                    <p>{{ $comment->C_content }}</p>     
                   </div> 
                 </div>
               </div> 
@@ -332,7 +330,7 @@
       </div>  
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-12">
         <ul class="partners-6">  
           <li> 
@@ -355,8 +353,12 @@
           </li> 
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="space40"></div>  
 </div>
+
+<script>
+  $('#inicio').addClass('selected');
+</script>
 @stop

@@ -100,5 +100,8 @@
 
     <div class="space60"></div>
     <!-- Content End -->
+<script>
+$('#contacto').addClass('selected');
+</script>
 
 @stop

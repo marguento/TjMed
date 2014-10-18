@@ -4,9 +4,15 @@ Route::get('/', 'HomeController@index');
 Route::resource('doctores', 'BusinessController@index');
 Route::get('articulos', 'HomeController@articles');
 Route::get('especialidades', 'HomeController@specialties');
+Route::get('categoria/{category}', 'HomeController@category');
+Route::get('especialidad/{especialidad}', 'HomeController@speciality');
 Route::get('acerca', 'HomeController@about');
 Route::get('contacto', 'HomeController@contact');
 Route::get('registrar', 'HomeController@register');
+
+Route::get('en', 'HomeController@switch_english');
+Route::get('es', 'HomeController@switch_spanish');
+
 Route::get('login', 'SessionsController@create');
 Route::get('logout', 'SessionsController@destroy');
 Route::resource('sessions', 'SessionsController');
@@ -25,7 +31,13 @@ Route::post('doctores/add_tag', 'AdminController@add_tag');
 //Route::post('editUser', 'UsersController@editUser')
 Route::post('getSpecialties', 'BusinessController@getSpecialties');
 Route::post('doctores/update', 'BusinessController@update');
+Route::get('agregar', 'BusinessController@add_doctor');
+Route::get('doctor/{id_doctor}', 'BusinessController@show');
+Route::get('doctores/{filtro}', 'BusinessController@index');
+Route::get('articulo/{id_articulo}', 'ArticleController@show');
 Route::post('doctores/store', 'BusinessController@store');
+Route::post('doctor/review', 'BusinessController@add_review');
+
 Route::get('admin/verified/{b_id}', 'AdminController@verified');
 Route::get('admin/disable/{b_id}', 'AdminController@disable');
 Route::post('getStates', 'UsersController@getStates');
@@ -50,17 +62,20 @@ Route::get('login/fb/callback', function() {
     if ($uid == 0) return Redirect::to('/')->with('message', 'There was an error');
 
     $me = $facebook->api('/me');
-
     $profile = Profile::whereUid($uid)->first();
     if (empty($profile)) {
 
         $user = new User;
-        $user->U_username = $me['name'];
-        $user->U_firstname = $me['first_name'];
-        $user->U_lastname = $me['last_name'];
-        $user->U_email = $me['email'];
-        $user->U_profile_image = 'https://graph.facebook.com/'.$me['name'].'/picture?type=large';
-        $user->U_password = Hash::make('facebook_' . $me['name']);
+        $user->U_username       = $me['name'];
+        $user->U_firstname      = $me['first_name'];
+        $user->U_lastname       = $me['last_name'];
+        $user->U_email          = $me['email'];
+        $user->U_profile_image  = 'https://graph.facebook.com/'.$me['name'].'/picture?type=large';
+        $user->U_password       = Hash::make('facebook_' . $me['name']);
+        $user->U_level          = 2;
+        $user->U_active         = 1;
+        $user->U_created_at     = date('Y-m-d H:i:s');
+        $user->U_facebook       = substr($me['link'], 25);
         $user->save();
 
         $profile = new Profile();

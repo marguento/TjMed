@@ -3829,3 +3829,18 @@ src: url("../font/MyriadPro-Regular.otf") format("opentype");
 #username-li {
 list-style-type: none; 
 }
+
+#logo_img {
+  vertical-align:text-bottom; 
+  padding:10px 8px 10px 0px;
+  width:68px;
+  height:119px;
+}
+
+.lang_img {
+  width: 3%;
+}
+
+.error_msg {
+  color:#e74c3c;
+}

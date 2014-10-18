@@ -80,14 +80,15 @@ class UsersController extends BaseController {
 		$this->user->U_lastname 	= Input::get('U_lastname');
 		$this->user->U_email 		= Input::get('U_email');
 		$this->user->U_username 	= Input::get('U_username');
-		$this->user->U_password 	= Hash::make(Input::get('password'));
+		$this->user->U_password 	= Hash::make(Input::get('U_password'));
 		$this->user->U_created_at	= date('Y-m-d H:i:s');
 		$this->user->U_level 		= 2;
+		$this->user->U_active		= 1;
 		$this->user->save();
 
-		if (Auth::attempt(Input::only('U_username', 'password')))
+		if (Auth::attempt(Input::only('U_username', 'U_password')))
 		{
-			return Redirect::back();
+			return Redirect::to('/');
 		}
 
 		return Redirect::back()->withInput();

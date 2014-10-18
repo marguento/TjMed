@@ -1,8 +1,13 @@
 @extends('layouts.default')
 @section('content')
 
+
+
 <div class="breadcrumb-container">
   <div class="container">  
+    @if (Session::has('var'))
+      {{ Session::get('var') }}
+    @endif
     <div class="row">  
       <div class="col-md-12">
         <h1>Negocios Registrados ({{ $business->count() }})</h1>
@@ -12,7 +17,7 @@
 </div>
 
 <div class="container">  
-  {{ Form::open() }}
+  {{ Form::open(array('url' => 'doctores')) }}
   <div class="row">  
     <div class="col-md-3">
       <select name="category" class="form-control" id="category" style="color:black; font-size:14px">
@@ -41,13 +46,13 @@
 	@foreach ($business as $bus)
 		<div class="container">
 		  <div class="row">
-		    <div class="col-md-2">         
-		      <img src="app/images/{{ $bus->b_image }}" alt="Doctor default picture">
+		    <div class="col-md-2"> 
+            {{ HTML::image('../app/images/' . $bus->b_image, 'Doctor default picture') }} 
 		      <div class="space40"></div>
 		    </div>  
 		    <div class="col-md-6">
-		      <!--<a href="index.php?opcion=perfil&id=">-->
-		      	<h3 style="margin-bottom: 0px;">{{ $bus->b_name}}</h3>
+		      <a href="{{ url('doctor/' . $bus->B_ID) }}">
+		      	<h3 style="margin-bottom: 0px;">{{ $bus->b_name}}</h3> </a>
 		      <div class="rating" style="margin-bottom: 15px;">
 					  <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 				  </div>
@@ -83,7 +88,7 @@
 		</div> 
 	@endforeach
 @else
-	<div class="container"><p> No hay doctores registrados en esta especialidad</p></div>
+	<div class="container"><p> No hay doctores registrados</p></div>
 @endif
 
 
@@ -109,7 +114,7 @@
           <h4>¿No encuentras lo que estás buscando? Si el negocio que está buscando no está aquí, por favor agregue! <span class="author">TjMed</span></h4>
         </div>
         <div class="col-md-4 right">
-          <button class="btn btn-white">Añadir un negocio</button>
+         <a href="{{ url('agregar') }}"><button class="btn btn-white">Añadir un negocio</button></a>
         </div>
       </div>    
     </div>   
@@ -117,5 +122,9 @@
 
 		<div class="space60"></div>
 		<!-- Content End -->
+
+    <script>
+    $('#negocios').addClass('selected');
+    </script>
 
 @stop

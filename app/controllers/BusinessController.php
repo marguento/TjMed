@@ -4,7 +4,43 @@ class BusinessController extends BaseController {
 
 	public function index()
 	{
-		$business = Business::all();
+		$data = Input::all();
+
+		if(isset($data['search']) && $data['search'] != "") {
+			$search = $data['search'];
+			$business = BusinessCategoriesView::whereb_verified(1)
+													->whereb_active(1)
+													->where(function($query) use ($search)
+	            									{
+	                									$query->where('b_name', 'LIKE', '%'.$search.'%')
+	                      								->where('b_introduction', 'LIKE', '%'.$search.'%', 'OR')
+	                      								->orWhereExists(function($query) use ($search)
+	            											{
+	                											$query->select(DB::raw(1))
+		                      											->from('v_tags')
+		                      											->where('T_name', 'LIKE', '%'.$search.'%')
+		                      											->whereRaw('v_tags.B_ID = v_business_categories.B_ID');
+	            												});
+	            									})->groupBy('b_id')
+	            									->get();
+		} 
+		elseif (isset($data['category']) && isset($data['speciality']) && ($data['category'] !='all' || $data['speciality'] != 'all')) 
+		{
+			if($data['speciality'] != 'all')
+			{
+				$business = BusinessCategoriesView::whereb_verified(1)
+													->whereb_active(1)
+													->wheres_id($data['speciality'])
+													->get();
+			} else {
+				$business = BusinessCategoriesView::whereb_verified(1)
+													->whereb_active(1)
+													->wherec_id($data['category'])
+													->get();
+			}
+		} else {
+			$business = Business::whereb_verified(1)->whereb_active(1)->get();
+		}
 		$categories = Category::all();
 		$b_cat = BusinessView::all();
 		return View::make('business', ['business' => $business, 
@@ -70,7 +106,12 @@ class BusinessController extends BaseController {
 
 	public function store()
 	{
+		if( ! Auth::check())
+		{
+			return Redirect::to('/');
+		} 
 		$doctor = new Business();
+		$add_user				= Input::get('add_user');
 		$doctor->b_name 		= Input::get('name');
 		$doctor->b_address		= Input::get('address');
 		$doctor->b_email 		= Input::get('email');
@@ -86,20 +127,96 @@ class BusinessController extends BaseController {
 		$doctor->b_website		= Input::get('website');
 		$doctor->b_joined_date	= date('Y-m-d H:i:s');
 		$doctor->b_created_user = Auth::user()->U_username;
-		$doctor->b_user_owner	= Input::get('user_owner');
-		$doctor->b_verified		= 1;
-		$doctor->b_priority 	= Input::get('priority');
-		// print_r($doctor);
+		if($add_user == 0) {
+			$doctor->b_verified	= 0;
+			if(Input::get('user_owner') == 0) {
+				$doctor->b_user_owner = 'none';
+			} else {
+				$doctor->b_user_owner = Auth::user()->U_username;
+			}
+		} else {
+			$doctor->b_verified	= 1;
+			$doctor->b_user_owner	= Input::get('user_owner');
+			$doctor->b_priority 	= Input::get('priority');
+		}
+		
 		if (!$doctor->isValid(0))
 		{
 			return Redirect::back()->withInput()->withErrors($doctor->errors);
 		}
 
 		$doctor->save();
-		$var = '<div class="alert alert-success" role="alert">
+		
+		if($add_user == 1) {
+			$var = '<div class="alert alert-success" role="alert">
+			          <button type="button" class="close" data-dismiss="alert">&times;</button>
+			          <strong>¡Éxito!</strong> Doctor agregado correctamente.
+			        </div>';
+			return Redirect::to('admin/doctores/'.$doctor->B_ID)->with('var', $var);
+		} else {
+			$var = '<div class="alert alert-success" role="alert">
+			          <button type="button" class="close" data-dismiss="alert">&times;</button>
+			          Los administradores verificarán que los datos ingresados sean correctos. 
+			          Gracias por tu registro.
+			        </div>';
+			return Redirect::to('doctores')->with('var', $var);
+		}
+	}
+
+	public function add_doctor()
+	{
+		if( ! Auth::check())
+		{
+			$var = '<div class="alert alert-success" role="alert">
 		          <button type="button" class="close" data-dismiss="alert">&times;</button>
-		          <strong>¡Éxito!</strong> Doctor agregado correctamente.
+		          Antes de agregar negocios, regístrate o inicia sesión en TjMed.
 		        </div>';
-		return Redirect::to('admin/doctores/'.$doctor->B_ID)->with('var', $var);
+			return Redirect::to('registrar')->with('var', $var);
+		} 
+		return View::make('add_business');
+	}
+
+	public function show($b_id) 
+	{
+		$doctor = Business::whereb_id($b_id)->first();
+		$b_cat = BusinessView::whereb_id($b_id)->get();
+		$comments = BusinessCommentsView::whereb_id($b_id)->get();
+
+		$sum = 0;
+		foreach($comments as $comment)
+		{
+			$sum += $comment['C_rating'];
+		}
+
+		if($sum > 0) {
+			$rating = $sum/$comments->count();
+		} else {
+			$rating = $sum;
+		}
+		return View::make('doctor_profile', ['doctor' => $doctor, 
+												'b_cat' => $b_cat,
+												'comments' => $comments,
+												'rating' => $rating]);
+	}
+
+	public function add_review() 
+	{
+		$data = Input::all();
+		$comment 					 = new Comment();
+		$comment->C_user 			 = Auth::user()->U_username;
+		$comment->C_content 		 = $data['content'];
+		$comment->C_datetime_created = date('Y-m-d H:i:s');
+		$comment->C_rating 			 = $data['rating'];
+		$comment->save();
+
+		$id_c = $comment->C_ID;
+		$bhc 			  = new BusinessHasComments();
+		$bhc->BC_ID = null;
+		$bhc->BC_business = $data['curr_doctor'];
+		$bhc->BC_comment  = $id_c;
+
+		$bhc->save();
+
+		return Redirect::to('doctor/' . $data['curr_doctor']);
 	}
 }

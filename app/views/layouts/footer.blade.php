@@ -6,7 +6,7 @@
 
 			<!-- Parallax --> 
 
-			<div id="parallax-one" class="parallax" style="background-image: url(app/images/foto_nueva_abajo.jpg); 
+			<div id="parallax-one" class="parallax" style="background-image: url(../app/images/foto_nueva_abajo.jpg); 
 													background-position: 50%">
 			 <div class="footer-promo">
 			  <div class="container">
@@ -97,15 +97,15 @@
 							<h6>RECIENTES NOTICIAS</h6>      
 							<ul class="list-5">
 							  <li>
-								<a href="index-8.html"><i class="fa fa-caret-right"></i> Nutricion y Salud</a>
+								<a href=""><i class="fa fa-caret-right"></i> Nutricion y Salud</a>
 							  </li><li>  
-								<a href="index-8.html"><i class="fa fa-caret-right"></i> Prevencion Contra el Cancer.</a>
+								<a href=""><i class="fa fa-caret-right"></i> Prevencion Contra el Cancer.</a>
 							  </li><li>  
-								<a href="index-8.html"><i class="fa fa-caret-right"></i> Bacterias que nos Benefician.</a>
+								<a href=""><i class="fa fa-caret-right"></i> Bacterias que nos Benefician.</a>
 							  </li><li>  
-								<a href="index-8.html"><i class="fa fa-caret-right"></i> Ejercicio VS Dieta.</a>
+								<a href=""><i class="fa fa-caret-right"></i> Ejercicio VS Dieta.</a>
 							  </li><li>  
-								<a href="index-8.html"><i class="fa fa-caret-right"></i> Medicina General.</a>
+								<a href=""><i class="fa fa-caret-right"></i> Medicina General.</a>
 							  </li>
 							</ul>
 							<div class="space30"></div>

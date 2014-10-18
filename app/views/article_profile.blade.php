@@ -2,25 +2,17 @@
 @section('content')
 
 <div class="container">  
+  <ol class="breadcrumb">
+    <li>{{ link_to('articulos', 'Volver a Artículos') }}</li>
+  </ol>
   <div class="blog-container"> 
     <div class="row"> 
       <div class="col-md-8">
-        <div class="breadcrumb-container">
-          <div class="container">  
-            <div class="row">  
-              <div class="col-md-12">
-                <h1>Artículos</h1>
-              </div>  
-            </div> 
-          </div> 
-        </div>
         <div class="">
-        	@if ($articles->count())
-        		@foreach ($articles as $article)
           <!-- Blog Post -->
             <div class="space30"></div>
-            <h2><a href="{{ url('articulo/' . $article->A_ID) }}">{{ $article->A_title}}</a></h2>
-            <img src="../app/images/{{ $article->A_image }}" alt="" width="1140" height="456">
+            <h2><a href="#">{{ $article->A_title}}</a></h2>
+            <img src="../../app/images/{{ $article->A_image }}" alt="" width="1140" height="456">
             <div class="space25"></div>
             <a href="#"> Categoría </a>
             <div class="space10"></div>
@@ -56,12 +48,10 @@
                       text-justify: inter-word;">
               {{ $article->A_introduction }}
             </p>
-            <div class="space15"></div>
-            <a href="#" class="btn"><i class="fa fa-book"></i>Seguir Leyendo</a>
+            <p>
+              {{ $article->A_content }}
+            </p>
             <div class="space40"></div>
-            <!-- Blog Post End -->
-        @endforeach
-	@endif
           </div>  
         </div>
   
@@ -140,7 +130,65 @@
       </div>
 
       </div> 
-    </div>  
+    </div>
+
+     <div class="col-md-12">
+    <div class="space40"></div>
+      <h3>Comentarios ({{ $comments->count() }})</h3>
+      <div class="space10"></div>
+      @if ($comments->count())
+      @foreach($comments as $comment)
+        <div class="blog-comment">
+          <div class="user-image">{{ HTML::image('../app/images/' . $comment->U_profile_image, 'usuario imagen comentario') }}
+            <!--<i class="fa fa-user"></i>--></div> 
+            <div class="comment-data">
+              <h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}
+              <span style="font-size:20px">
+                <?php  $r = $rating = $comment->C_rating ?>
+                  @while($rating)
+                    <span>★</span>
+                    <?php $rating--; ?>
+                  @endwhile
+                  @while($r < 5)
+                    <span>☆</span>
+                    <?php $r++; ?>
+                  @endwhile
+              </span></h4>
+              <p>{{ $comment->C_datetime_created }}<a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i></a>
+              <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i></a></p>
+              <p>
+                {{ $comment->C_content }}
+              </p>
+            <div class="divider"></div>           
+          </div> 
+        </div>
+        <div class="space30"></div> 
+      @endforeach
+
+      <!-- MANEJARLO CON JAVASCRIPT -->
+      <center>
+        <ul class="pagination">
+          <li><a href="#">&laquo;</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+      </center>
+      @else
+      <h5> Aún no hay reseñas para este doctor o negocio médico, tú puedes ser el primero, 
+        no dudes en compartir tu  opinión</h5>
+      @endif
+      <p>Calificación:
+        <span id="1" class="rating">☆</span><span id="2" class="rating">☆</span><span id="3" class="rating">☆</span>
+          <span id="4" class="rating">☆</span><span id="5" class="rating">☆</span>
+      </p>
+      <p>Deja tu reseña</p>
+        <textarea class="form-control" rows="3" style="color:black;"></textarea>
+        <div class="space10"></div>
+          <center><button class="btn btn-default btn-sm">Agregar comentario</button></center>
+        </div>
+      </div>  
+    </div>
+  </div>  
   </div>
 
 		<div class="space60"></div>

@@ -32,7 +32,7 @@
                 @if ($doctores->count())
                 @foreach ($doctores as $doctor)
                 <tr>
-                  <td><img class="user_img" src="../app/images/{{ $doctor->b_image }}"></td>
+                  <td><img class="user_img" src="../../app/images/{{ $doctor->b_image }}"></td>
 
                   <td><a href="doctores/{{$doctor->B_ID}}">{{ $doctor->b_name }}</a></td>
                  <td>{{ $doctor->b_introduction }} </td>

@@ -1,8 +1,15 @@
 @extends('layouts.default')
 @section('content')
-<div class="space40"></div>
 
 <div class="container">
+	<div class="space40"></div>
+	@if (Session::has('var'))
+	  {{ Session::get('var') }}
+	@endif
+
+	<ol class="breadcrumb">
+	  <li>{{ link_to('/', 'Volver a Inicio') }}</li>
+	</ol>
 
 	<h2 class="sub-header">Registro</h2>
 	{{ Form::open(['route' => 'users.store']) }}
@@ -62,7 +69,8 @@
 	<br>
 	{{ Form::submit('Regístrate', array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}
-	<a href="{{ url('login/fb') }}" ><button class="btn btn-default btn-sm" style="float:right; font-size:16px;"><span class="fa fa-facebook"></span> Iniciar Sesión con Facebook</butt></a>
+	<a href="{{ url('login/fb') }}" ><button class="btn btn-default btn-sm" style="float:right; font-size:16px;">
+		<span class="fa fa-facebook"></span> Registrarme con Facebook</button></a>
 </div>
 <div class="space60"></div>
 
