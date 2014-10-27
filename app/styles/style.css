@@ -16,8 +16,10 @@ html {
 
 body {             
   font-family: 'MyriadPro', 'Open Sans', sans-serif;
-	font-size: 16px;
+	/*
+  font-size: 16px;
 	line-height: 23px;
+  */
   color:#91979f;
   background:#f7fcff;
   -webkit-font-smoothing: antialiased;
@@ -929,7 +931,7 @@ header {
 /* --------------------------------------------------------	*/
 
 table {
-  width:100%;
+  /*width:100%;*/
   border-collapse:collapse;
   border:0px;
 }
@@ -942,7 +944,7 @@ table, th, td {
 }
 
 th, td {
-  padding:15px 20px !important;
+  /*padding:15px 20px !important;*/
 }
 
 th {
@@ -954,9 +956,10 @@ th {
 
 td {
   color:#8c9aaa;
-  background:#ffffff;  
+  
+  /*background:#ffffff; 
   border:1px solid #e6edf2 !important;
-  padding:15px 20px;
+  /*padding:15px 20px;*/
 }
 
 table a:hover{
@@ -1651,12 +1654,15 @@ table a:hover{
 .item-box-2 {
   display:block;
   padding-bottom:15px;
-  background:url(../img/divider.png) bottom left repeat-x rgba(230,237,242,0.4);
+  
+  background:url(../images/divider.png) bottom left repeat-x rgba(230,237,242,0.4);
+  /*
 	-webkit-transition:all 0.4s ease-out;
 	   -moz-transition:all 0.4s ease-out;
 	     -o-transition:all 0.4s ease-out;
 	    -ms-transition:all 0.4s ease-out;
-	        transition:all 0.4s ease-out; 
+	        transition:all 0.4s ease-out;
+  */ 
 }
 
 .item-box-2:hover {
@@ -3149,6 +3155,7 @@ ul li a:hover, ul li a:hover i {
 /* --------------------------------------------------------	*/
       
 .form-control {
+
   display: block;
   width: 100%;
   height: 34px;
@@ -3168,11 +3175,12 @@ ul li a:hover, ul li a:hover i {
           box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -webkit-font-smoothing: antialiased;
 }
      
 .input-group {
   position: relative;
-  display: table;
+  /*display: table;*/
   border-collapse: separate;
 }
 
@@ -3774,7 +3782,7 @@ src: url("../font/MyriadPro-Regular.otf") format("opentype");
 }
 
 #search {
-    height:41px;
+    /*height:41px;*/
     font-style: normal;
 }
 
@@ -3794,13 +3802,15 @@ src: url("../font/MyriadPro-Regular.otf") format("opentype");
 
 #search_button {
   height: 41px;
-  border-color:#D7DFE4; 
+  color: white;
+
 }
 
 #search_button:hover, #search_button:focus {
   /*border-color: #083d5c;*/
+  color: #083d5c;
   background-color: #0AB2DB; 
-  border:1px solid #083d5c;
+  /*border:1px solid #083d5c;*/
   -webkit-border-radius: 0px; 
      -moz-border-radius: 0px; 
        -o-border-radius: 0px; 

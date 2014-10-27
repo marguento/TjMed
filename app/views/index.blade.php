@@ -30,7 +30,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-            <h3>{{ link_to("especialidades", 'Especialidades Médicas') }}</h3>   
+            <h3>{{ link_to("especialidades", Lang::get('messages.tittle_1')) }}</h3>   
         
         <div class="row popup-gallery">        
 
@@ -40,7 +40,7 @@
             </div>
             <div class="title">
               <a href="{{ url('categoria/1') }}">
-                <h4>Especialidades <br> Clínicas</h4>
+                <h4>{{ Lang::get('messages.category_1') }}</h4>
                 <br>
               </a>
             </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="title">
               <a href="{{ url('categoria/2') }}">          
-                <h4>Especialidades <br> Quirúrgicas</h4>
+                <h4>{{ Lang::get('messages.category_2') }}</h4>
                 <br>
               </a>
             </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="title">
               <a href="{{ url('categoria/3') }}">          
-                <h4>Especialidades Médico Quirúrgicas</h4>
+                <h4>{{ Lang::get('messages.category_3') }}</h4>
                 <br>
               </a>
             </div>
@@ -76,7 +76,7 @@
             </div>
             <div class="title">
               <a href="{{ url('categoria/4') }}">
-                <h4>Especialidades de Laboratorio</h4>
+                <h4>{{ Lang::get('messages.category_4') }}</h4>
                 <br>
               </a>
             </div>
@@ -88,7 +88,7 @@
             </div>
             <div class="title">
               <a href="{{ url('especialidad/28') }}">
-                <h4>Odontología</h4>
+                <h4>{{ Lang::get('messages.especiality_1') }}</h4>
                 <br>
               </a>
             </div>
@@ -100,7 +100,7 @@
             </div>
             <div class="title">
               <a href="{{ url('especialidad/28') }}">
-                <h4>Odontología</h4>
+                <h4>{{ Lang::get('messages.especiality_2') }}</h4>
                 <br>
               </a>
             </div>
@@ -121,7 +121,7 @@
         
         <div class="row">
           <div class="col-md-12">  
-            <h3>Vida Saludable</h3>
+            <h3>{{ Lang::get('messages.tittle_2') }}</h3>
           </div>  
         </div> 
 
@@ -153,7 +153,7 @@
       <div class="col-md-3">
         <div class="row">
           <div class="col-md-12">  
-            <h3>Mi Perfil</h3>
+            <h3>{{ Lang::get('messages.tittle_3') }}</h3>
           </div>  
         </div>
 
@@ -174,14 +174,19 @@
       @else
       
       <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">  
+            <h3>{{ Lang::get('messages.tittle_3') }}</h3>
+          </div>  
+        </div>
         <div class="oslotron">
           <center>
-          <h2>¡Regístrate en TjMed!</h2>
+          <h2>{{ Lang::get('messages.profile_tittle') }}</h2>
           <p>
-            ¡Escribe reseñas sobre doctores, calíficalos y recibe otros grandes beneficios de los que podrás disfrutar aquí!
+            {{ Lang::get('messages.profile_text') }}
           </p>
           <a href="{{ url('registrar') }}" >
-          <button class="btn btn-primary color-2 rounded">Registrarme</button>
+          <button class="btn btn-primary color-2 rounded">{{ Lang::get('messages.register') }}</button>
         </a>
         </center>
         </div>      
@@ -203,8 +208,8 @@
         <div class="alert_main">
           
           <button type="button" class="close" data-dismiss="alert">×</button>
-            Agrega tu negocio ya! ¿No sabes cómo? Aquí te ayudamos. 
-            <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">Agregar negocio</button></a>
+            {{ Lang::get('messages.add_bussines_tag1') }}
+            <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">{{ Lang::get('messages.add_bussines_but1') }}</button></a>
             <div class="space10"></div>
         </div>
       </div>    
@@ -218,7 +223,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Recientes Negocios</h3>
+        <h3>{{ Lang::get('messages.tittle_4') }}</h3>
       </div>  
     </div>
   </div>
@@ -230,7 +235,8 @@
           <div class="col-md-4">    
             <div class="item-box-2">
               <div class="media-container">
-                <img src="../app/images/{{ $bus->b_image }}" alt="" width="360" height="360"><!-- 
+                <img src="../app/images/{{ $bus->b_image }}" alt="" width="360" height="360">
+                <!-- 
                 <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
                 <a href="#" class="icon-right"><i class="fa fa-arrows-alt"></i></a> -->
               </div>
@@ -285,7 +291,7 @@
       <div class="col-md-3">
         <div class="row">
           <div class="col-md-12">  
-            <h3>Spot TjMed</h3>
+            <h3>{{ Lang::get('messages.tittle_5') }}</h3>
           </div>  
         </div>
         <iframe width="250" height="200" src="//www.youtube.com/embed/tYraOn7zHR8" frameborder="0" allowfullscreen></iframe>  
@@ -295,7 +301,7 @@
         <div class="row">
           <div class="row">
             <div class="col-md-12">  
-              <h3>Recientes Reseñas</h3>
+              <h3>{{ Lang::get('messages.tittle_6') }}</h3>
             </div>
           </div>
 
@@ -326,7 +332,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Nuestros Clientes</h3>
+        <h3>{{ Lang::get('messages.tittle_7') }}</h3>
       </div>  
     </div>
 

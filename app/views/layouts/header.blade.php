@@ -15,8 +15,8 @@
 						<ul>
 							<li id="username-li">
 								@if ( ! Auth::check())
-									<a href="registrar"> Regístrate -</a>  
-									<a href="#" data-toggle="modal" data-target="#myModal"> Inicia sesión</a>
+									<a href="registrar"> {{ Lang::get('messages.register') }} -</a>  
+									<a href="#" data-toggle="modal" data-target="#myModal"> {{ Lang::get('messages.log_out') }}</a>
 								@else
 									<a href="#"> {{ Auth::user()->U_firstname }} {{ Auth::user()->U_lastname }}</a> |
 									{{ link_to('logout', 'Cerrar sesión') }}
@@ -28,36 +28,45 @@
 						</ul>
 					</div>
 
-					<div id="undefined-sticky-wrapper" class="sticky-wrapper" style="padding-top: 15px;">	
-						<nav class="navbar" role="navigation">
+<TABLE style="width: 100%;">
+<TR>
+<TD style="width: 70%;">
+					<div id="undefined-sticky-wrapper" class="sticky-wrapper">	
+						<nav class="navbar" role="navigation">								
 							<ul class="nav">
-								<li id="inicio"> {{ link_to("/", 'Inicio', array('id'=>'menu_first')) }} </li>               				
-								<li id="negocios">{{ link_to("doctores", 'Doctores', array('id'=>'menu_first')) }}</li>		     					
-								<li id="categorias">{{ link_to("especialidades", 'Especialidades Médicas', array('id'=>'menu_first')) }}		
+								<li id="inicio"> {{ link_to("/", Lang::get('messages.home'), array('id'=>'menu_first')) }} </li>               				
+								<li id="negocios">{{ link_to("doctores", Lang::get('messages.doctors'), array('id'=>'menu_first')) }}</li>		     					
+								<li id="categorias">{{ link_to("especialidades", Lang::get('messages.tittle_1'), array('id'=>'menu_first')) }}		
 									<ul>
-										<li><a href="{{ url('categoria/1') }}" title="" style="font-size: 15px">Especialidades Clínicas</a></li>
-										<li><a href="{{ url('categoria/2') }}" title="" style="font-size: 15px">Especialidades Quirúrgicas</a></li>
-										<li><a href="{{ url('categoria/3') }}" title="" style="font-size: 15px">Especialidades Médico Quirúrgicas</a></li>
-										<li><a href="{{ url('categoria/4') }}" title="" style="font-size: 15px">Especialidades de Laboratorio</a></li>																				
+										<li><a href="{{ url('categoria/1') }}" title="" style="font-size: 15px">{{ Lang::get('messages.category_1') }}</a></li>
+										<li><a href="{{ url('categoria/2') }}" title="" style="font-size: 15px">{{ Lang::get('messages.category_2') }}</a></li>
+										<li><a href="{{ url('categoria/3') }}" title="" style="font-size: 15px">{{ Lang::get('messages.category_3') }}</a></li>
+										<li><a href="{{ url('categoria/4') }}" title="" style="font-size: 15px">{{ Lang::get('messages.category_4') }}</a></li>																				
 									</ul>	
 								</li>
-							    <li id="articulos">{{ link_to("articulos", 'Artículos', array('id'=>'menu_first')) }}</li>
-								<li id="acerca">{{ link_to("acerca", '¿Quiénes somos?', array('id'=>'menu_first')) }}</li>           						
-							    <li id="contacto">{{ link_to("contacto", 'Contacto', array('id'=>'menu_first')) }}</li>
-								<li id="bar" style="font-size: 17px; padding-left: 10px;padding-right: 10px;"> 
+							    <li id="articulos">{{ link_to("articulos", Lang::get('messages.articles'), array('id'=>'menu_first')) }}</li>
+								<li id="acerca">{{ link_to("acerca", Lang::get('messages.about_us'), array('id'=>'menu_first')) }}</li>           						
+							    <li id="contacto">{{ link_to("contacto", Lang::get('messages.contact'), array('id'=>'menu_first')) }}</li>
+							</ul>
+</TD>
+<TD style="width: 30%;">							
+								<div id="bar" style="font-size: 17px;"> 
 								  	<div class="input-group">
 								  		{{ Form::open(array('url' => 'doctores', 'id' => 'search_form')) }}
-								  			<input id="search" name="search" type="text" class="form-control" placeholder="Estoy buscando ... " style="width: 160%;"> 
-								  			<a href="#" onclick="document.getElementById('search_form').submit();">
-								  				<span class="fa fa-search fa-2x" id="search_button"></span>
+								  			<input id="search" name="search" type="text" class="form-control" placeholder="{{ Lang::get('messages.search_text') }}" style="width: 85%;"> 
+								  			
+								  			<a href="#" onclick="document.getElementById('search_form').submit();" style="width: 15%;">
+								  				<!--<input id="search" name="search" type="button" lass="fa fa-search fa-2x" id="search_button" style="width: 20%;">-->
+								  				&nbsp;&nbsp;<span class="fa fa-search fa-2x" id="search_button"></span>
 								  			</a>
 								  		{{ Form::close() }}
 									</div>													
-								   </li>
-								</ul>	
-
+								   </div>
 						        </nav>
-					        </div>							
+					        </div>	
+</TD>
+</tr>								
+</TABLE>															
 						</div>
 					</div> 
 				</div>         
