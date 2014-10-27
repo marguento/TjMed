@@ -3787,6 +3787,7 @@ src: url("../font/MyriadPro-Regular.otf") format("opentype");
 }
 
 #search:focus {
+  /*
   border-color: #083d5c;
   border:1px solid #083d5c;
   -webkit-border-radius: 0px; 
@@ -3798,6 +3799,7 @@ src: url("../font/MyriadPro-Regular.otf") format("opentype");
       -ms-transition: all 0.3s ease-in-out;
        -o-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
+*/
 }
 
 #search_button {

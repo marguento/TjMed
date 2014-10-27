@@ -204,6 +204,7 @@
                     <img src="app/images/user_image.jpg" alt="Doctor default picture">
                     <div class="space40"></div>
                   </div>  
+                  
                   <div class="col-md-6">
                     <!--<a href="index.php?opcion=perfil&id=">-->
                     <div class="rating" style="margin-bottom: 15px;">

@@ -1,11 +1,27 @@
 @extends('layouts.default')
 @section('content')
 <!-- Slider -->
-  <div class="bxslider">
-    <img src="../app/images/{{ Lang::get('messages.banner1') }}"/>
-    <img src="../app/images/{{ Lang::get('messages.banner2') }}"/>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../app/images/{{ Lang::get('messages.banner1') }}" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <img src="../app/images/{{ Lang::get('messages.banner2') }}" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    ...
   </div>
-  <div class="space30"></div>
+</div>
+<div class="space30"></div>
+
 <!--PRIMER RENGLON -->
 <div>
   <div class="container">

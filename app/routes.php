@@ -9,6 +9,7 @@ Route::get('especialidad/{especialidad}', 'HomeController@speciality');
 Route::get('acerca', 'HomeController@about');
 Route::get('contacto', 'HomeController@contact');
 Route::get('registrar', 'HomeController@register');
+Route::get('perfil', 'HomeController@profile');
 
 Route::get('en', 'HomeController@switch_english');
 Route::get('es', 'HomeController@switch_spanish');

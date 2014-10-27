@@ -25,7 +25,7 @@
 		'especiality_1'		=> 'Dentistry',	
 		'especiality_2'		=> 'Other',														
 		'tittle_2'			=> 'HEALTHY LIVING',
-		'tittle_3'			=> 'MY PROFILE',
+		'tittle_3'			=> 'PROFILE',
 		'profile_tittle'	=> 'Join TjMed!',	
 		'profile_text'		=> 'Write reviews about doctors, rate and receive other great benefits you will enjoy it here!',		
 		'add_bussines_tag1'	=> 'Add your business now! Do not know how? Here we can help you.',

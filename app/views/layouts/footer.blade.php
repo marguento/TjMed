@@ -1,28 +1,24 @@
 <div class="space20"></div>
-
-           
-		<!-- Footer -->  
-		<footer class="footer">
-
-			<!-- Parallax --> 
-
-			<div id="parallax-one" class="parallax" style="background-image: url(../app/images/foto_nueva_abajo.jpg); 
-													background-position: 50%">
-			 <div class="footer-promo">
-			  <div class="container">
-               <div class="row">
-                <div class="col-md-12">
-				 <h4>"Lo mas importante tu salud, nuestro compromiso la honestidad"</h4>
-				</div>
-			   </div>
-			  </div>
-			 </div>
-			</div> 
-			<!-- Parallax End --> 
-
-			<div class="footer-info">
+ 
+	<!-- Footer -->  
+	<footer class="footer">
+		<!-- Parallax --> 
+		<div id="parallax-one" class="parallax" style="background-image: url(../app/images/foto_nueva_abajo.jpg); background-position: 50%">
+			<div class="footer-promo">
 				<div class="container">
-					<div class="row">
+            		<div class="row">
+                		<div class="col-md-12">
+				 			<h4>"{{ Lang::get('messages.footer_photo') }}"</h4>
+						</div>
+			   		</div>
+			  	</div>
+			</div>
+		</div> 
+		
+		<!-- Parallax End --> 
+		<div class="footer-info">
+			<div class="container">
+				<div class="row">
 
 						<div class="col-md-3 col-sm-6">
 							<h6>INFORMACION DE CONTACTO</h6>
@@ -55,7 +51,7 @@
 						</div>
 
 
-<div class="col-md-3 col-sm-6">
+<div class="col-md-6 col-sm-6">
             <h6>Contactanos</h6>
             <div class="space5"></div>
             
@@ -93,24 +89,6 @@
             <div class="space20"></div>
           </div>						
 
-						<div class="col-md-3 col-sm-6">
-							<h6>RECIENTES NOTICIAS</h6>      
-							<ul class="list-5">
-							  <li>
-								<a href=""><i class="fa fa-caret-right"></i> Nutricion y Salud</a>
-							  </li><li>  
-								<a href=""><i class="fa fa-caret-right"></i> Prevencion Contra el Cancer.</a>
-							  </li><li>  
-								<a href=""><i class="fa fa-caret-right"></i> Bacterias que nos Benefician.</a>
-							  </li><li>  
-								<a href=""><i class="fa fa-caret-right"></i> Ejercicio VS Dieta.</a>
-							  </li><li>  
-								<a href=""><i class="fa fa-caret-right"></i> Medicina General.</a>
-							  </li>
-							</ul>
-							<div class="space30"></div>
-						</div>
-
 		<div class="col-md-3">
 			<a class="twitter-timeline" href="https://twitter.com/TJMed_2014" data-widget-id="505521170477621248" data-chrome="transparent">Tweets por @TJMed_2014</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -130,7 +108,7 @@
 					<div class="col-md-8 col-sm-8">
 						<div class="copyright-info">
 							<i>
-							  © 2014 TjMed. Todos Los Derechos Reservados.
+							  {{ Lang::get('messages.copyright') }}
 							</i>
 						</div>
 					</div>  

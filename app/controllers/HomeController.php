@@ -58,6 +58,11 @@ class HomeController extends BaseController {
 											'specialties' => $specialties]);
 	}
 
+	public function profile()
+	{
+		return View::make('user_profile');
+	}
+
 	public function register()
 	{
 		if (Auth::check())
