@@ -15,13 +15,13 @@
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('name', 'Nombre', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('name', 'Nombre (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('name', '', array('class' => 'session form-control focus')) }}
       <span class="error_msg">{{ $errors->first('b_name') }}</span>
     </div>
 
-    {{ Form::label('address', 'Dirección', array('class' => 'col-sm-2 control-label')) }}
+    {{ Form::label('address', 'Dirección (*)', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('address', '', array('class' => 'session form-control')) }}
       <span class="error_msg">{{ $errors->first('b_address') }}</span>
@@ -33,13 +33,13 @@
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('email', 'Correo Electrónico', array('class' => 'col-sm-2 control-label')) }}
+    {{ Form::label('email', 'Correo Electrónico (*)', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('email', '', array('class' => 'session form-control')) }}
       <span class="error_msg">{{ $errors->first('b_email') }}</span>
     </div>
 
-    {{ Form::label('telephone', 'Teléfono', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('telephone', 'Teléfono (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4" class="error">
       {{ Form::text('telephone', '', array('class' => 'session form-control focus')) }}
       <span class="error_msg">{{ $errors->first('b_telephone') }}</span>
@@ -63,24 +63,42 @@
       {{ Form::select('user_owner', ['No', 'Si'], '', ['class' => 'session form-control', 'id' => 'user_owner']) }}
   </div>
 </div>
-
 <br>
+<p> Agrega una especialidad representativa del negocio médico ó doctor </p>
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('introduction', 'Introducción', array('class' => 'col-md-2 control-label')) }}
+{{ Form::label('specialty', 'Especialidad', array('class' => 'col-md-2 control-label')) }}
+<div class="col-md-3">
+      <select name="specialty" class="form-control" id="specialty" style="color:black; font-size:14px">
+        @if ($specialties->count())
+          @foreach ($specialties as $spe)
+            <option value="{{ $spe->S_ID }}">{{ $spe->S_name }}</option>
+          @endforeach
+        @endif
+      </select>
+    </div>
+  </div>
+</div>
+    <br>
+
+<p> Agrega una introducción breve de 150 caracteres de lo más representativo del negocio</p>
+
+<div class="row">
+  <div class="form-group">
+    {{ Form::label('introduction', 'Introducción (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-10">
-      {{ Form::textarea('introduction', '', ['class' => 'session form-control', 'size' => '1x5']) }}
+      {{ Form::textarea('introduction', '', ['class' => 'session form-control', 'size' => '1x2', 'maxlength' => '150']) }}
       <span class="error_msg">{{ $errors->first('b_introduction') }}</span>
     </div>
   </div>
 </div>
 
 <br>
-
+<p> Agrega una descripción más detallada sobre el negocio</p>
 <div class="row">
   <div class="form-group">
-    {{ Form::label('description', 'Descripción', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('description', 'Descripción (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-10">
       {{ Form::textarea('description', '', ['class' => 'session form-control', 'size' => '1x5']) }}
       <span class="error_msg">{{ $errors->first('b_description') }}</span>
@@ -89,10 +107,10 @@
 </div>
 
 <br>
-
+<p> Agrega una imagen representativa del negocio, esto ayudará a verificar más facilmente la autenticidad del negocio</p>
 <div class="row">
   <div class="form-group">
-     {{ Form::label('image', 'Imagen', array('class' => 'col-md-2 control-label')) }}
+     {{ Form::label('image', 'Imagen (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::file('image') }}
       <span class="error_msg">{{ $errors->first('b_image') }}</span>
@@ -115,6 +133,7 @@
 </div>
 
 <br>
+<p> Redes sociales (opcionales)</p>
 
 <div class="row">
   <div class="form-group">

@@ -129,6 +129,7 @@ class BusinessController extends BaseController {
 		$doctor->b_created_user = Auth::user()->U_username;
 		if($add_user == 0) {
 			$doctor->b_verified	= 0;
+
 			if(Input::get('user_owner') == 0) {
 				$doctor->b_user_owner = 'none';
 			} else {
@@ -160,6 +161,11 @@ class BusinessController extends BaseController {
 		Input::file('image')->move($destinationPath, $fileName);
 
 		$doctor->save();
+
+		$specialty = new BusinessHasSpecialties();
+		$specialty->businesses_B_ID = $doctor->B_ID;
+		$specialty->specialties_S_ID = Input::get('specialty');
+		$specialty->save();
 		
 		if($add_user == 1) {
 			$var = '<div class="alert alert-success" role="alert">
@@ -187,7 +193,9 @@ class BusinessController extends BaseController {
 		        </div>';
 			return Redirect::to('registrar')->with('var', $var);
 		} 
-		return View::make('add_business');
+
+		$specialties = Specialty::all();
+		return View::make('add_business', ['specialties' => $specialties]);
 	}
 
 	public function show($b_id) 

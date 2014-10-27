@@ -40,8 +40,88 @@ class AdminController extends BaseController {
 		{
 			return Redirect::to('/');
 		} 
-		$users = User::all();
-		return View::make('admin/especialidades', ['users' => $users]);
+		$categories = AdminCategoriesView::all();
+		return View::make('admin/especialidades', ['categories' => $categories]);
+	}
+
+	public function category($id)
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+		if($id != 0) {
+			$category = AdminCategoriesView::wherec_id($id)->first();
+			$specialties = Specialty::whereS_id_category($id)->get();
+			return View::make('admin/cat_profile', ['category' => $category,
+														'specialties' => $specialties]);
+		} else {
+			return View::make('admin/new_cat');
+		}
+	}
+
+	public function spe_update() 
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+
+		$specialty 					 = Specialty::wheres_id(Input::get('curr_spe'))->first();
+		$specialty->S_name 			 = Input::get('title_es');
+		$specialty->S_name_en 		 = Input::get('title_en');
+		$specialty->S_introduction 	 = Input::get('introduction_es');
+		$specialty->S_introduction_en = Input::get('introduction_en');
+		$specialty->S_description 	 = Input::get('description_es');
+		$specialty->S_description_en  = Input::get('description_en');
+		$specialty->save();
+		return Redirect::back();
+	}
+
+	public function cat_update() 
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+
+		$category 					 = Category::wherec_id(Input::get('curr_cat'))->first();
+		$category->C_name 			 = Input::get('title_es');
+		$category->C_name_en 		 = Input::get('title_en');
+		$category->C_introduction 	 = Input::get('introduction_es');
+		$category->C_introduction_en = Input::get('introduction_en');
+		$category->C_description 	 = Input::get('description_es');
+		$category->C_description_en  = Input::get('description_en');
+		$category->save();
+		return Redirect::back();
+	}
+
+	public function cat_add() 
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+
+		$category 					 = new Category();
+		$category->C_name 			 = Input::get('title_es');
+		$category->C_name_en 		 = Input::get('title_en');
+		$category->C_introduction 	 = Input::get('introduction_es');
+		$category->C_introduction_en = Input::get('introduction_en');
+		$category->C_description 	 = Input::get('description_es');
+		$category->C_description_en  = Input::get('description_en');
+		$category->save();
+		return Redirect::to('admin/especialidades');
+	}
+
+	public function specialty($id)
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+		$specialty = Specialty::wheres_id($id)->first();
+		return View::make('admin/spe_profile', ['specialty' => $specialty]);
 	}
 
 	public function edit_doctor($id)
