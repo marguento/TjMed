@@ -53,8 +53,30 @@
 		    <div class="col-md-6">
 		      <a href="{{ url('doctor/' . $bus->B_ID) }}">
 		      	<h3 style="margin-bottom: 0px;">{{ $bus->b_name}}</h3> </a>
-		      <div class="rating" style="margin-bottom: 15px;">
-					  <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+		      <div style="margin-bottom: 15px;">
+					 <span style="font-size:18px">
+              <?php 
+                  $rating = $bus->rating;
+                  $r = $rate = round($rating); ?>
+                  @while($rate > 1)
+                    <i class="fa fa-star"></i>
+                    <?php $rate--; ?>
+                  @endwhile
+                            
+                  @if($r != $rating)
+                    <i class="fa fa-star-half"></i>
+                  @else
+                    @if($r != 0)
+                      <i class="fa fa-star"></i>
+                    @endif
+                  @endif
+                  
+                  @while($r < 5)
+                    <i class="fa fa-star-o"></i>
+                    <?php $r++; ?>
+                  @endwhile
+                  | <a href="{{ url('doctor/'.$bus->B_ID) }}#comments">{{ $bus->comments_count }} reseña(s)</a>
+                </span>
 				  </div>
           <h6 style="color:#0AB2DB; margin-bottom: 0px;">
             <?php $i = 0; ?>
@@ -63,16 +85,28 @@
                   @if ($i > 0)
                     ,
                   @endif
-                 {{ $c->S_name}}
+                 <a href="{{ url('especialidad/'.$c->S_ID) }}" >{{ $c->S_name}}</a>
                  
                  <?php $i++; ?>
               @endif
             @endforeach
             </h6>
-		      <h6 style="margin-bottom: 0px;">Descripción</h6>
 		      <p align="justify">
-		        {{ $bus->b_description }}
-		      </p>                
+		        {{ $bus->b_introduction }}
+		      </p>
+          <span> {{ $bus->b_email }} </span><br>
+          <span> {{ $bus->b_telephone }} </span><br>
+          <span> {{ $bus->b_address }} </span>
+          <div class="social-container">
+            <div class="social-2">
+              @if($bus->b_facebook != '')
+                <a href="{{ url('www.facebook.com/' . $bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
+              @endif
+              @if($bus->b_twitter != '')
+                <a href="{{ url('www.twitter.com/' . $bus->b_twitter) }}"><i class="fa fa-twitter"></i></a>
+              @endif
+            </div>  
+          </div>              
 		      <div class="space20"></div> 
 		    </div> 
 		  </div>
@@ -104,21 +138,22 @@
     </div>
   </div>
 
-  <div class="promo-box" style="
-    padding-top: 35px;
-    padding-bottom: 35px;
-">
-    <div class="container">  
-      <div class="row">
-        <div class="col-md-8 promo-text">
-          <h4>¿No encuentras lo que estás buscando? Si el negocio que está buscando no está aquí, por favor agregue! <span class="author">TjMed</span></h4>
-        </div>
-        <div class="col-md-4 right">
-         <a href="{{ url('agregar') }}"><button class="btn btn-white">Añadir un negocio</button></a>
+<div>
+  <div class="container">  
+    <div class="row">
+      <div class="col-md-12">      
+        <div class="alert_main">
+          
+          <button type="button" class="close" data-dismiss="alert">×</button>
+            ¿No encuentras lo que buscas? ¡Agrégalo aquí!
+            <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">Agregar negocio</button></a>
+            <div class="space10"></div>
         </div>
       </div>    
-    </div>   
-  </div>
+    </div> 
+  </div>  
+  <div class="space40"></div>
+</div> 
 
 		<div class="space60"></div>
 		<!-- Content End -->

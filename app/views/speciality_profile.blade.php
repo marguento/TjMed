@@ -3,7 +3,8 @@
 
   <div class="container">
     <ol class="breadcrumb">
-      <li>{{ link_to('especialidades', 'Regresar a Especialidades') }}</li>
+      <li>{{ link_to('especialidades', 'Regresar a especialidades') }}</li>
+      <li class="active" style="color:#083D5C">Perfil especialidad</li>
     </ol>
     <div class="row">
       <div class="col-md-8" align="justify">

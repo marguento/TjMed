@@ -30,10 +30,10 @@
                 <div class="col-md-7">
                   <div class="post-info">
                     <span class="post-data">
-                      <i class="fa fa fa-user"></i> <a href="#">{{ $article->A_author }}</a>
+                      <i class="fa fa fa-user"></i> <a href="#">{{ $article->author_name }}</a>
                     </span>
                     <span class="post-data">
-                      23 Agosto 2014
+                      {{ $article->A_created_at }}
                     </span>
                    
                   </div>
@@ -57,7 +57,7 @@
               {{ $article->A_introduction }}
             </p>
             <div class="space15"></div>
-            <a href="#" class="btn"><i class="fa fa-book"></i>Seguir Leyendo</a>
+            <a href="{{ url('articulo/' . $article->A_ID) }}" class="btn"><i class="fa fa-book"></i>Seguir Leyendo</a>
             <div class="space40"></div>
             <!-- Blog Post End -->
         @endforeach

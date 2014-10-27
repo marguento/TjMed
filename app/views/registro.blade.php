@@ -8,7 +8,8 @@
 	@endif
 
 	<ol class="breadcrumb">
-	  <li>{{ link_to('/', 'Volver a Inicio') }}</li>
+	  <li>{{ link_to('/', 'Volver a inicio') }}</li>
+	  <li class="active" style="color:#083D5C">Registro</li>
 	</ol>
 
 	<h2 class="sub-header">Registro</h2>

@@ -21,7 +21,8 @@ class Business extends Eloquent {
 			'b_telephone'  	=> 'required',
 			'b_email' 	  	=> 'required|email|unique:businesses,b_email,'.$cur_doctor.',B_ID',
 			'b_introduction'=> 'required',
-			'b_description' => 'required'
+			'b_description' => 'required',
+			'b_image'		=> 'required'
 		);
 		$messages = array('required' => 'Este campo es obligatorio',
 							'unique' => 'Este campo ya esta en otro negocio',
