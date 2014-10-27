@@ -1,6 +1,6 @@
 	  <!-- JavaScripts -->
 	  {{ HTML::script("../app/js/jquery-1.10.2.js") }}                                                      
-	  {{ HTML::script("../app/js/bootstrap.js") }}
+	  
 	  {{ HTML::script("../app/js/jquery.easing.js") }}
 	  <!--{{ HTML::script("js/jquery.sticky.js") }}-->
 	  {{ HTML::script("../app/js/tinynav.min.js") }}      
@@ -26,6 +26,7 @@
 	  {{ HTML::script("../app/js/jquery.bxslider.min.js") }}
 	  {{ HTML::script("../app/js/modernizr.js") }}
 	  {{ HTML::script("https://maps.googleapis.com/maps/api/js?v=3.exp") }}
+	  {{ HTML::script("../app/js/bootstrap.js") }}
 	<script>
 	$(document).ready(function(){
 		var show_hide = true; //Para manejar los botones de especialidades medicas
@@ -41,6 +42,8 @@
 			$('.normal_login').show();
 			$('.login_buttons').hide();
 		});
+
+		$(".popup").popover();
 
 		// $('#search_button').click(function() {
 		// 	var search = $('#search').val();

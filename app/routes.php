@@ -20,6 +20,7 @@ Route::resource('users', 'UsersController');
 Route::get('admin/', 'AdminController@index');
 Route::get('admin/usuarios', 'AdminController@usuarios');
 Route::get('admin/doctores', 'AdminController@doctores');
+Route::get('admin/especialidades', 'AdminController@specialties');
 Route::get('admin/editar/{username}', 'AdminController@editUser');
 Route::get('admin/doctores/{username}', 'AdminController@edit_doctor');
 Route::post('admin/doctores/get_specialties', 'AdminController@get_specialties');
@@ -34,7 +35,10 @@ Route::post('doctores/update', 'BusinessController@update');
 Route::get('agregar', 'BusinessController@add_doctor');
 Route::get('doctor/{id_doctor}', 'BusinessController@show');
 Route::get('doctores/{filtro}', 'BusinessController@index');
+Route::get('owner/{doctor}', 'BusinessController@register_owner');
 Route::get('articulo/{id_articulo}', 'ArticleController@show');
+Route::post('article/review', 'ArticleController@add_review');
+
 Route::post('doctores/store', 'BusinessController@store');
 Route::post('doctor/review', 'BusinessController@add_review');
 
@@ -70,7 +74,7 @@ Route::get('login/fb/callback', function() {
         $user->U_firstname      = $me['first_name'];
         $user->U_lastname       = $me['last_name'];
         $user->U_email          = $me['email'];
-        $user->U_profile_image  = 'https://graph.facebook.com/'.$me['name'].'/picture?type=large';
+        $user->U_profile_image  = 'https://graph.facebook.com/'.$uid.'/picture?type=large';
         $user->U_password       = Hash::make('facebook_' . $me['name']);
         $user->U_level          = 2;
         $user->U_active         = 1;

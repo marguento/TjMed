@@ -34,6 +34,16 @@ class AdminController extends BaseController {
 											'b_cat' => $b_cat]);
 	}
 
+	public function specialties()
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+		$users = User::all();
+		return View::make('admin/especialidades', ['users' => $users]);
+	}
+
 	public function edit_doctor($id)
 	{
 		if($id != 0) {

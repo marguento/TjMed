@@ -4,12 +4,13 @@
 
 <div class="container">
   <ol class="breadcrumb">
-    <li>{{ link_to('/', 'Volver a Inicio') }}</li>
+    <li>{{ link_to('/', 'Volver a inicio') }}</li>
+    <li class="active" style="color:#083D5C">Registrar negocio</li>
   </ol>
 <h2 class="sub-header">Agregar doctor o negocio médico</h2>
 <div class="space20"></div>
 
-{{ Form::open(array('url' => 'doctores/store')) }}
+{{ Form::open(array('url' => 'doctores/store', 'files'=> true)) }}
 {{ Form::hidden('add_user', 0) }}
 
 <div class="row">
@@ -91,18 +92,22 @@
 
 <div class="row">
   <div class="form-group">
-    <div class="col-md-2"></div>
+     {{ Form::label('image', 'Imagen', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
-      <div class="fileinput fileinput-exists" data-provides="fileinput">
+      {{ Form::file('image') }}
+      <span class="error_msg">{{ $errors->first('b_image') }}</span>
+     <!--  <input type="file" name="image_business"> -->
+      <!-- <div class="fileinput fileinput-exists" data-provides="fileinput">
         <div class="fileinput-exists thumbnail" style="width: 200px; height: 200px;">
           <img id="input_image" src="">
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
         <div>
-          <span class="btn btn-default btn-file"><span class="fileinput-new">Selecciona imagen principal</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">Selecciona imagen principal</span><span class="fileinput-exists">Change</span>
+          </span>
           <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
         </div>
-      </div>
+      </div> -->
     </div>
 
 

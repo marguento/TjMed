@@ -4,7 +4,8 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		$business = Business::take(3)->get();
+		//$business = Business::orderBy('b_joined_date','desc')->take(3)->get();
+		$business = BusinessRatingView::take(3)->get();
 		$comments = BusinessCommentsView::orderBy('C_datetime_created', 'desc')->take(3)->get();
 		$cats 	  = BusinessCategoriesView::all();
 		$articles = ArticleView::orderBy('A_created_at', 'desc')->take(3)->get();
@@ -26,7 +27,7 @@ class HomeController extends BaseController {
 
 	public function articles()
 	{
-		$articles = Article::all();
+		$articles = ArticleView::orderBy('A_created_at', 'desc')->get();
 		return View::make('articles', ['articles' => $articles]);
 	}
 

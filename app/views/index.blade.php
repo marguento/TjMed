@@ -121,7 +121,7 @@
         
         <div class="row">
           <div class="col-md-12">  
-            <h3>Vida Saludable</h3>
+            <a href="{{ url('articulos') }}"><h3>Vida Saludable</h3></a>
           </div>  
         </div> 
 
@@ -137,8 +137,32 @@
               </div>
               <div class="info-container">
                 <a href="{{ url('articulo/' . $article->A_ID) }}"><h3>{{ $article->A_title}}</h3></a>
-                <h4>{{ $article->A_created_at }} | {{ $article->article_count }} Comentario(s)</h4>
-                <p> {{ $article->A_introduction }} </p>
+                <h4>
+                  <?php $r = $rate = round($article->rating); ?>
+                  @while($rate > 1)
+                    <i class="fa fa-star"></i>
+                    <?php $rate--; ?>
+                  @endwhile
+                            
+                  @if($r != $article->rating)
+                    <i class="fa fa-star-half"></i>
+                  @else
+                    @if($r != 0)
+                      <i class="fa fa-star"></i>
+                    @endif
+                  @endif
+                  
+                  @while($r < 5)
+                    <i class="fa fa-star-o"></i>
+                    <?php $r++; ?>
+                  @endwhile
+                  @if (is_float($article->rating))
+                    ({{ number_format((float)$article->rating, 1, '.', '') }})
+                  @else 
+                     ({{ $article->rating }})
+                  @endif
+                   | <a href="{{ url('articulo/' . $article->A_ID) }}#comments">{{ $article->article_count }} Comentario(s)</a></h4>
+                <p style="height:100px" align="justify"> {{ substr($article->A_introduction,0,150) }} </p>
               </div>
             </div>         
           </div>
@@ -203,7 +227,7 @@
         <div class="alert_main">
           
           <button type="button" class="close" data-dismiss="alert">×</button>
-            Agrega tu negocio ya! ¿No sabes cómo? Aquí te ayudamos. 
+            ¡Agrega tu negocio ya! ¿No sabes cómo? Aquí te ayudamos. 
             <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">Agregar negocio</button></a>
             <div class="space10"></div>
         </div>
@@ -218,7 +242,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>Recientes Negocios</h3>
+        <a href="{{ url('doctores') }}"><h3>Recientes Negocios</h3></a>
       </div>  
     </div>
   </div>
@@ -230,7 +254,7 @@
           <div class="col-md-4">    
             <div class="item-box-2">
               <div class="media-container">
-                <img src="../app/images/{{ $bus->b_image }}" alt="" width="360" height="360"><!-- 
+                 <a href="{{ url('doctor/'.$bus->B_ID) }}" ><img src="../app/images/{{ $bus->b_image }}" alt="" width="360" height="360"></a><!-- 
                 <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
                 <a href="#" class="icon-right"><i class="fa fa-arrows-alt"></i></a> -->
               </div>
@@ -240,28 +264,71 @@
               </a>
                 <h4>
                   <?php $i = 0; ?>
-                  @foreach ($cats as $c)
-                    @if ($bus->B_ID == $c->B_ID)
-                        @if ($i > 0)
-                          ,
-                        @endif
-                       {{ $c->S_name}}
-                       
-                       <?php $i++; ?>
+                    @foreach ($cats as $c)
+                      @if ($bus->B_ID == $c->B_ID)
+                          @if ($i > 0)
+                            ,
+                          @endif
+                          <a href="{{ url('especialidad/'.$c->S_ID) }}" >{{ $c->S_name}}</a>
+                         
+                         <?php $i++; ?>
+                      @endif
+                    @endforeach
+                    @if($i == 0)
+                      <p>Varias categorías</p>
                     @endif
-                  @endforeach
-                </h4> <!--Categorias -->
-                <p> {{ $bus->b_introduction }} </p>
-                <span> {{ $bus->b_email }} </span><br>
-                <span> {{ $bus->b_telephone }} </span><br>
-                <span> {{ $bus->b_address }} </span>
+                </h4>
+                <span style="font-size:18px">
+                  <?php 
+                  $rating = $bus->rating;
+                  $r = $rate = round($rating); ?>
+                  @while($rate > 1)
+                    <i class="fa fa-star"></i>
+                    <?php $rate--; ?>
+                  @endwhile
+                            
+                  @if($r != $rating)
+                    <i class="fa fa-star-half"></i>
+                  @else
+                    @if($r != 0)
+                      <i class="fa fa-star"></i>
+                    @endif
+                  @endif
+                  
+                  @while($r < 5)
+                    <i class="fa fa-star-o"></i>
+                    <?php $r++; ?>
+                  @endwhile
+                  | <a href="{{ url('doctor/'.$bus->B_ID) }}#comments">{{ $bus->comments_count }} reseña(s)</a>
+                </span>
+                <br><br>
+                <p style="height:100px" align="justify"> {{ $bus->b_introduction }} </p>
                 <div class="social-container">
                   <div class="social-2">
+                    <!-- <span> {{ $bus->b_email }} </span><br>
+                    <span>  </span><br> -->
+                    <a style="cursor: pointer;"><i class="fa fa-envelope-o"></i></a>
+
+                    <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $bus->b_telephone }}">
+                      <i class="fa fa-phone"></i>
+                    </a>
+                    <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $bus->b_address }}">
+                      <i class="fa fa-map-marker"></i>
+                    </a>
                     @if($bus->b_facebook != '')
-                      <a href="{{ url('www.facebook.com/' . $bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
+                      <a href="{{ url('//www.facebook.com/' . $bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
                     @endif
                     @if($bus->b_twitter != '')
-                      <a href="{{ url('www.twitter.com/' . $bus->b_twitter) }}"><i class="fa fa-twitter"></i></a>
+                      <a href="{{ url('//www.twitter.com/' . $bus->b_twitter) }}"><i class="fa fa-twitter"></i></a>
+                    @endif
+                    @if($bus->b_youtube != '')
+                      <a href="{{ url('//www.youtube.com/user/' . $bus->b_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                    @endif
+                    @if($bus->b_linkedin != '')
+                      <a href="{{ url('//www.linkedin.com/in/' . $bus->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    @endif
+                    @if($bus->b_website != '')
+                      <a href="{{ url('//' . $bus->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
                     @endif
                   </div>  
                 </div> 
@@ -303,12 +370,24 @@
             @foreach ($comments as $comment)
               <div class="col-md-4 promo-text">
                 <div class="blog-comment">
-                  <div class="user-image"><img src="../app/images/{{ $comment->U_profile_image}}"></div> 
+                  <div class="user-image"><img src="{{ $comment->U_profile_image}}" alt=""></div> 
                   <div class="comment-data">
                     <h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</h4>
-                    en  <a href="{{ url('doctor/' . $comment->B_ID) }}">{{ $comment->b_name }}</a>
-                    <p style="font-size:12px;">{{ $comment->C_datetime_created }}</p>
-                    <p>{{ $comment->C_content }}</p>     
+                    en  <a href="{{ url('doctor/' . $comment->B_ID) }}">{{ $comment->b_name }}</a><br>
+                    <a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i> (0)</a>
+                    <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i> (0)</a><br>
+                    <span style="font-size:15px">
+                      <?php  $r = $rating = $comment->C_rating ?>
+                        @while($rating)
+                          <i class="fa fa-star"></i>
+                          <?php $rating--; ?>
+                        @endwhile
+                        @while($r < 5)
+                          <i class="fa fa-star-o"></i>
+                          <?php $r++; ?>
+                        @endwhile
+                    </span>
+                    <p>{{ substr($comment->C_content, 0, 50) . '...'  }}<br> <a href="{{ url('doctor/'.$comment->B_ID) }}#comments">Leer más</a></p>     
                   </div> 
                 </div>
               </div> 
@@ -360,5 +439,6 @@
 
 <script>
   $('#inicio').addClass('selected');
+    
 </script>
 @stop

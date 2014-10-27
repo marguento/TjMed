@@ -39,7 +39,7 @@ class BusinessController extends BaseController {
 													->get();
 			}
 		} else {
-			$business = Business::whereb_verified(1)->whereb_active(1)->get();
+			$business = BusinessRatingView::whereb_verified(1)->whereb_active(1)->get();
 		}
 		$categories = Category::all();
 		$b_cat = BusinessView::all();
@@ -139,11 +139,25 @@ class BusinessController extends BaseController {
 			$doctor->b_user_owner	= Input::get('user_owner');
 			$doctor->b_priority 	= Input::get('priority');
 		}
+
+
+		if (Input::hasFile('image'))
+		{
+		    $doctor->b_image = Input::file('image')->getClientOriginalName();
+		} else {
+			$doctor->b_image = "";
+		}
+		
 		
 		if (!$doctor->isValid(0))
 		{
 			return Redirect::back()->withInput()->withErrors($doctor->errors);
 		}
+
+		$destinationPath = app_path() . '/images_server';
+		$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+
+		Input::file('image')->move($destinationPath, $fileName);
 
 		$doctor->save();
 		
@@ -181,6 +195,7 @@ class BusinessController extends BaseController {
 		$doctor = Business::whereb_id($b_id)->first();
 		$b_cat = BusinessView::whereb_id($b_id)->get();
 		$comments = BusinessCommentsView::whereb_id($b_id)->get();
+		$tags = BusinessTagsView::whereb_id($b_id)->get();
 
 		$sum = 0;
 		foreach($comments as $comment)
@@ -196,7 +211,8 @@ class BusinessController extends BaseController {
 		return View::make('doctor_profile', ['doctor' => $doctor, 
 												'b_cat' => $b_cat,
 												'comments' => $comments,
-												'rating' => $rating]);
+												'rating' => $rating,
+												'tags' => $tags]);
 	}
 
 	public function add_review() 
@@ -218,5 +234,30 @@ class BusinessController extends BaseController {
 		$bhc->save();
 
 		return Redirect::to('doctor/' . $data['curr_doctor']);
+	}
+
+	public function register_owner($b_id)
+	{
+		if( ! Auth::check())
+		{
+			$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          Antes de realizar tu solicitud, regístrate o inicia sesión en TjMed.
+		        </div>';
+			return Redirect::to('registrar')->with('var', $var);
+		} else {
+			$verify 			= new VerifyOwner();
+			$verify->B_ID 		= $b_id;
+			$verify->U_username = Auth::user()->U_username;
+			$verify->V_created 	= date('Y-m-d H:i:s');
+			$verify->V_verified = '0';
+			$verify->save();
+			
+			$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          Un administrador revisará tu solicitud y se te enviará notificación al verificar los datos</div>';
+			return Redirect::to('doctor/'. $b_id)->with('var', $var);
+		}
+		
 	}
 }

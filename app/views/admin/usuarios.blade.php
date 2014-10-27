@@ -25,7 +25,7 @@
         <div class="space20"></div>
         <div class="table-responsive">
 
-          <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:14px">
+          <table id="example" class="table table-striped table-bordered compact" cellspacing="0" width="100%" style="font-size:14px">
             <thead style="background:#0b7297">
               <tr>
                 <th id="user_head">Usuario</th>
@@ -44,12 +44,20 @@
                     @if ($user->U_profile_image == "")
                       <td><img class="user_img" src="../../app/images/default_picture.png"></td>
                     @else
-                      <td><img class="user_img" src="../../app/images/{{ $user->U_profile_image }}"></td>
+                     @if($user->U_facebook=="")
+                        <td><img class="user_img" src="../../app/images/{{ $user->U_profile_image }}"></td>
+                      @else
+                        <td><img class="user_img" src="{{ $user->U_profile_image }}"></td>
+                      @endif
                     @endif
                     <td><a href="editar/{{ $user->U_username }}">{{ $user->U_firstname . ' ' . $user->U_lastname }}</a></td>
                     <td>{{ $user->U_email }}</td>
                     <td>{{ $user->U_created_at }}</td>
-                    <td>No</td>
+                    @if($user->U_facebook=="")
+                      <td>No</td>
+                    @else
+                      <td>Sí</td>
+                    @endif
                     <td>
                       @if ($user->U_level == 0)
                           <span class="label label-primary">Usuario Regular</span>
