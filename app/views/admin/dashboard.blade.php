@@ -1,5 +1,10 @@
 @extends('admin.index')
 @section('content_admin')
+
+<ol class="breadcrumb">
+  <li>{{ link_to('/', 'Ir a TjMed') }}</li>
+</ol>
+
 <h2> Bienvenido, {{ Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname }} </h2>
 <div class="row">
       <div class="col-md-4">
@@ -28,9 +33,11 @@
       </div> 
   
       <div class="col-md-4">
-        <div class="service-2">  
+        <div class="service-2"> 
+        <a href="{{ url('admin/especialidades') }}">
           <i class="fa fa-stethoscope"></i>
           <h4>Categorías</h4>
+        </a>
           <p>Administración de categorías y especialidades clínicas, aquí se pueden editar, agregar y eliminar especialidades.</p>
         </div>    
         <div class="space40"></div>
@@ -40,8 +47,10 @@
     <div class="row">
       <div class="col-md-4">
         <div class="service-2">  
+          <a href="{{ url('admin/articulos') }}">
           <i class="fa fa-file-text-o"></i>
           <h4>Artículos</h4>
+        </a>
           <p>En esta sección se pueden escribir nuevos artículos, administrar, editar o eliminar los existentes y sus propiedades.</p>
         </div>  
         <div class="space40"></div>

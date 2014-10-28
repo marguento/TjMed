@@ -20,7 +20,7 @@
 </ul>
 
 <div class="tab-content">
-<div class="tab-pane fade in active" id="principal">
+  <div class="tab-pane fade in active" id="principal">
 
 {{ Form::open(array('url' => 'doctores/update')) }}
 {{ Form::hidden('curr_doctor', $doctor->B_ID, array('id' => $doctor->B_ID, 'class' => 'curr_doctor')) }}
@@ -322,11 +322,43 @@
   <h3>Imagenes</h3>
 </div>
 
-<div class="tab-pane" id="review">
-  <h3>Imagenes</h3>
-</div>
+    <div class="tab-pane" id="review">
+      
+      <h3>Reseñas ({{ $comments->count() }})</h3>
+      <div class="space10"></div>
+      @if ($comments->count())
+        @foreach($comments as $comment)
+          <div class="blog-comment">
+            <div class="user-image">{{ HTML::image($comment->U_profile_image, 'usuario imagen comentario') }}
+            <!--<i class="fa fa-user"></i>--></div> 
+              <div class="comment-data">
+                <h4><a href="{{url('admin/editar/'.$comment->C_user)}}">{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</a>
+                  <span style="font-size:20px">
+                    <?php  $r = $rating = $comment->C_rating ?>
+                    @while($rating)
+                      <span><i class="fa fa-star"></i></span>
+                      <?php $rating--; ?>
+                    @endwhile
+                    @while($r < 5)
+                      <span><i class="fa fa-star-o"></i></span>
+                      <?php $r++; ?>
+                    @endwhile
+                </span></h4>
+                <p>{{ $comment->C_datetime_created }}<a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i></a>
+                  <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i></a></p>
+                <p>{{ $comment->C_content }}</p>
+                <a href="{{url('admin/del_rev/'.$comment->C_ID .'/' . $doctor->B_ID)}}" style="color:red">Eliminar reseña </a>
+                <div class="divider"></div>           
+              </div> 
+            </div>
+        <div class="space30"></div> 
+        @endforeach
+      @else
+        <h5> Aún no hay reseñas para este doctor o negocio médico</h5>
+      @endif
+    </div>
 
-</div>
+  </div>
 </div>
 
 <script>

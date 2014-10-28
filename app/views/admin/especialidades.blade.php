@@ -5,7 +5,7 @@
   {{ Session::get('var') }}
 @endif
 
-<h2 class="sub-header">Administración categorías</h2>
+<h2 class="sub-header">Administración categorías médicas</h2>
 
 
           <center> <a href="categoria/0"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Nueva categoría</button></a> </center>

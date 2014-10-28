@@ -5,13 +5,29 @@
   {{ Session::get('var') }}
 @endif
 
+<?php 
+  $pre = "";
+  $name = "";
+?>
+
+@if( $specialty->S_ID == 0)
+  <?php
+    $name = "Agregar especialidad";
+    ?>
+@else
+  <?php
+    $name = $specialty->S_name;
+    $pre = "Editar especialidad: ";
+  ?>
+@endif
+
 <ol class="breadcrumb">
   <li>{{ link_to('admin/especialidades', 'Categorías médicas') }}</li>
   <li>{{ link_to('admin/categoria/' . $specialty->S_id_category, 'Perfil Categoría') }}</li>
-  <li class="active" style="color:#083D5C">{{ $specialty->S_name }}</li>
+  <li class="active" style="color:#083D5C">{{ $name }}</li>
 </ol>
 
-<h2 class="sub-header">Editar Especialidad:  {{ $specialty->S_name }}</h2>
+<h2 class="sub-header">{{$pre . $name }}</h2>
 
 {{ Form::open(array('url' => 'specialty/update')) }}
 {{ Form::hidden('curr_spe', $specialty->S_ID) }}
@@ -85,6 +101,18 @@
 <br>
 
 <div class="row">
+   <div class="form-group">
+    {{ Form::label('category', 'Categoría', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-3">
+      {{ Form::select('category', $cat, $specialty->S_id_category, ['class' => 'form-control', 'id' => 'category']) }}
+    </div>
+</div>
+
+<br>
+
+<div class="space30"></div>
+
+<div class="row">
   <div class="form-group">
     <div class="col-md-5"></div>
     <div class="col-md-2">
@@ -96,7 +124,6 @@
 {{ Form::close() }}
 
 <script>
-$('#especialidades').addClass('active');
- 
+  $('#especialidades').addClass('active');
 </script>
 @stop

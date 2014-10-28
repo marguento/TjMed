@@ -21,8 +21,13 @@ Route::resource('users', 'UsersController');
 Route::get('admin/', 'AdminController@index');
 Route::get('admin/usuarios', 'AdminController@usuarios');
 Route::get('admin/doctores', 'AdminController@doctores');
+
+Route::get('admin/articulos', 'AdminController@articles');
+Route::get('admin/articulo/{id_a}', 'AdminController@article');
+Route::post('article/update', 'AdminController@art_update');
+
 Route::get('admin/especialidades', 'AdminController@specialties');
-Route::get('admin/especialidad/{id_specialty}', 'AdminController@specialty');
+Route::get('admin/especialidad/{id_specialty}/{id_c}', 'AdminController@specialty');
 Route::post('specialty/update', 'AdminController@spe_update');
 Route::get('admin/categoria/{id_category}', 'AdminController@category');
 Route::post('category/update', 'AdminController@cat_update');
@@ -52,6 +57,8 @@ Route::get('admin/verified/{b_id}', 'AdminController@verified');
 Route::get('admin/disable/{b_id}', 'AdminController@disable');
 Route::post('getStates', 'UsersController@getStates');
 Route::post('getCities', 'UsersController@getCities');
+
+Route::get('admin/del_rev/{c_id}/{doctor}', 'AdminController@del_rev');
 
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));

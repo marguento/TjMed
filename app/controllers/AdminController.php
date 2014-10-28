@@ -17,7 +17,7 @@ class AdminController extends BaseController {
 		{
 			return Redirect::to('/');
 		} 
-		$users = User::all();
+		$users = User::whereU_active(1)->get();
 		return View::make('admin/usuarios', ['users' => $users]);
 	}
 
@@ -32,6 +32,60 @@ class AdminController extends BaseController {
 		$b_cat = BusinessView::all();
 		return View::make('admin/doctores', ['doctores' => $doctores, 'non_doctors' => $non_doctors, 
 											'b_cat' => $b_cat]);
+	}
+
+	public function articles()
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+		$articles = Article::all();
+		return View::make('admin/articulos', ['articles' => $articles]);
+	}
+
+	public function article($id)
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+
+		if($id == 0)
+		{
+			$article = new Article();
+			$article->A_ID = 0;
+		} else {
+			$article = Article::wherea_id($id)->first();
+		}
+		
+		return View::make('admin/art_profile', ['article' => $article]);
+	}
+
+	public function art_update()
+	{
+		if(!Auth::check() || Auth::user()->U_level != 1)
+		{
+			return Redirect::to('/');
+		} 
+
+		if(Input::get('curr_art') == 0)
+		{
+			$article = new Article();
+			$article->A_author = Auth::user()->U_username;
+			$article->A_created_at = date('Y-m-d H:i:s');
+		} else {
+			$article = Article::wherea_id(Input::get('curr_art'))->first();
+			$article->A_updated_at = date('Y-m-d H:i:s');
+		}
+		$article->A_title 			 = Input::get('title_es');
+		$article->A_title_en 		 = Input::get('title_en');
+		$article->A_introduction 	 = Input::get('introduction_es');
+		$article->A_introduction_en = Input::get('introduction_en');
+		$article->A_content 	 = Input::get('content_es');
+		$article->A_content_en  = Input::get('content_en');
+		$article->save();
+		return Redirect::to('admin/articulos');
 	}
 
 	public function specialties()
@@ -67,15 +121,21 @@ class AdminController extends BaseController {
 			return Redirect::to('/');
 		} 
 
-		$specialty 					 = Specialty::wheres_id(Input::get('curr_spe'))->first();
+		if(Input::get('curr_spe') == 0) 
+		{
+			$specialty = new Specialty();
+		} else {
+			$specialty 					 = Specialty::wheres_id(Input::get('curr_spe'))->first();
+		}
 		$specialty->S_name 			 = Input::get('title_es');
 		$specialty->S_name_en 		 = Input::get('title_en');
 		$specialty->S_introduction 	 = Input::get('introduction_es');
 		$specialty->S_introduction_en = Input::get('introduction_en');
 		$specialty->S_description 	 = Input::get('description_es');
 		$specialty->S_description_en  = Input::get('description_en');
+		$specialty->S_id_category 	= Input::get('category');
 		$specialty->save();
-		return Redirect::back();
+		return Redirect::to('admin/categoria/' . $specialty->S_id_category);
 	}
 
 	public function cat_update() 
@@ -114,14 +174,30 @@ class AdminController extends BaseController {
 		return Redirect::to('admin/especialidades');
 	}
 
-	public function specialty($id)
+	public function specialty($id, $cat)
 	{
 		if(!Auth::check() || Auth::user()->U_level != 1)
 		{
 			return Redirect::to('/');
 		} 
-		$specialty = Specialty::wheres_id($id)->first();
-		return View::make('admin/spe_profile', ['specialty' => $specialty]);
+
+		if($id == 0)
+		{
+			$specialty = new Specialty();
+			$specialty->S_ID = 0;
+			$specialty->S_id_category = $cat;
+		} else {
+			$specialty = Specialty::wheres_id($id)->first();
+		}
+		
+		$categories = Category::all();
+		$cat = array();
+		foreach($categories as $c) 
+		{
+			$cat[$c->C_ID] = $c->C_name;
+		}
+		return View::make('admin/spe_profile', ['specialty' => $specialty,
+												'cat' => $cat]);
 	}
 
 	public function edit_doctor($id)
@@ -132,6 +208,7 @@ class AdminController extends BaseController {
 			$categories = Category::all();
 			$cat_v = CategoriesView::whereb_id($id)->get();
 			$tag_v = TagsView::whereb_id($id)->get();
+			$comments = BusinessCommentsView::whereb_id($id)->whereC_active(1)->get();
 			$user_owner = [];
 			foreach($users as $user) {
 				$user_owner[$user->U_username] = $user->U_username;
@@ -140,7 +217,8 @@ class AdminController extends BaseController {
 			return View::make('admin/edit_doctor', ['doctor' => $doctor, 'user_owner' => $user_owner,
 													'categories' => $categories,
 													'cat_v' => $cat_v,
-													'tag_v' => $tag_v]);
+													'tag_v' => $tag_v,
+													'comments' => $comments]);
 		} else {
 			$users = User::all();
 			$user_owner = [];
@@ -252,5 +330,16 @@ class AdminController extends BaseController {
 		          <strong>¡Éxito!</strong> Doctor archivado.
 		        </div>';
         return Redirect::to('admin/doctores')->with('var', $var);
+	}
+
+	public function del_rev($id, $doctor)
+	{
+		$comment = Comment::wherec_id($id)
+				->update(array('C_active' => 0));
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Éxito!</strong> Reseña archivada.
+		        </div>';
+        return Redirect::to('admin/doctores/' . $doctor)->with('var', $var);
 	}
 }

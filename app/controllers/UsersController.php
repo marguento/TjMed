@@ -11,7 +11,7 @@ class UsersController extends BaseController {
 
 	public function index()
 	{
-		$users = User::all();
+		$users = User::whereU_active('1')->get();
 		return View::make('users/index', ['users' => $users]);
 	}
 
@@ -64,7 +64,8 @@ class UsersController extends BaseController {
 	public function destroy($id)
 	{
 		$user = User::whereU_username($id)->first();
-		$user->delete();
+		$user->U_active = 0;
+		$user->save();
 		return Redirect::back();
 	}
 

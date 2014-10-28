@@ -3,7 +3,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#F5F5F5">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">TjMed Administración</a>
+          <a class="navbar-brand" href="{{url('admin')}}"><h5>TjMed Administración</h5></a>
         </div>
         <div class="nav navbar-nav navbar-right" style="margin-right: 0px;width: 500px;">
           <div class="row">
@@ -20,9 +20,9 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mi perfil</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="fa fa-list"></span> Mi perfil</a></li>
               <li role="presentation" class="divider"></li>
-              <li role="presentation">{{ link_to('logout', 'Cerrar sesión') }}<!-- <a role="menuitem" tabindex="-1" href="#">Cerrar sesión</a> --></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url('logout')}}"><span class="fa fa-sign-out"></span> Cerrar sesión</a></li>
             </ul>
           </div>
         </div>
@@ -55,7 +55,5 @@
 
 <script>
 $(document).ready(function() {
-  $('#article_link').click(function () {return false;});
-  $('#comments_link').click(function () {return false;});
 });
 </script>

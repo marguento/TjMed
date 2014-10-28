@@ -97,7 +97,7 @@
 <h3 class="sub-header">Especialidades de esta categoría ({{ $category->s_count }})</h3>
 
 
-          <center> <a href="especialidad/0"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Nueva especialidad</button></a> </center>
+          <center> <a href="../especialidad/0/{{$category->C_ID}}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Nueva especialidad</button></a> </center>
           <div class="space20"></div>
 
           <div class="table-responsive">
@@ -114,7 +114,7 @@
                 @if ($specialties->count())
                 @foreach ($specialties as $specialty)
                 <tr>
-                  <td><a href="../especialidad/{{$specialty->S_ID}}">{{ $specialty->S_name }}</a></td>
+                  <td><a href="../especialidad/{{$specialty->S_ID}}/{{$category->C_ID}}">{{ $specialty->S_name }}</a></td>
                   <td>{{ $specialty->S_introduction }}</td>
                   <td>{{ $specialty->S_name_en }}</td>
                   <td>{{ $specialty->S_introduction_en }}</td>

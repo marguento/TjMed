@@ -173,3 +173,7 @@ ul li a {
 .error_msg {
   color:#e74c3c;
 }
+
+.navbar-brand:hover{
+  color:#0FA1D5 !important;
+}
