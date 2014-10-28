@@ -4,7 +4,7 @@
 <div class="container">  
   <div class="blog-container"> 
     <div class="row"> 
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="breadcrumb-container">
           <div class="container">  
             <div class="row">  
@@ -79,11 +79,18 @@
         <!-- List -->
         <ul class="list-3">
 
+        <p> 
         <h6>Especialidades clínicas</h6>
-          <li><a href="#"><i class="fa fa-caret-right"></i><strong>Cardiología</strong></a></li>
-          <li><a href="#"><i class="fa fa-caret-right"></i> Neumología</a></li>
-          <li><a href="#"><i class="fa fa-caret-right"></i> Neurología</a></li>
-          <li><a href="#"><i class="fa fa-caret-right"></i> Pediatría</a></li>
+          <li>
+             <a href="#"><i class="fa fa-caret-right"></i> Cardiología</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Neumología</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Neurología</a>
+          </li><li>  
+             <a href="#"><i class="fa fa-caret-right"></i> Pediatría</a>
+          </li>
+    </p>
 
         <p> 
     <h6>Especialidades Quirúrgicas</h6>

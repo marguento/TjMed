@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'tjmed',
+			'database'  => 'tjmed_v2',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
