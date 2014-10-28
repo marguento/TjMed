@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-<div class="space60"></div>
+<div class="space20"></div>
 
 <div class="container">
   <ol class="breadcrumb">

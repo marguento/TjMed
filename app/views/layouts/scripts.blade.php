@@ -9,7 +9,7 @@
 	  {{ HTML::script("../app/js/jquery.isotope.min.js") }}
 	  {{ HTML::script("../app/js/jquery.parallax-1.1.3.js") }}
 	  {{ HTML::script("../app/js/jquery.magnific-popup.min.js") }} 
-	  {{ HTML::script("../app/js/retina.js") }} 
+	  <!--{{ HTML::script("../app/js/retina.js") }} -->
 	  {{ HTML::script("../app/js/respond.min.js") }} 
 	  {{ HTML::script("../app/js/scale.fix.js") }}
 	  {{ HTML::script("../app/js/jquery.countdown.js") }} 

@@ -3,10 +3,15 @@
 	<div class="container" style="background-color: #0ab2db; width: 100%;padding-left: 0px;padding-right: 0px;">
 		<div class="container">
 		    <div class="row">
-		        <div class="col-md-1">                    
-			      	<a href={{ url('/') }} title="Home">
-			      		{{ HTML::image('../app/images/Logo_Tj.png', 'logo tjmed', array('id' => 'logo_img')) }}
-			      	</a>
+		        <div class="col-md-1">
+		        <a href={{ url('/') }} title="Home">
+		        	<img src="../app/images/Logo_Tj.png"
+		        		onmouseover="this.src='../app/images/Logo_Tjmed_azulfuerte.png'" 
+		        		onmouseout="this.src='../app/images/Logo_Tj.png'" 
+		        		border="0" 
+		        		alt="" 
+		        		style="padding-bottom: 10px; padding-top: 10px; padding-right: 8px;"/>
+			      	</a>  
 				</div>
 				
 				<div class="col-md-1"></div>
@@ -22,8 +27,29 @@
 									{{ link_to('logout', 'Cerrar sesión') }}
 								@endif
 								
-								&nbsp;<a href="{{ url('es') }}"> {{ HTML::image('../app/images/Icon_es.png', 'español', array('class' => 'lang_img')) }}</a>
+								&nbsp;<a href="{{ url('es') }}">		        	
+											<img src="../app/images/Icon_es.png"
+								        		onmouseover="this.src='../app/images/Es_Fuerte.png'" 
+								        		onmouseout="this.src='../app/images/Icon_es.png'" 
+								        		border="0" 
+								        		alt=""
+								        		style="width: 3%;"
+								        		/>
+												</a>
+
+								&nbsp;<a href="{{ url('en') }}">		        	
+											<img src="../app/images/Icon_es.png"
+								        		onmouseover="this.src='../app/images/en_AZUL.png'" 
+								        		onmouseout="this.src='../app/images/En_Blanco.png'" 
+								        		border="0" 
+								        		alt=""
+								        		style="width: 3%;"
+								        		/>
+												</a>												
+								<!--
+								&nbsp;<a href="{{ url('en') }}"> {{ HTML::image('../app/images/Icon_es.png', 'ingles', array('class' => 'lang_img')) }}</a>				
 								&nbsp;<a href="{{ url('en') }}"> {{ HTML::image('../app/images/icon_en.png', 'ingles', array('class' => 'lang_img')) }}</a>
+								-->
 							</li>
 						</ul>
 					</div>

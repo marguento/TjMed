@@ -1,6 +1,7 @@
 @extends('layouts.default')
 @section('content')
 
+<div class="space20"></div>
 <div class="container">  
   <ol class="breadcrumb">
     <li>{{ link_to('articulos', 'Volver a artículos') }}</li>
