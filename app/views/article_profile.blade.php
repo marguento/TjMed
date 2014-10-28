@@ -40,7 +40,7 @@
               @endif
               </span>
             </h2>
-            <img src="../../app/images_server/{{ $article->A_image }}" alt="" width="1140" height="456">
+            <img src="../../app/images/{{ $article->A_image }}" alt="" width="1140" height="456">
             <div class="space25"></div> 
               Categorías: <?php $i = 0; ?>
               @foreach ($categories as $c)
@@ -125,26 +125,17 @@
             </p>
             <p> 
               <h6>Especialidades médico quirúrgicas</h6>
-              <li>  
-                 <a href="#"><i class="fa fa-caret-right"></i> Estomatología</a>
-              </li><li>
-                 <a href="#"><i class="fa fa-caret-right"></i> Oftalmología</a>
-              </li><li>    
-                 <a href="#"><i class="fa fa-caret-right"></i> Otorrinolaringología</a>
-              </li><li>  
-                 <a href="#"><i class="fa fa-caret-right"></i> Urología</a>
-              </li>
+              <li><a href="#"><i class="fa fa-caret-right"></i> Estomatología</a></li>
+              <li><a href="#"><i class="fa fa-caret-right"></i> Oftalmología</a></li>
+              <li><a href="#"><i class="fa fa-caret-right"></i> Otorrinolaringología</a></li>
+              <li><a href="#"><i class="fa fa-caret-right"></i> Urología</a></li>
             </p>
             <p> 
               <h6>Especialidades de laboratorio o diagnósticas</h6>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Inmunología</a>
-              </li><li>
-                 <a href="#"><i class="fa fa-caret-right"></i> Patológica</a>
-              </li><li>    
-                 <a href="#"><i class="fa fa-caret-right"></i> Microbiología</a>
-              </li><li>  
-                 <a href="#"><i class="fa fa-caret-right"></i> Neurofisiología</a>
-              </li>
+              <li><a href="#"><i class="fa fa-caret-right"></i> Inmunología</a></li>
+              <li><a href="#"><i class="fa fa-caret-right"></i> Patológica</a></li>
+              <li><a href="#"><i class="fa fa-caret-right"></i> Microbiología</a></li>
+              <li><a href="#"><i class="fa fa-caret-right"></i> Neurofisiología</a></li>
             </p>        
           </ul>
           <!-- List End -->

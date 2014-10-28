@@ -3,12 +3,10 @@
 <!-- Slider -->
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
       <img src="../app/images/{{ Lang::get('messages.banner1') }}" alt="...">
       <div class="carousel-caption">
-        ...
       </div>
     </div>
     <div class="item">
@@ -20,7 +18,7 @@
     ...
   </div>
 </div>
-<div class="space30"></div>
+<div class="space40"></div>
 
 <!--PRIMER RENGLON -->
 <div>
@@ -38,8 +36,8 @@
       </div>     
     </div>
   </div>
-  <div class="space70"></div>
-</div> 
+</div>   
+<div class="space70"></div>
 
 <!-- SEGUNDO RENGLON -->
 <div>
@@ -54,7 +52,7 @@
             <div class="img-container">
                 <img src="../app/images/E_Clinicas.png" alt="" width="263" height="263">       
             </div>
-            <div class="title">
+            <div class="title" style="margin-bottom: 0px;">
               <a href="{{ url('categoria/1') }}">
                 <h4>{{ Lang::get('messages.category_1') }}</h4>
                 <br>
@@ -66,7 +64,7 @@
             <div class="img-container">
                 <img src="../app/images/E_quiru.png" alt="" width="263" height="263">         
             </div>
-            <div class="title">
+            <div class="title" style="margin-bottom: 0px;">
               <a href="{{ url('categoria/2') }}">          
                 <h4>{{ Lang::get('messages.category_2') }}</h4>
                 <br>
@@ -78,7 +76,7 @@
             <div class="img-container">
                 <img src="../app/images/E_medicoquiru.png" alt="" width="263" height="263">         
             </div>
-            <div class="title">
+            <div class="title" style="margin-bottom: 0px;">
               <a href="{{ url('categoria/3') }}">          
                 <h4>{{ Lang::get('messages.category_3') }}</h4>
                 <br>
@@ -90,7 +88,7 @@
             <div class="img-container">
                 <img src="../app/images/E_Laboratorio.png" alt="" width="263" height="263">        
             </div>
-            <div class="title">
+            <div class="title" style="margin-bottom: 0px;">
               <a href="{{ url('categoria/4') }}">
                 <h4>{{ Lang::get('messages.category_4') }}</h4>
                 <br>
@@ -102,7 +100,7 @@
             <div class="img-container">
                 <img src="../app/images/E_Odonto.png" alt="" width="263" height="263">   
             </div>
-            <div class="title">
+            <div class="title" style="margin-bottom: 0px;">
               <a href="{{ url('especialidad/28') }}">
                 <h4>{{ Lang::get('messages.especiality_1') }}</h4>
                 <br>
@@ -114,7 +112,7 @@
             <div class="img-container">
                 <img src="../app/images/E_Odonto.png" alt="" width="263" height="263">   
             </div>
-            <div class="title">
+            <div class="title" style="margin-bottom: 0px;">
               <a href="{{ url('especialidad/28') }}">
                 <h4>{{ Lang::get('messages.especiality_2') }}</h4>
                 <br>
@@ -126,8 +124,8 @@
 
     </div>
   </div>
-  <div class="space40"></div>
 </div>
+<div class="space40"></div>
 
 <!-- TERCER RENGLON -->
 <div>      
@@ -145,11 +143,9 @@
           @if ($articles->count())
             @foreach ($articles as $article)
           <div class="col-md-4 col-sm-6">    
-            <div class="item-box">
+            <div class="item-box" style="padding-bottom: 0px;">
               <div class="media-container">
                 {{ HTML::image('../app/images_server/' . $article->A_image) }}
-                <!-- <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
-                <a href="../app/images/{{ $article->A_image }}" class="icon-right"><i class="fa fa-arrows-alt"></i></a> -->
               </div>
               <div class="info-container">
                 <a href="{{ url('articulo/' . $article->A_ID) }}"><h3>{{ $article->A_title}}</h3></a>
@@ -178,7 +174,7 @@
                      ({{ $article->rating }})
                   @endif
                    | <a href="{{ url('articulo/' . $article->A_ID) }}#comments">{{ $article->article_count }} Comentario(s)</a></h4>
-                <p style="height:100px" align="justify"> {{ substr($article->A_introduction,0,150) }} </p>
+                <p style="height:100px;margin-bottom: 0px;" align="justify"> {{ substr($article->A_introduction,0,150) }} </p>
               </div>
             </div>         
           </div>
@@ -196,7 +192,8 @@
             <h3>{{ Lang::get('messages.tittle_3') }}</h3>
           </div>  
         </div>
-
+        <div class="oslotron">
+          <center>          
           <h4>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h4>
           @if(Auth::user()->U_facebook != "")
             <img src="{{Auth::user()->U_profile_image}}" style="width: 60px;">
@@ -212,9 +209,10 @@
               <strong> 0 </strong> Favoritos <br>
               <strong> 0 </strong> Reviews <br>
               <strong> 0 </strong> Pictures <br>
-            </p>
-
+            </p> 
             <a href="{{url('perfil')}}"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
+        </center>
+        </div>         
         <div class="space40"></div>
       </div>
 
@@ -388,7 +386,7 @@
             <h3>{{ Lang::get('messages.tittle_5') }}</h3>
           </div>  
         </div>
-        <iframe width="250" height="200" src="//www.youtube.com/embed/tYraOn7zHR8" frameborder="0" allowfullscreen></iframe>  
+        <iframe src="//player.vimeo.com/video/110233033" width="250" height="170" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
       </div>
         
       <div class="col-md-9"> 

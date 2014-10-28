@@ -107,9 +107,7 @@
 				<div class="row">
 					<div class="col-md-8 col-sm-8">
 						<div class="copyright-info">
-							<i>
 							  {{ Lang::get('messages.copyright') }}
-							</i>
 						</div>
 					</div>  
 				</div> 

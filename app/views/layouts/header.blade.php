@@ -38,7 +38,7 @@
 												</a>
 
 								&nbsp;<a href="{{ url('en') }}">		        	
-											<img src="../app/images/Icon_es.png"
+											<img src="../app/images/En_Blanco.png"
 								        		onmouseover="this.src='../app/images/en_AZUL.png'" 
 								        		onmouseout="this.src='../app/images/En_Blanco.png'" 
 								        		border="0" 
