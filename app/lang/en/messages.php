@@ -1,6 +1,6 @@
 <?php
 	return array(
-		//Footer
+		//Header
 		'register'			=> 'Register',
 		'log_out'			=> 'Log In',	
 		'doctors'			=> 'Doctors',	
@@ -34,6 +34,32 @@
 		'tittle_5'			=> 'SPOT TJMED',
 		'tittle_6'			=> 'RECIENTES RESEÑAS',		
 		'tittle_7'			=> 'RECENT REVIEWS',									 	
-		'banner1' => '3bb.png',
-		'banner2' => '4bb.png'
+		'banner1' 			=> '3bb.png',
+		'banner2' 			=> '4bb.png',
+		//Footer
+		'footer_photo'		=> 'Most importantly, your health! our commitment to honesty',
+		'copyright'			=> '© 2014 TjMed. All rights reserved.',
+		//Quienes Somos?
+		'about_us_text1'	=> 'We are a young team with experience in the medical services sector committed to the patient and 
+								aware of the need to offer them a quick and reliable to way to find the right doctor for any type 
+								of health problems in our community. As our slogan says <strong>"Your health is first, our 
+								commitment is honesty”.</strong>',
+		'about_us_text2'	=>	'Our database is powered by the contributions, comments and ratings that our users provide, 
+								giving each of them the opportunity to be a part of a community while respecting the views with 
+								full responsibility and legality.',
+		'mision'			=> 'MISSION',
+		'mision_text'		=> 'To be the lead provider of reliable information about the medical services available in the 
+								region through the proposals, reviews and qualifications of members of the community, based on 
+								honesty and experience, committed to the patients and health professionals, with the firm 
+								intention of helping the community find an optimal solution to their health needs.',
+		'vision'			=> 'VISION',
+		'vision_text'		=> 'Create the best patient community with its own identity, based on the principles of honesty, 
+								trust and respect for community members and those seeking to provide accessible, safe, efficient,
+								 caring and quality medical services that the patient deserve.',
+		'ceo_words'			=> '"The quest for better health care options and the opportunity to acquire off 
+								the United States, without displacement generates large costs for residents of the 
+								region have led the region with the most potential medical tourism in the world. The medical care 
+								offered in the tourist corridor, from Algodones in the municipality of Mexicali, until 
+								Ensenada, are top quality and at prices much more affordable than in the state of California.',
+		'tj_med'			=> '<strong>Omar Tumalan</strong>, TjMed.'		
 	);
