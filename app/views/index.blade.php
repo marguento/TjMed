@@ -52,7 +52,7 @@
 
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/esp_clin.png" alt="" width="263" height="263">       
+                <img src="../app/images/E_Clinicas.png" alt="" width="263" height="263">       
             </div>
             <div class="title">
               <a href="{{ url('categoria/1') }}">
@@ -64,7 +64,7 @@
 
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/esp_quir.png" alt="" width="263" height="263">         
+                <img src="../app/images/E_quiru.png" alt="" width="263" height="263">         
             </div>
             <div class="title">
               <a href="{{ url('categoria/2') }}">          
@@ -76,7 +76,7 @@
 
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/esp_med.png" alt="" width="263" height="263">         
+                <img src="../app/images/E_medicoquiru.png" alt="" width="263" height="263">         
             </div>
             <div class="title">
               <a href="{{ url('categoria/3') }}">          
@@ -88,7 +88,7 @@
 
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/esp_lab.png" alt="" width="263" height="263">        
+                <img src="../app/images/E_Laboratorio.png" alt="" width="263" height="263">        
             </div>
             <div class="title">
               <a href="{{ url('categoria/4') }}">
@@ -100,7 +100,7 @@
 
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/esp_den.png" alt="" width="263" height="263">   
+                <img src="../app/images/E_Odonto.png" alt="" width="263" height="263">   
             </div>
             <div class="title">
               <a href="{{ url('especialidad/28') }}">
@@ -112,7 +112,7 @@
 
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/esp_den.png" alt="" width="263" height="263">   
+                <img src="../app/images/E_Odonto.png" alt="" width="263" height="263">   
             </div>
             <div class="title">
               <a href="{{ url('especialidad/28') }}">

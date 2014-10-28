@@ -385,8 +385,129 @@
         </div>
 
             <div class="tab-pane" id="tab1-4">
-              <h3>Mis negocios</h3>
-         <p></p>
+              <h3>Mis Fotos</h3>
+         <section id="portfolio-items" style="position: relative; overflow: hidden; height: 426px;" class="isotope">            
+      <ul class="row portfolio popup-gallery">   
+
+        <li> 
+          <!-- Gallery Item -->
+          <article class="col-md-2 col-sm-4 col-xs-6 project html bootstrap isotope-item" data-tags="bootstrap,html" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+            <div class="container-image">
+              <!-- Image -->
+              <img src="img/gallery/01@2x.jpg" alt="" width="213" height="213">
+              <!-- Item Link -->  
+              <a href="img/gallery/01.jpg" title="">
+                <!-- Icon -->  
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+          <!-- Gallery Item End -->
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project html wordpress photography isotope-item" data-tags="photography,wordpress,html" style="position: absolute; left: 0px; top: 0px; transform: translate3d(212px, 0px, 0px);">
+            <div class="container-image">
+              <img src="http://www.entiri.com/riley-1.3/img/gallery/01.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/02.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project photography isotope-item" data-tags="photography" style="position: absolute; left: 0px; top: 0px; transform: translate3d(424px, 0px, 0px);">
+            <div class="container-image">
+              <img src="img/gallery/03@2x.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/03.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project bootstrap html isotope-item" data-tags="html,bootstrap" style="position: absolute; left: 0px; top: 0px; transform: translate3d(636px, 0px, 0px);">
+            <div class="container-image">
+              <img src="img/gallery/04@2x.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/04.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project bootstrap webdesign isotope-item" data-tags="webdesign,bootstrap" style="position: absolute; left: 0px; top: 0px; transform: translate3d(848px, 0px, 0px);">
+            <div class="container-image">
+              <img src="img/gallery/05@2x.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/05.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project html wordpress isotope-item" data-tags="wordpress,html" style="position: absolute; left: 0px; top: 0px; transform: translate3d(1060px, 0px, 0px);">
+            <div class="container-image">
+              <img src="img/gallery/06@2x.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/06.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project bootstrap webdesign isotope-item" data-tags="webdesign,bootstrap" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 213px, 0px);">
+            <div class="container-image">
+              <img src="img/gallery/07@2x.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/07.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project bootstrap html photography isotope-item" data-tags="photography,html,bootstrap" style="position: absolute; left: 0px; top: 0px; transform: translate3d(212px, 213px, 0px);">
+            <div class="container-image">
+              <img src="img/gallery/08@2x.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/08.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project webdesign html isotope-item" data-tags="html,webdesign" style="position: absolute; left: 0px; top: 0px; transform: translate3d(424px, 213px, 0px);">
+            <div class="container-image">
+              <img src="img/gallery/09@2x.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/09.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+        <li> 
+          <article class="col-md-2 col-sm-4 col-xs-6 project bootstrap photography isotope-item" data-tags="photography,bootstrap" style="position: absolute; left: 0px; top: 0px; transform: translate3d(636px, 213px, 0px);">
+            <div class="container-image">
+              <img src="img/gallery/10@2x.jpg" alt="" width="213" height="213">  
+              <a href="img/gallery/10.jpg" title="">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+          </article>
+        </li> 
+          
+ 
+    
+      </ul>              
+    </section>
               </div> 
           </div>
           
