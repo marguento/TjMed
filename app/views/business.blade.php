@@ -47,7 +47,7 @@
 		<div class="container">
 		  <div class="row">
 		    <div class="col-md-2"> 
-            {{ HTML::image('../app/images/' . $bus->b_image, 'Doctor default picture') }} 
+            {{ HTML::image('../app/images_server/' . $bus->b_image, 'Doctor default picture') }} 
 		      <div class="space40"></div>
 		    </div>  
 		    <div class="col-md-6">
@@ -94,17 +94,30 @@
 		      <p align="justify">
 		        {{ $bus->b_introduction }}
 		      </p>
-          <span> {{ $bus->b_email }} </span><br>
-          <span> {{ $bus->b_telephone }} </span><br>
-          <span> {{ $bus->b_address }} </span>
           <div class="social-container">
             <div class="social-2">
-              @if($bus->b_facebook != '')
-                <a href="{{ url('www.facebook.com/' . $bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
-              @endif
-              @if($bus->b_twitter != '')
-                <a href="{{ url('www.twitter.com/' . $bus->b_twitter) }}"><i class="fa fa-twitter"></i></a>
-              @endif
+              <a style="cursor: pointer;"><i class="fa fa-envelope-o"></i></a>
+                <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $bus->b_telephone }}">
+                  <i class="fa fa-phone"></i>
+                </a>
+                <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $bus->b_address }}">
+                  <i class="fa fa-map-marker"></i>
+                </a>
+                @if($bus->b_facebook != '')
+                  <a href="{{ url('//www.facebook.com/' . $bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
+                @endif
+                @if($bus->b_twitter != '')
+                  <a href="{{ url('//www.twitter.com/' . $bus->b_twitter) }}"><i class="fa fa-twitter"></i></a>
+                @endif
+                @if($bus->b_youtube != '')
+                  <a href="{{ url('//www.youtube.com/user/' . $bus->b_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                @endif
+                @if($bus->b_linkedin != '')
+                  <a href="{{ url('//www.linkedin.com/in/' . $bus->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                @endif
+                @if($bus->b_website != '')
+                  <a href="{{ url('//' . $bus->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+                @endif
             </div>  
           </div>              
 		      <div class="space20"></div> 

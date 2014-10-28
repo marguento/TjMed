@@ -2,8 +2,8 @@
 @section('content_admin')
 
 <h2 class="sub-header">Administración de usuarios</h2>
-      <form class="form-inline" role="form">
-        <div class="form-group">
+      <!-- <form class="form-inline" role="form">
+         <div class="form-group">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
               <span class="fa fa-users dash"></span>
@@ -17,11 +17,11 @@
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="fa fa-star-o dash"></span>Nuevos</a></li>
             </ul>
           </div>
-        </div>
+        </div> 
         <div class="form-group">
           <button type="button" class="btn btn-primary">Filtrar</button>
         </div>
-      </form>
+      </form> -->
         <div class="space20"></div>
         <div class="table-responsive">
 

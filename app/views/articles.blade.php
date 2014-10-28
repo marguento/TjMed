@@ -4,7 +4,7 @@
 <div class="container">  
   <div class="blog-container"> 
     <div class="row"> 
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="breadcrumb-container">
           <div class="container">  
             <div class="row">  
@@ -20,14 +20,14 @@
           <!-- Blog Post -->
             <div class="space30"></div>
             <h2><a href="{{ url('articulo/' . $article->A_ID) }}">{{ $article->A_title}}</a></h2>
-            <img src="../app/images/{{ $article->A_image }}" alt="" width="1140" height="456">
+            <img src="../app/images_server/{{ $article->A_image }}" alt="" width="640" height="356">
             <div class="space25"></div>
             <a href="#"> Categoría </a>
             <div class="space10"></div>
             
             <div class="post-info-container">
               <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-6">
                   <div class="post-info">
                     <span class="post-data">
                       <i class="fa fa fa-user"></i> <a href="#">{{ $article->author_name }}</a>
@@ -38,7 +38,7 @@
                    
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                    <div class="post-info">
                     <span class="post-data">  
                       <i class="fa fa-tag"></i> <span class="tags"><a href="#">Etiqueta 1</a> | <a href="#">Etiqueda 2</a></span>

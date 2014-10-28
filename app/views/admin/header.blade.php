@@ -18,6 +18,7 @@
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js') }}
     {{ HTML::script('../app/js/admin.bootstrap.js') }}
+    {{ HTML::script('../app/js/jasny-bootstrap.min.js') }}
     {{ HTML::script('../app/js/ckeditor/ckeditor.js') }}
     {{ HTML::script('../app/js/tinymce.min.js') }}
     {{ HTML::script('../app/js/jquery.dataTables.min.js') }}

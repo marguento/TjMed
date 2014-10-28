@@ -8,7 +8,7 @@
 <h2 class="sub-header">Agregar doctor</h2>
 <div class="space20"></div>
 
-{{ Form::open(array('url' => 'doctores/store')) }}
+{{ Form::open(array('url' => 'doctores/store', 'files' =>true)) }}
 {{ Form::hidden('add_user', 1) }}
 
 <div class="row">
@@ -88,20 +88,23 @@
 
 <br>
 
+<h5> Imagenes menores de 2MB </h5>
 <div class="row">
   <div class="form-group">
     <div class="col-md-2"></div>
     <div class="col-md-4">
-      <div class="fileinput fileinput-exists" data-provides="fileinput">
-        <div class="fileinput-exists thumbnail" style="width: 200px; height: 200px;">
-          <img id="input_image" src="">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail" style="width: 200px; height: 130px;">
+            {{ HTML::image('../app/images/default.jpg') }}
         </div>
-        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
         <div>
-          <span class="btn btn-default btn-file"><span class="fileinput-new">Selecciona imagen principal</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+          <input type="file" name="image"></span>
           <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
         </div>
       </div>
+      <span class="error_msg">{{ $errors->first('b_image') }}</span>
     </div>
 
     {{ Form::label('priority', 'Prioridad', array('class' => 'col-sm-2 control-label')) }}

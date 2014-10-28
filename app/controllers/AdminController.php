@@ -17,7 +17,7 @@ class AdminController extends BaseController {
 		{
 			return Redirect::to('/');
 		} 
-		$users = User::whereU_active(1)->get();
+		$users = User::whereU_active(1)->orderBy('U_created_at', 'desc')->get();
 		return View::make('admin/usuarios', ['users' => $users]);
 	}
 
@@ -84,6 +84,16 @@ class AdminController extends BaseController {
 		$article->A_introduction_en = Input::get('introduction_en');
 		$article->A_content 	 = Input::get('content_es');
 		$article->A_content_en  = Input::get('content_en');
+		if (Input::hasFile('image'))
+		{
+		    $article->A_image = Input::file('image')->getClientOriginalName();
+		    $destinationPath = app_path() . '/images_server';
+			$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+
+			Input::file('image')->move($destinationPath, $fileName);
+
+			$article->A_image = $fileName;
+		} 
 		$article->save();
 		return Redirect::to('admin/articulos');
 	}

@@ -11,6 +11,8 @@
 <!-- Styles -->
 {{ HTML::style('../app/styles/style.css') }}
 
+{{ HTML::style('../app/styles/jasny-bootstrap.min.css') }}
+
 <!-- LayerSlider Styles -->
 <link href="http://www.entiri.com/riley-1.3/layerslider/css/layerslider.css" rel="stylesheet">
 						   

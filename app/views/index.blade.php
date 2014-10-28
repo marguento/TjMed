@@ -147,7 +147,7 @@
           <div class="col-md-4 col-sm-6">    
             <div class="item-box">
               <div class="media-container">
-                <img src="../app/images/{{ $article->A_image }}" alt="Article image">
+                {{ HTML::image('../app/images_server/' . $article->A_image) }}
                 <!-- <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
                 <a href="../app/images/{{ $article->A_image }}" class="icon-right"><i class="fa fa-arrows-alt"></i></a> -->
               </div>
@@ -197,17 +197,24 @@
           </div>  
         </div>
 
-        <blockquote> 
-          <h4></h4>
-            <!--<img src="" style="width: 60px;"> -->
+          <h4>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h4>
+          @if(Auth::user()->U_facebook != "")
+            <img src="{{Auth::user()->U_profile_image}}" style="width: 60px;">
+          @else
+            @if(Auth::user()->U_profile_image != "")
+              <img src="../app/images_server/{{Auth::user()->U_profile_image}}" style="width: 60px;">
+            @else
+              <img src="../app/images/default_picture.png" style="width: 60px;">
+            @endif
+          @endif
+            <br><br>
             <p>
               <strong> 0 </strong> Favoritos <br>
               <strong> 0 </strong> Reviews <br>
               <strong> 0 </strong> Pictures <br>
             </p>
 
-            <a href=""><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
-        </blockquote>
+            <a href="{{url('perfil')}}"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
         <div class="space40"></div>
       </div>
 
@@ -277,7 +284,7 @@
           <div class="col-md-4">    
             <div class="item-box-2">
               <div class="media-container">
-                <a href="{{ url('doctor/'.$bus->B_ID) }}" ><img src="../app/images/{{ $bus->b_image }}" alt="" width="360" height="360"></a>
+                <a href="{{ url('doctor/'.$bus->B_ID) }}" ><img src="{{url('../app/images_server/'.$bus->b_image)}}" alt="" width="360" height="360"></a>
 
                 
                 <!-- 

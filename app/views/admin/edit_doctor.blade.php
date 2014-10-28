@@ -15,14 +15,13 @@
 <ul class="nav nav-tabs">
   <li class="active"><a href="#principal" data-toggle="tab">Datos Principales</a></li>
   <li><a href="#extra" data-toggle="tab">Categorías y Etiquetas</a></li>
-  <li><a href="#images" data-toggle="tab">Imagenes</a></li>
   <li><a href="#review" data-toggle="tab">Reseñas</a></li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane fade in active" id="principal">
 
-{{ Form::open(array('url' => 'doctores/update')) }}
+{{ Form::open(array('url' => 'doctores/update', 'files' => true)) }}
 {{ Form::hidden('curr_doctor', $doctor->B_ID, array('id' => $doctor->B_ID, 'class' => 'curr_doctor')) }}
 
 <div class="row">
@@ -34,7 +33,7 @@
 
     {{ Form::label('created_user', 'Creado por:', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
-      <span> {{ $doctor->b_created_user }} </span>
+      <span> <a href="{{url('admin/editar/'.$doctor->b_created_user)}}">{{ $doctor->b_created_user }}</a> </span>
     </div>
   </div>
 </div>
@@ -132,17 +131,23 @@
 
 <br>
 
+<h5> Imagenes menores de 2MB </h5>
 <div class="row">
   <div class="form-group">
     <div class="col-md-2"></div>
     <div class="col-md-4">
-      <div class="fileinput fileinput-exists" data-provides="fileinput">
-        <div class="fileinput-exists thumbnail" style="width: 200px; height: 200px;">
-          <img id="input_image" src="../../app/images/{{ $doctor->b_image }}">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail" style="max-width: 300px; max-height:270px;">
+          @if($doctor->b_image !="")
+            {{ HTML::image('../app/images_server/' . $doctor->b_image) }}
+          @else
+            {{ HTML::image('../app/images/default.jpg') }}
+          @endif
         </div>
-        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
         <div>
-          <span class="btn btn-default btn-file"><span class="fileinput-new">Selecciona imagen principal</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+          <input type="file" name="image"></span>
           <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
         </div>
       </div>
@@ -150,7 +155,7 @@
 
     {{ Form::label('priority', 'Prioridad', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
-      {{ Form::select('priority', ['0', '1'], $doctor->b_priority, ['class' => 'form-control', 'id' => 'priority']) }}
+      {{ Form::select('priority', ['Negocio Básico', 'Negocio Premium'], $doctor->b_priority, ['class' => 'form-control', 'id' => 'priority']) }}
     </div>
 
 
@@ -315,11 +320,6 @@
     </tbody>
   </table> 
 
-</div>
-
-
-<div class="tab-pane" id="images">
-  <h3>Imagenes</h3>
 </div>
 
     <div class="tab-pane" id="review">

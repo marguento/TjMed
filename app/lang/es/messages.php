@@ -2,16 +2,16 @@
 	return array(
 		//Header
 		'register'			=> 'Registrarme',	
-		'log_out'			=> 'Iniciar Sesion',	
+		'log_out'			=> 'Iniciar Sesión',	
 		'doctors'			=> 'Doctores',	
-		'articles'			=> 'Articulos',	
-		'about_us'			=> '¿Quienes Somos?',
+		'articles'			=> 'Artículos',	
+		'about_us'			=> '¿Quiénes Somos?',
 		'contact'			=> 'Contacto',
 		'search_text'		=> 'Estoy Buscando...',		
 
 		//Index
-		'home' 				=> 'Home',				
-		'welcome_title' 	=> '¿Estas buscando un médico?',
+		'home' 				=> 'Inicio',				
+		'welcome_title' 	=> '¿Estás buscando un médico?',
 		'welcome_content'	=> ' TjMed te ayuda a encontrar lo que buscas al alcance de un click, 
 								tenemos la más grande base de datos 
 				                de médicos, doctores, clínicas en Tijuana.

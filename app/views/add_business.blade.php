@@ -108,24 +108,23 @@
 
 <br>
 <p> Agrega una imagen representativa del negocio, esto ayudará a verificar más facilmente la autenticidad del negocio</p>
+<h5> Imagenes menores de 2MB </h5>
 <div class="row">
   <div class="form-group">
-     {{ Form::label('image', 'Imagen (*)', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-2"></div>
     <div class="col-md-4">
-      {{ Form::file('image') }}
-      <span class="error_msg">{{ $errors->first('b_image') }}</span>
-     <!--  <input type="file" name="image_business"> -->
-      <!-- <div class="fileinput fileinput-exists" data-provides="fileinput">
-        <div class="fileinput-exists thumbnail" style="width: 200px; height: 200px;">
-          <img id="input_image" src="">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail" style="width: 200px; height: 130px;">
+            {{ HTML::image('../app/images/default.jpg') }}
         </div>
-        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
         <div>
-          <span class="btn btn-default btn-file"><span class="fileinput-new">Selecciona imagen principal</span><span class="fileinput-exists">Change</span>
-          </span>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+          <input type="file" name="image"></span>
           <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
         </div>
-      </div> -->
+      </div>
+      <span class="error_msg">{{ $errors->first('b_image') }}</span>
     </div>
 
 

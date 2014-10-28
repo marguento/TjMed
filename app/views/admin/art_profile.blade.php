@@ -62,13 +62,26 @@
   </div>
 </div>
 <br>
-<p> Agrega una imagen representativa del artículo</p>
+<p> Agrega una imagen representativa del artículo (imagen menor de 2 MB)</p>
 <div class="row">
   <div class="form-group">
-     {{ Form::label('image', 'Imagen (*)', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-2"></div>
     <div class="col-md-4">
-      {{ Form::file('image') }}
-      <span class="error_msg">{{ $errors->first('A_image') }}</span>
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail" style="max-width: 300px; max-height:270px;">
+          @if($article->A_image !="")
+            {{ HTML::image('../app/images_server/' . $article->A_image) }}
+          @else
+            {{ HTML::image('../app/images/default.jpg') }}
+          @endif
+        </div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
+        <div>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+          <input type="file" name="image"></span>
+          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

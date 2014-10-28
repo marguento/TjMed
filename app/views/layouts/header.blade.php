@@ -23,7 +23,7 @@
 									<a href="registrar"> {{ Lang::get('messages.register') }} -</a>  
 									<a href="#" data-toggle="modal" data-target="#myModal"> {{ Lang::get('messages.log_out') }}</a>
 								@else
-									<a href="#"> {{ Auth::user()->U_firstname }} {{ Auth::user()->U_lastname }}</a> |
+									<a href="{{url('perfil')}}"> {{ Auth::user()->U_firstname }} {{ Auth::user()->U_lastname }}</a> |
 									{{ link_to('logout', 'Cerrar sesión') }}
 								@endif
 								

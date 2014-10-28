@@ -32,7 +32,7 @@
                 @if ($doctores->count())
                 @foreach ($doctores as $doctor)
                 <tr>
-                  <td><img class="user_img" src="../../app/images/{{ $doctor->b_image }}"></td>
+                  <td>{{ HTML::image('../app/images_server/' . $doctor->b_image) }}</td>
 
                   <td><a href="doctores/{{$doctor->B_ID}}">{{ $doctor->b_name }}</a></td>
                  <td>{{ $doctor->b_introduction }} </td>
@@ -81,7 +81,7 @@
                   @foreach ($non_doctors as $doctor)
                 <tr>
                   <td><a href="#" data-toggle="modal" data-target="#verified_doc">{{ $doctor->b_name}} <!-- <span class="label label-success">Nuevo</span> --></a></td>
-                  <td><a href="#">{{ $doctor->b_created_user }}</a></td>
+                  <td><a href="{{url('admin/editar/'.$doctor->b_created_user)}}" target="_blank">{{ $doctor->b_created_user }}</a></td>
                   <td>{{ $doctor->b_joined_date }}</td>
                   <td>
                     <h6 style="color:#0AB2DB; margin-bottom: 0px; font-size:12px">
@@ -116,7 +116,24 @@
 
       <div class="space20"></div>
 
-
+<div class="modal fade" id="verified_doc">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Verificar doctor</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="verificar">Verificar</button>
+        <button type="button" class="btn btn-default" id="descartar">Descartar</button> 
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 

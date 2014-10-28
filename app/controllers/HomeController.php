@@ -60,7 +60,14 @@ class HomeController extends BaseController {
 
 	public function profile()
 	{
-		return View::make('user_profile');
+		$countries = Country::all();
+		if (Auth::user()->U_country != "")
+		{
+			$user_c = Auth::user()->U_country;
+		} else {
+			$user_c = 157;
+		}
+		return View::make('user_profile', ['countries' => $countries, 'user_c' => $user_c]);
 	}
 
 	public function register()
@@ -75,13 +82,13 @@ class HomeController extends BaseController {
 	public function switch_spanish() 
 	{
 		Session::put('my.locale', 'es');
-		return Redirect::to('/');
+		return Redirect::back();
 	}
 
 	public function switch_english() 
 	{
 		Session::put('my.locale', 'en');
-		return Redirect::to('/');
+		return Redirect::back();
 	}
 
 }

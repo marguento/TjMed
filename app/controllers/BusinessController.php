@@ -91,9 +91,22 @@ class BusinessController extends BaseController {
 		$doctor->b_updated_at	= date('Y-m-d H:i:s');
 		$doctor->b_user_owner	= Input::get('user_owner');
 		// print_r($doctor);
+		if (Input::hasFile('image'))
+		{
+		    $doctor->b_image = Input::file('image')->getClientOriginalName();
+		} 
 		if (!$doctor->isValid(Input::get('curr_doctor')))
 		{
 			return Redirect::back()->withInput()->withErrors($doctor->errors);
+		}
+		if (Input::hasFile('image'))
+		{
+			$destinationPath = app_path() . '/images_server';
+			$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+
+			Input::file('image')->move($destinationPath, $fileName);
+
+			$doctor->b_image = $fileName;
 		}
 
 		$doctor->save();
@@ -141,14 +154,12 @@ class BusinessController extends BaseController {
 			$doctor->b_priority 	= Input::get('priority');
 		}
 
-
 		if (Input::hasFile('image'))
 		{
 		    $doctor->b_image = Input::file('image')->getClientOriginalName();
 		} else {
 			$doctor->b_image = "";
 		}
-		
 		
 		if (!$doctor->isValid(0))
 		{
@@ -160,13 +171,9 @@ class BusinessController extends BaseController {
 
 		Input::file('image')->move($destinationPath, $fileName);
 
+		$doctor->b_image = $fileName;
 		$doctor->save();
 
-		$specialty = new BusinessHasSpecialties();
-		$specialty->businesses_B_ID = $doctor->B_ID;
-		$specialty->specialties_S_ID = Input::get('specialty');
-		$specialty->save();
-		
 		if($add_user == 1) {
 			$var = '<div class="alert alert-success" role="alert">
 			          <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -174,6 +181,11 @@ class BusinessController extends BaseController {
 			        </div>';
 			return Redirect::to('admin/doctores/'.$doctor->B_ID)->with('var', $var);
 		} else {
+			$specialty = new BusinessHasSpecialties();
+			$specialty->businesses_B_ID = $doctor->B_ID;
+			$specialty->specialties_S_ID = Input::get('specialty');
+			$specialty->save();
+
 			$var = '<div class="alert alert-success" role="alert">
 			          <button type="button" class="close" data-dismiss="alert">&times;</button>
 			          Los administradores verificarán que los datos ingresados sean correctos. 

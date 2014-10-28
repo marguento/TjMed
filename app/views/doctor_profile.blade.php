@@ -50,43 +50,7 @@
         <div class="col-md-8 blog-content">
           <!-- Blog Post -->
           <div class="space20"></div>
-          {{ HTML::image('../app/images/' . $doctor->b_image) }}
-         <!--  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width: 80%; margin: 0 auto">
-
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              
-                  <li data-target="#carousel-example-generic" data-slide-to=""></li>
-              
-            </ol>
-
-            <div class="carousel-inner">
-              <div class="item active">
-                <center><img src="" class="img_prof" alt="Profile default image">
-                <div class="carousel-caption">
-                </div>
-              </center>
-              </div>
-              
-                <div class="item">
-                <center>
-                <img src="" alt="Business image">
-                <div class="carousel-caption">
-                  <b></b>
-                </div>
-              </center>
-              </div>
-            </div>
-
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-          </div> -->
-          <div class="space10"></div>
-          <center><button class="btn btn-default btn-sm">Agregar imagen</button></center>
+          {{ HTML::image('../app/images_server/' . $doctor->b_image) }}
           
           <div class="space10"></div>
           <div class="post-info-container">
@@ -106,7 +70,16 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="social-2 f-right">
+                <div class="social-2">
+                  <a style="cursor: pointer;"><i class="fa fa-envelope-o"></i></a>
+                  <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $doctor->b_telephone }}">
+                    <i class="fa fa-phone"></i>
+                  </a>
+                  @if($doctor->b_cellphone!= '')
+                    <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $doctor->b_cellphone }}">
+                    <i class="fa fa-mobile"></i>
+                  </a>
+                  @endif
                   @if($doctor->b_facebook != '')
                     <a href="//facebook.com/{{$doctor->b_facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
                   @endif
