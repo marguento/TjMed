@@ -1824,6 +1824,11 @@ ul li a {
   text-decoration:none;
 }
 
+.lista_derecha_universal a{
+  color:#083d5c;
+  text-decoration:none;
+}
+
 ul li a:hover, ul li a:hover i {
   color:#083d5c;
   text-decoration:none;
@@ -3162,7 +3167,7 @@ ul li a:hover, ul li a:hover i {
   font-size: 13px;
   line-height: 1.428571429;
   text-indent:0px;
-  color: #083d5c;
+  color: #ffffff;
   vertical-align: middle;
   background-color: transparent;
   padding: 6px 12px;
