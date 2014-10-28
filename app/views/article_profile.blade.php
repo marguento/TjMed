@@ -155,8 +155,17 @@
             @if ($comments->count())
               @foreach($comments as $comment)
                 <div class="blog-comment">
-                  <div class="user-image">{{ HTML::image('../app/images/' . $comment->U_profile_image, 'usuario imagen comentario') }}
-                  <!--<i class="fa fa-user"></i>--></div> 
+                  <div class="user-image">
+                     @if($comment->U_oauth_provider == '1')
+                      <img src="{{$comment->U_profile_image}}">
+                    @else
+                      @if($comment->U_profile_image != "")
+                        <img src="{{url('../app/images_server/' . $comment->U_profile_image)}}">
+                      @else
+                        <img src="{{url('../app/images/default_picture.png')}}">
+                      @endif
+                    @endif
+                  </div> 
                   <div class="comment-data">
                     <h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}
                       <span style="font-size:20px">

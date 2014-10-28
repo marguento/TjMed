@@ -5,9 +5,9 @@
 		    <div class="row">
 		        <div class="col-md-1">
 		        <a href={{ url('/') }} title="Home">
-		        	<img src="../app/images/Logo_Tj.png"
-		        		onmouseover="this.src='../app/images/Logo_Tjmed_azulfuerte.png'" 
-		        		onmouseout="this.src='../app/images/Logo_Tj.png'" 
+		        	<img src="{{url('../app/images/Logo_Tj.png')}}"
+		        		onmouseover="this.src='{{url('../app/images/Logo_Tjmed_azulfuerte.png')}}'" 
+		        		onmouseout="this.src='{{url('../app/images/Logo_Tj.png')}}'" 
 		        		border="0" 
 		        		alt="" 
 		        		style="padding-bottom: 10px; padding-top: 10px; padding-right: 8px;"/>
@@ -28,9 +28,9 @@
 								@endif
 								
 								&nbsp;<a href="{{ url('es') }}">		        	
-											<img src="../app/images/Icon_es.png"
-								        		onmouseover="this.src='../app/images/Es_Fuerte.png'" 
-								        		onmouseout="this.src='../app/images/Icon_es.png'" 
+											<img src="{{url('../app/images/Icon_es.png')}}"
+								        		onmouseover="this.src='{{url('../app/images/Es_Fuerte.png')}}'" 
+								        		onmouseout="this.src='{{url('../app/images/Icon_es.png')}}'" 
 								        		border="0" 
 								        		alt=""
 								        		style="width: 3%;"
@@ -38,9 +38,9 @@
 												</a>
 
 								&nbsp;<a href="{{ url('en') }}">		        	
-											<img src="../app/images/En_Blanco.png"
-								        		onmouseover="this.src='../app/images/en_AZUL.png'" 
-								        		onmouseout="this.src='../app/images/En_Blanco.png'" 
+											<img src="{{url('../app/images/Icon_es.png')}}"
+								        		onmouseover="this.src='{{url('../app/images/en_AZUL.png')}}'" 
+								        		onmouseout="this.src='{{url('../app/images/En_Blanco.png')}}'" 
 								        		border="0" 
 								        		alt=""
 								        		style="width: 3%;"

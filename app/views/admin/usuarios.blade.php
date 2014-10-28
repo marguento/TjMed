@@ -44,7 +44,7 @@
                     @if ($user->U_profile_image == "")
                       <td><img class="user_img" src="../../app/images/default_picture.png"></td>
                     @else
-                     @if($user->U_facebook=="")
+                     @if($user->U_oauth_provider == '0')
                         <td><img class="user_img" src="../../app/images/{{ $user->U_profile_image }}"></td>
                       @else
                         <td><img class="user_img" src="{{ $user->U_profile_image }}"></td>
