@@ -198,7 +198,7 @@
         </div>
 
           <h4>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h4>
-          @if(Auth::user()->U_facebook != "")
+          @if(Auth::user()->U_oauth_provider == '1')
             <img src="{{Auth::user()->U_profile_image}}" style="width: 60px;">
           @else
             @if(Auth::user()->U_profile_image != "")
@@ -403,7 +403,17 @@
             @foreach ($comments as $comment)
               <div class="col-md-4 promo-text">
                 <div class="blog-comment">
-                  <div class="user-image"><img src="{{ $comment->U_profile_image}}" alt=""></div> 
+                  <div class="user-image">
+                    @if($comment->U_oauth_provider == '1')
+                      <img src="{{$comment->U_profile_image}}">
+                    @else
+                      @if($comment->U_profile_image != "")
+                        <img src="../app/images_server/{{$comment->U_profile_image}}">
+                      @else
+                        <img src="../app/images/default_picture.png">
+                      @endif
+                    @endif
+                  </div> 
                   <div class="comment-data">
                     <h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</h4>
                     en  <a href="{{ url('doctor/' . $comment->B_ID) }}">{{ $comment->b_name }}</a><br>

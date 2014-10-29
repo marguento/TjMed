@@ -2,6 +2,10 @@
 @section('content')
 
 <div class="container">
+  <div class="space10"></div> 
+  @if (Session::has('var'))
+    {{ Session::get('var') }}
+  @endif
   <div class="row">
   
   <div class="space40"></div>     
@@ -11,26 +15,34 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1-1" data-toggle="tab"><i class="fa fa-user"></i>Mi cuenta</a></li>
         <li class=""><a href="#tab1-2" data-toggle="tab"><i class="fa fa-star"></i>Mis reseñas</a></li>
-        <li class=""><a href="#tab1-3" data-toggle="tab"><i class="fa fa-comments"></i>Mis negocios</a></li>
+        <li class=""><a href="#tab1-3" data-toggle="tab"><i class="fa fa-comments"></i>Mis comentarios</a></li>
         <!-- <li class=""><a href="#tab1-4" data-toggle="tab"><i class="fa fa-building"></i>Mis Fotos</a></li> -->
       </ul>
           
       <div class="tab-content">
         <div class="tab-pane active" id="tab1-1">
+            {{ Form::open(array('url' => 'edit_user', 'files'=> true)) }}
           <div class="row">
             <div class="col-md-4">
-              <!-- Thumbnails -->
-              <div class="thumbnail">
-                @if(Auth::user()->U_facebook != "")
-                  <img src="{{Auth::user()->U_profile_image}}">
-                @else
-                  @if(Auth::user()->U_profile_image != "")
-                    <img src="../app/images_server/{{Auth::user()->U_profile_image}}">
-                  @else
-                    <img src="../app/images/default_picture.png">
-                  @endif
-                @endif
-              </div><!-- /Thumbnails -->    
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <div class="fileinput-new thumbnail" style="max-width: 300px; max-height:270px;">
+                    @if(Auth::user()->U_oauth_provider == '1')
+                      <img src="{{Auth::user()->U_profile_image}}">
+                    @else
+                      @if(Auth::user()->U_profile_image != "")
+                        <img src="../app/images_server/{{Auth::user()->U_profile_image}}">
+                      @else
+                        <img src="../app/images/default_picture.png">
+                      @endif
+                    @endif
+                  </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
+                  <div>
+                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+                    <input type="file" name="image"></span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                  </div>
+                </div>  
             </div>
             <div class="col-md-8">
 
@@ -38,7 +50,7 @@
               <h2 class="sub-header">Informacion Personal</h2>
               <div class="space20"></div>
 
-              {{ Form::open() }}
+            
 
 <div class="row">
   <div class="form-group">
@@ -75,28 +87,7 @@
 
 <br>
 
-<h5> Imagenes menores de 2MB </h5>
 <div class="row">
-  <div class="form-group">
-    <div class="col-md-2"></div>
-    <div class="col-md-4">
-      <div class="fileinput fileinput-new" data-provides="fileinput">
-        <div class="fileinput-new thumbnail" style="max-width: 300px; max-height:270px;">
-          @if(Auth::user()->U_profile_image !="")
-            {{ HTML::image('../app/images_server/' . Auth::user()->U_profile_image) }}
-          @else
-            {{ HTML::image('../app/images/default_picture.png') }}
-          @endif
-        </div>
-        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
-        <div>
-          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-          <input type="file" name="image"></span>
-          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-        </div>
-      </div>
-    </div>
-    </div>
 
     {{ Form::label('birthdate', 'Fecha de Nacimiento', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
@@ -235,98 +226,47 @@
         <!--EMPIEZA TAB2 -->
         <div class="tab-pane" id="tab1-2">
           <div class="row">
-            <div class="col-md-4">
-              <!-- Thumbnails -->
-              <div class="thumbnail">
-                <img alt="" src="images/profile_pic.PNG">
-              </div><!-- /Thumbnails -->    
-            </div>
                 
             <div class="col-md-8">
               <h3>Reseñas</h3>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-2">         
-                    <img src="app/images/user_image.jpg" alt="Doctor default picture">
-                    <div class="space40"></div>
-                  </div>  
-                  
-                  <div class="col-md-6">
-                    <!--<a href="index.php?opcion=perfil&id=">-->
-                    <div class="rating" style="margin-bottom: 15px;">
-                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                      <hr>
-                    </div>
-                    <h6 style="color:#0AB2DB; margin-bottom: 0px;">
-
-                      </h6>
-                    <h6 style="margin-bottom: 0px;">Descripción</h6>
-                    <p align="justify">
-                      asd asd sadasd asd asd asd as das das das d asd asd as das d asd asd as d asd as dsa da sd
-                    </p>                
-                    <div class="space20"></div> 
-                  </div> 
-                </div>
-              </div>
-
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-2">         
-                    <img src="app/images/user2.jpg" alt="Doctor default picture">
-                    <div class="space40"></div>
-                  </div>  
-                  <div class="col-md-6">
-                    <!--<a href="index.php?opcion=perfil&id=">-->
-                    <h3 style="margin-bottom: 0px;">Doctora Takataka</h3>
-                      <a href="#">Calle cacho</a> en <a href="#">Tijuana</a> / (664) 631-25-83 / <a href="#"><strong>33 reviews</strong></a>
-                    <div class="rating" style="margin-bottom: 15px;">
-                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <h6 style="color:#0AB2DB; margin-bottom: 0px;">
-
-                      </h6>
-                    <h6 style="margin-bottom: 0px;">Descripción</h6>
-                    <p align="justify">
-                      asd asd sadasd asd asd asd as das das das d asd asd as das d asd asd as d asd as dsa da sd
-                    </p>                
-                    <div class="space20"></div> 
-                  </div> 
-                </div>
-              </div>
-
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-2">         
-                    <img src="app/images/user3.jpg" alt="Doctor default picture">
-                    <div class="space40"></div>
-                  </div>  
-                  <div class="col-md-6">
-                    <!--<a href="index.php?opcion=perfil&id=">-->
-                      <h3 style="margin-bottom: 0px;">Doctor Celta</h3>
+              @if($reviews->count())
+                @foreach($reviews as $review)
+                  <div class="row">
+                    <div class="col-md-2">  
+                    <div class="space20"></div>       
+                      <img src="{{url('../app/images_server/' . $review->b_image)}}" alt="Doctor default picture">
+                      
+                    </div>  
+                    
+                    <div class="col-md-6">
+                      <h3 style="margin-bottom: 0px;">{{$review->b_name}}</h3>
                       <a href="#">Calle Morita</a> en <a href="#">Tijuana</a> / (664) 624-29-97 / <a href="#"><strong>3 reviews</strong></a>
-                    <div class="rating" style="margin-bottom: 15px;">
-                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <h6 style="color:#0AB2DB; margin-bottom: 0px;">
+                      <div class="rating" style="margin-bottom: 15px;">
+                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                      </div>
+                      <h6 style="color:#0AB2DB; margin-bottom: 0px;">
 
-                      </h6>
-                    <h6 style="margin-bottom: 0px;">Descripción</h6>
-                    <p align="justify">
-                      asd asd sadasd asd asd asd as das das das d asd asd as das d asd asd as d asd as dsa da sd
-                    </p>                
-                    <div class="space20"></div> 
-                  </div> 
-                </div>
-              </div>                            
-
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-8">
-                    <div class="divider"></div> 
-                    <div class="space20"></div> 
+                        </h6>
+                      <p align="justify">
+                        {{$review->C_content}}
+                      </p>                
+                      <div class="space20"></div> 
+                    </div> 
                   </div>
-                </div>
-              </div> 
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="divider"></div> 
+                        <div class="space20"></div> 
+                      </div>
+                    </div>
+                  </div> 
+                @endforeach
+              @endif
+
+                               
+
+              
             </div>
           </div>
         </div>
@@ -586,7 +526,7 @@ $(document).ready(function(){
     $.ajax
     ({
       type: "POST",
-      url: "../../getStates",
+      url: "{{url('getStates')}}",
       data: {state:state},
       cache: false,
       success: function(html)
@@ -598,7 +538,7 @@ $(document).ready(function(){
     $.ajax
     ({
       type: "POST",
-      url: "../../getCities",
+      url: "{{url('getCities')}}",
       data: {state:state, city:city},
       cache: false,
       success: function(html)
@@ -628,7 +568,7 @@ $(document).ready(function(){
       $.ajax
       ({
         type: "POST",
-        url: "../../getCities",
+        url: "{{url('getCities')}}",
         data: {state:state, city:''},
         cache: false,
         success: function(html)

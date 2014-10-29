@@ -21,9 +21,39 @@ class UsersController extends BaseController {
 		return View::make('users.show', ['user' => $user]);
 	}
 
-	public function edit($id)
+	public function edit()
 	{
+		$user = User::whereU_username(Auth::user()->U_username)->first();
+		$profile = Profile::whereUsername(Auth::user()->U_username)->first();
 
+		$user->U_firstname 	= Input::get('firstname');
+		$user->U_lastname 	= Input::get('lastname');
+		$user->U_facebook	= Input::get('facebook');
+		$user->U_twitter	= Input::get('twitter');
+		// $user->U_google_plus= Input::get('lastname');
+		$user->U_linkedin	= Input::get('linkedin');
+		$user->U_youtube	= Input::get('youtube');
+		$user->U_website	= Input::get('website');
+		$user->U_description= Input::get('about');
+		$user->U_country	= Input::get('country');
+		$user->U_state 		= Input::get('state');
+		$user->U_city 		= Input::get('city');
+		$user->U_hometown 	= Input::get('hometown');
+		$user->U_email 		= Input::get('email');
+		$user->U_username 	= Input::get('username');
+		$user->U_updated_at	= date('Y-m-d H:i:s');
+		$user->U_birthdate	= Input::get('birthdate');
+		if (!$user->isValid(Auth::user()->U_username))
+		{
+			return Redirect::back()->withInput()->withErrors($user->errors);
+		}
+
+		$user->save();
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Éxito!</strong> Actualización correcta.
+		        </div>';
+		return Redirect::back()->with('var', $var);
 	}
 
 	public function update($id)

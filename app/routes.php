@@ -58,6 +58,8 @@ Route::get('admin/disable/{b_id}', 'AdminController@disable');
 Route::post('getStates', 'UsersController@getStates');
 Route::post('getCities', 'UsersController@getCities');
 
+Route::post('edit_user', 'UsersController@edit');
+
 Route::get('admin/del_rev/{c_id}/{doctor}', 'AdminController@del_rev');
 
 Route::get('login/fb', function() {
@@ -92,7 +94,7 @@ Route::get('login/fb/callback', function() {
         $user->U_level          = 2;
         $user->U_active         = 1;
         $user->U_created_at     = date('Y-m-d H:i:s');
-        $user->U_facebook       = substr($me['link'], 25);
+        $user->U_facebook       = $uid;
         $user->save();
 
         $profile = new Profile();

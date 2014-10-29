@@ -60,6 +60,11 @@ class HomeController extends BaseController {
 
 	public function profile()
 	{
+		if (!Auth::check())
+		{
+			return Redirect::to('/');
+		}
+		
 		$countries = Country::all();
 		if (Auth::user()->U_country != "")
 		{
@@ -67,7 +72,11 @@ class HomeController extends BaseController {
 		} else {
 			$user_c = 157;
 		}
-		return View::make('user_profile', ['countries' => $countries, 'user_c' => $user_c]);
+
+		$reviews = UserReviewView::whereC_user(Auth::user()->U_username)->get();
+
+		return View::make('user_profile', ['countries' => $countries, 'user_c' => $user_c,
+		 									'reviews' => $reviews]);
 	}
 
 	public function register()
