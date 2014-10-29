@@ -220,13 +220,13 @@
                     <?php $r++; ?>
                   @endwhile
               </span></h4>
-              <p>{{ $comment->C_datetime_created }}<a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i></a>
-              <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i></a></p>
+              <p>{{ $comment->C_datetime_created }}<!-- <a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i></a>
+              <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i></a> --></p>
               <p>
                 {{ $comment->C_content }}
               </p>
               @if (Auth::check() && Auth::user()->U_username == $comment->C_user)
-                <a style="cursor: pointer;">Editar reseña</a> | <a style="cursor: pointer; color:red">Eliminar comentario</a>
+                <a id="edit_review" style="cursor: pointer;">Editar reseña</a> | <a id="del_review" style="cursor: pointer; color:red">Eliminar comentario</a>
                 <?php $ban = 1; ?>
               @endif
             <div class="divider"></div>           
@@ -306,6 +306,14 @@
 
        rateFunction();
     });
+
+     $('#edit_review').on('click', function () {
+      console.log('edit');
+     });
+
+     $('#del_review').on('click', function () {
+      console.log('delete');
+     });
   }
 </script>
 @stop

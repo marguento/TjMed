@@ -15,7 +15,7 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1-1" data-toggle="tab"><i class="fa fa-user"></i>Mi cuenta</a></li>
         <li class=""><a href="#tab1-2" data-toggle="tab"><i class="fa fa-star"></i>Mis reseñas</a></li>
-        <li class=""><a href="#tab1-3" data-toggle="tab"><i class="fa fa-comments"></i>Mis comentarios</a></li>
+        <li class=""><a href="#tab1-3" data-toggle="tab"><i class="fa fa-user"></i>Vista previa perfil</a></li>
         <!-- <li class=""><a href="#tab1-4" data-toggle="tab"><i class="fa fa-building"></i>Mis Fotos</a></li> -->
       </ul>
           
@@ -56,13 +56,13 @@
   <div class="form-group">
     {{ Form::label('firstname', 'Nombre(s)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4" class="error">
-      {{ Form::text('firstname', Auth::user()->U_firstname, array('class' => 'form-control focus')) }}
+      {{ Form::text('firstname', Auth::user()->U_firstname, array('class' => 'form-control profile')) }}
       <span class="error_msg">{{ $errors->first('U_firstname') }}</span>
     </div>
 
     {{ Form::label('lastname', 'Apellido(s)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
-      {{ Form::text('lastname', Auth::user()->U_lastname, array('class' => 'form-control')) }}
+      {{ Form::text('lastname', Auth::user()->U_lastname, array('class' => 'form-control profile')) }}
       <span class="error_msg">{{ $errors->first('U_lastname') }}</span>
     </div>
   </div>
@@ -74,12 +74,12 @@
   <div class="form-group">
     {{ Form::label('username', 'Nombre de Usuario', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
-      {{ Form::text('username', Auth::user()->U_username, array('class' => 'form-control')) }}
+      {{ Form::text('username', Auth::user()->U_username, array('class' => 'form-control profile')) }}
     <span class="error_msg">{{ $errors->first('U_username') }}</span>
     </div>
     {{ Form::label('email', 'Correo Electrónico', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
-      {{ Form::text('email', Auth::user()->U_email, array('class' => 'form-control')) }}
+      {{ Form::text('email', Auth::user()->U_email, array('class' => 'form-control profile')) }}
     <span class="error_msg">{{ $errors->first('U_email') }}</span>
     </div>
   </div>
@@ -91,7 +91,7 @@
 
     {{ Form::label('birthdate', 'Fecha de Nacimiento', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
-      {{ Form::input('date', 'birthdate', Auth::user()->U_birthdate, ['class' => 'form-control', 'placeholder' => 'Date']) }}
+      {{ Form::input('date', 'birthdate', Auth::user()->U_birthdate, ['class' => 'form-control profile', 'placeholder' => 'Date']) }}
 
     </div>
   </div>
@@ -102,7 +102,7 @@
   <div class="form-group">
     {{ Form::label('about', 'Acerca de', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-10">
-      {{ Form::textarea('about', Auth::user()->U_description, ['class' => 'form-control', 'size' => '1x5']) }}
+      {{ Form::textarea('about', Auth::user()->U_description, ['class' => 'form-control profile', 'size' => '1x5']) }}
       
     </div>
   </div>
@@ -114,11 +114,11 @@
   <div class="form-group">
     <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook</label>
     <div class="col-md-4">
-      {{ Form::text('facebook', Auth::user()->U_facebook, array('class' => 'form-control')) }}
+      {{ Form::text('facebook', Auth::user()->U_facebook, array('class' => 'form-control profile')) }}
     </div>
     <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter</label>
     <div class="col-md-4">
-      {{ Form::text('twitter', Auth::user()->U_twitter, array('class' => 'form-control')) }}
+      {{ Form::text('twitter', Auth::user()->U_twitter, array('class' => 'form-control profile')) }}
     </div>
   </div>
 </div>
@@ -129,12 +129,12 @@
   <div class="form-group">
     <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin</label>
     <div class="col-md-4">
-      {{ Form::text('linkedin', Auth::user()->U_linkedin, array('class' => 'form-control')) }}
+      {{ Form::text('linkedin', Auth::user()->U_linkedin, array('class' => 'form-control profile')) }}
     </div>
 
     <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube</label>
     <div class="col-md-4">
-      {{ Form::text('youtube', Auth::user()->U_youtube, array('class' => 'form-control')) }}
+      {{ Form::text('youtube', Auth::user()->U_youtube, array('class' => 'form-control profile')) }}
     </div>
   </div>
 </div>
@@ -145,11 +145,11 @@
   <div class="form-group">
     <label for="google-plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
     <div class="col-md-4">
-      <input type="text" class="form-control" id="google-plus" value="">
+      <input type="text" class="form-control profile" id="google-plus" value="">
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     Sitio Web Personal</label>
     <div class="col-md-4">
-      {{ Form::text('website', Auth::user()->U_website, array('class' => 'form-control')) }}
+      {{ Form::text('website', Auth::user()->U_website, array('class' => 'form-control profile')) }}
     </div>
   </div>
 </div>
@@ -186,7 +186,7 @@
     <div id="hometown_section">
       <label for="hometown" class="col-md-2 control-label">Localidad</label>
       <div class="col-md-4">
-        {{ Form::text('hometown', Auth::user()->U_hometown, array('class' => 'form-control')) }}
+        {{ Form::text('hometown', Auth::user()->U_hometown, array('class' => 'form-control profile')) }}
       </div>
     </div>
   </div>
@@ -213,7 +213,7 @@
   <div class="form-group">
     <div class="col-md-5"></div>
     <div class="col-md-2">
-      <input type="submit" class="form-control btn btn-primary" name="submit" id="submit" value="Guardar">
+      <input type="submit" class="form-control btn btn-primary profile" name="submit" id="submit" value="Guardar">
     </div>
   </div>
 </div>
@@ -239,11 +239,31 @@
                     </div>  
                     
                     <div class="col-md-6">
-                      <h3 style="margin-bottom: 0px;">{{$review->b_name}}</h3>
-                      <a href="#">Calle Morita</a> en <a href="#">Tijuana</a> / (664) 624-29-97 / <a href="#"><strong>3 reviews</strong></a>
-                      <div class="rating" style="margin-bottom: 15px;">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                      </div>
+                      <a href="{{ url('doctor/'.$review->B_ID) }}"><h3 style="margin-bottom: 0px;">{{$review->b_name}}</h3></a>
+                      <span class="social-container">
+                  <span class="social-2">
+                      <a href="#"><a style="cursor: pointer;"><i class="fa fa-envelope-o"></i></a>
+
+                    <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $review->b_telephone }}">
+                      <i class="fa fa-phone"></i>
+                    </a> 
+                    <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $review->b_address }}">
+                      <i class="fa fa-map-marker"></i>
+                    </a>
+                    <a href="{{ url('doctor/'.$review->B_ID) }}#comments"><strong>{{' ' .$review->comments_count}} reseña(s) en total</strong></a>
+                  </span>
+                </span>
+                      <br><span style="font-size:15px">
+                      <?php  $r = $rating = $review->C_rating ?>
+                        @while($rating)
+                          <i class="fa fa-star"></i>
+                          <?php $rating--; ?>
+                        @endwhile
+                        @while($r < 5)
+                          <i class="fa fa-star-o"></i>
+                          <?php $r++; ?>
+                        @endwhile
+                      </span>
                       <h6 style="color:#0AB2DB; margin-bottom: 0px;">
 
                         </h6>
@@ -275,97 +295,42 @@
         <div class="tab-pane" id="tab1-3">
           <div class="row">
             <div class="col-md-4">
-              <!-- Thumbnails -->
-              <div class="thumbnail">
-                <img alt="" src="images/profile_pic.PNG">
-              </div><!-- /Thumbnails -->    
+            @if(Auth::user()->U_oauth_provider == '1')
+              <img src="{{Auth::user()->U_profile_image}}" style="max-width: 200px; max-height:270px;">
+            @else
+              @if(Auth::user()->U_profile_image != "")
+                <img src="../app/images_server/{{Auth::user()->U_profile_image}}" style="max-width: 200px; max-height:270px;">
+              @else
+                <img src="../app/images/default_picture.png" style="max-width: 200px; max-height:270px;">
+              @endif
+             @endif
             </div>
-                
-            <div class="col-md-8">
-              <h3>Reseñas</h3>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-2">         
-                    <img src="app/images/user_image.jpg" alt="Doctor default picture">
-                    <div class="space40"></div>
+            <div class="col-md-4">
+              <h3>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h3>
+              <p>Tijuana, Baja California, México <a href="#" style="margin-left:10px;"><span class="fa fa-pencil-square-o"></span> {{$reviews->count()}} reseña(s)</a></p>
+              
+              <h5>Acerca de mí</h5>
+                <p>{{Auth::user()->U_description}}</p>
+                <h5>Encuentrame en</h5>
+                <div class="social-container">
+                  <div class="social-2">
+                    @if(Auth::user()->U_facebook != '')
+                      <a href="{{ url('//www.facebook.com/' . Auth::user()->U_facebook) }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                    @endif
+                    @if(Auth::user()->U_twitter != '')
+                      <a href="{{ url('//www.twitter.com/' . Auth::user()->U_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                    @endif
+                    @if(Auth::user()->U_youtube != '')
+                      <a href="{{ url('//www.youtube.com/user/' . Auth::user()->U_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                    @endif
+                    @if(Auth::user()->U_linkedin != '')
+                      <a href="{{ url('//www.linkedin.com/in/' . Auth::user()->U_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    @endif
+                    @if(Auth::user()->U_website != '')
+                      <a href="{{ url('//' . Auth::user()->U_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+                    @endif
                   </div>  
-                  <div class="col-md-6">
-                    <!--<a href="index.php?opcion=perfil&id=">-->
-                      <h3 style="margin-bottom: 0px;">Doctora Gordita</h3>
-                      <a href="#">Calle coahuila</a> en <a href="#">Tijuana</a> / (664) 634-24-93 / <a href="#"><strong>13 reviews</strong></a>
-                    <div class="rating" style="margin-bottom: 15px;">
-                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <h6 style="color:#0AB2DB; margin-bottom: 0px;">
-
-                      </h6>
-                    <h6 style="margin-bottom: 0px;">Descripción</h6>
-                    <p align="justify">
-                      asd asd sadasd asd asd asd as das das das d asd asd as das d asd asd as d asd as dsa da sd
-                    </p>                
-                    <div class="space20"></div> 
-                  </div> 
-                </div>
-              </div>
-
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-2">         
-                    <img src="app/images/user2.jpg" alt="Doctor default picture">
-                    <div class="space40"></div>
-                  </div>  
-                  <div class="col-md-6">
-                    <!--<a href="index.php?opcion=perfil&id=">-->
-                    <h3 style="margin-bottom: 0px;">Doctora Takataka</h3>
-                      <a href="#">Calle cacho</a> en <a href="#">Tijuana</a> / (664) 631-25-83 / <a href="#"><strong>33 reviews</strong></a>
-                    <div class="rating" style="margin-bottom: 15px;">
-                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <h6 style="color:#0AB2DB; margin-bottom: 0px;">
-
-                      </h6>
-                    <h6 style="margin-bottom: 0px;">Descripción</h6>
-                    <p align="justify">
-                      asd asd sadasd asd asd asd as das das das d asd asd as das d asd asd as d asd as dsa da sd
-                    </p>                
-                    <div class="space20"></div> 
-                  </div> 
-                </div>
-              </div>
-
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-2">         
-                    <img src="app/images/user3.jpg" alt="Doctor default picture">
-                    <div class="space40"></div>
-                  </div>  
-                  <div class="col-md-6">
-                    <!--<a href="index.php?opcion=perfil&id=">-->
-                      <h3 style="margin-bottom: 0px;">Doctor Celta</h3>
-                      <a href="#">Calle Morita</a> en <a href="#">Tijuana</a> / (664) 624-29-97 / <a href="#"><strong>3 reviews</strong></a>
-                    <div class="rating" style="margin-bottom: 15px;">
-                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </div>
-                    <h6 style="color:#0AB2DB; margin-bottom: 0px;">
-
-                      </h6>
-                    <h6 style="margin-bottom: 0px;">Descripción</h6>
-                    <p align="justify">
-                      asd asd sadasd asd asd asd as das das das d asd asd as das d asd asd as d asd as dsa da sd
-                    </p>                
-                    <div class="space20"></div> 
-                  </div> 
-                </div>
-              </div>                            
-
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-8">
-                    <div class="divider"></div> 
-                    <div class="space20"></div> 
-                  </div>
-                </div>
-              </div> 
+                </div> 
             </div>
           </div>
         </div>

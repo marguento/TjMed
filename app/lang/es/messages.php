@@ -2,7 +2,8 @@
 	return array(
 		//Header
 		'register'			=> 'Registrarme',	
-		'log_out'			=> 'Iniciar Sesión',	
+		'log_in'			=> 'Iniciar sesión',
+		'log_out'			=> 'Cerrar sesión',
 		'doctors'			=> 'Doctores',	
 		'articles'			=> 'Artículos',	
 		'about_us'			=> '¿Quiénes Somos?',
@@ -38,6 +39,13 @@
 		'tittle_7'			=> 'NUESTROS CLIENTES',				
 		'banner1' 			=> '1bb.png',
 		'banner2' 			=> '2bb.png',
+		'more_title'		=> 'Leer más',
+		'comments'			=> 'comentario(s)',
+		'profile'			=> 'Ir a mi perfil',
+		'favorites'			=> 'Favorito(s)',
+		'reviews'			=> 'Reseña(s)',
+		'pictures'			=> 'Imágenes(s)',
+
 		//Footer
 		'footer_photo'		=> 'Lo mas importante tu salud, nuestro compromiso la honestidad',
 		'copyright'			=> '© 2014 TjMed. Todos Los Derechos Reservados.',

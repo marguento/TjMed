@@ -173,7 +173,7 @@
                   @else 
                      ({{ $article->rating }})
                   @endif
-                   | <a href="{{ url('articulo/' . $article->A_ID) }}#comments">{{ $article->article_count }} Comentario(s)</a></h4>
+                   | <a href="{{ url('articulo/' . $article->A_ID) }}#comments">{{ $article->article_count }} {{ Lang::get('messages.comments') }}</a></h4>
                 <p style="height:100px;margin-bottom: 0px;" align="justify"> {{ substr($article->A_introduction,0,150) }} </p>
               </div>
             </div>         
@@ -206,11 +206,11 @@
           @endif
             <br><br>
             <p>
-              <strong> 0 </strong> Favoritos <br>
-              <strong> 0 </strong> Reviews <br>
-              <strong> 0 </strong> Pictures <br>
+              <strong> 0 </strong> {{ Lang::get('messages.favorites') }} <br>
+              <strong> 0 </strong> {{ Lang::get('messages.reviews') }} <br>
+              <strong> 0 </strong> {{ Lang::get('messages.pictures') }} <br>
             </p> 
-            <a href="{{url('perfil')}}"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
+            <a href="{{url('perfil')}}"><button type="button" class="btn btn-primary">{{ Lang::get('messages.profile') }}</button></a>
         </center>
         </div>         
         <div class="space40"></div>
@@ -330,7 +330,7 @@
                     <i class="fa fa-star-o"></i>
                     <?php $r++; ?>
                   @endwhile
-                  | <a href="{{ url('doctor/'.$bus->B_ID) }}#comments">{{ $bus->comments_count }} reseña(s)</a>
+                  | <a href="{{ url('doctor/'.$bus->B_ID) }}#comments">{{ $bus->comments_count }} {{ Lang::get('messages.reviews') }}</a>
                 </span>
                 <br><br>
                 <p style="height:100px" align="justify"> {{ $bus->b_introduction }} </p>
@@ -415,8 +415,8 @@
                   <div class="comment-data">
                     <h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</h4>
                     en  <a href="{{ url('doctor/' . $comment->B_ID) }}">{{ $comment->b_name }}</a><br>
-                    <a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i> (0)</a>
-                    <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i> (0)</a><br>
+                    <!-- <a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i> (0)</a>
+                    <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i> (0)</a><br> -->
                     <span style="font-size:15px">
                       <?php  $r = $rating = $comment->C_rating ?>
                         @while($rating)
@@ -428,7 +428,7 @@
                           <?php $r++; ?>
                         @endwhile
                     </span>
-                    <p>{{ substr($comment->C_content, 0, 50) . '...'  }}<br> <a href="{{ url('doctor/'.$comment->B_ID) }}#comments">Leer más</a></p>     
+                    <p>{{ substr($comment->C_content, 0, 50) . '...'  }}<br> <a href="{{ url('doctor/'.$comment->B_ID) }}#comments">{{ Lang::get('messages.more_title') }}</a></p>     
                   </div> 
                 </div>
               </div> 
@@ -446,7 +446,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">  
-        <h3>{{ Lang::get('messages.tittle_7') }}</h3>
+       <!--  <h3>{{ Lang::get('messages.tittle_7') }}</h3> -->
       </div>  
     </div>
 

@@ -20,11 +20,11 @@
 						<ul>
 							<li id="username-li">
 								@if ( ! Auth::check())
-									<a href="registrar"> {{ Lang::get('messages.register') }} -</a>  
-									<a href="#" data-toggle="modal" data-target="#myModal"> {{ Lang::get('messages.log_out') }}</a>
+									<a href="{{url('registrar')}}"> {{ Lang::get('messages.register') }} -</a>  
+									<a href="#" data-toggle="modal" data-target="#myModal"> {{ Lang::get('messages.log_in') }}</a>
 								@else
 									<a href="{{url('perfil')}}"> {{ Auth::user()->U_firstname }} {{ Auth::user()->U_lastname }}</a> |
-									{{ link_to('logout', 'Cerrar sesión') }}
+									<a href="{{url('logout')}}"> {{ Lang::get('messages.log_out') }} </a>
 								@endif
 								
 								&nbsp;<a href="{{ url('es') }}">		        	
@@ -38,7 +38,7 @@
 												</a>
 
 								&nbsp;<a href="{{ url('en') }}">		        	
-											<img src="{{url('../app/images/Icon_es.png')}}"
+											<img src="{{url('../app/images/En_Blanco.png')}}"
 								        		onmouseover="this.src='{{url('../app/images/en_AZUL.png')}}'" 
 								        		onmouseout="this.src='{{url('../app/images/En_Blanco.png')}}'" 
 								        		border="0" 

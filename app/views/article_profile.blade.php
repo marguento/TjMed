@@ -40,7 +40,7 @@
               @endif
               </span>
             </h2>
-            <img src="../../app/images/{{ $article->A_image }}" alt="" width="1140" height="456">
+            <img src="{{url('../app/images_server/' .$article->A_image)}}" alt="" width="1140" height="456">
             <div class="space25"></div> 
               Categorías: <?php $i = 0; ?>
               @foreach ($categories as $c)
@@ -182,8 +182,8 @@
                       </span>
                     </h4>
                     
-                    <p>{{ $comment->C_datetime_created }}<a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i></a>
-                      <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i></a>
+                    <p>{{ $comment->C_datetime_created }}<!-- <a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i></a>
+                      <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i></a> -->
                     </p>
                     <p>{{ $comment->C_content }}</p>
                     @if (Auth::check() && Auth::user()->U_username == $comment->C_user)
