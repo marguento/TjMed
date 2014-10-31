@@ -157,17 +157,17 @@
                 <div class="blog-comment">
                   <div class="user-image">
                      @if($comment->U_oauth_provider == '1')
-                      <img src="{{$comment->U_profile_image}}">
+                      <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="{{$comment->U_profile_image}}"></a>
                     @else
                       @if($comment->U_profile_image != "")
-                        <img src="{{url('../app/images_server/' . $comment->U_profile_image)}}">
+                        <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="{{url('../app/images_server/' . $comment->U_profile_image)}}"></a>
                       @else
-                        <img src="{{url('../app/images/default_picture.png')}}">
+                        <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="{{url('../app/images/default_picture.png')}}"></a>
                       @endif
                     @endif
                   </div> 
                   <div class="comment-data">
-                    <h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}
+                    <h4><a href="{{ url('usuario/' . $comment->C_user) }}">{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</a>
                       <span style="font-size:20px">
                         <?php  $r = $rating = $comment->C_rating ?>
                         @while($rating)
@@ -197,7 +197,15 @@
                   </div> 
                 </div>
                 <div class="space30"></div> 
+
               @endforeach
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12" align="right">
+                    <?php echo $comments->links(); ?>
+                  </div>
+                </div>
+              </div>
             @else
               <h5> Aún no hay comentaios para este artículo, tú puedes ser el primero, 
                 no dudes en compartir tu opinión</h5>

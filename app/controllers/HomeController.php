@@ -27,7 +27,7 @@ class HomeController extends BaseController {
 
 	public function articles()
 	{
-		$articles = ArticleView::orderBy('A_created_at', 'desc')->get();
+		$articles = ArticleView::orderBy('A_created_at', 'desc')->paginate(5);
 		return View::make('articles', ['articles' => $articles]);
 	}
 
@@ -98,6 +98,12 @@ class HomeController extends BaseController {
 	{
 		Session::put('my.locale', 'en');
 		return Redirect::back();
+	}
+
+	public function user($id)
+	{
+		$user = User::whereU_username($id)->first();
+		return View::make('profile', ['user' => $user]);
 	}
 
 }

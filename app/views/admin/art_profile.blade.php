@@ -31,21 +31,6 @@
 {{ Form::open(array('url' => 'article/update', 'files' => true)) }}
 {{ Form::hidden('curr_art', $article->A_ID) }}
 
-<div class="alert alert-success" role="alert">
-<button type="button" class="close" data-dismiss="alert">&times;</button>
-<strong>¡Importante!</strong> Llenar todos los datos, tanto en inglés como en español para el cambio
-  de idioma.
-</div>
-<div class="row">
-  <div class="form-group">
-    <div class="col-md-6">
-      <h3> En español </h3>
-    </div>
-    <div class="col-md-6">
-      <h3> En inglés </h3>
-    </div>
-  </div>
-</div>
 
 <div class="row">
   <div class="form-group">
@@ -53,11 +38,6 @@
     <div class="col-md-4" class="error">
       {{ Form::text('title_es', $article->A_title, array('class' => 'form-control focus', 'maxlength' => 50)) }}
       <span class="error_msg">{{ $errors->first('A_title') }}</span>
-    </div>
-    {{ Form::label('title_en', 'Título en inglés', array('class' => 'col-md-2 control-label', 'maxlength' => 50)) }}
-    <div class="col-md-4">
-      {{ Form::text('title_en', $article->A_title_en, array('class' => 'form-control')) }}
-      <span class="error_msg">{{ $errors->first('A_title_en') }}</span>
     </div>
   </div>
 </div>
@@ -91,14 +71,9 @@
 <div class="row">
   <div class="form-group">
     {{ Form::label('introduction_es', 'Introducción en español', array('class' => 'col-md-2 control-label')) }}
-    <div class="col-md-4" class="error">
+    <div class="col-md-10" class="error">
       {{ Form::textarea('introduction_es', $article->A_introduction, ['class' => 'form-control', 'size' => '1x5', 'maxlength' => '150']) }}
       <span class="error_msg">{{ $errors->first('A_introduction') }}</span>
-    </div>
-    {{ Form::label('introduction_en', 'Introducción en inglés', array('class' => 'col-md-2 control-label')) }}
-    <div class="col-md-4">
-      {{ Form::textarea('introduction_en', $article->A_introduction_en, ['class' => 'form-control', 'size' => '1x5', 'maxlength' => '150']) }}
-      <span class="error_msg">{{ $errors->first('A_introduction_en') }}</span>
     </div>
   </div>
 </div>
@@ -115,13 +90,14 @@
     </div>
   </div>
 </div>
-<br>
+
+<br><br>
+
 <div class="row">
   <div class="form-group">
-    {{ Form::label('content_en', 'Contenido en inglés', array('class' => 'col-md-2 control-label')) }}
-    <div class="col-md-10">
-      {{ Form::textarea('content_en', $article->A_content_en, ['class' => 'form-control', 'size' => '1x5']) }}
-      <span class="error_msg">{{ $errors->first('A_content_en') }}</span>
+    {{ Form::label('author', 'Autor', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-4">
+      {{ Form::select('author', $authors, Auth::user()->U_username, ['class' => 'form-control', 'id' => 'author']) }}
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@ class ArticleController extends BaseController {
 	public function show($a_id) 
 	{
 		$article = ArticleView::wherea_id($a_id)->first();
-		$comments = ArticleCommentsView::wherea_id($a_id)->get();
+		$comments = ArticleCommentsView::wherea_id($a_id)->orderBy('C_datetime_created', 'desc')->paginate(5);
 		$categories = ArticleCategoriesView::wherea_id($a_id)->get();
 		$tags = ArticleTagsView::wherea_id($a_id)->get();
 
@@ -40,7 +40,7 @@ class ArticleController extends BaseController {
 			    ->where('AHC_article', $data['curr_article']);
 		})->update(array('C_rating' => $data['rating']));
 
-		return Redirect::to('articulo/' . $data['curr_article']);
+		return Redirect::to('articulo/' . $data['curr_article'] . '#comments');
 	}
 
 }

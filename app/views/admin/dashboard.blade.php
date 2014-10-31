@@ -1,10 +1,6 @@
 @extends('admin.index')
 @section('content_admin')
 
-<ol class="breadcrumb">
-  <li>{{ link_to('/', 'Ir a TjMed') }}</li>
-</ol>
-
 <h2> Bienvenido, {{ Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname }} </h2>
 <div class="row">
       <div class="col-md-4">

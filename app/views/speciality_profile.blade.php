@@ -24,7 +24,8 @@
               <h5>{{ $speciality->C_name }} </h5>
             </a>
           </div>
-        {{ $speciality->S_description }}
+          <p align="justify"> {{ $speciality->S_introduction }} </p>
+          <p align="justify">{{ $speciality->S_description }} </p>
       </div> 
 
       <div class="col-md-4">

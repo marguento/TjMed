@@ -22,7 +22,7 @@ class BusinessController extends BaseController {
 		                      											->whereRaw('v_tags.B_ID = v_business_categories.B_ID');
 	            												});
 	            									})->groupBy('b_id')
-	            									->get();
+	            									->paginate(5);
 		} 
 		elseif (isset($data['category']) && isset($data['speciality']) && ($data['category'] !='all' || $data['speciality'] != 'all')) 
 		{
@@ -31,15 +31,15 @@ class BusinessController extends BaseController {
 				$business = BusinessCategoriesView::whereb_verified(1)
 													->whereb_active(1)
 													->wheres_id($data['speciality'])
-													->get();
+													->paginate(5);
 			} else {
 				$business = BusinessCategoriesView::whereb_verified(1)
 													->whereb_active(1)
 													->wherec_id($data['category'])
-													->get();
+													->paginate(5);
 			}
 		} else {
-			$business = BusinessRatingView::whereb_verified(1)->whereb_active(1)->get();
+			$business = BusinessRatingView::whereb_verified(1)->whereb_active(1)->paginate(5);
 		}
 		$categories = Category::all();
 		$b_cat = BusinessView::all();
@@ -214,7 +214,7 @@ class BusinessController extends BaseController {
 	{
 		$doctor = Business::whereb_id($b_id)->first();
 		$b_cat = BusinessView::whereb_id($b_id)->get();
-		$comments = BusinessCommentsView::whereb_id($b_id)->get();
+		$comments = BusinessCommentsView::whereb_id($b_id)->orderBy('C_datetime_created', 'desc')->paginate(5);
 		$tags = BusinessTagsView::whereb_id($b_id)->get();
 
 		$sum = 0;
@@ -253,7 +253,7 @@ class BusinessController extends BaseController {
 
 		$bhc->save();
 
-		return Redirect::to('doctor/' . $data['curr_doctor']);
+		return Redirect::to('doctor/' . $data['curr_doctor'] . '#comments');
 	}
 
 	public function register_owner($b_id)
@@ -279,5 +279,210 @@ class BusinessController extends BaseController {
 			return Redirect::to('doctor/'. $b_id)->with('var', $var);
 		}
 		
+	}
+
+	public function get_data() 
+	{
+		$string = "";
+		$data = Input::all();
+		if (isset($data)) {
+			$doctor = Business::whereb_id($data['id'])->first();
+			$users = User::all();
+			$user_owner = [];
+			foreach($users as $user) {
+				$user_owner[$user->U_username] = $user->U_username;
+			}
+
+			if($doctor->b_image !="")
+				$img = HTML::image('../app/images_server/' . $doctor->b_image);
+			else
+				$img = HTML::image('../app/images/default.jpg');
+
+			$string = "" . Form::open(array('url' => 'verify', 'files' => true))
+					. " " . Form::hidden('curr_doctor', $doctor->B_ID, array('id' => $doctor->B_ID, 'class' => 'curr_doctor'))
+					. "<div class='row'><div class='form-group'>" . 
+    				Form::label('created', 'Creado:', array('class' => 'col-md-2 control-label')) . "
+    				<div class='col-md-4'><span>".  $doctor->b_joined_date . " </span></div>" .
+
+    				Form::label('created_user', 'Creado por:', array('class' => 'col-sm-2 control-label')) . "
+    				<div class='col-md-4'><span><a href='" . url('admin/editar/'.$doctor->b_created_user) ."'>" . $doctor->b_created_user . "</a> </span></div>
+  					</div>
+					</div>
+					<br>
+					<div class='row'><div class='form-group'>" .
+						Form::label('user_owner', 'Usuario Propietario:', array('class' => 'col-md-2 control-label')) .
+					    "<div class='col-md-4'>" .
+					    Form::select('user_owner', $user_owner, $doctor->b_user_owner, ['class' => 'form-control', 'id' => 'user_owner']) .
+					 "</div>
+					  </div>
+					</div>
+
+					<br>
+
+					<div class='col-md-12'>
+					  <div class='space20'></div>
+					  <div class='divider'></div>
+					  <div class='space20'></div>
+					</div>
+
+					<br>
+
+					<div class='row'>
+					  <div class='form-group'>" .
+					    Form::label('name', 'Nombre', array('class' => 'col-md-2 control-label')) .
+					    "<div class='col-md-4'>" .
+					      Form::text('name', $doctor->b_name, array('class' => 'form-control focus')) .
+					      "<span class='error_msg'></span>
+					    </div>" .
+
+					    Form::label('address', 'Dirección', array('class' => 'col-sm-2 control-label')) .
+					    "<div class='col-md-4'>" .
+					      Form::text('address', $doctor->b_address, array('class' => 'form-control')) .
+					      "<span class='error_msg'></span>
+					    </div>
+					  </div>
+					</div>
+
+					<br>
+					<div class='row'>
+					  <div class='form-group'>".
+					    Form::label('email', 'Correo Electrónico', array('class' => 'col-sm-2 control-label')) .
+					    "<div class='col-md-4'>" .
+					      Form::text('email', $doctor->b_email, array('class' => 'form-control')) .
+					      "<span class='error_msg'></span>
+					    </div>" .
+
+					    Form::label('telephone', 'Teléfono', array('class' => 'col-md-2 control-label')) .
+					    "<div class='col-md-4' class='error'>" .
+					      Form::text('telephone', $doctor->b_telephone, array('class' => 'form-control focus')) .
+					      "<span class='error_msg'></span>
+					    </div>
+					  </div>
+					</div>
+
+					<br>
+
+					<div class='row'>
+					  <div class='form-group'>" .
+					    Form::label('cellphone', 'Celular', array('class' => 'col-sm-2 control-label')) .
+					    "<div class='col-md-4'>".
+					      Form::text('cellphone', $doctor->b_cellphone, array('class' => 'form-control')) .
+					    "</div>
+					  </div>
+					</div>
+
+					<br>
+
+					<div class='row'>
+					  <div class='form-group'>".
+					    Form::label('introduction', 'Introducción', array('class' => 'col-md-2 control-label')) .
+					    "<div class='col-md-10'>" .
+					      Form::textarea('introduction', $doctor->b_introduction, ['class' => 'form-control', 'size' => '1x5']) .
+					      "<span class='error_msg'></span>
+					    </div>
+					  </div>
+					</div>
+
+					<br>
+
+					<div class='row'>
+					  <div class='form-group'>" .
+					    Form::label('description', 'Descripción', array('class' => 'col-md-2 control-label')) .
+					    "<div class='col-md-10'>".
+					      Form::textarea('description', $doctor->b_description, ['class' => 'form-control', 'size' => '1x5']) .
+					      "<span class='error_msg'></span>
+					    </div>
+					  </div>
+					</div>
+
+					<br>
+
+					<h5> Imagenes menores de 2MB </h5>
+					<div class='row'>
+					  <div class='form-group'>
+					    <div class='col-md-2'></div>
+					    <div class='col-md-4'>
+					      <div class='fileinput fileinput-new' data-provides='fileinput'>
+					        <div class='fileinput-new thumbnail' style='max-width: 300px; max-height:270px;'>".
+					          	$img
+					        . "</div>
+					        <div class='fileinput-preview fileinput-exists thumbnail' style='max-width: 300px; max-height: 270px;'></div>
+					        <div>
+					          <span class='btn btn-default btn-file'><span class='fileinput-new'>Select image</span><span class='fileinput-exists'>Change</span>
+					          <input type='file' name='image'></span>
+					          <a href='#' class='btn btn-default fileinput-exists' data-dismiss='fileinput'>Remove</a>
+					        </div>
+					      </div>
+					    </div>".
+						Form::label('priority', 'Prioridad', array('class' => 'col-sm-2 control-label')) .
+					    "<div class='col-md-4'>".
+					      Form::select('priority', ['Negocio Básico', 'Negocio Premium'], $doctor->b_priority, ['class' => 'form-control', 'id' => 'priority']) .
+					    "</div>
+					  </div>
+					</div>
+
+					<br>
+
+					<div class='row'>
+					  <div class='form-group'>
+					    <label for='facebook' class='col-md-2 control-label'><span class='fa fa-facebook'></span>     Facebook</label>
+					    <div class='col-md-4'>" .
+					      Form::text('facebook', $doctor->b_facebook, array('class' => 'form-control')) .
+					    "</div>
+					    <label for='twitter' class='col-md-2 control-label'><span class='fa fa-twitter'></span>     Twitter</label>
+					    <div class='col-md-4'>".
+					      Form::text('twitter', $doctor->b_twitter, array('class' => 'form-control')) .
+					    "</div>
+					  </div>
+					</div>
+
+					<br>
+
+					<div class='row'>
+					  <div class='form-group'>
+					    <label for='linkedin' class='col-md-2 control-label'><span class='fa fa-linkedin'></span>     Linkedin</label>
+					    <div class='col-md-4'>".
+					      Form::text('linkedin', $doctor->b_linkedin, array('class' => 'form-control')) .
+					    "</div>
+
+					    <label for='youtube' class='col-md-2 control-label'><span class='fa fa-youtube'></span>     Youtube</label>
+					    <div class='col-md-4'>".
+					       Form::text('youtube', $doctor->b_youtube, array('class' => 'form-control')) .
+					    "</div>
+					  </div>
+					</div>
+
+					<br>
+
+					<div class='row'>
+					  <div class='form-group'>
+					    <label for='google-plus' class='col-md-2 control-label'><span class='fa fa-google-plus'></span>     Google+</label>
+					    <div class='col-md-4'>
+					      <input type='text' class='form-control' id='google-plus' value=''>
+					    </div>
+					    <label for='website' class='col-md-2 control-label'><span class='fa fa-globe'></span>     Sitio Web Personal</label>
+					    <div class='col-md-4'>" . 
+					      Form::text('website', $doctor->b_website, array('class' => 'form-control')) .
+					    "</div>
+					  </div>
+					</div>
+
+					<br>
+
+					<div class='row'>
+					  <div class='form-group'>
+					    <div class='col-md-4'></div>
+					    <div class='col-md-2'>
+					      <input type='submit' class='form-control btn btn-primary' name='submit' id='submit' value='Verificar'>
+					    </div>
+					    <div class='col-md-2'>
+							<input type='submit' class='form-control btn btn-primary' name='submit' id='submit' value='Descartar'>
+					    </div>
+					  </div>
+					</div>
+					<div class='col-md-4'></div>" .
+					Form::close();
+			echo $string;
+		}
 	}
 }

@@ -28,6 +28,8 @@
 	  {{ HTML::script("https://maps.googleapis.com/maps/api/js?v=3.exp") }}
 	  {{ HTML::script("../app/js/bootstrap.js") }}
 	  {{ HTML::script('../app/js/jasny-bootstrap.min.js') }}
+	  {{ HTML::script('../app/js/jquery.twbsPagination.min.js') }}
+	  
 	<script>
 	$(document).ready(function(){
 		var show_hide = true; //Para manejar los botones de especialidades medicas
@@ -45,29 +47,6 @@
 		});
 
 		$(".popup").popover();
-
-		// $('#search_button').click(function() {
-		// 	var search = $('#search').val();
-		// 	window.location.href = 'doctores/' + search;
-		// });
-
-    	/** CATEGORIAS.PHP **/
-    	$('.more_spc').hide();
-
-    	/** TODO: Validar a ingles - espanol */
-    	$('.more').click(function() {
-    		if($(this).attr('value')=='Ver más') {
-    			$(this).prop('value', 'Ver menos');
-	    		var spc = $(this).attr('id').substring(4);
-		        $('#cat_'+spc).show();
-		        
-	    	} else {
-	    		$(this).prop('value', 'Ver más');
-	    		var spc = $(this).attr('id').substring(4);
-		        $('#cat_'+spc).hide();
-		         $(document).scrollTop( $("#name_"+spc).offset().top );  
-	    	}
-        });
 
         var geocoder;
 		var map;

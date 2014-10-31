@@ -47,78 +47,85 @@
             <h3>{{ link_to("especialidades", Lang::get('messages.tittle_1')) }}</h3>   
         
         <div class="row popup-gallery">        
-
+          <a href="{{ url('categoria/1') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/E_Clinicas.png" alt="" width="263" height="263">       
+                <img src="../app/images/E_Clinicas.png" alt="" width="263" height="263">      
             </div>
             <div class="title" style="margin-bottom: 0px;">
-              <a href="{{ url('categoria/1') }}">
                 <h4>{{ Lang::get('messages.category_1') }}</h4>
                 <br>
-              </a>
             </div>
           </article> 
+          </a>
 
+          <a href="{{ url('categoria/2') }}">   
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/E_quiru.png" alt="" width="263" height="263">         
+                <img src="../app/images/E_quiru.png" alt="" width="263" height="263">        
             </div>
-            <div class="title" style="margin-bottom: 0px;">
-              <a href="{{ url('categoria/2') }}">          
+            <div class="title" style="margin-bottom: 0px;">   
                 <h4>{{ Lang::get('messages.category_2') }}</h4>
                 <br>
-              </a>
             </div>
-          </article> 
+          </article>
+          </a> 
 
+          <a href="{{ url('categoria/3') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
                 <img src="../app/images/E_medicoquiru.png" alt="" width="263" height="263">         
             </div>
             <div class="title" style="margin-bottom: 0px;">
-              <a href="{{ url('categoria/3') }}">          
+                        
                 <h4>{{ Lang::get('messages.category_3') }}</h4>
                 <br>
-              </a>
+              
             </div>
           </article> 
+          </a>
 
+          <a href="{{ url('categoria/4') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
                 <img src="../app/images/E_Laboratorio.png" alt="" width="263" height="263">        
             </div>
             <div class="title" style="margin-bottom: 0px;">
-              <a href="{{ url('categoria/4') }}">
+              
                 <h4>{{ Lang::get('messages.category_4') }}</h4>
                 <br>
-              </a>
+              
             </div>
           </article> 
+          </a>
 
+          <a href="{{ url('especialidad/28') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
                 <img src="../app/images/E_Odonto.png" alt="" width="263" height="263">   
             </div>
             <div class="title" style="margin-bottom: 0px;">
-              <a href="{{ url('especialidad/28') }}">
+              
                 <h4>{{ Lang::get('messages.especiality_1') }}</h4>
                 <br>
-              </a>
+              
             </div>
           </article> 
+          </a>
 
+          <a href="{{ url('especialidad/28') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
                 <img src="../app/images/E_Odonto.png" alt="" width="263" height="263">   
             </div>
             <div class="title" style="margin-bottom: 0px;">
-              <a href="{{ url('especialidad/28') }}">
+              
                 <h4>{{ Lang::get('messages.especiality_2') }}</h4>
                 <br>
-              </a>
+              
             </div>
           </article> 
+          </a>
 
       </div>
 
@@ -145,7 +152,7 @@
           <div class="col-md-4 col-sm-6">    
             <div class="item-box" style="padding-bottom: 0px;">
               <div class="media-container">
-                {{ HTML::image('../app/images_server/' . $article->A_image) }}
+                 <a href="{{ url('articulo/' . $article->A_ID) }}">{{ HTML::image('../app/images_server/' . $article->A_image) }}</a>
               </div>
               <div class="info-container">
                 <a href="{{ url('articulo/' . $article->A_ID) }}"><h3>{{ $article->A_title}}</h3></a>
@@ -403,17 +410,17 @@
                 <div class="blog-comment">
                   <div class="user-image">
                     @if($comment->U_oauth_provider == '1')
-                      <img src="{{$comment->U_profile_image}}">
+                      <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="{{$comment->U_profile_image}}"></a>
                     @else
                       @if($comment->U_profile_image != "")
-                        <img src="../app/images_server/{{$comment->U_profile_image}}">
+                        <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="../app/images_server/{{$comment->U_profile_image}}"></a>
                       @else
-                        <img src="../app/images/default_picture.png">
+                        <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="../app/images/default_picture.png"></a>
                       @endif
                     @endif
                   </div> 
                   <div class="comment-data">
-                    <h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</h4>
+                    <a href="{{ url('usuario/' . $comment->C_user) }}"><h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</h4></a>
                     en  <a href="{{ url('doctor/' . $comment->B_ID) }}">{{ $comment->b_name }}</a><br>
                     <!-- <a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i> (0)</a>
                     <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i> (0)</a><br> -->

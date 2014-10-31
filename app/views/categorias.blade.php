@@ -32,7 +32,7 @@
                   <div class="col-md-4">
                     <div class="service">  
                       <a href="{{ url('especialidad/' . $specialty->S_ID) }}"><h4>{{ $specialty->S_name}}</h4>
-                      <p>{{ $specialty->S_description }}<strong><i>Leer Más</i></strong></p></a>
+                      <p align="justify">{{ $specialty->S_introduction }}<strong><br><i>Leer Más</i></strong></p></a>
                     </div>
                     <div class="space20"></div>    
                   </div>

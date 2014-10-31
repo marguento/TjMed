@@ -19,39 +19,33 @@
 		   	<div class="container">
         		<div class="row">
         			@if($cs->count())
-        				<?php $i = 0; ?>
+        				<?php $i = 4; ?>
         				@foreach($cs as $c)
-        					@if ($c->C_ID == $cat->C_ID)
-	        					@if( $i>=4 && ($i%4) == 0 )
-					   				</div>
-						   			@if( $i == 4)
-						   				<div class="more_spc" id="cat_{{ $cat->C_ID }}">
-						   			@endif
-						   			<div class="row">
-					   			@endif
-								<div class="col-md-3">
-					                <div class="service">  
-					                    <a href="{{ url('especialidad/' . $c->S_ID) }}"><h4>{{ $c->S_name}}</h4>
-					                    <p>{{ $c->S_description }}<strong><i>Leer Más</i></strong></p></a>
-					                       <?php
-					                            switch($j) {
-					                                case 0: echo '<span class="fa fa-stethoscope"></span>'; break;
-					                                case 1: echo '<span class="fa fa-user-md"></span>'; break;
-					                                case 2: echo '<span class="fa fa-plus-square"></span>'; break;
-					                                case 3: echo '<span class="fa fa-flask"></span>'; break;
-					                            }
-					                        ?>
-					                </div>
-					                <div class="space20"></div>    
-					            </div>
-					            <?php $i++; ?> 		
-					           @endif
+        					@if($i>0)
+        						@if ($c->C_ID == $cat->C_ID)
+									<div class="col-md-3">
+					                	<div class="service">  
+					                    	<a href="{{ url('especialidad/' . $c->S_ID) }}"><h4>{{ $c->S_name}}</h4>
+					                    	<p align="justify">{{ $c->S_introduction }}<strong><br><i>Leer Más</i></strong></p></a>
+							                <?php
+							                    switch($j) {
+							                        case 0: echo '<span class="fa fa-stethoscope"></span>'; break;
+							                        case 1: echo '<span class="fa fa-user-md"></span>'; break;
+							                        case 2: echo '<span class="fa fa-plus-square"></span>'; break;
+							                        case 3: echo '<span class="fa fa-flask"></span>'; break;
+							                    }
+							               	?>
+					                	</div>
+					                	<div class="space20"></div>    
+					            	</div>
+					            	<?php $i--; ?> 		
+					          	@endif
+					        @endif
         				@endforeach
         			@endif
         		</div> 
 			</div>
-		</div>
-		<center><input type="button" class="btn btn-default more" id="spc_{{ $cat->C_ID }}" value="Ver más"></center>
+		<a href="{{ url('categoria/' . $cat->C_ID) }}"><center><input type="button" class="btn btn-default" value="Ver más"></center></a>
     	<div class="space60"></div>
         <?php $j++; ?>   
     @endforeach

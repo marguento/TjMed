@@ -58,9 +58,13 @@ Route::get('admin/disable/{b_id}', 'AdminController@disable');
 Route::post('getStates', 'UsersController@getStates');
 Route::post('getCities', 'UsersController@getCities');
 
+Route::post('verify', 'AdminController@verify');
+
 Route::post('edit_user', 'UsersController@edit');
+Route::get('usuario/{id_user}', 'HomeController@user');
 
 Route::get('admin/del_rev/{c_id}/{doctor}', 'AdminController@del_rev');
+Route::post('getDoctorData', 'BusinessController@get_data');
 
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));

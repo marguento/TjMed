@@ -43,10 +43,21 @@ class UsersController extends BaseController {
 		$user->U_username 	= Input::get('username');
 		$user->U_updated_at	= date('Y-m-d H:i:s');
 		$user->U_birthdate	= Input::get('birthdate');
+		if (Input::hasFile('image'))
+		{
+		    $user->U_profile_image = Input::file('image')->getClientOriginalName();
+		    $destinationPath = app_path() . '/images_server';
+			$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+
+			Input::file('image')->move($destinationPath, $fileName);
+
+			$user->U_profile_image = $fileName;
+		} 
 		if (!$user->isValid(Auth::user()->U_username))
 		{
 			return Redirect::back()->withInput()->withErrors($user->errors);
 		}
+
 
 		$user->save();
 		$var = '<div class="alert alert-success" role="alert">
@@ -113,7 +124,7 @@ class UsersController extends BaseController {
 		$this->user->U_username 	= Input::get('U_username');
 		$this->user->U_password 	= Hash::make(Input::get('U_password'));
 		$this->user->U_created_at	= date('Y-m-d H:i:s');
-		$this->user->U_level 		= 2;
+		$this->user->U_level 		= 0;
 		$this->user->U_active		= 1;
 		$this->user->save();
 

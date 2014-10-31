@@ -80,7 +80,7 @@
                 @if ($non_doctors->count())
                   @foreach ($non_doctors as $doctor)
                 <tr>
-                  <td><a href="#" data-toggle="modal" data-target="#verified_doc">{{ $doctor->b_name}} <!-- <span class="label label-success">Nuevo</span> --></a></td>
+                  <td><a href="#" class="verify_doctor" id="id_{{ $doctor->B_ID}}">{{ $doctor->b_name}}</a></td>
                   <td><a href="{{url('admin/editar/'.$doctor->b_created_user)}}" target="_blank">{{ $doctor->b_created_user }}</a></td>
                   <td>{{ $doctor->b_joined_date }}</td>
                   <td>
@@ -124,12 +124,8 @@
           <span class="sr-only">Close</span></button>
         <h4 class="modal-title">Verificar doctor</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="doctor_content">
         
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="verificar">Verificar</button>
-        <button type="button" class="btn btn-default" id="descartar">Descartar</button> 
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -180,6 +176,25 @@ $(document).ready(function() {
       window.location.href = 'disable/'+id;
   });
 
+  $(".verify_doctor").on('click', function() {
+    var id = $(this).attr('id').substring(3);;
+    
+    $('#verified_doc').modal('show');
+
+    var dataString = 'id='+ id;
+
+        $.ajax
+        ({
+          type: "POST",
+          url: "{{url('getDoctorData')}}",
+          data: dataString,
+          cache: false,
+          success: function(html)
+          {
+            $("#doctor_content").html(html);
+          } 
+        });
+    });
 });
 </script>
 

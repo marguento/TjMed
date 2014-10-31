@@ -58,8 +58,15 @@ class AdminController extends BaseController {
 		} else {
 			$article = Article::wherea_id($id)->first();
 		}
+
+		$users = User::all();
+		$authors = [];
+		foreach($users as $user) {
+			$authors[$user->U_username] = $user->U_username;
+		}
 		
-		return View::make('admin/art_profile', ['article' => $article]);
+		return View::make('admin/art_profile', ['article' => $article,
+												'authors' => $authors]);
 	}
 
 	public function art_update()
@@ -72,18 +79,15 @@ class AdminController extends BaseController {
 		if(Input::get('curr_art') == 0)
 		{
 			$article = new Article();
-			$article->A_author = Auth::user()->U_username;
 			$article->A_created_at = date('Y-m-d H:i:s');
 		} else {
 			$article = Article::wherea_id(Input::get('curr_art'))->first();
 			$article->A_updated_at = date('Y-m-d H:i:s');
 		}
-		$article->A_title 			 = Input::get('title_es');
-		$article->A_title_en 		 = Input::get('title_en');
-		$article->A_introduction 	 = Input::get('introduction_es');
-		$article->A_introduction_en = Input::get('introduction_en');
+		$article->A_author 		 = Input::get('author');
+		$article->A_title 		 = Input::get('title_es');
+		$article->A_introduction = Input::get('introduction_es');
 		$article->A_content 	 = Input::get('content_es');
-		$article->A_content_en  = Input::get('content_en');
 		if (Input::hasFile('image'))
 		{
 		    $article->A_image = Input::file('image')->getClientOriginalName();
@@ -340,6 +344,63 @@ class AdminController extends BaseController {
 		          <strong>¡Éxito!</strong> Doctor archivado.
 		        </div>';
         return Redirect::to('admin/doctores')->with('var', $var);
+	}
+
+	public function verify()
+	{
+		if(Input::get('submit') == 'Verificar') {
+			$doctor = Business::whereb_id(Input::get('curr_doctor'))->first();
+
+			$doctor->b_name 		= Input::get('name');
+			$doctor->b_address		= Input::get('address');
+			$doctor->b_email 		= Input::get('email');
+			$doctor->b_telephone	= Input::get('telephone');
+			$doctor->b_cellphone	= Input::get('cellphone');
+			$doctor->b_introduction = Input::get('introduction');
+			$doctor->b_description	= Input::get('description');
+			$doctor->b_facebook		= Input::get('facebook');
+			$doctor->b_twitter		= Input::get('twitter');
+			// $user->U_google_plus= Input::get('lastname');
+			$doctor->b_linkedin		= Input::get('linkedin');
+			$doctor->b_youtube		= Input::get('youtube');
+			$doctor->b_website		= Input::get('website');
+			$doctor->b_updated_at	= date('Y-m-d H:i:s');
+			$doctor->b_user_owner	= Input::get('user_owner');
+			$doctor->b_verified		= 1;
+			// print_r($doctor);
+			if (Input::hasFile('image'))
+			{
+			    $doctor->b_image = Input::file('image')->getClientOriginalName();
+			} 
+			if (!$doctor->isValid(Input::get('curr_doctor')))
+			{
+				return Redirect::back()->withInput()->withErrors($doctor->errors);
+			}
+			if (Input::hasFile('image'))
+			{
+				$destinationPath = app_path() . '/images_server';
+				$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+
+				Input::file('image')->move($destinationPath, $fileName);
+
+				$doctor->b_image = $fileName;
+			}
+
+			$doctor->save();
+             $var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Éxito!</strong> Doctor archivado.
+		        </div>';
+		} else {
+			$doctor = Business::where('B_ID', Input::get('curr_doctor'))
+            ->update(array('b_active' => 0));
+
+        	$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Éxito!</strong> Doctor archivado.
+		        </div>';
+		}
+		return Redirect::to('admin/doctores')->with('var', $var);
 	}
 
 	public function del_rev($id, $doctor)

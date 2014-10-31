@@ -282,6 +282,8 @@
                     </div>
                   </div> 
                 @endforeach
+              @else
+              <h5>No tienes reseñas por el momento </h5>
               @endif
 
                                
@@ -309,9 +311,10 @@
               <h3>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h3>
               <p>Tijuana, Baja California, México <a href="#" style="margin-left:10px;"><span class="fa fa-pencil-square-o"></span> {{$reviews->count()}} reseña(s)</a></p>
               
+              @if(Auth::user()->U_description)
               <h5>Acerca de mí</h5>
                 <p>{{Auth::user()->U_description}}</p>
-                <h5>Encuentrame en</h5>
+              @endif
                 <div class="social-container">
                   <div class="social-2">
                     @if(Auth::user()->U_facebook != '')
