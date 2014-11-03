@@ -5,7 +5,7 @@
 		'log_in'			=> 'Log In',
 		'log_out'			=> 'Log Out',	
 		'doctors'			=> 'Doctors',	
-		'articles'			=> 'Articles',	
+		'articles'			=> 'Healthy Living',	
 		'about_us'			=> 'About Us',
 		'contact'			=> 'Contact',
 		'search_text'		=> 'Im looking for...',		

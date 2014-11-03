@@ -118,6 +118,8 @@ class UsersController extends BaseController {
 			return Redirect::back()->withInput()->withErrors($this->user->errors);
 		}
 
+		print_r($input);
+
 		$this->user->U_firstname 	= Input::get('U_firstname');
 		$this->user->U_lastname 	= Input::get('U_lastname');
 		$this->user->U_email 		= Input::get('U_email');

@@ -5,7 +5,7 @@
 		'log_in'			=> 'Iniciar sesión',
 		'log_out'			=> 'Cerrar sesión',
 		'doctors'			=> 'Doctores',	
-		'articles'			=> 'Artículos',	
+		'articles'			=> 'Vida Saludable',	
 		'about_us'			=> '¿Quiénes Somos?',
 		'contact'			=> 'Contacto',
 		'search_text'		=> 'Estoy Buscando...',		

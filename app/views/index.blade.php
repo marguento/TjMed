@@ -1,7 +1,8 @@
 @extends('layouts.default')
 @section('content')
-<!-- Slider -->
 
+
+<!-- PRIMER RENGLON -->
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="item active">
@@ -20,7 +21,7 @@
 </div>
 <div class="space40"></div>
 
-<!--PRIMER RENGLON -->
+<!-- SEGUNDO RENGLON -->
 <div>
   <div class="container">
     <div class="row"> 
@@ -39,7 +40,7 @@
 </div>   
 <div class="space70"></div>
 
-<!-- SEGUNDO RENGLON -->
+<!-- TERCERO RENGLON -->
 <div>
   <div class="container">
     <div class="row">
@@ -134,6 +135,7 @@
 </div>
 <div class="space40"></div>
 
+<<<<<<< Updated upstream
 <!-- TERCER RENGLON -->
 <div>      
   <div class="container">
@@ -251,28 +253,10 @@
   </div>
   <div class="space40"></div> 
 </div>
+=======
+>>>>>>> Stashed changes
 
 <!-- CUARTO RENGLON -->
-<div>
-  <div class="container">  
-    <div class="row">
-      <div class="col-md-12">      
-        <div class="alert_main">
-          
-          <button type="button" class="close" data-dismiss="alert">×</button>
-
-            {{ Lang::get('messages.add_bussines_tag1') }}
-            <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">{{ Lang::get('messages.add_bussines_but1') }}</button></a>
-
-            <div class="space10"></div>
-        </div>
-      </div>    
-    </div> 
-  </div>  
-  <div class="space40"></div>
-</div>  
-
-<!-- QUINTO RENGLON -->
 <div>
   <div class="container">
     <div class="row">
@@ -382,7 +366,8 @@
   <div class="space40"></div>
 </div>  
 
-<!-- SEXTO RENGLON -->
+
+<!-- QUINTO RENGLON -->
 <div>
   <div class="container">
     <div class="row">  
@@ -447,6 +432,144 @@
   </div>
   <div class="space40"></div> 
 </div> 
+
+<!-- SEXTO RENGLON -->
+<div>
+  <div class="container">  
+    <div class="row">
+      <div class="col-md-12">      
+        <div class="alert_main">
+          
+          <button type="button" class="close" data-dismiss="alert">×</button>
+
+            {{ Lang::get('messages.add_bussines_tag1') }}
+            <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">{{ Lang::get('messages.add_bussines_but1') }}</button></a>
+
+            <div class="space10"></div>
+        </div>
+      </div>    
+    </div> 
+  </div>  
+  <div class="space40"></div>
+</div>  
+
+<!-- TERCER RENGLON -->
+<div>      
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9"> 
+        
+        <div class="row">
+          <div class="col-md-12">  
+            <a href="{{ url('articulos') }}"><h3>{{ Lang::get('messages.tittle_2') }}</h3></a>
+          </div>  
+        </div> 
+
+        <div class="row popup-gallery">   
+          @if ($articles->count())
+            @foreach ($articles as $article)
+          <div class="col-md-4 col-sm-6">    
+            <div class="item-box" style="padding-bottom: 0px;">
+              <div class="media-container">
+                {{ HTML::image('../app/images_server/' . $article->A_image) }}
+              </div>
+              <div class="info-container">
+                <a href="{{ url('articulo/' . $article->A_ID) }}"><h3>{{ $article->A_title}}</h3></a>
+                <h4>
+                  <?php $r = $rate = round($article->rating); ?>
+                  @while($rate > 1)
+                    <i class="fa fa-star"></i>
+                    <?php $rate--; ?>
+                  @endwhile
+                            
+                  @if($r != $article->rating)
+                    <i class="fa fa-star-half"></i>
+                  @else
+                    @if($r != 0)
+                      <i class="fa fa-star"></i>
+                    @endif
+                  @endif
+                  
+                  @while($r < 5)
+                    <i class="fa fa-star-o"></i>
+                    <?php $r++; ?>
+                  @endwhile
+                  @if (is_float($article->rating))
+                    ({{ number_format((float)$article->rating, 1, '.', '') }})
+                  @else 
+                     ({{ $article->rating }})
+                  @endif
+                   | <a href="{{ url('articulo/' . $article->A_ID) }}#comments">{{ $article->article_count }} Comentario(s)</a></h4>
+                <p style="height:100px;margin-bottom: 0px;" align="justify"> {{ substr($article->A_introduction,0,150) }} </p>
+              </div>
+            </div>         
+          </div>
+          @endforeach
+        @endif
+
+        </div>
+
+      </div>
+
+     @if (Auth::check())       
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">  
+            <h3>{{ Lang::get('messages.tittle_3') }}</h3>
+          </div>  
+        </div>
+        <div class="oslotron">
+          <center>          
+          <h4>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h4>
+          @if(Auth::user()->U_oauth_provider == '1')
+            <img src="{{Auth::user()->U_profile_image}}" style="width: 60px;">
+          @else
+            @if(Auth::user()->U_profile_image != "")
+              <img src="../app/images_server/{{Auth::user()->U_profile_image}}" style="width: 60px;">
+            @else
+              <img src="../app/images/default_picture.png" style="width: 60px;">
+            @endif
+          @endif
+            <br><br>
+            <p>
+              <strong> 0 </strong> Favoritos <br>
+              <strong> 0 </strong> Reviews <br>
+              <strong> 0 </strong> Pictures <br>
+            </p> 
+            <a href="{{url('perfil')}}"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
+        </center>
+        </div>         
+        <div class="space40"></div>
+      </div>
+
+      @else
+      
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-12">  
+            <h3>{{ Lang::get('messages.tittle_3') }}</h3>
+          </div>  
+        </div>
+        <div class="oslotron">
+          <center>
+          <h2>{{ Lang::get('messages.profile_tittle') }}</h2>
+          <p>
+            {{ Lang::get('messages.profile_text') }}
+          </p>
+          <a href="{{ url('registrar') }}" >
+          <button class="btn btn-primary color-2 rounded">{{ Lang::get('messages.register') }}</button>
+        </a>
+        </center>
+        </div>      
+        <div class="space20"></div>
+      </div>
+
+       @endif
+
+    </div>
+  </div>
+  <div class="space40"></div> 
+</div>
 
 <!-- SEPTIMO RENGLON -->
 <div>
