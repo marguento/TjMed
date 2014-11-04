@@ -1,27 +1,31 @@
 @extends('layouts.default')
 @section('content')
 
-
-
-<div class="breadcrumb-container">
-  <div class="container">  
-    @if (Session::has('var'))
-      {{ Session::get('var') }}
-    @endif
-    <div class="row">  
-      <div class="col-md-12">
-        <h1>Negocios Registrados ({{ $business->count() }})</h1>
-      </div>  
-    </div> 
-  </div> 
-</div>
+<div class="space20"></div>
+<div class="container">
+<ol class="breadcrumb" style="padding-right: 0px;">
+    <li class="active" style="color:#083D5C"></li>    
+    <li>{{ link_to('doctores', Lang::get('messages.search')) }}</li>
+  </ol>
+  <div class="blog-container">      
+  @if (Session::has('var'))
+    {{ Session::get('var') }}
+  @endif 
+  <div class="space20"></div> 
+  <div class="row">
+    <div class="col-md-12">
+      <a href="#">
+        <h1>{{ Lang::get('messages.reg_bussines') }} ({{ $business->count() }})</h1>  
+      </a>
+    </div>
+  </div>
 
 <div class="container">  
   {{ Form::open(array('url' => 'doctores')) }}
   <div class="row">  
-    <div class="col-md-3">
+    <div class="col-md-3" style="padding-left: 0px;">
       <select name="category" class="form-control" id="category" style="color:black; font-size:14px">
-        <option value="all">Todas</option>
+        <option value="all">{{ Lang::get('messages.all') }}</option>
         @if ($categories->count())
           @foreach ($categories as $cat)
             <option value="{{ $cat->C_ID }}">{{ $cat->C_name }}</option>
@@ -35,7 +39,7 @@
       </select>
     </div>
     <div class="col-md-3">
-      <button class="btn btn-default btn-sm" type="submit" style="font-size:16px; padding:5px 20px 5px 20px;">Buscar por especialidad</button>
+      <button class="btn btn-default btn-sm" type="submit" style="font-size:16px; padding:5px 20px 5px 20px;">{{ Lang::get('messages.search_by_spec') }}</button>
     </div>
   </div>
 {{ Form::close() }}
@@ -135,10 +139,24 @@
 		</div> 
 	@endforeach
 @else
-	<div class="container"><p> No hay doctores registrados</p></div>
+	<div class="container"><p> {{ Lang::get('messages.no_bussines') }}</p></div>
 @endif
 
 
+  <div class="container">  
+    <div class="row">
+      <div class="col-md-12">      
+        <div class="alert_main">
+          
+          <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ Lang::get('messages.add_bussines_tag1') }}
+            <a href="{{ url('agregar') }}">
+              <button class="btn btn-default btn-sm" align="right" style="font-size:16px; margin-left:20px;">{{ Lang::get('messages.add_bussines_but1') }}</button>
+            </a>
+        </div>
+      </div>    
+    </div> 
+  </div>  
 
 <div class="container">
     <div class="row">
@@ -147,26 +165,9 @@
       </div>
     </div>
   </div>
-
-<div>
-  <div class="container">  
-    <div class="row">
-      <div class="col-md-12">      
-        <div class="alert_main">
-          
-          <button type="button" class="close" data-dismiss="alert">×</button>
-            ¿No encuentras lo que buscas? ¡Agrégalo aquí!
-            <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">Agregar negocio</button></a>
-            <div class="space10"></div>
-        </div>
-      </div>    
-    </div> 
-  </div>  
-  <div class="space40"></div>
-</div> 
-
-		<div class="space60"></div>
-		<!-- Content End -->
+</div>
+</div>
+  <div class="space40"></div> 
 
     <script>
     $('#negocios').addClass('selected');

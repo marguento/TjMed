@@ -1,8 +1,14 @@
 @extends('layouts.default')
 @section('content')
 
-<div class="space60"></div>
-
+<div class="space20"></div>
+<div class="container">
+<ol class="breadcrumb" style="padding-right: 0px;">
+    <li class="active" style="color:#083D5C"></li>    
+    <li>{{ link_to('especialidades', Lang::get('messages.tittle_1')) }}</li>
+  </ol>
+  <div class="blog-container">      
+  <div class="space20"></div>   
 @if ($categories->count())
 <?php $j = 0; ?>
     @foreach ($categories as $cat)
@@ -26,7 +32,7 @@
 									<div class="col-md-3">
 					                	<div class="service">  
 					                    	<a href="{{ url('especialidad/' . $c->S_ID) }}"><h4>{{ $c->S_name}}</h4>
-					                    	<p align="justify">{{ $c->S_introduction }}<strong><br><i>Leer Más</i></strong></p></a>
+					                    	<p align="justify">{{ $c->S_introduction }}<strong><br><i>{{ Lang::get('messages.read_more') }}</i></strong></p></a>
 							                <?php
 							                    switch($j) {
 							                        case 0: echo '<span class="fa fa-stethoscope"></span>'; break;
@@ -45,12 +51,13 @@
         			@endif
         		</div> 
 			</div>
-		<a href="{{ url('categoria/' . $cat->C_ID) }}"><center><input type="button" class="btn btn-default" value="Ver más"></center></a>
+		<a href="{{ url('categoria/' . $cat->C_ID) }}"><center><input type="button" class="btn btn-default" value="{{ Lang::get('messages.view_more') }}"></center></a>
     	<div class="space60"></div>
         <?php $j++; ?>   
     @endforeach
 @endif
-				   	
+</div>
+</div>				   	
 
 <div class="space60"></div>
 <script>

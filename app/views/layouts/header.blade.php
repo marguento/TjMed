@@ -63,10 +63,10 @@
 											<li id="negocios">{{ link_to("doctores", Lang::get('messages.doctors'), array('id'=>'menu_first')) }}</li>		     					
 											<li id="categorias">{{ link_to("especialidades", Lang::get('messages.tittle_1'), array('id'=>'menu_first')) }}		
 												<ul>
-													<li><a href="{{ url('categoria/1') }}" title="" style="font-size: 15px">{{ Lang::get('messages.category_1') }}</a></li>
-													<li><a href="{{ url('categoria/2') }}" title="" style="font-size: 15px">{{ Lang::get('messages.category_2') }}</a></li>
-													<li><a href="{{ url('categoria/3') }}" title="" style="font-size: 15px">{{ Lang::get('messages.category_3') }}</a></li>
-													<li><a href="{{ url('categoria/4') }}" title="" style="font-size: 15px">{{ Lang::get('messages.category_4') }}</a></li>																				
+													<li><a href="{{ url('categoria/1') }}" title="" style="font-size: 15px">{{ Lang::get('messages.sub_menu1') }}</a></li>
+													<li><a href="{{ url('categoria/2') }}" title="" style="font-size: 15px">{{ Lang::get('messages.sub_menu2') }}</a></li>
+													<li><a href="{{ url('categoria/3') }}" title="" style="font-size: 15px">{{ Lang::get('messages.sub_menu3') }}</a></li>
+													<li><a href="{{ url('categoria/4') }}" title="" style="font-size: 15px">{{ Lang::get('messages.sub_menu4') }}</a></li>																				
 												</ul>	
 											</li>
 										    <li id="articulos">{{ link_to("articulos", Lang::get('messages.articles'), array('id'=>'menu_first')) }}</li>
