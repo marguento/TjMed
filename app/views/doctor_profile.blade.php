@@ -3,16 +3,24 @@
 <div class="space20"></div>
 
 <div class="container">
-  <ol class="breadcrumb">
+  <ol class="breadcrumb" style="padding-right: 0px;">
     <li>{{ link_to('doctores', 'Volver a búsqueda') }}</li>
      <li class="active" style="color:#083D5C">Perfil doctor</li>
   </ol>
    @if (Session::has('var'))
       {{ Session::get('var') }}
     @endif
-  <div class="row">
-    <div class="col-md-12">
-      <h1 style="margin-bottom:0px; line-height:1em"> {{$doctor->b_name}} </h1>
+  </div>
+</div>
+
+  <div class="container">  
+    <div class="blog-container"> 
+      <div class="row"> 
+        <div class="col-md-8 blog-content">
+          <!-- Blog Post -->
+
+<div class="space20"></div>
+      <h1 style="margin-bottom:0px; line-height:1em"> {{$doctor->b_name}}
       <span style="font-size:18px">
       <?php $r = $rate = round($rating); ?>
       @while($rate > 1)
@@ -38,18 +46,8 @@
          ({{ $rating }})
       @endif
       </span>
+      </h1>
       <a href="#"><!--Especialidades--></a><br>
-    </div>
-  </div>
-</div>
-
-<div class="space20"></div>
-  <div class="container">  
-    <div class="blog-container"> 
-      <div class="row"> 
-        <div class="col-md-8 blog-content">
-          <!-- Blog Post -->
-          <div class="space20"></div>
           {{ HTML::image('../app/images_server/' . $doctor->b_image) }}
           
           <div class="space10"></div>
@@ -104,14 +102,8 @@
           <p>{{ $doctor->b_introduction }}</p>
           <p>{{ $doctor->b_description }}
           <div class="space20"></div>
-          
-          <!--<blockquote>       
-          Mummy abhorreant id vel, an munere eruditi praesent qui. Usu noster legendos cu. Mei omnium graecis an. Te nam graeci nostrud dissentiet. Usu quem appellantur id, ut debet accommodare his. Vel te dicit putant facilis, ius ad torquatos moderatius.
-          Lantur cum, ut reque leit invenire. Zril petentium an est, amet putant eum eu, usu iudico possim voluptatum ad. An sea vidisse alienum.
-          </blockquote>-->
                                     
           <div class="space35"></div>
-          <!--<a href="negocios.html" class="btn"><i class="fa fa-book"></i>Más Negocios</a>-->
           <div class="space40"></div>
           <!-- Blog Post End -->
 

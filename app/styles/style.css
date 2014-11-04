@@ -654,9 +654,9 @@ header {
 /* --------------------------------------------------------	*/
 
 .btn, .btn:focus {
-  color:#0fa1d5;
+  color:#0ab2db;
   background:transparent; 
-  border:1px solid #0fa1d5;
+  border:1px solid #0ab2db;
   -webkit-border-radius: 0px; 
      -moz-border-radius: 0px; 
        -o-border-radius: 0px; 
@@ -674,8 +674,8 @@ header {
 
 .btn:hover{
   color:#fff;
-  background:#0fa1d5;
-  border:1px solid #0fa1d5;
+  background:#0ab2db;
+  border:1px solid #0ab2db;
 }
    
 .btn i{
@@ -684,18 +684,18 @@ header {
 
 .btn-primary, .btn-primary:focus{
   color:#fff;
-  background:#0fa1d5; 
+  background:#0ab2db; 
   border:0px;
 }
 
 .btn-primary:hover{
   color:#fff;
-  background:#0b7297; 
+  background:#0ab2db; 
   border:0px;
 }
 
 .btn-info, .btn-info:focus{
-  color:#0fa2d5;
+  color:#0ab2db;
   background:rgba(11, 114, 151, 0.05); 
   border:1px dashed rgba(11, 114, 151, 0.6);
   -webkit-border-radius: 2px; 
@@ -705,7 +705,7 @@ header {
 }
 
 .btn-info:hover{
-  color:#0fa2d5;
+  color:#0ab2db;
   background:rgba(11, 114, 151, 0.15); 
   border:1px dashed rgba(11, 114, 151, 0.9);
 }

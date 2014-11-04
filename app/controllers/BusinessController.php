@@ -62,7 +62,7 @@ class BusinessController extends BaseController {
 			$specialties = Specialty::all();
 		}
 
-		$string .= '<option value="all">Todas</option>';
+		$string .= '<option value="all">'. Lang::get("messages.all").'</option>';
 		if ($specialties->count()) {
         	foreach ($specialties as $spe) {
             	$string .= '<option value="'. $spe['attributes']['S_ID'] . '">'. $spe['attributes']['S_name'] .'</option>';

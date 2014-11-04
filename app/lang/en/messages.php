@@ -3,7 +3,7 @@
 		//Header
 		'register'			=> 'Register',
 		'log_in'			=> 'Log In',
-		'log_out'			=> 'Log Out',	
+		'log_out'			=> 'Log out',	
 		'doctors'			=> 'Doctors',	
 		'articles'			=> 'Healthy Living',	
 		'about_us'			=> 'About Us',
@@ -38,15 +38,25 @@
 		'banner1' 			=> '3bb.png',
 		'banner2' 			=> '4bb.png',
 		'more_title'		=> 'Read more',
-		'comments'			=> 'comment(s)',
+		'comments'			=> 'Comment(s)',
 		'profile'			=> 'Go to my profile',
 		'favorites'			=> 'Favorite(s)',
 		'reviews'			=> 'Review(s)',
 		'pictures'			=> 'Image(s)',
-		'word1'				=> 'at',		
+		'word1'				=> 'at',
+		'3p'				=> '...',						
 		//Footer
 		'footer_photo'		=> 'The most important thing for us is your health, honesty is our commitment',
 		'copyright'			=> '© 2014 TjMed. All rights reserved.',
+		//Bussines
+		'reg_bussines'		=> 'Negocios Registrados',
+		'all'				=> 'All',
+		'search'			=> 'Search',
+		'search_by_spec'	=> 'Search by Specialities',
+		'no_bussines'		=> 'No Registered Doctors',
+		//Specialities
+		'read_more'			=> 'Read More',
+		'view_more'			=> 'View More',																	
 		//Quienes Somos?
 		'about_us_text1'	=> 'We are a young team with experience in the medical services sector committed to the patient and 
 								aware of the need to offer them a quick and reliable to way to find the right doctor for any type 

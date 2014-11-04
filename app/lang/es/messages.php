@@ -8,7 +8,11 @@
 		'articles'			=> 'Vida Saludable',	
 		'about_us'			=> '¿Quiénes Somos?',
 		'contact'			=> 'Contacto',
-		'search_text'		=> 'Estoy Buscando...',		
+		'search_text'		=> 'Estoy Buscando...',
+		'sub_menu1'			=> 'Clínicas',	
+		'sub_menu2'			=> 'Quirúrgicas',
+		'sub_menu3'			=> 'Médico-Quirúrgicas',
+		'sub_menu4'			=> 'De Laboratorio',			
 
 		//Index
 		'home' 				=> 'Inicio',				
@@ -40,15 +44,25 @@
 		'banner1' 			=> '1bb.png',
 		'banner2' 			=> '2bb.png',
 		'more_title'		=> 'Leer más',
-		'comments'			=> 'comentario(s)',
+		'comments'			=> 'Comentario(s)',
 		'profile'			=> 'Ir a mi perfil',
 		'favorites'			=> 'Favorito(s)',
 		'reviews'			=> 'Reseña(s)',
 		'pictures'			=> 'Imágenes(s)',
 		'word1'				=> 'en',
+		'3p'				=> '...',	
 		//Footer
 		'footer_photo'		=> 'Lo mas importante tu salud, nuestro compromiso la honestidad',
 		'copyright'			=> '© 2014 TjMed. Todos Los Derechos Reservados.',
+		//Bussines
+		'reg_bussines'		=> 'Negocios Registrados',	
+		'all'				=> 'Todas',
+		'search'			=> 'Busqueda',	
+		'search_by_spec'	=> 'Buscar por Especialidad',
+		'no_bussines'		=> 'No hay Doctores Registrados',
+		//Specialities
+		'read_more'			=> 'Leer Más',
+		'view_more'			=> 'Ver más',								
 		//Quienes Somos?
 		'about_us_text1'	=> 'Somos jóvenes con experiencia el sector de los servicios médicos, comprometidos con el usuario de
 								los servicios y consientes de la necesidad de encontrar una solución rápida y confiable a los 

@@ -13,13 +13,11 @@
     <div class="item">
       <img src="../app/images/{{ Lang::get('messages.banner2') }}" alt="...">
       <div class="carousel-caption">
-        ...
       </div>
     </div>
-    ...
   </div>
 </div>
-<div class="space40"></div>
+<div class="space60"></div>
 
 <!-- SEGUNDO RENGLON -->
 <div>
@@ -38,7 +36,7 @@
     </div>
   </div>
 </div>   
-<div class="space70"></div>
+<div class="space60"></div>
 
 <!-- TERCERO RENGLON -->
 <div>
@@ -133,7 +131,7 @@
     </div>
   </div>
 </div>
-<div class="space40"></div>
+<div class="space60"></div>
 
 <!-- CUARTO RENGLON -->
 <div>
@@ -153,11 +151,6 @@
             <div class="item-box-2">
               <div class="media-container">
                 <a href="{{ url('doctor/'.$bus->B_ID) }}" ><img src="{{url('../app/images_server/'.$bus->b_image)}}" alt="" width="360" height="360"></a>
-
-                
-                <!-- 
-                <a href="#" class="icon-left"><i class="fa fa-chain"></i></a>
-                <a href="#" class="icon-right"><i class="fa fa-arrows-alt"></i></a> -->
               </div>
               <div class="info-container">
                 <a href="{{ url('doctor/'.$bus->B_ID) }}" >
@@ -176,7 +169,6 @@
                       @endif
                     @endforeach
                     @if($i == 0)
-                      <p>Varias categorías</p>
                     @endif
                 </h4>
                 <span style="font-size:18px">
@@ -238,11 +230,10 @@
           </div>
         @endforeach
       @endif
-
-         
+  
     </div>   
   </div>
-  <div class="space40"></div>
+  <div class="space60"></div>
 </div>  
 
 
@@ -257,7 +248,7 @@
             <h3>{{ Lang::get('messages.tittle_5') }}</h3>
           </div>  
         </div>
-        <iframe src="//player.vimeo.com/video/110233033" width="250" height="170" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+        <iframe src="//player.vimeo.com/video/110233033" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
       </div>
         
       <div class="col-md-9"> 
@@ -286,8 +277,7 @@
                   <div class="comment-data">
                     <a href="{{ url('usuario/' . $comment->C_user) }}"><h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</h4></a>
                     {{ Lang::get('messages.word1') }} <a href="{{ url('doctor/' . $comment->B_ID) }}">{{ $comment->b_name }}</a><br>
-                    <!-- <a href="#" class="reply-link"><i class="fa fa-thumbs-o-up"></i> (0)</a>
-                    <a href="#" class="reply-link"><i class="fa fa-thumbs-o-down"></i> (0)</a><br> -->
+
                     <span style="font-size:15px">
                       <?php  $r = $rating = $comment->C_rating ?>
                         @while($rating)
@@ -299,7 +289,8 @@
                           <?php $r++; ?>
                         @endwhile
                     </span>
-                    <p>{{ substr($comment->C_content, 0, 50) . '...'  }}<br> <a href="{{ url('doctor/'.$comment->B_ID) }}#comments">{{ Lang::get('messages.more_title') }}</a></p>     
+
+                    <p>{{ substr($comment->C_content, 0, 50) . Lang::get('messages.3p')  }}<br> <a href="{{ url('doctor/'.$comment->B_ID) }}#comments">{{ Lang::get('messages.more_title') }}</a></p>     
                   </div> 
                 </div>
               </div> 
@@ -309,7 +300,7 @@
       </div>   
     </div>
   </div>
-  <div class="space40"></div> 
+  <div class="space60"></div> 
 </div> 
 
 <!-- SEXTO RENGLON -->
@@ -320,16 +311,15 @@
         <div class="alert_main">
           
           <button type="button" class="close" data-dismiss="alert">×</button>
-
             {{ Lang::get('messages.add_bussines_tag1') }}
-            <a href="{{ url('agregar') }}"><button class="btn btn-default btn-sm" style="font-size:16px; margin-left:20px;">{{ Lang::get('messages.add_bussines_but1') }}</button></a>
-
-            <div class="space10"></div>
+            <a href="{{ url('agregar') }}">
+              <button class="btn btn-default btn-sm" align="right" style="font-size:16px; margin-left:20px;">{{ Lang::get('messages.add_bussines_but1') }}</button>
+            </a>
         </div>
       </div>    
     </div> 
   </div>  
-  <div class="space40"></div>
+  <div class="space60"></div>
 </div>  
 
 <!-- TERCER RENGLON -->
@@ -378,7 +368,7 @@
                   @else 
                      ({{ $article->rating }})
                   @endif
-                   | <a href="{{ url('articulo/' . $article->A_ID) }}#comments">{{ $article->article_count }} Comentario(s)</a></h4>
+                   | <a href="{{ url('articulo/' . $article->A_ID) }}#comments">{{ $article->article_count }} {{ Lang::get('messages.comments') }}</a></h4>
                 <p style="height:100px;margin-bottom: 0px;" align="justify"> {{ substr($article->A_introduction,0,150) }} </p>
               </div>
             </div>         
@@ -411,14 +401,14 @@
           @endif
             <br><br>
             <p>
-              <strong> 0 </strong> Favoritos <br>
-              <strong> 0 </strong> Reviews <br>
-              <strong> 0 </strong> Pictures <br>
+              <strong> 0 </strong> {{ Lang::get('messages.favorites') }} <br>
+              <strong> 0 </strong> {{ Lang::get('messages.reviews') }} <br>
+              <strong> 0 </strong> {{ Lang::get('messages.pictures') }} <br>
             </p> 
-            <a href="{{url('perfil')}}"><button type="button" class="btn btn-primary">Ir a mi perfil</button></a>
+            <a href="{{url('perfil')}}"><button type="button" class="btn btn-primary">{{ Lang::get('messages.profile') }}</button></a>
         </center>
         </div>         
-        <div class="space40"></div>
+        <div class="space60"></div>
       </div>
 
       @else
@@ -447,7 +437,7 @@
 
     </div>
   </div>
-  <div class="space40"></div> 
+  <div class="space60"></div> 
 </div>
 
 <!-- SEPTIMO RENGLON -->
