@@ -47,7 +47,7 @@
               </span></h2>
             <img src="../app/images_server/{{ $article->A_image }}" alt="" width="640" height="356">
             <div class="space25"></div>
-            <a href="#"> Categoría </a>
+            <!-- <a href="#"> Categoría </a> -->
             <div class="space10"></div>
             
             <div class="post-info-container">
@@ -66,7 +66,7 @@
                 <div class="col-md-6">
                    <div class="post-info">
                     <span class="post-data">  
-                      <i class="fa fa-tag"></i> <span class="tags"><a href="#">Etiqueta 1</a> | <a href="#">Etiqueda 2</a></span>
+                      <!-- <i class="fa fa-tag"></i> <span class="tags"><a href="#">Etiqueta 1</a> | <a href="#">Etiqueda 2</a></span> -->
                     </span>
                      <span class="post-data">  
                       <a href="{{ url('articulo/'.$article->A_ID) }}#comments"><i class="fa fa-comment"></i> {{ $article->article_count}} Comentario(s)</a>
