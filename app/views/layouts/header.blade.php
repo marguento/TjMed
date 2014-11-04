@@ -14,8 +14,7 @@
 			      	</a>  
 				</div>
 				
-				<div class="col-md-1"></div>
-				<div class="col-md-10">
+				<div class="col-md-11" style="padding-left: 60px;">
 					<div align="right">	
 						<ul>
 							<li id="username-li">

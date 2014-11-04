@@ -22,10 +22,10 @@
 
 						<div class="col-md-3 col-sm-6">
 							<h6>INFORMACION DE CONTACTO</h6>
-							Calle Lorum<br>
-							Tijuana Baja California<br>
+							Tijuana, Baja California<br>
 							México<br>
 							<br>
+							<!--
 				            <div class="item-icon">
 				              <i class="fa fa-phone"></i>
 				              (613) 9999-0000-123<br>
@@ -34,19 +34,27 @@
 				              <i class="fa fa-phone"></i>
 				              (412) 7733-1111-456<br>
 				            </div>
-				            <br>
+				        -->
+				            <div class="item-icon">
+				              <i class="fa fa-facebook"></i>
+				              {{ HTML::link('http://Facebook.com/tjmed.mx', 'Facebook')}}
+				            </div>
+				            <div class="item-icon">
+				              <i class="fa fa-twitter"></i>
+				              {{ HTML::link('http://Twitter.com/TJMed_2014', 'Twitter')}}
+				            </div>
 				            <div class="item-icon">
 				              <i class="fa fa-envelope"></i>
-				              <a href="#">info@tjmed.com</a><br>
+				              <a href="mailto:TjMed.mx@gmail.com">Gmail</a>
 				            </div>
 				            <div class="item-icon">
-				              <i class="fa fa-support"></i>
-				              <a href="#">support@tjmed.com</a><br>
-				            </div>
+				              <i class="fa fa-google-plus"></i>
+				              <a href="#">Google+</a>
+				            </div>				            
 				            <div class="item-icon">
-				              <i class="fa fa-comment"></i>
-				              <a href="#">chat@tjmed.com</a><br>
-				            </div>
+				              <i class="fa fa-youtube"></i>
+				              <a href="">Youtube</a>
+				            </div>				            
 				            <div class="space20"></div>
 						</div>
 
