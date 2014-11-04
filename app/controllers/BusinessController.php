@@ -243,6 +243,7 @@ class BusinessController extends BaseController {
 		$comment->C_content 		 = $data['content'];
 		$comment->C_datetime_created = date('Y-m-d H:i:s');
 		$comment->C_rating 			 = $data['rating'];
+		$comment->C_active 			 = 1;
 		$comment->save();
 
 		$id_c = $comment->C_ID;
@@ -484,5 +485,44 @@ class BusinessController extends BaseController {
 					Form::close();
 			echo $string;
 		}
+	}
+
+	public function edit_review()
+	{
+		$string = "";
+		$data = Input::all();
+		$business = BusinessCommentsView::whereb_id($data['id'])->whereC_user(Auth::user()->U_username)->first();
+		return $business;	
+	}
+
+	public function update_review()
+	{
+		$data = Input::all();
+		$business_com = BusinessCommentsView::whereb_id($data['curr_doctor'])
+						->whereC_user(Auth::user()->U_username)->first();
+
+		$comment = Comment::wherec_id($business_com->C_ID)->first();
+		$comment->C_content = $data['content'];
+		$comment->C_rating = $data['rating'];
+		$comment->C_edited_at = date('Y-m-d H:i:s');
+		$comment->save();
+
+		return Redirect::to('doctor/'. $data['curr_doctor'] . '#comments');
+	}
+
+	public function delete_review($id)
+	{
+
+		$business_com = BusinessCommentsView::whereb_id($id)
+						->whereC_user(Auth::user()->U_username)->first();
+
+		$com = Comment::wherec_id($business_com->C_ID)->first();
+		$com->C_active = 0;
+		$com->save();
+
+		$comment = BusinessHasComments::wherebc_comment($business_com->C_ID)
+					->wherebc_business($id)->delete();
+
+		return Redirect::to('doctor/'. $id . '#comments');
 	}
 }

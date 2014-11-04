@@ -19,7 +19,32 @@
         		@foreach ($articles as $article)
           <!-- Blog Post -->
             <div class="space30"></div>
-            <h2><a href="{{ url('articulo/' . $article->A_ID) }}">{{ $article->A_title}}</a></h2>
+            <h2><a href="{{ url('articulo/' . $article->A_ID) }}">{{ $article->A_title}}</a>
+            <span style="font-size:18px">
+              <?php $r = $rate = round($article->rating); ?>
+              @while($rate > 1)
+                <i class="fa fa-star"></i>
+                <?php $rate--; ?>
+              @endwhile
+                        
+              @if($r != $article->rating)
+                <i class="fa fa-star-half"></i>
+              @else
+                @if($r != 0)
+                  <i class="fa fa-star"></i>
+                @endif
+              @endif
+              
+              @while($r < 5)
+                <i class="fa fa-star-o"></i>
+                <?php $r++; ?>
+              @endwhile
+              @if (is_float($article->rating))
+                ({{ number_format((float)$article->rating, 1, '.', '') }})
+              @else 
+                 ({{ $article->rating }})
+              @endif
+              </span></h2>
             <img src="../app/images_server/{{ $article->A_image }}" alt="" width="640" height="356">
             <div class="space25"></div>
             <a href="#"> Categoría </a>
@@ -44,7 +69,7 @@
                       <i class="fa fa-tag"></i> <span class="tags"><a href="#">Etiqueta 1</a> | <a href="#">Etiqueda 2</a></span>
                     </span>
                      <span class="post-data">  
-                      <i class="fa fa-comment"></i> 0 Comentario(s)
+                      <a href="{{ url('articulo/'.$article->A_ID) }}#comments"><i class="fa fa-comment"></i> {{ $article->article_count}} Comentario(s)</a>
                     </span> 
                   </div>  
                 </div>
@@ -79,67 +104,61 @@
     <div class="container">  
       <div class="row">  
         <div class="col-md-12">
-          <h1>Seguir Leyendo:</h1>
+          <h3>Top Artículos</h3>
         </div>  
       </div> 
     </div> 
   </div>  
+  @if ($top->count())
+    @foreach ($top as $t)
+      <a href="{{ url('articulo/' . $t->A_ID) }}">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1"> 
+              <img src="../app/images_server/{{ $t->A_image }}">
+                <div class="space40"></div>
+            </div>  
+            <div class="col-md-3">
+              <h6>{{ $t->A_title}}</h6>
+              <div style="margin-bottom: 12px;">
+                <span style="font-size:15px">
+                  <?php 
+                    $rating = $t->rating;
+                    $r = $rate = round($rating); ?>
+                    @while($rate > 1)
+                      <i class="fa fa-star"></i>
+                      <?php $rate--; ?>
+                    @endwhile
+                                    
+                    @if($r != $rating)
+                      <i class="fa fa-star-half"></i>
+                    @else
+                      @if($r != 0)
+                        <i class="fa fa-star"></i>
+                      @endif
+                    @endif
+                          
+                    @while($r < 5)
+                      <i class="fa fa-star-o"></i>
+                      <?php $r++; ?>
+                    @endwhile
+                    | <a href="{{ url('articulo/'.$t->A_ID) }}#comments">{{ $t->article_count }} comentario(s)</a>
+                </span>
+              </div>
+              <p align="justify">
+                {{ $t->A_introduction }}
+              </p>           
+              <div class="space20"></div> 
+            </div>
+          </div>
+        </div>
+      </a>
+            
+        @endforeach
+  @endif
 
-        <!-- List -->
-        <ul class="list-3">
-
-        <h6>Especialidades clínicas</h6>
-          <li><a href="#"><i class="fa fa-caret-right"></i><strong>Cardiología</strong></a></li>
-          <li><a href="#"><i class="fa fa-caret-right"></i> Neumología</a></li>
-          <li><a href="#"><i class="fa fa-caret-right"></i> Neurología</a></li>
-          <li><a href="#"><i class="fa fa-caret-right"></i> Pediatría</a></li>
-
-        <p> 
-    <h6>Especialidades Quirúrgicas</h6>
-          <li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Plástica</a>
-          </li><li>
-             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Cardiovascular</a>
-          </li><li>    
-             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Torácica</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Neurocirugía</a>
-          </li>
-    </p>
-
-        <p> 
-    <h6>Especialidades médico quirúrgicas</h6>
-          <li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Estomatología</a>
-          </li><li>
-             <a href="#"><i class="fa fa-caret-right"></i> Oftalmología</a>
-          </li><li>    
-             <a href="#"><i class="fa fa-caret-right"></i> Otorrinolaringología</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Urología</a>
-          </li>
-    </p>
-
-        <p> 
-    <h6>Especialidades de laboratorio o diagnósticas</h6>
-          <li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Inmunología</a>
-          </li><li>
-             <a href="#"><i class="fa fa-caret-right"></i> Patológica</a>
-          </li><li>    
-             <a href="#"><i class="fa fa-caret-right"></i> Microbiología</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Neurofisiología</a>
-          </li>
-    </p>        
-
-        </ul>
-        <!-- List End -->
-        <div class="space20"></div>
-        <div class="divider"></div>
-        <div class="space40"></div>
         
-      </div>
+</div>
 
       </div> 
     </div>  

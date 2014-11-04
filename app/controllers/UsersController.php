@@ -89,6 +89,16 @@ class UsersController extends BaseController {
 		$user->U_username 	= Input::get('username');
 		$user->U_updated_at	= date('Y-m-d H:i:s');
 		$user->U_birthdate	= Input::get('birthdate');
+		if (Input::hasFile('image'))
+		{
+		    $user->U_profile_image = Input::file('image')->getClientOriginalName();
+		    $destinationPath = app_path() . '/images_server';
+			$fileName = 'img_' . round(microtime(true) * 1000) . '_' . $id;
+
+			Input::file('image')->move($destinationPath, $fileName);
+
+			$user->U_profile_image = $fileName;
+		} 
 		if (!$user->isValid(Input::get('curr_user')))
 		{
 			return Redirect::back()->withInput()->withErrors($user->errors);

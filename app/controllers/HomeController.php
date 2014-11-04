@@ -28,7 +28,9 @@ class HomeController extends BaseController {
 	public function articles()
 	{
 		$articles = ArticleView::orderBy('A_created_at', 'desc')->paginate(5);
-		return View::make('articles', ['articles' => $articles]);
+		$top = ArticleView::orderBy('rating', 'desc')->orderBy('article_count', 'desc')->take(5)->get();
+		return View::make('articles', ['articles' => $articles,
+										'top' => $top]);
 	}
 
 	public function contact()
@@ -39,7 +41,7 @@ class HomeController extends BaseController {
 	public function specialties()
 	{
 		$categories = Category::all();
-		$cs = CategoriesSpecialitiesView::all();
+		$cs = CategoriesSpecialitiesView::orderBy('S_name')->get();
 		return View::make('specialties', ['categories' => $categories,
 											'cs' => $cs]);
 	}
@@ -47,15 +49,20 @@ class HomeController extends BaseController {
 	public function speciality($s_id)
 	{
 		$speciality = CategoriesSpecialitiesView::wheres_id($s_id)->first();
-		return View::make('speciality_profile', ['speciality' => $speciality]);
+		$business = BusinessAtributtesView::wheres_id($s_id)->orderBy('rating', 'desc')->orderBy('comments_count', 'desc')->take(5)->get();
+		return View::make('speciality_profile', ['speciality' => $speciality,
+													'business' => $business]);
 	}
 
 	public function category($c_id)
 	{
 		$category = Category::wherec_id($c_id)->first();
 		$specialties = Specialty::wheres_id_category($c_id)->get();
+		$business = BusinessAtributtesView::wherec_id($c_id)->orderBy('rating', 'desc')
+		->orderBy('comments_count', 'desc')->groupBy('B_ID')->take(5)->get();
 		return View::make('categorias', ['category' => $category,
-											'specialties' => $specialties]);
+											'specialties' => $specialties,
+											'business' => $business]);
 	}
 
 	public function profile()

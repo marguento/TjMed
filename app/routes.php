@@ -58,6 +58,8 @@ Route::get('admin/disable/{b_id}', 'AdminController@disable');
 Route::post('getStates', 'UsersController@getStates');
 Route::post('getCities', 'UsersController@getCities');
 
+Route::post('getReview', 'BusinessController@edit_review');
+
 Route::post('verify', 'AdminController@verify');
 
 Route::post('edit_user', 'UsersController@edit');
@@ -65,6 +67,32 @@ Route::get('usuario/{id_user}', 'HomeController@user');
 
 Route::get('admin/del_rev/{c_id}/{doctor}', 'AdminController@del_rev');
 Route::post('getDoctorData', 'BusinessController@get_data');
+Route::post('edit_review', 'BusinessController@update_review');
+
+Route::get('del_review/{id}', 'BusinessController@delete_review');
+
+Route::get('mail', function() {
+    mail('eira.rangel@gmail.com', 'My Subject', 'wawis');
+    // I'm creating an array with user's info but most likely you can use $user->email or pass $user object to closure later
+    // $user = array(
+    //     'email'=>'eira.rangel@gmail.com',
+    //     'name'=>'Laravelovich'
+    // );
+
+    // // the data that will be passed into the mail view blade template
+    // $data = array(
+    //     'detail'=>'Your awesome detail here',
+    //     'name'  => $user['name']
+    // );
+
+    // // use Mail::send function to send email passing the data and using the $user variable in the closure
+    // Mail::send('emails.welcome', $data, function($message) use ($user)
+    // {
+    //   $message->from('admin@site.com', 'Site Admin');
+    //   $message->to($user['email'], $user['name'])->subject('Welcome to My Laravel app!');
+    // });
+});
+
 
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));
@@ -74,6 +102,8 @@ Route::get('login/fb', function() {
     );
     return Redirect::to($facebook->getLoginUrl($params));
 });
+
+
 
 Route::get('login/fb/callback', function() {
     $code = Input::get('code');

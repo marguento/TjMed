@@ -29,71 +29,65 @@
       </div> 
 
       <div class="col-md-4">
-      <h4>Seguir Leyendo:</h4>
-        <!-- List -->
-        <ul class="list-3">
-
-        <p>	
-        <h6>Especialidades clínicas</h6>
-          <li>
-             <a href="#"><i class="fa fa-caret-right"></i> Cardiología</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Neumología</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Neurología</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Pediatría</a>
-          </li>
-		</p>
-
-        <p>	
-		<h6>Especialidades Quirúrgicas</h6>
-          <li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Plástica</a>
-          </li><li>
-             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Cardiovascular</a>
-          </li><li>    
-             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Torácica</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Cirugia Neurocirugía</a>
-          </li>
-		</p>
-
-        <p>	
-		<h6>Especialidades médico quirúrgicas</h6>
-          <li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Estomatología</a>
-          </li><li>
-             <a href="#"><i class="fa fa-caret-right"></i> Oftalmología</a>
-          </li><li>    
-             <a href="#"><i class="fa fa-caret-right"></i> Otorrinolaringología</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Urología</a>
-          </li>
-		</p>
-
-        <p>	
-		<h6>Especialidades de laboratorio o diagnósticas</h6>
-          <li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Inmunología</a>
-          </li><li>
-             <a href="#"><i class="fa fa-caret-right"></i> Patológica</a>
-          </li><li>    
-             <a href="#"><i class="fa fa-caret-right"></i> Microbiología</a>
-          </li><li>  
-             <a href="#"><i class="fa fa-caret-right"></i> Neurofisiología</a>
-          </li>
-		</p>				
-
-        </ul>
-        <!-- List End -->
-        <div class="space20"></div>
-        <div class="divider"></div>
-        <div class="space40"></div>
-        
+      <h3>TOP DOCTORES EN {{ $speciality->S_name }} </h3>
+       @if ($business->count())
+        @foreach ($business as $bus)
+        <a href="{{ url('doctor/' . $bus->B_ID) }}">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-1"> 
+                  {{ HTML::image('../app/images_server/' . $bus->b_image, 'Doctor default picture') }} 
+                <div class="space40"></div>
+              </div>  
+              <div class="col-md-3">
+                  <h6 style="margin-bottom: 0px;">{{ $bus->b_name}}</h6>
+                <div style="margin-bottom: 12px;">
+                 <span style="font-size:15px">
+                    <?php 
+                        $rating = $bus->rating;
+                        $r = $rate = round($rating); ?>
+                        @while($rate > 1)
+                          <i class="fa fa-star"></i>
+                          <?php $rate--; ?>
+                        @endwhile
+                                  
+                        @if($r != $rating)
+                          <i class="fa fa-star-half"></i>
+                        @else
+                          @if($r != 0)
+                            <i class="fa fa-star"></i>
+                          @endif
+                        @endif
+                        
+                        @while($r < 5)
+                          <i class="fa fa-star-o"></i>
+                          <?php $r++; ?>
+                        @endwhile
+                        | <a href="{{ url('doctor/'.$bus->B_ID) }}#comments">{{ $bus->comments_count }} reseña(s)</a>
+                      </span>
+                </div>
+                <p align="justify">
+                  {{ $bus->b_introduction }}
+                </p>           
+                <div class="space20"></div> 
+              </div> 
+            </div>
+          </div>
+        </a>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="divider"></div> 
+                <div class="space20"></div> 
+              </div>
+            </div>
+          </div> 
+        @endforeach
+      @else
+        <div class="container"><p> No hay doctores registrados</p></div>
+      @endif
       </div>
-
-
+      
      </div>  
     </div> 
 		<div class="space60"></div>

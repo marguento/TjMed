@@ -226,7 +226,7 @@
                 {{ $comment->C_content }}
               </p>
               @if (Auth::check() && Auth::user()->U_username == $comment->C_user)
-                <a id="edit_review" style="cursor: pointer;">Editar reseña</a> | <a id="del_review" style="cursor: pointer; color:red">Eliminar comentario</a>
+                <a  id="edi_{{$doctor->B_ID}}"  class="edit_review" style="cursor: pointer;">Editar reseña</a> | <a id="del_review" style="cursor: pointer; color:red">Eliminar comentario</a>
                 <?php $ban = 1; ?>
               @endif
             <div class="divider"></div>           
@@ -267,7 +267,25 @@
               </center>
           {{ Form::close() }}
         @else
-          <button class="btn btn-primary color-2 rounded" style="float:right;">Editar reseña</button>
+        <div id="edit_comment">
+        <span><h5>Edita tu reseña</h5></span>
+        <span id="rate_section" style="cursor: pointer;"></span><br>
+          
+            {{ Form::open(array('url' => 'edit_review')) }}
+            {{ Form::hidden('curr_doctor', $doctor->B_ID) }}
+            {{ Form::hidden('rating', 0, array('id'=> 'rate_value')) }}
+
+              <textarea class="form-control" name="content" rows="3" style="color:black;" id="content_review"></textarea>
+              <div class="space10"></div>
+                <center>
+                  <button class="btn btn-default btn-sm" type="submit">Editar reseña</button>
+                  <button class="btn btn-default btn-sm"> Cancelar</button>
+                </center>
+            {{ Form::close() }}
+            </div>
+            <div id="edit_button">
+              <button class="btn btn-primary color-2 rounded edit_review" style="float:right;" id="edd_{{$doctor->B_ID}}">Editar reseña</button>
+            </div>
         @endif
       @else
         <a href="{{ url('registrar') }}" >
@@ -288,6 +306,7 @@
   $(document).ready(function() {
     var rate = '';
     rateFunction();
+    $('#edit_comment').hide();
 
   });
 
@@ -313,14 +332,48 @@
 
        rateFunction();
     });
+  } 
+     $('.edit_review').on('click', function () {
+        var id =$(this).attr('id').substring(4);
+        var dataString = 'id='+ id;
+        var rate = '';
+        $.ajax
+        ({
+          type: "POST",
+          url: "{{url('getReview')}}",
+          data: dataString,
+          cache: false,
+          success: function(html)
+          {
+            $('#content_review').val(html.C_content);
+            var r = 0;
+            var ra = 0;
+            var rating = html.C_rating;
+            rate = r = ra = rating;
+            var i = 1;
+            var string = "";
+            while(rating)
+            {
+              string += '<a><span id="' + i + '" class="rating"><i class="fa fa-star"></i></span></a>';
+              rating--; i++;
+            }
 
-     $('#edit_review').on('click', function () {
-      console.log('edit');
+            while(r < 5)
+            {
+              string += '<a><span id="' + i + '" class="rating"><i class="fa fa-star-o"></i></span></a>';
+              r++; i++;
+            }
+            $("#rate_section").html(string);
+            $('#rate_value').val(rate);
+            rateFunction();
+          } 
+        });
+        $('#edit_comment').show();
+        $('#edit_button').hide();        
      });
 
      $('#del_review').on('click', function () {
-      console.log('delete');
+        location.href = "{{ url('del_review/' . $doctor->B_ID) }}";
      });
-  }
 </script>
 @stop

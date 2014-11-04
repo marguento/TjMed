@@ -11,7 +11,7 @@
 
 <h2 class="sub-header">Editar Usuario:  {{ $user->U_firstname . ' ' . $user->U_lastname }}</h2>
 
- {{ Form::model($user, array('route' => array('users.update', $user->U_username), 'method' => 'PUT')) }}
+ {{ Form::model($user, array('route' => array('users.update', $user->U_username), 'method' => 'PUT', 'files'=>true)) }}
  {{ Form::hidden('curr_user', $user->U_username) }}
 
 <div class="row">
@@ -53,16 +53,25 @@
   <div class="form-group">
     <div class="col-md-2"></div>
     <div class="col-md-4">
-      <div class="fileinput fileinput-exists" data-provides="fileinput">
-        <div class="fileinput-exists thumbnail" style="width: 200px; height: 200px;">
-          <img id="input_image" src="../../app/images/{{ $user->U_profile_image }}">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail" style="max-width: 300px; max-height:270px;">
+          @if($user->U_oauth_provider == '1')
+           {{ HTML::image($user->U_profile_image) }}
+          @else
+            @if($user->U_profile_image != "")
+              <img src="../../../app/images_server/{{$user->U_profile_image}}">
+            @else
+              <img src="../../../app/images/default_picture.png">
+            @endif
+          @endif
         </div>
-        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-        <div>
-          <span class="btn btn-default btn-file"><span class="fileinput-new">Selecciona imagen principal</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
-          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-        </div>
-      </div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
+          <div>
+            <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+              <input type="file" name="image"></span>
+              <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+          </div>
+        </div>  
     </div>
 
     {{ Form::label('birthdate', 'Fecha de Nacimiento', array('class' => 'col-md-2 control-label')) }}
