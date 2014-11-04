@@ -43,6 +43,7 @@
 		'favorites'			=> 'Favorite(s)',
 		'reviews'			=> 'Review(s)',
 		'pictures'			=> 'Image(s)',
+		'word1'				=> 'at',		
 		//Footer
 		'footer_photo'		=> 'The most important thing for us is your health, honesty is our commitment',
 		'copyright'			=> '© 2014 TjMed. All rights reserved.',

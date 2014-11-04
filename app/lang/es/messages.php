@@ -45,7 +45,7 @@
 		'favorites'			=> 'Favorito(s)',
 		'reviews'			=> 'Reseña(s)',
 		'pictures'			=> 'Imágenes(s)',
-
+		'word1'				=> 'en',
 		//Footer
 		'footer_photo'		=> 'Lo mas importante tu salud, nuestro compromiso la honestidad',
 		'copyright'			=> '© 2014 TjMed. Todos Los Derechos Reservados.',
