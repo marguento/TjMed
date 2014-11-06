@@ -4,9 +4,10 @@
 <div class="space20"></div>
 <div class="container">
 <ol class="breadcrumb" style="padding-right: 0px;">
-    <li class="active" style="color:#083D5C"></li>    
-    <li>{{ link_to('doctores', Lang::get('messages.search')) }}</li>
+    <li></li>    
+    <li class="active" style="color:#083D5C">{{ Lang::get('messages.search') }}</li>
   </ol>
+
   <div class="blog-container">      
   @if (Session::has('var'))
     {{ Session::get('var') }}

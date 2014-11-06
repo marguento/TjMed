@@ -27,8 +27,8 @@ class AdminController extends BaseController {
 		{
 			return Redirect::to('/');
 		} 
-		$doctores = Business::whereb_verified(1)->whereb_active(1)->get();
-		$non_doctors = Business::whereb_verified(0)->whereb_active(1)->get();
+		$doctores = Business::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
+		$non_doctors = Business::whereb_verified(0)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
 		$b_cat = BusinessView::all();
 		return View::make('admin/doctores', ['doctores' => $doctores, 'non_doctors' => $non_doctors, 
 											'b_cat' => $b_cat]);
@@ -331,7 +331,7 @@ class AdminController extends BaseController {
 		          <button type="button" class="close" data-dismiss="alert">&times;</button>
 		          <strong>¡Éxito!</strong> Doctor verificado correctamente.
 		        </div>';
-        return Redirect::to('admin/doctores')->with('var', $var);
+        return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
 	}
 
 	public function disable($b_id)
@@ -343,7 +343,7 @@ class AdminController extends BaseController {
 		          <button type="button" class="close" data-dismiss="alert">&times;</button>
 		          <strong>¡Éxito!</strong> Doctor archivado.
 		        </div>';
-        return Redirect::to('admin/doctores')->with('var', $var);
+        return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
 	}
 
 	public function verify()
@@ -400,7 +400,7 @@ class AdminController extends BaseController {
 		          <strong>¡Éxito!</strong> Doctor archivado.
 		        </div>';
 		}
-		return Redirect::to('admin/doctores')->with('var', $var);
+		return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
 	}
 
 	public function del_rev($id, $doctor)

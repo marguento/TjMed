@@ -188,16 +188,17 @@
       @foreach($comments as $comment)
         <div class="blog-comment">
           <div class="user-image">
-            @if($comment->U_oauth_provider == '1')
-                      <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="{{$comment->U_profile_image}}"></a>
-                    @else
-                      @if($comment->U_profile_image != "")
-                        <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="{{url('../app/images_server/' . $comment->U_profile_image)}}"></a>
-                      @else
-                        <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="{{url('../app/images/default_picture.png')}}"></a>
-                      @endif
-                    @endif
-
+            <a href="{{ url('usuario/' . $comment->C_user) }}">
+              @if($comment->U_profile_image != "")
+                @if(substr($comment->U_profile_image,0,5) == 'https')
+                  <img src="{{$comment->U_profile_image}}">
+                @else
+                  <img src="../../app/images_server/{{$comment->U_profile_image}}">
+                @endif
+              @else
+                <img src="../../app/images/default_picture.png">
+              @endif
+            </a>
           </div> 
             <div class="comment-data">
               <h4><a href="{{ url('usuario/' . $comment->C_user) }}">{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</a>

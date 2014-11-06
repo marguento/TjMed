@@ -264,15 +264,17 @@
               <div class="col-md-4 promo-text">
                 <div class="blog-comment">
                   <div class="user-image">
-                    @if($comment->U_oauth_provider == '1')
-                      <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="{{$comment->U_profile_image}}"></a>
-                    @else
+                    <a href="{{ url('usuario/' . $comment->C_user) }}">
                       @if($comment->U_profile_image != "")
-                        <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="../app/images_server/{{$comment->U_profile_image}}"></a>
+                        @if(substr($comment->U_profile_image,0,5) == 'https')
+                          <img src="{{$comment->U_profile_image}}">
+                        @else
+                          <img src="../app/images_server/{{$comment->U_profile_image}}">
+                        @endif
                       @else
-                        <a href="{{ url('usuario/' . $comment->C_user) }}"><img src="../app/images/default_picture.png"></a>
+                        <img src="../app/images/default_picture.png">
                       @endif
-                    @endif
+                    </a>
                   </div> 
                   <div class="comment-data">
                     <a href="{{ url('usuario/' . $comment->C_user) }}"><h4>{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</h4></a>
@@ -390,15 +392,15 @@
         <div class="oslotron">
           <center>          
           <h4>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h4>
-          @if(Auth::user()->U_oauth_provider == '1')
-            <img src="{{Auth::user()->U_profile_image}}" style="width: 60px;">
-          @else
             @if(Auth::user()->U_profile_image != "")
-              <img src="../app/images_server/{{Auth::user()->U_profile_image}}" style="width: 60px;">
+              @if(substr(Auth::user()->U_profile_image,0,5) == 'https')
+                <img src="{{Auth::user()->U_profile_image}}" style="width: 60px;">
+              @else
+                <img src="../app/images_server/{{Auth::user()->U_profile_image}}" style="width: 60px;">
+              @endif
             @else
               <img src="../app/images/default_picture.png" style="width: 60px;">
             @endif
-          @endif
             <br><br>
             <p>
               <strong> 0 </strong> {{ Lang::get('messages.favorites') }} <br>

@@ -4,8 +4,9 @@
 <div class="space20"></div>
 <div class="container">
 <ol class="breadcrumb" style="padding-right: 0px;">
-    <li class="active" style="color:#083D5C"></li>    
-    <li>{{ link_to('especialidades', Lang::get('messages.tittle_1')) }}</li>
+      
+    <li></li>
+    <li class="active" style="color:#083D5C">{{ Lang::get('messages.tittle_1') }}</li>  
   </ol>
   <div class="blog-container">      
   <div class="space20"></div>   

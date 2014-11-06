@@ -21,7 +21,7 @@ class BusinessController extends BaseController {
 		                      											->where('T_name', 'LIKE', '%'.$search.'%')
 		                      											->whereRaw('v_tags.B_ID = v_business_categories.B_ID');
 	            												});
-	            									})->groupBy('b_id')
+	            									})->orderBy('b_joined_date', 'desc')->groupBy('b_id')
 	            									->paginate(5);
 		} 
 		elseif (isset($data['category']) && isset($data['speciality']) && ($data['category'] !='all' || $data['speciality'] != 'all')) 
@@ -30,16 +30,16 @@ class BusinessController extends BaseController {
 			{
 				$business = BusinessCategoriesView::whereb_verified(1)
 													->whereb_active(1)
-													->wheres_id($data['speciality'])
+													->wheres_id($data['speciality'])->orderBy('b_joined_date', 'desc')
 													->paginate(5);
 			} else {
 				$business = BusinessCategoriesView::whereb_verified(1)
 													->whereb_active(1)
-													->wherec_id($data['category'])
+													->wherec_id($data['category'])->orderBy('b_joined_date', 'desc')
 													->paginate(5);
 			}
 		} else {
-			$business = BusinessRatingView::whereb_verified(1)->whereb_active(1)->paginate(5);
+			$business = BusinessRatingView::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->paginate(5);
 		}
 		$categories = Category::all();
 		$b_cat = BusinessView::all();

@@ -267,7 +267,7 @@
             <td>{{ $i }}</td>
             <td>{{ $cv->S_name }}</td>
             <td>{{ $cv->C_name }}</td>
-            <td><a href="#" class="del_cat" id="del_{{ $cv->S_ID }}"><span class="fa fa-times uicon udel"></span></a></td>
+            <td><a href="#" class="del_cat" id="del_{{ $cv->S_ID }}"><span class="fa fa-times uicon udel" style="font-size:14px"></span></a></td>
           </tr>
           <?php $i++; ?>
         @endforeach
@@ -312,7 +312,7 @@
           <tr>
             <td>{{ $i }}</td>
             <td>{{ $tv->T_name }}</td>
-            <td><a href="#" class="del_tag" id="del_{{ $tv->T_ID }}"><span class="fa fa-times uicon udel"></span></a></td>
+            <td><a href="#" class="del_tag" id="del_{{ $tv->T_ID }}"><span class="fa fa-times uicon udel" style="font-size:14px"></span></a></td>
           </tr>
           <?php $i++; ?>
         @endforeach
@@ -329,7 +329,16 @@
       @if ($comments->count())
         @foreach($comments as $comment)
           <div class="blog-comment">
-            <div class="user-image">{{ HTML::image($comment->U_profile_image, 'usuario imagen comentario') }}
+            <div class="user-image">
+              @if($comment->U_profile_image != "")
+                @if(substr($comment->U_profile_image,0,5) == 'https')
+                  <img src="{{$comment->U_profile_image}}">
+                @else
+                  <img src="../../../app/images_server/{{$comment->U_profile_image}}">
+                @endif
+              @else
+                <img src="../../../app/images/default_picture.png">
+              @endif
             <!--<i class="fa fa-user"></i>--></div> 
               <div class="comment-data">
                 <h4><a href="{{url('admin/editar/'.$comment->C_user)}}">{{ $comment->U_firstname . ' ' . $comment->U_lastname }}</a>

@@ -41,19 +41,19 @@
               @if ($users->count())
                 @foreach ($users as $user)
                   <tr>
-                    @if ($user->U_profile_image == "")
-                      <td><img class="user_img" src="../../app/images/default_picture.png"></td>
-                    @else
-                     @if($user->U_oauth_provider == '0')
-                        <td><img class="user_img" src="../../app/images_server/{{ $user->U_profile_image }}"></td>
+                    @if($user->U_profile_image != "")
+                      @if(substr($user->U_profile_image,0,5) == 'https')
+                        <td><img class="user_img" src="{{$user->U_profile_image}}"></td>
                       @else
-                        <td><img class="user_img" src="{{ $user->U_profile_image }}"></td>
+                        <td><img class="user_img" src="../../app/images_server/{{$user->U_profile_image}}"></td>
                       @endif
+                    @else
+                      <td><img class="user_img" src="../../app/images/default_picture.png"></td>
                     @endif
                     <td><a href="editar/{{ $user->U_username }}">{{ $user->U_firstname . ' ' . $user->U_lastname }}</a></td>
                     <td>{{ $user->U_email }}</td>
                     <td>{{ $user->U_created_at }}</td>
-                    @if($user->U_facebook=="")
+                    @if($user->U_oauth_provider == 0)
                       <td>No</td>
                     @else
                       <td>Sí</td>

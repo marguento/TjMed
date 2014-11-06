@@ -5,6 +5,12 @@
   {{ Session::get('var') }}
 @endif
 
+@if (Session::has('ver'))
+  <input type="hidden" id="verified" value="1">
+@else
+  <input type="hidden" id="verified" value="0">
+@endif
+
 <h2 class="sub-header">Administración doctores</h2>
 
 <div class="tabbable">
@@ -160,6 +166,11 @@ $(document).ready(function() {
   $('#doctor').addClass('active');
   $('#doctor_table').dataTable();
   $('#doctorv_table').dataTable();
+
+  if($('#verified').val() == 1) 
+  {
+    $('.nav-tabs a:last').tab('show');
+  } 
 
   var id = "";
   $('.check_doctor').on('click',function () {

@@ -55,14 +55,14 @@
     <div class="col-md-4">
       <div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="max-width: 300px; max-height:270px;">
-          @if($user->U_oauth_provider == '1')
-           {{ HTML::image($user->U_profile_image) }}
-          @else
-            @if($user->U_profile_image != "")
-              <img src="../../../app/images_server/{{$user->U_profile_image}}">
+          @if($user->U_profile_image != "")
+            @if(substr($user->U_profile_image,0,5) == 'https')
+              <img class="user_img" src="{{$user->U_profile_image}}">
             @else
-              <img src="../../../app/images/default_picture.png">
+              <img class="user_img" src="../../../app/images_server/{{$user->U_profile_image}}">
             @endif
+          @else
+            <img class="user_img" src="../../../app/images/default_picture.png">
           @endif
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
