@@ -22,9 +22,7 @@
         <div class="row contact-data">
           <div class="col-md-6">
             <h4>Direccion</h4>
-            190 Tehun Street<br>
-            Los Angeles, CA 913 20<br>
-            United States
+            Tijuana, B.C.
             <div class="space40"></div>
           </div>  
           <div class="col-md-6">
