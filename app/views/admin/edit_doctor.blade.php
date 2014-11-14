@@ -89,6 +89,32 @@
 </div>
 
 <br>
+            <input id="map_c" type="hidden" value="{{ $doctor->b_map }}">
+<div id="map-canvas" style="width:100%; height:250px"></div>
+<br>
+<div class="row">
+¿No encuentras la dirección? Mueve el marcador manualmente y colocalo en la ubicación deseada <a href="#"  data-toggle="modal" data-target="#help_map">¿Necesitas ayuda?</a>
+</div>
+
+<br>
+<b>¿Tomar en cuenta la ubicación de la dirección o el marcador?</b><br><br>
+<div class="row">
+  <div class="form-group">
+    {{ Form::label('map_c', 'Dirección', array('class' => 'col-sm-1 control-label')) }}
+    <div class="col-md-1">
+      {{ Form::radio('map_c', '0', true) }}
+    </div>
+
+    {{ Form::label('map_c', 'Marcador (coordenadas)', array('class' => 'col-md-1 control-label')) }}
+    <div class="col-md-1" class="error">
+      {{ Form::radio('map_c', '1') }}
+    </div>
+  </div>
+</div>
+
+
+
+<br>
 
 <div class="row">
   <div class="form-group">
@@ -237,6 +263,40 @@
   </div>
 </div>
 <div class="col-md-4"></div>
+
+<div class="modal fade" id="help_map">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Registrar dirección del negocio</h4>
+      </div>
+      <div class="modal-body">
+        <p>Puedes ingresar las coordenadas de tu direccion directamente. <a href="//maps.google.com" target="_blank">Ingresa aquí</a></p>
+        <div class="row">
+          <div class="form-group">
+            {{ Form::label('latitude', 'Latitud', array('class' => 'col-sm-2 control-label')) }}
+            <div class="col-md-4">
+              {{ Form::text('latitude', $doctor->b_latitude, array('class' => 'session form-control', 'id' => 'latitude')) }}
+            </div>
+
+            {{ Form::label('longitude', 'Longitud', array('class' => 'col-md-2 control-label')) }}
+            <div class="col-md-4">
+              {{ Form::text('longitude', $doctor->b_longitude, array('class' => 'session form-control focus', 'id' => 'longitude')) }}
+            </div>
+          </div>
+        </div>
+        <br>
+        <img src="{{url('images/map.png')}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="accept_btn">Aceptar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {{ Form::close() }}
 </div>
 
@@ -314,6 +374,8 @@
       </div>
     </div>
   </div>
+
+
   {{ Form::close() }}
 
   <div class="space20"></div>
@@ -412,12 +474,45 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
+
 <script>
 
 $(document).ready(function() {
   $('#doctor').addClass('active');
   $('#doctor_table').dataTable();
   $('#doctorv_table').dataTable();
+
+  var geocoder = new google.maps.Geocoder();
+  var mapOptions = {
+    zoom: 15
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: map.getCenter(),
+    map: map,
+    draggable:true
+  });
+
+  var $radios = $('input:radio[name=map_c]');
+  var map_c = $('#map_c').val();
+
+  if(map_c == 1)
+  {
+    $radios.filter('[value=1]').prop('checked', true);
+  } else {
+    $radios.filter('[value=0]').prop('checked', true);
+  }
+    
+
+  initialize();
+
+  $("#address").keyup(function () {
+      maps();
+   });
 
   $('.del_modal').on('click', function() {
     $('#del_doc').modal('show');
@@ -477,7 +572,79 @@ $(document).ready(function() {
       } 
     });
  });
+
+  function initialize() {
+      if(map_c == 1)
+      {
+        var lat = $('#latitude').val();
+        var lng = $('#longitude').val();
+        var myLatlng = new google.maps.LatLng(lat, lng);
+        map.setCenter(myLatlng);
+        marker.setPosition(map.getCenter());
+      } else {
+        var address = $('#address').val();
+        geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          marker.setPosition(map.getCenter());
+        } else {
+          var myLatlng = new google.maps.LatLng(32.4981863, -116.9626808);
+          map.setCenter(myLatlng);
+          marker.setPosition( map.getCenter());
+        }
+       });
+      }
+
+      google.maps.event.addListener(marker, 'dragend', function() {
+        var $radios = $('input:radio[name=map_c]');
+        $radios.filter('[value=1]').prop('checked', true);
+        c = marker.getPosition();
+        $('#latitude').val(c.lat());
+        $('#longitude').val(c.lng());
+      });
+
+       $("#accept_btn").click(function () {
+        var $radios = $('input:radio[name=map_c]');
+        $radios.filter('[value=1]').prop('checked', true);
+        var myLatlng = new google.maps.LatLng($('#latitude').val(), $('#longitude').val());
+          map.setCenter(myLatlng);
+          c = map.getCenter();
+          marker.setPosition(c);
+      });
+    }
+
+    function maps() 
+  {
+    var address = document.getElementById('address').value;
+    if(address == "")
+    {
+      address = "Tijuana";
+    }
+
+    var c;
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        c = map.getCenter();
+        marker.setPosition(c);
+        $('#latitude').val(c.lat());
+        $('#longitude').val(c.lng());
+      } else {
+        var myLatlng = new google.maps.LatLng(32.4981863, -116.9626808);
+        map.setCenter(myLatlng);
+        c = map.getCenter();
+        marker.setPosition(c);
+        $('#latitude').val(c.lat());
+        $('#longitude').val(c.lng());
+      }
+    }); 
+  }
+
 });
+
+
+
 </script>
 
 @stop

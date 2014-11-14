@@ -22,6 +22,7 @@
     {{ HTML::script('js/ckeditor/ckeditor.js') }}
     {{ HTML::script('js/tinymce.min.js') }}
     {{ HTML::script('js/jquery.dataTables.min.js') }}
+    {{ HTML::script("https://maps.googleapis.com/maps/api/js?v=3.exp") }}
   </head>
 
   <body>

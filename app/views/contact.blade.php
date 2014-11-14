@@ -8,6 +8,9 @@
     <div class="space40"></div>
 
 <div class="container">
+  @if (Session::has('var'))
+      {{ Session::get('var') }}
+    @endif
     <div class="row"> 
       <div class="col-md-12">
         <h1>Contactanos!</h1>
@@ -16,6 +19,7 @@
   </div>
 
     <div class="container">
+
     <div class="row"> 
       <div class="col-md-6">  
       
@@ -58,23 +62,23 @@
         
         <h4>Forma de Contacto</h4>    
         <!-- Form -->
-        <form role="form" name="ajax-form" id="ajax-form" action="php/esp/mail-it.php" method="post" class="contact-form">
+       {{ Form::open(array('url' => 'mail')) }}
           <div class="row">            
             <div class="form-group col-sm-6">
               <label for="name2">Nombre</label>
-              <input class="form-control" id="name" name="name" onblur="if(this.value == '') this.value='Name'" onfocus="if(this.value == 'Name') this.value=''" type="text" value="Nombre">
+              <input class="form-control session" id="name" name="name" onblur="if(this.value == '') this.value='Name'" onfocus="if(this.value == 'Name') this.value=''" type="text" value="Nombre">
               <div class="error" id="err-name">Please enter name</div>
             </div>
             <div class="form-group col-sm-6">
               <label for="email2">E-mail</label>
-              <input class="form-control" id="email" name="email" type="text" onfocus="if(this.value == 'E-mail') this.value='';" onblur="if(this.value == '') this.value='E-mail';" value="E-mail">
+              <input class="form-control session" id="email" name="email" type="text" onfocus="if(this.value == 'E-mail') this.value='';" onblur="if(this.value == '') this.value='E-mail';" value="E-mail">
               <div class="error" id="err-emailvld">E-mail is not a valid format</div> 
             </div>
           </div>                
           <div class="row">            
             <div class="form-group col-md-12">
               <label for="message">Mensaje</label>
-              <textarea class="form-control" id="message2" name="message" onblur="if(this.value == '') this.value='Message'" onfocus="if(this.value == 'Message') this.value=''">Mensaje</textarea>
+              <textarea class="form-control session" id="message2" name="msg" onblur="if(this.value == '') this.value='Message'" onfocus="if(this.value == 'Message') this.value=''">Mensaje</textarea>
               <div class="error" id="err-message">Please enter message</div>     
             </div>
           </div> 
@@ -88,7 +92,7 @@
               <button type="submit" class="btn btn-primary" id="send">Enviar</button>
             </div>
           </div>
-        </form>   
+         {{ Form::close() }}  
         <!-- Form End -->
           
       </div>    

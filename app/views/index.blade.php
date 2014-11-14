@@ -150,7 +150,9 @@
           <div class="col-md-4">    
             <div class="item-box-2">
               <div class="media-container">
-                <a href="{{ url('doctor/'.$bus->B_ID) }}" ><img src="{{url('images_server/'.$bus->b_image)}}" alt="" width="360" height="360"></a>
+
+                <a href="{{ url('doctor/'.$bus->B_ID) }}" >
+                  <div class="img-wrapper wrapper"><img src="{{url('images_server/'.$bus->b_image)}}" alt=""></div></a>
               </div>
               <div class="info-container">
                 <a href="{{ url('doctor/'.$bus->B_ID) }}" >
@@ -263,7 +265,7 @@
             @foreach ($comments as $comment)
               <div class="col-md-4 promo-text">
                 <div class="blog-comment">
-                  <div class="user-image">
+                  <div class="usr-wrapper wrapper">
                     <a href="{{ url('usuario/' . $comment->C_user) }}">
                       @if($comment->U_profile_image != "")
                         @if(substr($comment->U_profile_image,0,5) == 'https')
@@ -342,7 +344,9 @@
           <div class="col-md-4 col-sm-6">    
             <div class="item-box" style="padding-bottom: 0px;">
               <div class="media-container">
-                {{ HTML::image('images_server/' . $article->A_image) }}
+                <div class="art-wrapper wrapper">
+                  {{ HTML::image('images_server/' . $article->A_image) }}
+                </div>
               </div>
               <div class="info-container">
                 <a href="{{ url('articulo/' . $article->A_ID) }}"><h3>{{ $article->A_title}}</h3></a>

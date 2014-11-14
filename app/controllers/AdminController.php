@@ -429,6 +429,9 @@ class AdminController extends BaseController {
 			$doctor->b_website		= Input::get('website');
 			$doctor->b_updated_at	= date('Y-m-d H:i:s');
 			$doctor->b_user_owner	= Input::get('user_owner');
+			$doctor->b_latitude		= Input::get('latitude');
+			$doctor->b_longitude	= Input::get('longitude');
+			$doctor->b_map			= Input::get('map_c');
 			$doctor->b_verified		= 1;
 			// print_r($doctor);
 

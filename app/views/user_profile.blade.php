@@ -300,15 +300,17 @@
         <div class="tab-pane" id="tab1-3">
           <div class="row">
             <div class="col-md-4">
+              <div class="user-wrapper wrapper">
               @if(Auth::user()->U_profile_image != "")
                 @if(substr(Auth::user()->U_profile_image,0,5) == 'https')
-                  <img src="{{Auth::user()->U_profile_image}}" style="max-width: 200px; max-height:270px;">
+                  <img src="{{Auth::user()->U_profile_image}}">
                 @else
-                  <img src="images_server/{{Auth::user()->U_profile_image}}" style="max-width: 200px; max-height:270px;">
+                  <img src="images_server/{{Auth::user()->U_profile_image}}">
                 @endif
               @else
-                <img src="images/default_picture.png" style="max-width: 200px; max-height:270px;">
+                <img src="images/default_picture.png">
               @endif
+            </div>
             </div>
             <div class="col-md-4">
               <h3>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h3>

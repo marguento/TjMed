@@ -45,7 +45,10 @@
                  ({{ $article->rating }})
               @endif
               </span></h2>
-            <img src="images_server/{{ $article->A_image }}" alt="" width="640" height="356">
+              <div class="image-wrapper">
+                <img src="{{url('images_server/' .$article->A_image)}}" alt="">
+              </div>
+
             <div class="space25"></div>
             <!-- <a href="#"> Categoría </a> -->
             <div class="space10"></div>

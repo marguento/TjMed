@@ -71,26 +71,21 @@ Route::post('edit_review', 'BusinessController@update_review');
 
 Route::get('del_review/{id}', 'BusinessController@delete_review');
 
-Route::get('mail', function() {
-    mail('eira.rangel@gmail.com', 'My Subject', 'wawis');
-    // I'm creating an array with user's info but most likely you can use $user->email or pass $user object to closure later
-    // $user = array(
-    //     'email'=>'eira.rangel@gmail.com',
-    //     'name'=>'Laravelovich'
-    // );
+Route::post('mail', function() {
 
-    // // the data that will be passed into the mail view blade template
-    // $data = array(
-    //     'detail'=>'Your awesome detail here',
-    //     'name'  => $user['name']
-    // );
-
-    // // use Mail::send function to send email passing the data and using the $user variable in the closure
-    // Mail::send('emails.welcome', $data, function($message) use ($user)
-    // {
-    //   $message->from('admin@site.com', 'Site Admin');
-    //   $message->to($user['email'], $user['name'])->subject('Welcome to My Laravel app!');
-    // });
+    $data = [
+        'name' => Input::get('name'),
+        'email' => Input::get('email'),
+        'msg' => Input::get('msg')
+    ];
+    Mail::send('emails.welcome', $data, function($message) {
+        $message->to('tjmed.mx@gmail.com', 'TjMed')->subject('Contacto');
+    });
+    $var = '<div class="alert alert-success" role="alert">
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      <strong>¡Éxito!</strong> Tu correo ha sido recibido.
+                    </div>';
+    return Redirect::to('contacto')->with('var', $var);
 });
 
 

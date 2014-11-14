@@ -45,7 +45,7 @@
 				            </div>
 				            <div class="item-icon">
 				              <i class="fa fa-envelope"></i>
-				              <a href="mailto:TjMed.mx@gmail.com">Gmail</a>
+				              <a href="mailto:tjmed.mx@gmail.com">Gmail</a>
 				            </div>
 				            <div class="item-icon">
 				              <i class="fa fa-google-plus"></i>
@@ -64,7 +64,7 @@
             <div class="space5"></div>
             
             <!-- Form -->
-            <form role="form" name="ajax-form" id="ajax-form" action="php/mail-it.php" method="post" class="contact-form">
+            {{ Form::open(array('url' => 'mail')) }}
               <div class="row">            
                 <div class="form-group col-sm-6">
                   <input class="form-control" id="name2" name="name" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_name') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_name') }}') this.value=''" type="text" value="{{ Lang::get('messages.contact_name') }}">
@@ -77,7 +77,7 @@
               </div>                
               <div class="row">            
                 <div class="form-group col-md-12">
-                  <textarea class="form-control" id="message2" name="message" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_message') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_message') }}') this.value=''">{{ Lang::get('messages.contact_message') }}</textarea>
+                  <textarea class="form-control" id="message2" name="msg" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_message') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_message') }}') this.value=''">{{ Lang::get('messages.contact_message') }}</textarea>
                   <div class="error" id="err-message">Please enter message</div>     
                 </div>
               </div> 
@@ -91,7 +91,7 @@
                   <button type="submit" class="btn btn-sm" id="send">{{ Lang::get('messages.contact_send') }}</button>
                 </div>
               </div>
-            </form>   
+            {{ Form::close() }}  
             <!-- Form End -->
             
             <div class="space20"></div>

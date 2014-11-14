@@ -40,7 +40,9 @@
               @endif
               </span>
             </h2>
-            <img src="{{url('images_server/' .$article->A_image)}}" alt="" width="1140" height="456">
+            <div class="image-wrapper">
+            <img src="{{url('images_server/' .$article->A_image)}}" alt="">
+          </div>
             <div class="space25"></div> 
               Categorías: <?php $i = 0; ?>
               @foreach ($categories as $c)

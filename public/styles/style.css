@@ -1692,7 +1692,7 @@ table a:hover{
 
 .item-box-2 .media-container {
   position:relative;
-  background:#3c4451;
+  background-color: #F7FCFF;
 } 
 
 .item-box-2 .media-container img {
@@ -3885,4 +3885,58 @@ list-style-type: none;
 
 .profile {
     color: #91979f !important;
+}
+
+.image-wrapper {
+  background-color: #F7FCFF;
+}
+
+.image-wrapper img { 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  max-width: 360px;
+  height: auto;
+  max-height: 360px;
+}
+
+
+.wrapper {
+  display: inline-block; /* or you could float them */
+    overflow: hidden;
+    background-color: #F7FCFF;
+}
+
+.img-wrapper {
+    width: 360px; /* whatever set width */
+    height: 360px;
+}
+
+.img-wrapper img, .usr-wrapper img, .art-wrapper img, .user-wrapper img{
+  position: relative;
+  top: 50%;
+  transform:      translateY(-50%);
+    width: 100%;
+    background-color: #F7FCFF;
+}
+
+.usr-wrapper {
+  position:absolute;
+    top:0px;
+    left:0px;
+  width: 60px; /* whatever set width */
+  height: 60px;
+}
+
+.user-wrapper {
+  width: 200px; /* whatever set width */
+  height: 270px;
+  background-color:#E6EDF2;
+}
+
+.art-wrapper {
+  width: 262px; /* whatever set width */
+  height: 186px;
+   
 }

@@ -118,6 +118,9 @@
             <!--<img border="0" src="//maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&amp;zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284" alt="Points of Interest in Lower Manhattan">
             -->
             <input id="address" type="hidden" value="{{ $doctor->b_address }}">
+            <input id="latitude" type="hidden" value="{{ $doctor->b_latitude }}">
+            <input id="longitude" type="hidden" value="{{ $doctor->b_longitude }}">
+            <input id="map_c" type="hidden" value="{{ $doctor->b_map }}">
             <div id="map-canvas"></div>
 
             <div class="space40"></div>
@@ -300,6 +303,7 @@
   $(document).ready(function() {
     var rate = '';
     rateFunction();
+    initialize();
     $('#edit_comment').hide();
 
   });
@@ -369,5 +373,44 @@
      $('#del_review').on('click', function () {
         location.href = "{{ url('del_review/' . $doctor->B_ID) }}";
      });
+
+     function initialize() {
+      var geocoder = new google.maps.Geocoder();
+      var mapOptions = {
+        zoom: 15
+      };
+
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+
+      var marker = new google.maps.Marker({
+        position: map.getCenter(),
+        map: map,
+        draggable:true
+      });
+
+      var map_c = $('#map_c').val();
+
+      if(map_c == 1)
+      {
+        var lat = $('#latitude').val();
+        var lng = $('#longitude').val();
+        var myLatlng = new google.maps.LatLng(lat, lng);
+        map.setCenter(myLatlng);
+        marker.setPosition(map.getCenter());
+      } else {
+        var address = $('#address').val();
+        geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          marker.setPosition(map.getCenter());
+        } else {
+          var myLatlng = new google.maps.LatLng(32.4981863, -116.9626808);
+          map.setCenter(myLatlng);
+          marker.setPosition( map.getCenter());
+        }
+       });
+      }
+    }
 </script>
 @stop

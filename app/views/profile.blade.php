@@ -16,15 +16,17 @@
         <div class="tab-pane active" id="tab1-1">
     <div class="row">
       <div class="col-md-4">
-        @if($user->U_oauth_provider == '1')
-          <img src="{{$user->U_profile_image}}" style="max-width: 200px; max-height:270px;">
-        @else
-          @if($user->U_profile_image != "")
-            <img src="{{url('images_server/' . $user->U_profile_image)}}" style="max-width: 200px; max-height:270px;">
+        <div class="user-wrapper wrapper">
+        @if($user->U_profile_image != "")
+          @if(substr($user->U_profile_image,0,5) == 'https')
+            <img src="{{$user->U_profile_image}}" style="max-width: 200px; max-height:270px;">
           @else
-            <img src="{{url('images/default_picture.png')}}" style="max-width: 200px; max-height:270px;">
+            <img src="{{url('images_server/' . $user->U_profile_image)}}" style="max-width: 200px; max-height:270px;">
           @endif
+        @else
+            <img src="{{url('images/default_picture.png')}}" style="max-width: 200px; max-height:270px;">
         @endif
+      </div>
       </div>
       <div class="col-md-4">
         <h3>{{$user->U_firstname . ' ' . $user->U_lastname}}</h3>
