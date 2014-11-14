@@ -59,10 +59,10 @@
             @if(substr($user->U_profile_image,0,5) == 'https')
               <img class="user_img" src="{{$user->U_profile_image}}">
             @else
-              <img class="user_img" src="../../../app/images_server/{{$user->U_profile_image}}">
+              <img class="user_img" src="../../images_server/{{$user->U_profile_image}}">
             @endif
           @else
-            <img class="user_img" src="../../../app/images/default_picture.png">
+            <img class="user_img" src="../../images/default_picture.png">
           @endif
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
@@ -72,6 +72,8 @@
               <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
           </div>
         </div>  
+        <br>
+        <span class="error_msg">{{ $errors->first('U_profile_image') }}</span>
     </div>
 
     {{ Form::label('birthdate', 'Fecha de Nacimiento', array('class' => 'col-md-2 control-label')) }}
@@ -100,11 +102,12 @@
   <div class="form-group">
     <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook</label>
     <div class="col-md-4">
-      {{ Form::text('facebook', $user->U_facebook, array('class' => 'form-control')) }}
+      {{ Form::text('facebook', $user->U_facebook, array('class' => 'form-control')) . 
+      'Ej: facebook.com/ejemplo'}}
     </div>
     <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter</label>
     <div class="col-md-4">
-      {{ Form::text('twitter', $user->U_twitter, array('class' => 'form-control')) }}
+      {{ Form::text('twitter', $user->U_twitter, array('class' => 'form-control')) . 'Ej: twitter.com/ejemplo'}}
     </div>
   </div>
 </div>
@@ -115,12 +118,12 @@
   <div class="form-group">
     <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin</label>
     <div class="col-md-4">
-      {{ Form::text('linkedin', $user->U_linkedin, array('class' => 'form-control')) }}
+      {{ Form::text('linkedin', $user->U_linkedin, array('class' => 'form-control')) . 'Ej: linkedin.com/in/ejemplo' }}
     </div>
 
     <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube</label>
     <div class="col-md-4">
-      {{ Form::text('youtube', $user->U_youtube, array('class' => 'form-control')) }}
+      {{ Form::text('youtube', $user->U_youtube, array('class' => 'form-control')) . 'Ej: youtube.com/user/ejemplo' }}
     </div>
   </div>
 </div>
@@ -129,9 +132,9 @@
 
 <div class="row">
   <div class="form-group">
-    <label for="google-plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
+    <label for="google_plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
     <div class="col-md-4">
-      <input type="text" class="form-control" id="google-plus" value="">
+       {{ Form::text('google_plus', $user->U_google_plus, array('class' => 'form-control')) . 'Ej: plus.google.com/ejemplo'}}
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     Sitio Web Personal</label>
     <div class="col-md-4">

@@ -5,8 +5,7 @@
   {{ Session::get('var') }}
 @endif
 
-<div class="container">
-  <h2 class="sub-header">Administración artculo</h2>
+  <h2 class="sub-header">Administración artículo ({{$articles->count()}})</h2>
   <center> <a href="{{url('admin/articulo/0')}}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>Nueva entrada</button></a> </center>
   <div class="space20"></div>
   <div class="table-responsive">
@@ -25,7 +24,7 @@
           <tr>
             <td><a href="{{url('admin/articulo/' . $article->A_ID)}}">{{ $article->A_title }}</a></td>
             <td>{{ $article->A_introduction }}</td>
-            <td>{{ $article->A_author }} </td>
+            <td><a href="{{url('admin/editar/' . $article->A_author)}}" target="_blank">{{ $article->author_name }}</a></td>
             <td>{{ $article->A_created_at}}</td>
            </tr>
         @endforeach
@@ -33,7 +32,6 @@
       </tbody>
     </table>
   </div>
-</div>
 <div class="space20"></div>
 
 <script>

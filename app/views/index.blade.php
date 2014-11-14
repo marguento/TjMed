@@ -6,12 +6,12 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="item active">
-      <img src="../app/images/{{ Lang::get('messages.banner1') }}" alt="...">
+      <img src="images/{{ Lang::get('messages.banner1') }}" alt="...">
       <div class="carousel-caption">
       </div>
     </div>
     <div class="item">
-      <img src="../app/images/{{ Lang::get('messages.banner2') }}" alt="...">
+      <img src="images/{{ Lang::get('messages.banner2') }}" alt="...">
       <div class="carousel-caption">
       </div>
     </div>
@@ -49,7 +49,7 @@
           <a href="{{ url('categoria/1') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/E_Clinicas.png" alt="" width="263" height="263">      
+                <img src="images/E_Clinicas.png" alt="" width="263" height="263">      
             </div>
             <div class="title" style="margin-bottom: 0px;">
                 <h4>{{ Lang::get('messages.category_1') }}</h4>
@@ -61,7 +61,7 @@
           <a href="{{ url('categoria/2') }}">   
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/E_quiru.png" alt="" width="263" height="263">        
+                <img src="images/E_quiru.png" alt="" width="263" height="263">        
             </div>
             <div class="title" style="margin-bottom: 0px;">   
                 <h4>{{ Lang::get('messages.category_2') }}</h4>
@@ -73,7 +73,7 @@
           <a href="{{ url('categoria/3') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/E_medicoquiru.png" alt="" width="263" height="263">         
+                <img src="images/E_medicoquiru.png" alt="" width="263" height="263">         
             </div>
             <div class="title" style="margin-bottom: 0px;">
                         
@@ -87,7 +87,7 @@
           <a href="{{ url('categoria/4') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/E_Laboratorio.png" alt="" width="263" height="263">        
+                <img src="images/E_Laboratorio.png" alt="" width="263" height="263">        
             </div>
             <div class="title" style="margin-bottom: 0px;">
               
@@ -101,7 +101,7 @@
           <a href="{{ url('especialidad/28') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/E_Odonto.png" alt="" width="263" height="263">   
+                <img src="images/E_Odonto.png" alt="" width="263" height="263">   
             </div>
             <div class="title" style="margin-bottom: 0px;">
               
@@ -115,7 +115,7 @@
           <a href="{{ url('especialidad/28') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="../app/images/E_Odonto.png" alt="" width="263" height="263">   
+                <img src="images/E_Odonto.png" alt="" width="263" height="263">   
             </div>
             <div class="title" style="margin-bottom: 0px;">
               
@@ -150,7 +150,7 @@
           <div class="col-md-4">    
             <div class="item-box-2">
               <div class="media-container">
-                <a href="{{ url('doctor/'.$bus->B_ID) }}" ><img src="{{url('../app/images_server/'.$bus->b_image)}}" alt="" width="360" height="360"></a>
+                <a href="{{ url('doctor/'.$bus->B_ID) }}" ><img src="{{url('images_server/'.$bus->b_image)}}" alt="" width="360" height="360"></a>
               </div>
               <div class="info-container">
                 <a href="{{ url('doctor/'.$bus->B_ID) }}" >
@@ -269,10 +269,10 @@
                         @if(substr($comment->U_profile_image,0,5) == 'https')
                           <img src="{{$comment->U_profile_image}}">
                         @else
-                          <img src="../app/images_server/{{$comment->U_profile_image}}">
+                          <img src="images_server/{{$comment->U_profile_image}}">
                         @endif
                       @else
-                        <img src="../app/images/default_picture.png">
+                        <img src="images/default_picture.png">
                       @endif
                     </a>
                   </div> 
@@ -342,7 +342,7 @@
           <div class="col-md-4 col-sm-6">    
             <div class="item-box" style="padding-bottom: 0px;">
               <div class="media-container">
-                {{ HTML::image('../app/images_server/' . $article->A_image) }}
+                {{ HTML::image('images_server/' . $article->A_image) }}
               </div>
               <div class="info-container">
                 <a href="{{ url('articulo/' . $article->A_ID) }}"><h3>{{ $article->A_title}}</h3></a>
@@ -396,10 +396,10 @@
               @if(substr(Auth::user()->U_profile_image,0,5) == 'https')
                 <img src="{{Auth::user()->U_profile_image}}" style="width: 60px;">
               @else
-                <img src="../app/images_server/{{Auth::user()->U_profile_image}}" style="width: 60px;">
+                <img src="images_server/{{Auth::user()->U_profile_image}}" style="width: 60px;">
               @endif
             @else
-              <img src="../app/images/default_picture.png" style="width: 60px;">
+              <img src="images/default_picture.png" style="width: 60px;">
             @endif
             <br><br>
             <p>

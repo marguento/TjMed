@@ -3,7 +3,7 @@
 	<!-- Footer -->  
 	<footer class="footer">
 		<!-- Parallax --> 
-		<div id="parallax-one" class="parallax" style="background-image: url({{ URL::asset('../app/images/foto_nueva_abajo.jpg'); }}); background-position: 50%">
+		<div id="parallax-one" class="parallax" style="background-image: url({{ URL::asset('images/foto_nueva_abajo.jpg'); }}); background-position: 50%">
 			<div class="footer-promo">
 				<div class="container">
             		<div class="row">
@@ -21,7 +21,7 @@
 				<div class="row">
 
 						<div class="col-md-3 col-sm-6">
-							<h6>INFORMACION DE CONTACTO</h6>
+							<h6>{{ Lang::get('messages.contact_info_t') }}</h6>
 							Tijuana, Baja California<br>
 							México<br>
 							<br>
@@ -60,24 +60,24 @@
 
 
 <div class="col-md-6 col-sm-6">
-            <h6>Contactanos</h6>
+            <h6>{{ Lang::get('messages.contact_us_t') }}</h6>
             <div class="space5"></div>
             
             <!-- Form -->
             <form role="form" name="ajax-form" id="ajax-form" action="php/mail-it.php" method="post" class="contact-form">
               <div class="row">            
                 <div class="form-group col-sm-6">
-                  <input class="form-control" id="name2" name="name" onblur="if(this.value == '') this.value='Name'" onfocus="if(this.value == 'Name') this.value=''" type="text" value="Nombre">
+                  <input class="form-control" id="name2" name="name" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_name') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_name') }}') this.value=''" type="text" value="{{ Lang::get('messages.contact_name') }}">
                   <div class="error" id="err-name">Please enter name</div>
                 </div>
                 <div class="form-group col-sm-6">
-                  <input class="form-control" id="email2" name="email" type="text" onfocus="if(this.value == 'E-mail') this.value='';" onblur="if(this.value == '') this.value='E-mail';" value="E-mail">
+                  <input class="form-control" id="email2" name="email" type="text" onfocus="if(this.value == '{{ Lang::get('messages.contact_email') }}') this.value='';" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_email') }}';" value="{{ Lang::get('messages.contact_email') }}">
                   <div class="error" id="err-emailvld">E-mail is not a valid format</div> 
                 </div>
               </div>                
               <div class="row">            
                 <div class="form-group col-md-12">
-                  <textarea class="form-control" id="message2" name="message" onblur="if(this.value == '') this.value='Mensaje'" onfocus="if(this.value == 'Message') this.value=''">Message</textarea>
+                  <textarea class="form-control" id="message2" name="message" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_message') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_message') }}') this.value=''">{{ Lang::get('messages.contact_message') }}</textarea>
                   <div class="error" id="err-message">Please enter message</div>     
                 </div>
               </div> 
@@ -88,7 +88,7 @@
                   <div class="error" id="err-form">There was a problem validating the form please check!</div>
                   <div class="error" id="err-timedout">The connection to the server timed out!</div>
                   <div class="error" id="err-state"></div>                 
-                  <button type="submit" class="btn btn-sm" id="send">Mandar Mensaje</button>
+                  <button type="submit" class="btn btn-sm" id="send">{{ Lang::get('messages.contact_send') }}</button>
                 </div>
               </div>
             </form>   

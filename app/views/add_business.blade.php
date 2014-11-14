@@ -3,15 +3,30 @@
 
 
 <div class="container">
+
   <ol class="breadcrumb">
     <li>{{ link_to('/', 'Volver a inicio') }}</li>
     <li class="active" style="color:#083D5C">Registrar negocio</li>
   </ol>
+
+  @if (Session::has('var'))
+   {{ Session::get('var') }}
+  @endif
+
+  @if(Auth::check() && Auth::user()->U_level == 1)
+    <div class="alert alert-success" role="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Como administrador, el registro se reflejará inmediatamente sin verificación previa.
+    </div>
+  @endif
+
 <h2 class="sub-header">Agregar doctor o negocio médico</h2>
 <div class="space20"></div>
 
 {{ Form::open(array('url' => 'doctores/store', 'files'=> true)) }}
 {{ Form::hidden('add_user', 0) }}
+{{ Form::hidden('latitude', '', array('id' => 'latitude')) }}
+{{ Form::hidden('longitude', '', array('id' => 'longitude')) }}
 
 <div class="row">
   <div class="form-group">
@@ -23,13 +38,20 @@
 
     {{ Form::label('address', 'Dirección (*)', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
-      {{ Form::text('address', '', array('class' => 'session form-control')) }}
+      {{ Form::text('address', '', array('class' => 'session form-control', 'id' => 'address')) }}
       <span class="error_msg">{{ $errors->first('b_address') }}</span>
     </div>
   </div>
 </div>
 
 <br>
+<div id="map-canvas" style="width:100%; height:250px"></div>
+<br>
+<div class="row">
+¿No encuentras la dirección? Mueve el marcador manualmente y colocalo en la ubicación deseada <a href="#">¿Necesitas ayuda?</a>
+</div>
+
+<br><br>
 
 <div class="row">
   <div class="form-group">
@@ -69,7 +91,7 @@
 <div class="row">
   <div class="form-group">
 {{ Form::label('specialty', 'Especialidad', array('class' => 'col-md-2 control-label')) }}
-<div class="col-md-3">
+<div class="col-md-4">
       <select name="specialty" class="form-control" id="specialty" style="color:black; font-size:14px">
         @if ($specialties->count())
           @foreach ($specialties as $spe)
@@ -78,8 +100,12 @@
         @endif
       </select>
     </div>
+    {{ Form::label('other', 'Otra especialidad', array('class' => 'col-sm-2 control-label')) }}
+    <div class="col-md-4">
+      {{ Form::text('other', '', array('class' => 'session form-control')) }}
+    </div>
   </div>
-</div>
+  </div>
     <br>
 
 <p> Agrega una introducción breve de 150 caracteres de lo más representativo del negocio</p>
@@ -115,7 +141,7 @@
     <div class="col-md-4">
       <div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="width: 200px; height: 130px;">
-            {{ HTML::image('../app/images/default.jpg') }}
+            {{ HTML::image('images/default.jpg') }}
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
         <div>
@@ -123,7 +149,7 @@
           <input type="file" name="image"></span>
           <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
         </div>
-      </div>
+      </div><br>
       <span class="error_msg">{{ $errors->first('b_image') }}</span>
     </div>
 
@@ -136,11 +162,11 @@
 
 <div class="row">
   <div class="form-group">
-    <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook</label>
+    <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook <br>Ej: facebook.com/ejemplo</label>
     <div class="col-md-4">
       {{ Form::text('facebook', '', array('class' => 'session form-control')) }}
     </div>
-    <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter</label>
+    <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter <br>Ej: twitter.com/ejemplo</label>
     <div class="col-md-4">
       {{ Form::text('twitter', '', array('class' => 'session form-control')) }}
     </div>
@@ -151,12 +177,12 @@
 
 <div class="row">
   <div class="form-group">
-    <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin</label>
+    <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin <br>Ej: linkedin.com/in/ejemplo</label>
     <div class="col-md-4">
       {{ Form::text('linkedin', '', array('class' => 'session form-control')) }}
     </div>
 
-    <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube</label>
+    <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube <br>Ej: youtube.com/user/ejemplo</label>
     <div class="col-md-4">
       {{ Form::text('youtube', '', array('class' => 'session form-control')) }}
     </div>
@@ -167,13 +193,28 @@
 
 <div class="row">
   <div class="form-group">
-    <label for="google-plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
+     <label for="google_plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+ <br>Ej: plus.google.com/ejemplo</label>
     <div class="col-md-4">
-      <input type="text" class="session form-control" id="google-plus" value="">
+      {{ Form::text('google_plus', '', array('class' => 'session form-control')) }}
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     Sitio Web Personal</label>
     <div class="col-md-4">
       {{ Form::text('website', '', array('class' => 'session form-control')) }}
+    </div>
+  </div>
+</div>
+
+<br>
+
+<p> Puedes dejar otro teléfono de contacto para que los administradores puedan corroborar los datos más facilmente </p>
+
+<br>
+
+<div class="row">
+  <div class="form-group">
+    <label for="contact-phone" class="col-md-2 control-label">Teléfono de Contacto</label>
+    <div class="col-md-4">
+      {{ Form::text('contact-phone', '', array('class' => 'session form-control')) }}
     </div>
   </div>
 </div>
@@ -195,7 +236,53 @@
 
 $(document).ready(function() {
   $('#negocios').addClass('active');
+
+  initialize();
+
+  $("#address").keypress(function () {
+    initialize();
+  });
+
+  function initialize() {
+  var geocoder = new google.maps.Geocoder();
+  var mapOptions = {
+    zoom: 15
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: map.getCenter(),
+    map: map,
+    draggable:true
+  });
+
+  var address = document.getElementById('address').value;
+  if(address == "")
+  {
+    address = "Tijuana";
+  }
+
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      marker.setPosition(map.getCenter());
+    } else {
+      var myLatlng = new google.maps.LatLng(32.4981863, -116.9626808);
+      map.setCenter(myLatlng);
+      marker.setPosition(myLatlng);
+    }
+  });
+
+  google.maps.event.addListener(marker, 'dragend', function() {
+    console.log(marker.getPosition());
+  });
+}
+ 
 });
+
+
 </script>
 
 @stop

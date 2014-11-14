@@ -28,7 +28,7 @@ class AdminController extends BaseController {
 			return Redirect::to('/');
 		} 
 		$doctores = Business::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
-		$non_doctors = Business::whereb_verified(0)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
+		$non_doctors = BusinessRatingView::whereb_verified(0)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
 		$b_cat = BusinessView::all();
 		return View::make('admin/doctores', ['doctores' => $doctores, 'non_doctors' => $non_doctors, 
 											'b_cat' => $b_cat]);
@@ -40,7 +40,7 @@ class AdminController extends BaseController {
 		{
 			return Redirect::to('/');
 		} 
-		$articles = Article::all();
+		$articles = ArticleView::all();
 		return View::make('admin/articulos', ['articles' => $articles]);
 	}
 
@@ -55,14 +55,15 @@ class AdminController extends BaseController {
 		{
 			$article = new Article();
 			$article->A_ID = 0;
+			$article->A_author = Auth::user()->U_username;
 		} else {
 			$article = Article::wherea_id($id)->first();
 		}
 
-		$users = User::all();
+		$users = User::whereU_active(1)->get();
 		$authors = [];
 		foreach($users as $user) {
-			$authors[$user->U_username] = $user->U_username;
+			$authors[$user->U_username] = $user->U_firstname . ' ' . $user->U_lastname;
 		}
 		
 		return View::make('admin/art_profile', ['article' => $article,
@@ -76,10 +77,13 @@ class AdminController extends BaseController {
 			return Redirect::to('/');
 		} 
 
+		$update = '';
+
 		if(Input::get('curr_art') == 0)
 		{
 			$article = new Article();
 			$article->A_created_at = date('Y-m-d H:i:s');
+			$update = 1;
 		} else {
 			$article = Article::wherea_id(Input::get('curr_art'))->first();
 			$article->A_updated_at = date('Y-m-d H:i:s');
@@ -88,18 +92,44 @@ class AdminController extends BaseController {
 		$article->A_title 		 = Input::get('title_es');
 		$article->A_introduction = Input::get('introduction_es');
 		$article->A_content 	 = Input::get('content_es');
+
+		
 		if (Input::hasFile('image'))
 		{
-		    $article->A_image = Input::file('image')->getClientOriginalName();
-		    $destinationPath = app_path() . '/images_server';
-			$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+		    $article->A_image = Input::file('image');
+		    $update = 1;
+		} 
+
+		if (!$article->isValid($update))
+		{
+			$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Error!</strong> Hay algunos errores en el registro, favor de corregirlos.
+		        </div>';
+			return Redirect::back()->withInput()->withErrors($article->errors)->with('var', $var);
+		}
+
+		if (Input::hasFile('image'))
+		{
+		    $destinationPath = public_path() . '/images_server';
+			$fileName = 'img_' . round(microtime(true) * 1000);
 
 			Input::file('image')->move($destinationPath, $fileName);
 
 			$article->A_image = $fileName;
 		} 
+
 		$article->save();
-		return Redirect::to('admin/articulos');
+		if(Input::get('curr_art') == 0)
+		{
+			return Redirect::to('admin/articulos');
+		} else {
+			$var = '<div class="alert alert-success" role="alert">
+			          <button type="button" class="close" data-dismiss="alert">&times;</button>
+			          <strong>¡Éxito!</strong> Cambio registrados.
+			        </div>';
+			return Redirect::back()->with('var', $var);
+		}
 	}
 
 	public function specialties()
@@ -217,7 +247,7 @@ class AdminController extends BaseController {
 	public function edit_doctor($id)
 	{
 		if($id != 0) {
-			$doctor = Business::whereb_id($id)->first();
+			$doctor = BusinessRatingView::whereb_id($id)->first();
 			$users = User::all();
 			$categories = Category::all();
 			$cat_v = CategoriesView::whereb_id($id)->get();
@@ -284,7 +314,12 @@ class AdminController extends BaseController {
 		$cat->specialties_S_ID 	= $data['speciality'];
 		$cat->save();
 
-		return Redirect::to('admin/doctores/' . $data['curr_doctor']);
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          Categoría agregada.
+		        </div>';
+
+		return Redirect::to('admin/doctores/' . $data['curr_doctor'])->with('var', $var)->with('ver', 1);;
 	}
 
 	public function add_tag() 
@@ -301,7 +336,12 @@ class AdminController extends BaseController {
 		$tag->tags_T_ID 		= $tag_id;
 		$tag->save();
 
-		return Redirect::to('admin/doctores/' . $data['curr_doctor']);
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          Etiqueta agregada.
+		        </div>';
+
+		return Redirect::to('admin/doctores/' . $data['curr_doctor'])->with('var', $var)->with('ver', 1);;
 	}
 
 	public function del_cat($cat, $b_id)
@@ -310,7 +350,11 @@ class AdminController extends BaseController {
 										wherespecialties_s_id($cat)->first();
 
 		$cate->delete();
-		return Redirect::to('admin/doctores/' . $b_id);
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          Categoría eliminada.
+		        </div>';
+		return Redirect::to('admin/doctores/' . $b_id)->with('var', $var)->with('ver', 1);;
 	}
 
 	public function del_tag($tag, $b_id)
@@ -319,7 +363,11 @@ class AdminController extends BaseController {
 										wheretags_t_id($tag)->first();
 
 		$tags->delete();
-		return Redirect::to('admin/doctores/' . $b_id);
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          Etiqueta eliminada.
+		        </div>';
+		return Redirect::to('admin/doctores/' . $b_id)->with('var', $var)->with('ver', 1);;
 	}
 
 	public function verified($b_id)
@@ -327,11 +375,19 @@ class AdminController extends BaseController {
 		$doctor = Business::where('B_ID', $b_id)
             ->update(array('b_verified' => 1));
 
+        $count = Business::where('b_verified', 0)->where('b_active', 1)->get();
+
 		$var = '<div class="alert alert-success" role="alert">
 		          <button type="button" class="close" data-dismiss="alert">&times;</button>
 		          <strong>¡Éxito!</strong> Doctor verificado correctamente.
 		        </div>';
-        return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
+		if($count->count() == 0)
+		{
+			return Redirect::to('admin/doctores')->with('var', $var);
+		} else {
+			return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
+		}
+        
 	}
 
 	public function disable($b_id)
@@ -343,7 +399,14 @@ class AdminController extends BaseController {
 		          <button type="button" class="close" data-dismiss="alert">&times;</button>
 		          <strong>¡Éxito!</strong> Doctor archivado.
 		        </div>';
-        return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
+		$count = Business::where('b_verified', 0)->where('b_active', 1)->get();
+		if($count->count() == 0)
+		{
+			return Redirect::to('admin/doctores')->with('var', $var);
+		} else {
+			return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
+		}
+        
 	}
 
 	public function verify()
@@ -360,7 +423,7 @@ class AdminController extends BaseController {
 			$doctor->b_description	= Input::get('description');
 			$doctor->b_facebook		= Input::get('facebook');
 			$doctor->b_twitter		= Input::get('twitter');
-			// $user->U_google_plus= Input::get('lastname');
+			$doctor->b_google_plus	= Input::get('google_plus');
 			$doctor->b_linkedin		= Input::get('linkedin');
 			$doctor->b_youtube		= Input::get('youtube');
 			$doctor->b_website		= Input::get('website');
@@ -368,17 +431,26 @@ class AdminController extends BaseController {
 			$doctor->b_user_owner	= Input::get('user_owner');
 			$doctor->b_verified		= 1;
 			// print_r($doctor);
+
+			$update = '';
 			if (Input::hasFile('image'))
 			{
 			    $doctor->b_image = Input::file('image')->getClientOriginalName();
+			    $update = 1;
 			} 
-			if (!$doctor->isValid(Input::get('curr_doctor')))
+
+
+			if (!$doctor->isValid(Input::get('curr_doctor'), $update))
 			{
-				return Redirect::back()->withInput()->withErrors($doctor->errors);
+				$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Error!</strong> Hay algunos errores en el registro, favor de corregirlos.
+		        </div>';
+				return Redirect::back()->withInput()->withErrors($doctor->errors)->with('var', $var)->with('ver', 1);
 			}
 			if (Input::hasFile('image'))
 			{
-				$destinationPath = app_path() . '/images_server';
+				$destinationPath = public_path() . '/images_server';
 				$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
 
 				Input::file('image')->move($destinationPath, $fileName);
@@ -387,9 +459,33 @@ class AdminController extends BaseController {
 			}
 
 			$doctor->save();
+
+			$tag = TagsView::whereb_id(Input::get('curr_doctor'))->pluck('T_name');
+
+			$tag_name = Input::get('other');
+			
+			if( $tag_name != $tag)
+			{
+				$ntag = new Tag();
+				$ntag->T_name = $tag_name;
+				$ntag->save();
+
+				$tag_id = $ntag->T_ID;
+
+				$tag = new BusinessHasTags();
+				$tag->businesses_B_ID 	= $doctor->B_ID;
+				$tag->tags_T_ID 		= $tag_id;
+				$tag->save();
+			}
+
+			$specialty = new BusinessHasSpecialties();
+			$specialty->businesses_B_ID = $doctor->B_ID;
+			$specialty->specialties_S_ID = Input::get('specialty');
+			$specialty->save();
+
              $var = '<div class="alert alert-success" role="alert">
 		          <button type="button" class="close" data-dismiss="alert">&times;</button>
-		          <strong>¡Éxito!</strong> Doctor archivado.
+		          <strong>¡Éxito!</strong> Doctor verificado.
 		        </div>';
 		} else {
 			$doctor = Business::where('B_ID', Input::get('curr_doctor'))
@@ -400,7 +496,13 @@ class AdminController extends BaseController {
 		          <strong>¡Éxito!</strong> Doctor archivado.
 		        </div>';
 		}
-		return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
+		$count = Business::where('b_verified', 0)->where('b_active', 1)->get();
+		if($count->count() == 0)
+		{
+			return Redirect::to('admin/doctores')->with('var', $var);
+		} else {
+			return Redirect::to('admin/doctores')->with('var', $var)->with('ver', 1);
+		}
 	}
 
 	public function del_rev($id, $doctor)

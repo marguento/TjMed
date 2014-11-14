@@ -5,11 +5,25 @@
   {{ Session::get('var') }}
 @endif
 
+@if (Session::has('ver'))
+  <input type="hidden" id="verified" value="1">
+@else
+  <input type="hidden" id="verified" value="0">
+@endif
+
 <ol class="breadcrumb">
   <li>{{ link_to('admin/doctores', 'Volver a Administración de Doctores') }}</li>
 </ol>
 
-<h2 class="sub-header">Editar doctor: {{ $doctor->b_name}} </h2>
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="sub-header">Editar doctor: {{ $doctor->b_name}} </h2>
+  </div>
+  <div class="col-md-6">
+    <button class="btn color-4 btn-sm del_modal" style="float:right;"> Eliminar doctor </button>
+  </div>
+</div>
+
 <div class="tabbable">
 
 <ul class="nav nav-tabs">
@@ -33,7 +47,7 @@
 
     {{ Form::label('created_user', 'Creado por:', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
-      <span> <a href="{{url('admin/editar/'.$doctor->b_created_user)}}">{{ $doctor->b_created_user }}</a> </span>
+      <span> <a href="{{url('admin/editar/'.$doctor->b_created_user)}}">{{ $doctor->create_user }}</a> </span>
     </div>
   </div>
 </div>
@@ -139,9 +153,9 @@
       <div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="max-width: 300px; max-height:270px;">
           @if($doctor->b_image !="")
-            {{ HTML::image('../app/images_server/' . $doctor->b_image) }}
+            {{ HTML::image('images_server/' . $doctor->b_image) }}
           @else
-            {{ HTML::image('../app/images/default.jpg') }}
+            {{ HTML::image('images/default.jpg') }}
           @endif
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
@@ -151,7 +165,10 @@
           <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
         </div>
       </div>
+      <br>
+    <span class="error_msg">{{ $errors->first('b_image') }}</span>
     </div>
+
 
     {{ Form::label('priority', 'Prioridad', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
@@ -168,11 +185,12 @@
   <div class="form-group">
     <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook</label>
     <div class="col-md-4">
-      {{ Form::text('facebook', $doctor->b_facebook, array('class' => 'form-control')) }}
+      {{ Form::text('facebook', $doctor->b_facebook, array('class' => 'form-control')) . 
+      'Ej: facebook.com/ejemplo'}}
     </div>
     <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter</label>
     <div class="col-md-4">
-      {{ Form::text('twitter', $doctor->b_twitter, array('class' => 'form-control')) }}
+      {{ Form::text('twitter', $doctor->b_twitter, array('class' => 'form-control')) . 'Ej: twitter.com/ejemplo'}}
     </div>
   </div>
 </div>
@@ -183,12 +201,12 @@
   <div class="form-group">
     <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin</label>
     <div class="col-md-4">
-      {{ Form::text('linkedin', $doctor->b_linkedin, array('class' => 'form-control')) }}
+      {{ Form::text('linkedin', $doctor->b_linkedin, array('class' => 'form-control')) . 'Ej: linkedin.com/in/ejemplo'}}
     </div>
 
     <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube</label>
     <div class="col-md-4">
-      {{ Form::text('youtube', $doctor->b_youtube, array('class' => 'form-control')) }}
+      {{ Form::text('youtube', $doctor->b_youtube, array('class' => 'form-control')) . 'Ej: youtube.com/user/ejemplo'}}
     </div>
   </div>
 </div>
@@ -197,9 +215,9 @@
 
 <div class="row">
   <div class="form-group">
-    <label for="google-plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
+    <label for="google_plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
     <div class="col-md-4">
-      <input type="text" class="form-control" id="google-plus" value="">
+      {{ Form::text('google_plus', $doctor->b_google_plus, array('class' => 'form-control')) . 'Ej: plus.google.com/ejemplo'}}
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     Sitio Web Personal</label>
     <div class="col-md-4">
@@ -271,6 +289,8 @@
           </tr>
           <?php $i++; ?>
         @endforeach
+      @else 
+        <h5> No hay especialidades registradas para este negocio o doctor </h5>
       @endif
     </tbody>
   </table> 
@@ -316,6 +336,8 @@
           </tr>
           <?php $i++; ?>
         @endforeach
+      @else 
+        <h5> No hay etiquetas registradas para este negocio o doctor </h5>
       @endif
     </tbody>
   </table> 
@@ -334,10 +356,10 @@
                 @if(substr($comment->U_profile_image,0,5) == 'https')
                   <img src="{{$comment->U_profile_image}}">
                 @else
-                  <img src="../../../app/images_server/{{$comment->U_profile_image}}">
+                  <img src="../../images_server/{{$comment->U_profile_image}}">
                 @endif
               @else
-                <img src="../../../app/images/default_picture.png">
+                <img src="../../images/default_picture.png">
               @endif
             <!--<i class="fa fa-user"></i>--></div> 
               <div class="comment-data">
@@ -370,12 +392,46 @@
   </div>
 </div>
 
+<div class="modal fade" id="del_doc">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Eliminar doctor o negocio</h4>
+      </div>
+      <div class="modal-body">
+        Al eliminar este doctor también se borrará todo registro que lo contenga. 
+        ¿Está seguro de realizar esta acción?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" id="del_doctor">Eliminar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script>
 
 $(document).ready(function() {
   $('#doctor').addClass('active');
   $('#doctor_table').dataTable();
   $('#doctorv_table').dataTable();
+
+  $('.del_modal').on('click', function() {
+    $('#del_doc').modal('show');
+  });
+
+  $('#del_doctor').on('click', function() {
+    var b_id = $('.curr_doctor').attr('id');
+    window.location.href = '../disable/' + b_id;
+  });
+
+   if($('#verified').val() == 1) 
+  {
+     $('.nav-tabs a[href="#extra"]').tab('show');
+  } 
 
   $('.del_cat').on('click',function () {
     var cat = $(this).attr('id').substring(4);

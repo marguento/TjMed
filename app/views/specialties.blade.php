@@ -36,10 +36,10 @@
 					                    	<p align="justify">{{ $c->S_introduction }}<strong><br><i>{{ Lang::get('messages.read_more') }}</i></strong></p></a>
 							                <?php
 							                    switch($j) {
-							                        case 0: echo '<span class="fa fa-stethoscope"></span>'; break;
-							                        case 1: echo '<span class="fa fa-user-md"></span>'; break;
-							                        case 2: echo '<span class="fa fa-plus-square"></span>'; break;
-							                        case 3: echo '<span class="fa fa-flask"></span>'; break;
+							                        case 0: echo '<span class="fa"><img src="' . url('images/icono_especialidades clinicas.png') . '"></span>'; break;
+							                        case 1: echo '<span class="fa"><img src="' . url('images/icono_.especialidades quirurgicas.png') . '"></span>'; break;
+							                        case 2: echo '<span class="fa"><img src="' . url('images/icono_especialidades medico quirur.png') . '"></span>'; break;
+							                        case 3: echo '<span class="fa"><img src="' . url('images/icono-especialidades de laboratorio.png') . '"></span>'; break;
 							                    }
 							               	?>
 					                	</div>

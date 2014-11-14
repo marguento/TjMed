@@ -50,9 +50,9 @@
       <div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="max-width: 300px; max-height:270px;">
           @if($article->A_image !="")
-            {{ HTML::image('../app/images_server/' . $article->A_image) }}
+            {{ HTML::image('images_server/' . $article->A_image) }}
           @else
-            {{ HTML::image('../app/images/default.jpg') }}
+            {{ HTML::image('images/default.jpg') }}
           @endif
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
@@ -62,6 +62,8 @@
           <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
         </div>
       </div>
+      <br>
+      <span class="error_msg">{{ $errors->first('A_image') }}</span>
     </div>
   </div>
 </div>
@@ -97,7 +99,7 @@
   <div class="form-group">
     {{ Form::label('author', 'Autor', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
-      {{ Form::select('author', $authors, Auth::user()->U_username, ['class' => 'form-control', 'id' => 'author']) }}
+      {{ Form::select('author', $authors, $article->A_author, ['class' => 'form-control', 'id' => 'author']) }}
     </div>
   </div>
 </div>

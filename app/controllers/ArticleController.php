@@ -9,10 +9,56 @@ class ArticleController extends BaseController {
 		$categories = ArticleCategoriesView::wherea_id($a_id)->get();
 		$tags = ArticleTagsView::wherea_id($a_id)->get();
 
+		$cate = [];
+		$i = 0;
+		foreach($categories as $cat)
+		{
+			$cate[$i] = $cat->AC_name;
+			$i++;
+		}
+
+		if($i == 0)
+		{
+			$cate = array('');
+		}
+		
+
+		$tag = [];
+		$i = 0;
+		foreach($tags as $ta)
+		{
+			$tag[$i] = $ta->T_name;
+			$i++;
+		}
+
+		if($i == 0)
+		{
+			$tag = array('');
+		}
+		$top = ArticleView::whereIn('A_ID', function($query) use($cate,$a_id)
+					{
+						$query->select('A_ID')
+						->from('v_article_categories')
+						->whereIn('AC_name', $cate)
+						->where('A_ID', '<>', $a_id);
+					})
+				->orWhereIn('A_ID', function($query) use($tag, $a_id)
+					{
+						$query->select('A_ID')
+						->from('v_article_tags')
+						->whereIn('T_name', $tag)
+						->where('A_ID', '<>', $a_id);
+					})->orderBy('rating', 'desc')->orderBy('article_count', 'desc')->take(5)->get();
+		if($top->count() == 0)
+		{
+			$top = ArticleView::where('A_ID', '<>', $a_id)->orderBy('rating', 'desc')->orderBy('article_count', 'desc')->take(5)->get();
+		}
+
 		return View::make('article_profile', ['article' => $article, 
 												'comments' => $comments,
 												'categories' => $categories,
-												'tags' => $tags]);
+												'tags' => $tags,
+												'top' => $top]);
 	}
 
 	public function add_review() 

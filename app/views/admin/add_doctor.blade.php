@@ -5,6 +5,10 @@
   <li>{{ link_to('admin/doctores', 'Volver a Administración de Doctores') }}</li>
 </ol>
 
+ @if (Session::has('var'))
+   {{ Session::get('var') }}
+  @endif
+
 <h2 class="sub-header">Agregar doctor</h2>
 <div class="space20"></div>
 
@@ -95,7 +99,7 @@
     <div class="col-md-4">
       <div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="width: 200px; height: 130px;">
-            {{ HTML::image('../app/images/default.jpg') }}
+            {{ HTML::image('images/default.jpg') }}
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
         <div>
@@ -104,6 +108,7 @@
           <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
         </div>
       </div>
+      <br>
       <span class="error_msg">{{ $errors->first('b_image') }}</span>
     </div>
 
@@ -151,9 +156,9 @@
 
 <div class="row">
   <div class="form-group">
-    <label for="google-plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
+    <label for="google_plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
     <div class="col-md-4">
-      <input type="text" class="form-control" id="google-plus" value="">
+      {{ Form::text('google_plus', '', array('class' => 'form-control')) }}
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     Sitio Web Personal</label>
     <div class="col-md-4">

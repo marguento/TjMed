@@ -20,9 +20,9 @@
           <img src="{{$user->U_profile_image}}" style="max-width: 200px; max-height:270px;">
         @else
           @if($user->U_profile_image != "")
-            <img src="{{url('../app/images_server/' . $user->U_profile_image)}}" style="max-width: 200px; max-height:270px;">
+            <img src="{{url('images_server/' . $user->U_profile_image)}}" style="max-width: 200px; max-height:270px;">
           @else
-            <img src="{{url('../app/images/default_picture.png')}}" style="max-width: 200px; max-height:270px;">
+            <img src="{{url('images/default_picture.png')}}" style="max-width: 200px; max-height:270px;">
           @endif
         @endif
       </div>

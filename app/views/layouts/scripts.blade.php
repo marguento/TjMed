@@ -1,34 +1,34 @@
 	  <!-- JavaScripts -->
-	  {{ HTML::script("../app/js/jquery-1.10.2.js") }}                                                      
+	  {{ HTML::script("js/jquery-1.10.2.js") }}                                                      
 	  
-	  {{ HTML::script("../app/js/jquery.easing.js") }}
+	  {{ HTML::script("js/jquery.easing.js") }}
 	  <!--{{ HTML::script("js/jquery.sticky.js") }}-->
-	  {{ HTML::script("../app/js/tinynav.min.js") }}      
-	  {{ HTML::script("../app/js/animate.js") }}
-	  {{ HTML::script("../app/js/jquery.fitvids.js") }}
-	  {{ HTML::script("../app/js/jquery.isotope.min.js") }}
-	  {{ HTML::script("../app/js/jquery.parallax-1.1.3.js") }}
-	  {{ HTML::script("../app/js/jquery.magnific-popup.min.js") }} 
-	  <!--{{ HTML::script("../app/js/retina.js") }} -->
-	  {{ HTML::script("../app/js/respond.min.js") }} 
-	  {{ HTML::script("../app/js/scale.fix.js") }}
-	  {{ HTML::script("../app/js/jquery.countdown.js") }} 
-	  {{ HTML::script("../app/js/jquery.flexslider-min.js") }}
-	  {{ HTML::script("../app/js/jquery.refineslide.js") }}
-	  {{ HTML::script("../app/js/greensock.js") }}
-	  {{ HTML::script("../app/js/layerslider.transitions.js") }}
-	  {{ HTML::script("../app/js/layerslider.kreaturamedia.jquery.js") }}
-	  {{ HTML::script("../app/js/jquery.themepunch.plugins.min.js") }}
-	  {{ HTML::script("../app/js/jquery.themepunch.revolution.min.js") }}
-	  {{ HTML::script("../app/js/masterslider.js") }}  
-	  {{ HTML::script("../app/js/functions.js") }}
+	  {{ HTML::script("js/tinynav.min.js") }}      
+	  {{ HTML::script("js/animate.js") }}
+	  {{ HTML::script("js/jquery.fitvids.js") }}
+	  {{ HTML::script("js/jquery.isotope.min.js") }}
+	  {{ HTML::script("js/jquery.parallax-1.1.3.js") }}
+	  {{ HTML::script("js/jquery.magnific-popup.min.js") }} 
+	  <!--{{ HTML::script("js/retina.js") }} -->
+	  {{ HTML::script("js/respond.min.js") }} 
+	  {{ HTML::script("js/scale.fix.js") }}
+	  {{ HTML::script("js/jquery.countdown.js") }} 
+	  {{ HTML::script("js/jquery.flexslider-min.js") }}
+	  {{ HTML::script("js/jquery.refineslide.js") }}
+	  {{ HTML::script("js/greensock.js") }}
+	  {{ HTML::script("js/layerslider.transitions.js") }}
+	  {{ HTML::script("js/layerslider.kreaturamedia.jquery.js") }}
+	  {{ HTML::script("js/jquery.themepunch.plugins.min.js") }}
+	  {{ HTML::script("js/jquery.themepunch.revolution.min.js") }}
+	  {{ HTML::script("js/masterslider.js") }}  
+	  {{ HTML::script("js/functions.js") }}
 	  {{ HTML::script("//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js") }}
-	  {{ HTML::script("../app/js/jquery.bxslider.min.js") }}
-	  {{ HTML::script("../app/js/modernizr.js") }}
+	  {{ HTML::script("js/jquery.bxslider.min.js") }}
+	  {{ HTML::script("js/modernizr.js") }}
 	  {{ HTML::script("https://maps.googleapis.com/maps/api/js?v=3.exp") }}
-	  {{ HTML::script("../app/js/bootstrap.js") }}
-	  {{ HTML::script('../app/js/jasny-bootstrap.min.js') }}
-	  {{ HTML::script('../app/js/jquery.twbsPagination.min.js') }}
+	  {{ HTML::script("js/bootstrap.js") }}
+	  {{ HTML::script('js/jasny-bootstrap.min.js') }}
+	  {{ HTML::script('js/jquery.twbsPagination.min.js') }}
 	  
 	<script>
 	$(document).ready(function(){
@@ -48,32 +48,32 @@
 
 		$(".popup").popover();
 
-        var geocoder;
-		var map;
-		function initialize() {
-		  geocoder = new google.maps.Geocoder();
-		  var mapOptions = {
-		    zoom: 8
-		  }
-		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		  codeAddress();
-		}
+  //       var geocoder;
+		// var map;
+		// function initialize() {
+		//   geocoder = new google.maps.Geocoder();
+		//   var mapOptions = {
+		//     zoom: 15
+		//   }
+		//   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		//   codeAddress();
+		// }
 
-		function codeAddress() {
-		  var address = document.getElementById('address').value;
-		  geocoder.geocode( { 'address': address}, function(results, status) {
-		    if (status == google.maps.GeocoderStatus.OK) {
-		      map.setCenter(results[0].geometry.location);
-		      var marker = new google.maps.Marker({
-		          map: map,
-		          position: results[0].geometry.location
-		      });
-		    } else {
-		      alert('Geocode was not successful for the following reason: ' + status);
-		    }
-		  });
-		}
-			google.maps.event.addDomListener(window, 'load', initialize);
+		// function codeAddress() {
+		//   var address = document.getElementById('address').value;
+		//   geocoder.geocode( { 'address': address}, function(results, status) {
+		//     if (status == google.maps.GeocoderStatus.OK) {
+		//       map.setCenter(results[0].geometry.location);
+		//       var marker = new google.maps.Marker({
+		//           map: map,
+		//           position: results[0].geometry.location
+		//       });
+		//     } else {
+		//       //alert('Geocode was not successful for the following reason: ' + status);
+		//     }
+		//   });
+		// }
+		// 	google.maps.event.addDomListener(window, 'load', initialize);
 
 			var id = $('#category').val();
 			var dataString = 'id='+ id;

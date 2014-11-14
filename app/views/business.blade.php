@@ -15,8 +15,8 @@
   <div class="space20"></div> 
   <div class="row">
     <div class="col-md-12">
-      <a href="#">
-        <h1>{{ Lang::get('messages.reg_bussines') }} ({{ $business->count() }})</h1>  
+      <a href="{{url('doctores')}}">
+        <h1>{{ Lang::get('messages.reg_bussines') }} ({{ $business->getTotal() }})</h1>  
       </a>
     </div>
   </div>
@@ -52,7 +52,7 @@
 		<div class="container">
 		  <div class="row">
 		    <div class="col-md-2"> 
-            {{ HTML::image('../app/images_server/' . $bus->b_image, 'Doctor default picture') }} 
+            {{ HTML::image('images_server/' . $bus->b_image, 'Doctor default picture') }} 
 		      <div class="space40"></div>
 		    </div>  
 		    <div class="col-md-6">
@@ -80,7 +80,7 @@
                     <i class="fa fa-star-o"></i>
                     <?php $r++; ?>
                   @endwhile
-                  | <a href="{{ url('doctor/'.$bus->B_ID) }}#comments">{{ $bus->comments_count }} reseña(s)</a>
+                  | <a href="{{ url('doctor/'.$bus->B_ID) }}#comments">{{ $bus->comments_count }} {{ Lang::get('messages.reviews') }}</a>
                 </span>
 				  </div>
           <h6 style="color:#0AB2DB; margin-bottom: 0px;">

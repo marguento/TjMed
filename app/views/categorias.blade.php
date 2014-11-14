@@ -50,7 +50,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-1"> 
-                    {{ HTML::image('../app/images_server/' . $bus->b_image, 'Doctor default picture') }} 
+                    {{ HTML::image('images_server/' . $bus->b_image, 'Doctor default picture') }} 
                   <div class="space40"></div>
                 </div>  
                 <div class="col-md-3">

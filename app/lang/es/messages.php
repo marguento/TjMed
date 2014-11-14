@@ -8,7 +8,7 @@
 		'articles'			=> 'Vida Saludable',	
 		'about_us'			=> '¿Quiénes Somos?',
 		'contact'			=> 'Contacto',
-		'search_text'		=> 'Estoy Buscando...',
+		'search_text'		=> 'Estoy buscando...',
 		'sub_menu1'			=> 'Clínicas',	
 		'sub_menu2'			=> 'Quirúrgicas',
 		'sub_menu3'			=> 'Médico-Quirúrgicas',
@@ -33,7 +33,7 @@
 		'tittle_2'			=> 'VIDA SALUDABLE',
 		'tittle_3'			=> 'MI PERFIL',
 		'profile_tittle'	=> '¡Regístrate en TjMed!',	
-		'profile_text'		=> '¡Escribe reseñas sobre doctores, calíficalos y recibe otros grandes beneficios de los que podrás 
+		'profile_text'		=> '¡Escribe reseñas sobre doctores, califícalos y recibe otros grandes beneficios de los que podrás 
 								disfrutar aquí!',		
 		'add_bussines_tag1'	=> 'Agrega tu negocio ya! ¿No sabes cómo? Aquí te ayudamos.',
 		'add_bussines_but1'	=> 'Agregar Negocio',							
@@ -52,21 +52,21 @@
 		'word1'				=> 'en',
 		'3p'				=> '...',	
 		//Footer
-		'footer_photo'		=> 'Lo mas importante tu salud, nuestro compromiso la honestidad',
-		'copyright'			=> '© 2014 TjMed. Todos Los Derechos Reservados.',
+		'footer_photo'		=> 'Lo más importante tu salud, nuestro compromiso la honestidad',
+		'copyright'			=> '© 2014 TjMed. Todos los derechos reservados.',
 		//Bussines
-		'reg_bussines'		=> 'Negocios Registrados',	
+		'reg_bussines'		=> 'Negocios registrados',	
 		'all'				=> 'Todas',
-		'search'			=> 'Busqueda',	
-		'search_by_spec'	=> 'Buscar por Especialidad',
-		'no_bussines'		=> 'No hay Doctores Registrados',
+		'search'			=> 'Búsqueda',	
+		'search_by_spec'	=> 'Buscar por especialidad',
+		'no_bussines'		=> 'No hay doctores registrados',
 		//Specialities
-		'read_more'			=> 'Leer Más',
+		'read_more'			=> 'Leer más',
 		'view_more'			=> 'Ver más',								
 		//Quienes Somos?
 		'about_us_text1'	=> 'Somos jóvenes con experiencia el sector de los servicios médicos, comprometidos con el usuario de
 								los servicios y consientes de la necesidad de encontrar una solución rápida y confiable a los 
-								distintos problemas de salud que nuestra comunidad presenta. Como nuestro slogan lo dice <strong>
+								distintos problemas de salud que nuestra comunidad presenta. Como nuestro eslogan lo dice <strong>
 								“Lo mas importante tu salud, nuestro compromiso la honestidad”.</strong>',
 		'about_us_text2'	=>	'Nuestra base de datos 
 								será alimentada por las aportaciones, comentarios y calificaciones que nuestros usuarios aporten, 
@@ -89,5 +89,32 @@
 								región, han propiciado la región de turismo medico con mayor potencial en el mundo. Los servicios
 								médicos ofrecidos en el corredor turístico, desde Algodones en el municipio de Mexicali, hasta
 								Ensenada, son de primera calidad y a precios mucho mas accesibles que en el estado de California."',
-		'tj_med'			=> '<strong>Omar Tumalan</strong>, TjMed.'			
+		'tj_med'			=> '<strong>Omar Tumalan</strong>, TjMed.',
+		'contact_info_t'  	=> 'INFORMACIÓN DE CONTACTO',
+		'contact_us_t'		=> 'CONTÁCTANOS',
+		'contact_name'		=> 'Nombre',
+		'contact_email'		=> 'Correo Electrónico',
+		'contact_message'	=> 'Mensaje',
+		'contact_send'		=> 'Mandar correo',
+		'keep_reading'		=> 'Seguir leyendo',
+		'top_article'		=> 'TOP ARTÍCULOS',
+		'b_return_search'	=> 'Volver a búsqueda',
+		'b_doctor_profile'	=> 'Perfil doctor',
+		'location_title'	=> 'Ubicación',
+		'address_title'		=> 'Dirección',
+		'tags_title'		=> 'Etiquetas',
+		'register_title'	=> 'Registrado',
+		'no_reviews_title'	=> 'No hay reseñas aún',
+		'reviews_title'		=> 'Reseñas',
+		'no_reviews'		=> "Aún no hay reseñas para este doctor o negocio médico, tú puedes ser el primero, no dudes en compartir tu opinión",
+		'login_button'		=> 'Inicia sesión o regístrate',
+		'owner_content'		=> "Este negocio médico o doctor no cuenta con propietario o dueño, ¿Es usted el dueño?",
+		'owner_button'		=> 'Soy el propietario',
+		'edit_review'		=> 'Editar reseña',
+		'delete_review'		=> 'Eliminar reseña',
+		'rating_title'		=> 'Calificación',
+		'add_review'		=> 'Agregar reseña',
+		'cancel'			=> 'Cancelar',
+		'edit_your_review'	=> 'Edita tu reseña',
+		'leave_review'		=> 'Deja tu reseña'
 	);

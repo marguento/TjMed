@@ -1,7 +1,7 @@
 @extends('admin.index')
 @section('content_admin')
 
-<h2 class="sub-header">Administración de usuarios</h2>
+<h2 class="sub-header">Administración de usuarios ({{ $users->count()}})</h2>
       <!-- <form class="form-inline" role="form">
          <div class="form-group">
           <div class="dropdown">
@@ -45,10 +45,10 @@
                       @if(substr($user->U_profile_image,0,5) == 'https')
                         <td><img class="user_img" src="{{$user->U_profile_image}}"></td>
                       @else
-                        <td><img class="user_img" src="../../app/images_server/{{$user->U_profile_image}}"></td>
+                        <td><img class="user_img" src="../images_server/{{$user->U_profile_image}}"></td>
                       @endif
                     @else
-                      <td><img class="user_img" src="../../app/images/default_picture.png"></td>
+                      <td><img class="user_img" src="../images/default_picture.png"></td>
                     @endif
                     <td><a href="editar/{{ $user->U_username }}">{{ $user->U_firstname . ' ' . $user->U_lastname }}</a></td>
                     <td>{{ $user->U_email }}</td>

@@ -11,7 +11,7 @@
   <input type="hidden" id="verified" value="0">
 @endif
 
-<h2 class="sub-header">Administración doctores</h2>
+<h2 class="sub-header">Administración doctores ({{$doctores->count()}})</h2>
 
 <div class="tabbable">
   <ul class="nav nav-tabs">
@@ -38,7 +38,7 @@
                 @if ($doctores->count())
                 @foreach ($doctores as $doctor)
                 <tr>
-                  <td>{{ HTML::image('../app/images_server/' . $doctor->b_image) }}</td>
+                  <td>{{ HTML::image('images_server/' . $doctor->b_image) }}</td>
 
                   <td><a href="doctores/{{$doctor->B_ID}}">{{ $doctor->b_name }}</a></td>
                  <td>{{ $doctor->b_introduction }} </td>
@@ -87,7 +87,7 @@
                   @foreach ($non_doctors as $doctor)
                 <tr>
                   <td><a href="#" class="verify_doctor" id="id_{{ $doctor->B_ID}}">{{ $doctor->b_name}}</a></td>
-                  <td><a href="{{url('admin/editar/'.$doctor->b_created_user)}}" target="_blank">{{ $doctor->b_created_user }}</a></td>
+                  <td><a href="{{url('admin/editar/'.$doctor->b_created_user)}}" target="_blank">{{ $doctor->create_user }}</a></td>
                   <td>{{ $doctor->b_joined_date }}</td>
                   <td>
                     <h6 style="color:#0AB2DB; margin-bottom: 0px; font-size:12px">
@@ -124,7 +124,7 @@
 
 <div class="modal fade" id="verified_doc">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" style="width:700px">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
           <span class="sr-only">Close</span></button>

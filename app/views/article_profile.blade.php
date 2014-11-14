@@ -40,7 +40,7 @@
               @endif
               </span>
             </h2>
-            <img src="{{url('../app/images_server/' .$article->A_image)}}" alt="" width="1140" height="456">
+            <img src="{{url('images_server/' .$article->A_image)}}" alt="" width="1140" height="456">
             <div class="space25"></div> 
               Categorías: <?php $i = 0; ?>
               @foreach ($categories as $c)
@@ -101,47 +101,59 @@
           <div class="breadcrumb-container">
             <div class="container">  
               <div class="row">  
-                <div class="col-md-12"><h1>Seguir Leyendo:</h1></div>  
+                <div class="col-md-12"><h1>Artículos recomendados</h1></div>  
               </div> 
             </div> 
-          </div>  
+          </div> 
 
-          <!-- List -->
-          <ul class="list-3">
-            <p> 
-              <h6>Especialidades clínicas</h6>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Cardiología</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Neumología</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Neurología</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Pediatría</a></li>
-            </p>
+          @if ($top->count())
+            @foreach ($top as $t)
+              <a href="{{ url('articulo/' . $t->A_ID) }}">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-1"> 
+                      <img src="../images_server/{{ $t->A_image }}">
+                        <div class="space40"></div>
+                    </div>  
+                    <div class="col-md-3">
+                      <h6>{{ $t->A_title}}</h6>
+                      <div style="margin-bottom: 12px;">
+                        <span style="font-size:15px">
+                          <?php 
+                            $rating = $t->rating;
+                            $r = $rate = round($rating); ?>
+                            @while($rate > 1)
+                              <i class="fa fa-star"></i>
+                              <?php $rate--; ?>
+                            @endwhile
+                                            
+                            @if($r != $rating)
+                              <i class="fa fa-star-half"></i>
+                            @else
+                              @if($r != 0)
+                                <i class="fa fa-star"></i>
+                              @endif
+                            @endif
+                                  
+                            @while($r < 5)
+                              <i class="fa fa-star-o"></i>
+                              <?php $r++; ?>
+                            @endwhile
+                            | <a href="{{ url('articulo/'.$t->A_ID) }}#comments">{{ $t->article_count }} {{ Lang::get('messages.comments') }}</a>
+                        </span>
+                      </div>
+                      <p align="justify">
+                        {{ $t->A_introduction }}
+                      </p>           
+                      <div class="space20"></div> 
+                    </div>
+                  </div>
+                </div>
+              </a>
+                    
+                @endforeach
+          @endif 
 
-            <p>
-              <h6>Especialidades Quirúrgicas</h6>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Cirugia Plástica</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Cirugia Cardiovascular</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Cirugia Torácica</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Cirugia Neurocirugía</a></li>
-            </p>
-            <p> 
-              <h6>Especialidades médico quirúrgicas</h6>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Estomatología</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Oftalmología</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Otorrinolaringología</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Urología</a></li>
-            </p>
-            <p> 
-              <h6>Especialidades de laboratorio o diagnósticas</h6>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Inmunología</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Patológica</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Microbiología</a></li>
-              <li><a href="#"><i class="fa fa-caret-right"></i> Neurofisiología</a></li>
-            </p>        
-          </ul>
-          <!-- List End -->
-          <div class="space20"></div>
-          <div class="divider"></div>
-          <div class="space40"></div>
         </div>
       </div> 
     </div>
@@ -150,7 +162,7 @@
     <div id="comments">
       <div class="col-md-12">
         <div class="space40"></div>
-          <h3>Comentarios ({{ $comments->count() }})</h3>
+          <h3>Comentarios ({{ $comments->getTotal() }})</h3>
           <div class="space10"></div>
             @if ($comments->count())
               @foreach($comments as $comment)
@@ -161,10 +173,10 @@
                         @if(substr($comment->U_profile_image,0,5) == 'https')
                           <img src="{{$comment->U_profile_image}}">
                         @else
-                          <img src="../../app/images_server/{{$comment->U_profile_image}}">
+                          <img src="../images_server/{{$comment->U_profile_image}}">
                         @endif
                       @else
-                        <img src="../../app/images/default_picture.png">
+                        <img src="../images/default_picture.png">
                       @endif
                     </a>
                   </div> 

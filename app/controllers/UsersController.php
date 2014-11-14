@@ -30,7 +30,7 @@ class UsersController extends BaseController {
 		$user->U_lastname 	= Input::get('lastname');
 		$user->U_facebook	= Input::get('facebook');
 		$user->U_twitter	= Input::get('twitter');
-		// $user->U_google_plus= Input::get('lastname');
+		$user->U_google_plus= Input::get('google_plus');
 		$user->U_linkedin	= Input::get('linkedin');
 		$user->U_youtube	= Input::get('youtube');
 		$user->U_website	= Input::get('website');
@@ -43,20 +43,32 @@ class UsersController extends BaseController {
 		$user->U_username 	= Input::get('username');
 		$user->U_updated_at	= date('Y-m-d H:i:s');
 		$user->U_birthdate	= Input::get('birthdate');
+
+		$update = '';
 		if (Input::hasFile('image'))
 		{
-		    $user->U_profile_image = Input::file('image')->getClientOriginalName();
-		    $destinationPath = app_path() . '/images_server';
-			$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+		    $user->U_profile_image = Input::file('image');
+		    $update = 1;
+		} 
+
+		if (!$user->isValid(Auth::user()->U_username, $update))
+		{
+			$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Error!</strong> Hay algunos errores en el registro.
+		        </div>';
+			return Redirect::back()->withInput()->withErrors($user->errors)->with('var', $var);
+		}
+
+		if (Input::hasFile('image'))
+		{
+		    $destinationPath = public_path() . '/images_server';
+			$fileName = 'img_' . round(microtime(true) * 1000);
 
 			Input::file('image')->move($destinationPath, $fileName);
 
 			$user->U_profile_image = $fileName;
 		} 
-		if (!$user->isValid(Auth::user()->U_username))
-		{
-			return Redirect::back()->withInput()->withErrors($user->errors);
-		}
 
 
 		$user->save();
@@ -76,7 +88,7 @@ class UsersController extends BaseController {
 		$user->U_level		= Input::get('type');
 		$user->U_facebook	= Input::get('facebook');
 		$user->U_twitter	= Input::get('twitter');
-		// $user->U_google_plus= Input::get('lastname');
+		$user->U_google_plus= Input::get('google_plus');
 		$user->U_linkedin	= Input::get('linkedin');
 		$user->U_youtube	= Input::get('youtube');
 		$user->U_website	= Input::get('website');
@@ -89,20 +101,32 @@ class UsersController extends BaseController {
 		$user->U_username 	= Input::get('username');
 		$user->U_updated_at	= date('Y-m-d H:i:s');
 		$user->U_birthdate	= Input::get('birthdate');
+		
+		$update = '';
 		if (Input::hasFile('image'))
 		{
-		    $user->U_profile_image = Input::file('image')->getClientOriginalName();
-		    $destinationPath = app_path() . '/images_server';
-			$fileName = 'img_' . round(microtime(true) * 1000) . '_' . $id;
+		    $user->U_profile_image = Input::file('image');
+		    $update = 1;
+		} 
+
+		if (!$user->isValid(Input::get('curr_user'), $update))
+		{
+			$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Error!</strong> Hay algunos errores en el registro.
+		        </div>';
+			return Redirect::back()->withInput()->withErrors($user->errors)->with('var', $var);
+		}
+
+		if (Input::hasFile('image'))
+		{
+		    $destinationPath = public_path() . '/images_server';
+			$fileName = 'img_' . round(microtime(true) * 1000);
 
 			Input::file('image')->move($destinationPath, $fileName);
 
 			$user->U_profile_image = $fileName;
 		} 
-		if (!$user->isValid(Input::get('curr_user')))
-		{
-			return Redirect::back()->withInput()->withErrors($user->errors);
-		}
 
 		$user->save();
 		$var = '<div class="alert alert-success" role="alert">

@@ -5,12 +5,12 @@
 		    <div class="row">
 		        <div class="col-md-1">
 		        <a href={{ url('/') }} title="Home">
-		        	<img src="{{url('../app/images/Logo_Tj.png')}}"
-		        		onmouseover="this.src='{{url('../app/images/Logo_Tjmed_azulfuerte.png')}}'" 
-		        		onmouseout="this.src='{{url('../app/images/Logo_Tj.png')}}'" 
+		        	<img src="{{url('images/Logo_Tj.png')}}"
+		        		onmouseover="this.src='{{url('images/Logo_Tjmed_azulfuerte.png')}}'" 
+		        		onmouseout="this.src='{{url('images/Logo_Tj.png')}}'" 
 		        		border="0" 
 		        		alt="" 
-		        		style="padding-bottom: 10px; padding-top: 10px; padding-right: 8px;"/>
+		        		style="padding-bottom: 10px; padding-top: 10px; padding-right: 8px; width: 68px;"/>
 			      	</a>  
 				</div>
 				
@@ -27,9 +27,9 @@
 								@endif
 								
 								&nbsp;<a href="{{ url('es') }}">		        	
-											<img src="{{url('../app/images/Icon_es.png')}}"
-								        		onmouseover="this.src='{{url('../app/images/Es_Fuerte.png')}}'" 
-								        		onmouseout="this.src='{{url('../app/images/Icon_es.png')}}'" 
+											<img src="{{url('images/Icon_es.png')}}"
+								        		onmouseover="this.src='{{url('images/Es_Fuerte.png')}}'" 
+								        		onmouseout="this.src='{{url('images/Icon_es.png')}}'" 
 								        		border="0" 
 								        		alt=""
 								        		style="width: 3%;"
@@ -37,9 +37,9 @@
 												</a>
 
 								&nbsp;<a href="{{ url('en') }}">		        	
-											<img src="{{url('../app/images/En_Blanco.png')}}"
-								        		onmouseover="this.src='{{url('../app/images/en_AZUL.png')}}'" 
-								        		onmouseout="this.src='{{url('../app/images/En_Blanco.png')}}'" 
+											<img src="{{url('images/En_Blanco.png')}}"
+								        		onmouseover="this.src='{{url('images/en_AZUL.png')}}'" 
+								        		onmouseout="this.src='{{url('images/En_Blanco.png')}}'" 
 								        		border="0" 
 								        		alt=""
 								        		style="width: 3%;"

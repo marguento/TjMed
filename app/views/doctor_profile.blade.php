@@ -4,8 +4,8 @@
 
 <div class="container">
   <ol class="breadcrumb" style="padding-right: 0px;">
-    <li>{{ link_to('doctores', 'Volver a búsqueda') }}</li>
-     <li class="active" style="color:#083D5C">Perfil doctor</li>
+    <li>{{ link_to('doctores', Lang::get('messages.b_return_search')) }}</li>
+     <li class="active" style="color:#083D5C">{{ Lang::get('messages.b_doctor_profile') }}</li>
   </ol>
    @if (Session::has('var'))
       {{ Session::get('var') }}
@@ -48,7 +48,7 @@
       </span>
       </h1>
       <a href="#"><!--Especialidades--></a><br>
-          {{ HTML::image('../app/images_server/' . $doctor->b_image) }}
+          {{ HTML::image('images_server/' . $doctor->b_image) }}
           
           <div class="space10"></div>
           <div class="post-info-container">
@@ -57,12 +57,12 @@
                 <div class="post-info">
                   
                   <span class="post-data">  
-                    Registrado {{ substr($doctor->b_joined_date,0,-9) }}
+                    {{ Lang::get('messages.register_title') }} {{ substr($doctor->b_joined_date,0,-9) }}
                     <i class="fa fa-comment"></i>
                     @if($comments->count() > 0) 
-                      {{ $comments->count() . ' comentario(s)'}}
+                      {{ $comments->count() . ' ' . Lang::get("messages.reviews") }}
                     @else
-                      <span>No hay comentarios</span>
+                      <span>{{ Lang::get('messages.no_reviews_title') }}</span>
                     @endif
                   </span> 
                 </div>
@@ -79,16 +79,16 @@
                   </a>
                   @endif
                   @if($doctor->b_facebook != '')
-                    <a href="//facebook.com/{{$doctor->b_facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="//{{$doctor->b_facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
                   @endif
                   @if($doctor->b_twitter != '')
-                    <a href="{{ url('//twitter.com/' . $doctor->b_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="{{ url('//' . $doctor->b_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
                   @endif
                   @if($doctor->b_youtube != '')
-                    <a href="{{ url('//www.youtube.com/user/' . $doctor->b_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                    <a href="{{ url('//' . $doctor->b_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
                   @endif
                   @if($doctor->b_linkedin != '')
-                    <a href="{{ url('//www.linkedin.com/in/' . $doctor->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    <a href="{{ url('//' . $doctor->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                   @endif
                   @if($doctor->b_website != '')
                     <a href="{{ url('//' . $doctor->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
@@ -113,15 +113,15 @@
         
           <div class="">
             <div class="space25"></div>
-            <h4>Ubicación</h4>
-            <h5>Dirección: {{ $doctor->b_address }}</h5>
+            <h4>{{ Lang::get('messages.location_title') }}</h4>
+            <h5>{{ Lang::get('messages.address_title') }}: {{ $doctor->b_address }}</h5>
             <!--<img border="0" src="//maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&amp;zoom=13&amp;size=600x300&amp;maptype=roadmap&amp;markers=color:blue%7Clabel:S%7C40.702147,-74.015794&amp;markers=color:green%7Clabel:G%7C40.711614,-74.012318&amp;markers=color:red%7Clabel:C%7C40.718217,-73.998284" alt="Points of Interest in Lower Manhattan">
             -->
             <input id="address" type="hidden" value="{{ $doctor->b_address }}">
             <div id="map-canvas"></div>
 
             <div class="space40"></div>
-            <h4>Especialidades Médicas</4>
+            <h4>{{ Lang::get('messages.tittle_1') }}</4>
             <h6 style="color:#0AB2DB; margin-bottom: 0px;">
             <?php $i = 0; ?>
             @foreach ($b_cat as $c)
@@ -136,26 +136,28 @@
             @endforeach
             </h6>
             <br><br>
-            <h4>Etiquetas</4>
-            <h6 style="color:#0AB2DB; margin-bottom: 0px;">
-            <?php $i = 0; ?>
-            @foreach ($tags as $t)
-              @if ($doctor->B_ID == $t->B_ID)
-                @if ($i > 0)
-                  ,
+            @if($tags->count())
+              <h4>{{ Lang::get('messages.tags_title') }}</4>
+              <h6 style="color:#0AB2DB; margin-bottom: 0px;">
+              <?php $i = 0; ?>
+              @foreach ($tags as $t)
+                @if ($doctor->B_ID == $t->B_ID)
+                  @if ($i > 0)
+                    ,
+                  @endif
+                  {{ $t->T_name}}
+                   
+                   <?php $i++; ?>
                 @endif
-                {{ $t->T_name}}
-                 
-                 <?php $i++; ?>
-              @endif
-            @endforeach
-            </h6>
+              @endforeach
+              </h6>
+            @endif
             <div class="space40"></div>
             @if ($doctor->b_user_owner == 'none')
               <div class="alert_main">
                 <button type="button" class="close" data-dismiss="alert">×</button>
-                <h5> Este negocio médico o doctor no cuenta con propietario o dueño, ¿Es usted el dueño? </h5>
-                <center><a href="{{ url('owner/' . $doctor->B_ID) }}"><button class="btn btn-default btn-sm">Soy el propietario</button></a></center>
+                <h5> {{ Lang::get('messages.owner_content') }} </h5>
+                <center><a href="{{ url('owner/' . $doctor->B_ID) }}"><button class="btn btn-default btn-sm">{{ Lang::get('messages.owner_button') }}</button></a></center>
               </div>
             @endif
 
@@ -182,7 +184,7 @@
 <div id="comments">
   <div class="col-md-12">
     <div class="space40"></div>
-      <h3>Comentarios ({{ $comments->count() }})</h3>
+      <h3>{{ Lang::get('messages.reviews_title') }} ({{ $comments->getTotal() }})</h3>
       <div class="space10"></div>
       @if ($comments->count())
       @foreach($comments as $comment)
@@ -193,10 +195,10 @@
                 @if(substr($comment->U_profile_image,0,5) == 'https')
                   <img src="{{$comment->U_profile_image}}">
                 @else
-                  <img src="../../app/images_server/{{$comment->U_profile_image}}">
+                  <img src="../images_server/{{$comment->U_profile_image}}">
                 @endif
               @else
-                <img src="../../app/images/default_picture.png">
+                <img src="../images/default_picture.png">
               @endif
             </a>
           </div> 
@@ -219,7 +221,7 @@
                 {{ $comment->C_content }}
               </p>
               @if (Auth::check() && Auth::user()->U_username == $comment->C_user)
-                <a  id="edi_{{$doctor->B_ID}}"  class="edit_review" style="cursor: pointer;">Editar reseña</a> | <a id="del_review" style="cursor: pointer; color:red">Eliminar comentario</a>
+                <a  id="edi_{{$doctor->B_ID}}"  class="edit_review" style="cursor: pointer;">{{ Lang::get('messages.edit_review') }}</a> | <a id="del_review" style="cursor: pointer; color:red">{{ Lang::get('messages.delete_review') }}</a>
                 <?php $ban = 1; ?>
               @endif
             <div class="divider"></div>           
@@ -235,12 +237,11 @@
         </div>
       @endforeach
       @else
-      <h5> Aún no hay reseñas para este doctor o negocio médico, tú puedes ser el primero, 
-        no dudes en compartir tu  opinión</h5>
+      <h5> {{ Lang::get('messages.no_reviews') }}</h5>
       @endif
       @if(Auth::check())
         @if ($ban == 0)
-          <p>Calificación:
+          <p>{{ Lang::get('messages.rating_title') }}:
           <span id="rate_section" style="cursor: pointer;">
             <a><span id="1" class="rating"><i class="fa fa-star-o"></i> </span></a><a><span id="2" class="rating"><i class="fa fa-star-o"></i> </span></a><a>
             <span id="3" class="rating"><i class="fa fa-star-o"></i> </span></a><a><span id="4" class="rating"><i class="fa fa-star-o"></i> </span></a><a>
@@ -248,7 +249,7 @@
           </span>
 
           </p>
-          <p>Deja tu reseña</p>
+          <p>{{ Lang::get('messages.leave_review') }}</p>
           {{ Form::open(array('url' => 'doctor/review')) }}
           {{ Form::hidden('curr_doctor', $doctor->B_ID) }}
           {{ Form::hidden('rating', 0, array('id'=> 'rate_value')) }}
@@ -256,12 +257,12 @@
             <textarea class="form-control" name="content" rows="3" style="color:black;"></textarea>
             <div class="space10"></div>
               <center>
-                <button class="btn btn-default btn-sm" type="submit">Agregar reseña</button>
+                <button class="btn btn-default btn-sm" type="submit">{{ Lang::get('messages.add_review') }}</button>
               </center>
           {{ Form::close() }}
         @else
         <div id="edit_comment">
-        <span><h5>Edita tu reseña</h5></span>
+        <span><h5>{{ Lang::get('messages.edit_your_review') }}</h5></span>
         <span id="rate_section" style="cursor: pointer;"></span><br>
           
             {{ Form::open(array('url' => 'edit_review')) }}
@@ -271,18 +272,18 @@
               <textarea class="form-control" name="content" rows="3" style="color:black;" id="content_review"></textarea>
               <div class="space10"></div>
                 <center>
-                  <button class="btn btn-default btn-sm" type="submit">Editar reseña</button>
-                  <button class="btn btn-default btn-sm"> Cancelar</button>
+                  <button class="btn btn-default btn-sm" type="submit">{{ Lang::get('messages.edit_review') }}</button>
+                  <button class="btn btn-default btn-sm"> {{ Lang::get('messages.cancel') }}</button>
                 </center>
             {{ Form::close() }}
             </div>
             <div id="edit_button">
-              <button class="btn btn-primary color-2 rounded edit_review" style="float:right;" id="edd_{{$doctor->B_ID}}">Editar reseña</button>
+              <button class="btn btn-primary color-2 rounded edit_review" style="float:right;" id="edd_{{$doctor->B_ID}}">{{ Lang::get('messages.edit_review') }}</button>
             </div>
         @endif
       @else
         <a href="{{ url('registrar') }}" >
-          <button class="btn btn-primary color-2 rounded" style="float:right;">Inicia sesión o regístrate</button>
+          <button class="btn btn-primary color-2 rounded" style="float:right;">{{ Lang::get('messages.login_button') }}</button>
         </a>
       @endif
         </div>

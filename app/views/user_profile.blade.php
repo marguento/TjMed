@@ -30,10 +30,10 @@
                       @if(substr(Auth::user()->U_profile_image,0,5) == 'https')
                         <img src="{{Auth::user()->U_profile_image}}">
                       @else
-                        <img src="../app/images_server/{{Auth::user()->U_profile_image}}">
+                        <img src="images_server/{{Auth::user()->U_profile_image}}">
                       @endif
                     @else
-                      <img src="../app/images/default_picture.png">
+                      <img src="images/default_picture.png">
                     @endif
                   </div>
                   <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
@@ -42,7 +42,9 @@
                     <input type="file" name="image"></span>
                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                   </div>
-                </div>  
+                </div>
+                <br>
+                <span class="error_msg">{{ $errors->first('U_profile_image') }}</span> 
             </div>
             <div class="col-md-8">
 
@@ -114,11 +116,12 @@
   <div class="form-group">
     <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook</label>
     <div class="col-md-4">
-      {{ Form::text('facebook', Auth::user()->U_facebook, array('class' => 'form-control profile')) }}
+      {{ Form::text('facebook', Auth::user()->U_facebook, array('class' => 'form-control profile')) . 
+      'Ej: facebook.com/ejemplo' }}
     </div>
     <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter</label>
     <div class="col-md-4">
-      {{ Form::text('twitter', Auth::user()->U_twitter, array('class' => 'form-control profile')) }}
+      {{ Form::text('twitter', Auth::user()->U_twitter, array('class' => 'form-control profile')) . 'Ej: twitter.com/ejemplo' }}
     </div>
   </div>
 </div>
@@ -129,12 +132,12 @@
   <div class="form-group">
     <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin</label>
     <div class="col-md-4">
-      {{ Form::text('linkedin', Auth::user()->U_linkedin, array('class' => 'form-control profile')) }}
+      {{ Form::text('linkedin', Auth::user()->U_linkedin, array('class' => 'form-control profile')) . 'Ej: linkedin.com/in/ejemplo' }}
     </div>
 
     <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube</label>
     <div class="col-md-4">
-      {{ Form::text('youtube', Auth::user()->U_youtube, array('class' => 'form-control profile')) }}
+      {{ Form::text('youtube', Auth::user()->U_youtube, array('class' => 'form-control profile')) . 'Ej: youtube.com/user/ejemplo' }}
     </div>
   </div>
 </div>
@@ -145,7 +148,7 @@
   <div class="form-group">
     <label for="google-plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
     <div class="col-md-4">
-      <input type="text" class="form-control profile" id="google-plus" value="">
+      {{ Form::text('google_plus', Auth::user()->U_google_plus, array('class' => 'form-control profile')) . 'Ej: plus.google.com/ejemplo' }}
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     Sitio Web Personal</label>
     <div class="col-md-4">
@@ -234,7 +237,7 @@
                   <div class="row">
                     <div class="col-md-2">  
                     <div class="space20"></div>       
-                      <img src="{{url('../app/images_server/' . $review->b_image)}}" alt="Doctor default picture">
+                      <img src="{{url('images_server/' . $review->b_image)}}" alt="Doctor default picture">
                       
                     </div>  
                     
@@ -297,15 +300,15 @@
         <div class="tab-pane" id="tab1-3">
           <div class="row">
             <div class="col-md-4">
-            @if(Auth::user()->U_oauth_provider == '1')
-              <img src="{{Auth::user()->U_profile_image}}" style="max-width: 200px; max-height:270px;">
-            @else
               @if(Auth::user()->U_profile_image != "")
-                <img src="../app/images_server/{{Auth::user()->U_profile_image}}" style="max-width: 200px; max-height:270px;">
+                @if(substr(Auth::user()->U_profile_image,0,5) == 'https')
+                  <img src="{{Auth::user()->U_profile_image}}" style="max-width: 200px; max-height:270px;">
+                @else
+                  <img src="images_server/{{Auth::user()->U_profile_image}}" style="max-width: 200px; max-height:270px;">
+                @endif
               @else
-                <img src="../app/images/default_picture.png" style="max-width: 200px; max-height:270px;">
+                <img src="images/default_picture.png" style="max-width: 200px; max-height:270px;">
               @endif
-             @endif
             </div>
             <div class="col-md-4">
               <h3>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h3>
@@ -318,16 +321,19 @@
                 <div class="social-container">
                   <div class="social-2">
                     @if(Auth::user()->U_facebook != '')
-                      <a href="{{ url('//www.facebook.com/' . Auth::user()->U_facebook) }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                      <a href="{{ url('//' . Auth::user()->U_facebook) }}" target="_blank"><i class="fa fa-facebook"></i></a>
                     @endif
                     @if(Auth::user()->U_twitter != '')
-                      <a href="{{ url('//www.twitter.com/' . Auth::user()->U_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                      <a href="{{ url('//' . Auth::user()->U_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                    @endif
+                    @if(Auth::user()->U_google_plus != '')
+                      <a href="{{ url('//' . Auth::user()->U_google_plus) }}" target="_blank"><i class="fa fa-google-plus"></i></a>
                     @endif
                     @if(Auth::user()->U_youtube != '')
-                      <a href="{{ url('//www.youtube.com/user/' . Auth::user()->U_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                      <a href="{{ url('//' . Auth::user()->U_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
                     @endif
                     @if(Auth::user()->U_linkedin != '')
-                      <a href="{{ url('//www.linkedin.com/in/' . Auth::user()->U_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                      <a href="{{ url('//' . Auth::user()->U_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                     @endif
                     @if(Auth::user()->U_website != '')
                       <a href="{{ url('//' . Auth::user()->U_website) }}" target="_blank"><i class="fa fa-globe"></i></a>

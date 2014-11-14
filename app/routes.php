@@ -128,7 +128,7 @@ Route::get('login/fb/callback', function() {
         $user->U_level          = 0; //usuario normal
         $user->U_active         = 1;
         $user->U_created_at     = date('Y-m-d H:i:s');
-        $user->U_facebook       = $uid;
+        $user->U_facebook       = 'facebook.com/' . $uid;
         $user->U_oauth_provider = 1; //fb
         $user->save();
 

@@ -2,7 +2,7 @@
 @section('content')
 
 
-    <iframe id="map" src="https://maps.google.sk/maps/ms?msa=0&amp;msid=210946297010027755543.0004c74af772bb9276d33&amp;ie=UTF8&amp;ll=48.576981,19.13117&amp;spn=0,0&amp;t=m&amp;output=embed"></iframe>
+    <img src="images/contacto_img.png">
 
 
     <div class="space40"></div>

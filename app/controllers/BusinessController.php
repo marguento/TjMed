@@ -14,6 +14,8 @@ class BusinessController extends BaseController {
 	            									{
 	                									$query->where('b_name', 'LIKE', '%'.$search.'%')
 	                      								->where('b_introduction', 'LIKE', '%'.$search.'%', 'OR')
+	                      								->where('S_name', 'LIKE', '%'.$search.'%', 'OR')
+	                      								->where('C_name', 'LIKE', '%'.$search.'%', 'OR')
 	                      								->orWhereExists(function($query) use ($search)
 	            											{
 	                											$query->select(DB::raw(1))
@@ -84,25 +86,31 @@ class BusinessController extends BaseController {
 		$doctor->b_description	= Input::get('description');
 		$doctor->b_facebook		= Input::get('facebook');
 		$doctor->b_twitter		= Input::get('twitter');
-		// $user->U_google_plus= Input::get('lastname');
+		$doctor->b_google_plus	= Input::get('google_plus');
 		$doctor->b_linkedin		= Input::get('linkedin');
 		$doctor->b_youtube		= Input::get('youtube');
 		$doctor->b_website		= Input::get('website');
 		$doctor->b_updated_at	= date('Y-m-d H:i:s');
 		$doctor->b_user_owner	= Input::get('user_owner');
 		// print_r($doctor);
+		$update = '';
 		if (Input::hasFile('image'))
 		{
-		    $doctor->b_image = Input::file('image')->getClientOriginalName();
+		    $doctor->b_image = Input::file('image');
+		    $update = 1;
 		} 
-		if (!$doctor->isValid(Input::get('curr_doctor')))
+		if (!$doctor->isValid(Input::get('curr_doctor'), $update))
 		{
-			return Redirect::back()->withInput()->withErrors($doctor->errors);
+			$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Error!</strong> Hay algunos errores en el registro.
+		        </div>';
+			return Redirect::back()->withInput()->withErrors($doctor->errors)->with('var', $var);
 		}
 		if (Input::hasFile('image'))
 		{
-			$destinationPath = app_path() . '/images_server';
-			$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+			$destinationPath = public_path() . '/images_server';
+			$fileName = 'img_' . round(microtime(true) * 1000);
 
 			Input::file('image')->move($destinationPath, $fileName);
 
@@ -134,15 +142,21 @@ class BusinessController extends BaseController {
 		$doctor->b_description	= Input::get('description');
 		$doctor->b_facebook		= Input::get('facebook');
 		$doctor->b_twitter		= Input::get('twitter');
-		// $user->U_google_plus= Input::get('lastname');
+		$doctor->b_google_plus	= Input::get('google_plus');
 		$doctor->b_linkedin		= Input::get('linkedin');
 		$doctor->b_youtube		= Input::get('youtube');
 		$doctor->b_website		= Input::get('website');
+		$doctor->b_contact		= Input::get('contact-phone');
+		$doctor->b_priority 	= 0;
 		$doctor->b_joined_date	= date('Y-m-d H:i:s');
 		$doctor->b_created_user = Auth::user()->U_username;
 		if($add_user == 0) {
-			$doctor->b_verified	= 0;
-
+			if( Auth::user()->U_level == 1)
+			{
+				$doctor->b_verified = 1;
+			} else {
+				$doctor->b_verified	= 0;
+			}
 			if(Input::get('user_owner') == 0) {
 				$doctor->b_user_owner = 'none';
 			} else {
@@ -156,23 +170,42 @@ class BusinessController extends BaseController {
 
 		if (Input::hasFile('image'))
 		{
-		    $doctor->b_image = Input::file('image')->getClientOriginalName();
+		    $doctor->b_image = Input::file('image');
 		} else {
 			$doctor->b_image = "";
 		}
 		
-		if (!$doctor->isValid(0))
+		if (!$doctor->isValid(0, 1))
 		{
-			return Redirect::back()->withInput()->withErrors($doctor->errors);
+			$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Error!</strong> Hay algunos errores en el registro, favor de corregirlos.
+		        </div>';
+			return Redirect::back()->withInput()->withErrors($doctor->errors)->with('var', $var);
 		}
 
-		$destinationPath = app_path() . '/images_server';
-		$fileName = 'img_' . round(microtime(true) * 1000) . '_' . Auth::user()->U_username;
+		$destinationPath = public_path() . '/images_server';
+		$fileName = 'img_' . round(microtime(true) * 1000);
 
 		Input::file('image')->move($destinationPath, $fileName);
 
 		$doctor->b_image = $fileName;
 		$doctor->save();
+
+		$tag_name = Input::get('other');
+		if( $tag_name != "")
+		{
+			$ntag = new Tag();
+			$ntag->T_name = $tag_name;
+			$ntag->save();
+
+			$tag_id = $ntag->T_ID;
+
+			$tag = new BusinessHasTags();
+			$tag->businesses_B_ID 	= $doctor->B_ID;
+			$tag->tags_T_ID 		= $tag_id;
+			$tag->save();
+		}
 
 		if($add_user == 1) {
 			$var = '<div class="alert alert-success" role="alert">
@@ -185,12 +218,20 @@ class BusinessController extends BaseController {
 			$specialty->businesses_B_ID = $doctor->B_ID;
 			$specialty->specialties_S_ID = Input::get('specialty');
 			$specialty->save();
-
-			$var = '<div class="alert alert-success" role="alert">
+			if( Auth::user()->U_level == 1)
+			{
+				$var = '<div class="alert alert-success" role="alert">
+			          <button type="button" class="close" data-dismiss="alert">&times;</button>
+			          El doctor fue registrado correctamente. Para agregar más detalles de registro se puede hacer 
+			          desde la sección administrativa. </div>';
+			} else {
+				$var = '<div class="alert alert-success" role="alert">
 			          <button type="button" class="close" data-dismiss="alert">&times;</button>
 			          Los administradores verificarán que los datos ingresados sean correctos. 
 			          Gracias por tu registro.
 			        </div>';
+			}
+			
 			return Redirect::to('doctores')->with('var', $var);
 		}
 	}
@@ -287,17 +328,27 @@ class BusinessController extends BaseController {
 		$string = "";
 		$data = Input::all();
 		if (isset($data)) {
-			$doctor = Business::whereb_id($data['id'])->first();
+			$doctor = BusinessRatingView::whereb_id($data['id'])->first();
 			$users = User::all();
 			$user_owner = [];
 			foreach($users as $user) {
 				$user_owner[$user->U_username] = $user->U_username;
 			}
+			$specialties = Specialty::all();
+			$sp = [];
+			foreach($specialties as $spe)
+			{
+				$sp[$spe->S_ID] = $spe->S_name;
+			}
+
+			$sp_id = BusinessView::whereb_id($data['id'])->pluck('S_ID');
+
+			$tag = TagsView::whereb_id($data['id'])->pluck('T_name');
 
 			if($doctor->b_image !="")
-				$img = HTML::image('../app/images_server/' . $doctor->b_image);
+				$img = HTML::image('images_server/' . $doctor->b_image);
 			else
-				$img = HTML::image('../app/images/default.jpg');
+				$img = HTML::image('images/default.jpg');
 
 			$string = "" . Form::open(array('url' => 'verify', 'files' => true))
 					. " " . Form::hidden('curr_doctor', $doctor->B_ID, array('id' => $doctor->B_ID, 'class' => 'curr_doctor'))
@@ -306,7 +357,7 @@ class BusinessController extends BaseController {
     				<div class='col-md-4'><span>".  $doctor->b_joined_date . " </span></div>" .
 
     				Form::label('created_user', 'Creado por:', array('class' => 'col-sm-2 control-label')) . "
-    				<div class='col-md-4'><span><a href='" . url('admin/editar/'.$doctor->b_created_user) ."'>" . $doctor->b_created_user . "</a> </span></div>
+    				<div class='col-md-4'><span><a href='" . url('admin/editar/'.$doctor->b_created_user) ."' target='_blank'>" . $doctor->create_user . "</a> </span></div>
   					</div>
 					</div>
 					<br>
@@ -397,6 +448,26 @@ class BusinessController extends BaseController {
 					</div>
 
 					<br>
+					<h6> Si el usuario colocó otra especialidad, se agregará como etiqueta en el doctor o negocio. 
+					<b>Como administrador puede decidir si agregarlo como especialidad oficial en la sección de categorías o 
+					dejarlo como etiqueta.</b> </h6>
+
+					<br>
+					<div class='row'>
+					  <div class='form-group'>" .
+						Form::label('specialty', 'Especialidad', array('class' => 'col-md-2 control-label')) .
+						"<div class='col-md-4'>" .
+							Form::select('specialty', $sp, $sp_id, array('class' => 'form-control', 'id' => 'specialty', 'style' => 'color:black; font-size:14px')) .
+
+					    "</div>" .
+					    Form::label('other', 'Otra especialidad', array('class' => 'col-sm-2 control-label')) .
+					    "<div class='col-md-4'>" .
+					    	Form::text('other', $tag, array('class' => 'session form-control')) .
+					    "</div>
+					  </div>
+					</div>
+
+					<br>
 
 					<h5> Imagenes menores de 2MB </h5>
 					<div class='row'>
@@ -428,12 +499,12 @@ class BusinessController extends BaseController {
 					  <div class='form-group'>
 					    <label for='facebook' class='col-md-2 control-label'><span class='fa fa-facebook'></span>     Facebook</label>
 					    <div class='col-md-4'>" .
-					      Form::text('facebook', $doctor->b_facebook, array('class' => 'form-control')) .
-					    "</div>
+					      Form::text('facebook',  $doctor->b_facebook, array('class' => 'form-control')) . "Ej: facebook.com/ejemplo
+					    </div>
 					    <label for='twitter' class='col-md-2 control-label'><span class='fa fa-twitter'></span>     Twitter</label>
 					    <div class='col-md-4'>".
-					      Form::text('twitter', $doctor->b_twitter, array('class' => 'form-control')) .
-					    "</div>
+					      Form::text('twitter', $doctor->b_twitter, array('class' => 'form-control')) . "Ej: twitter.com/ejemplo
+					    </div>
 					  </div>
 					</div>
 
@@ -443,13 +514,13 @@ class BusinessController extends BaseController {
 					  <div class='form-group'>
 					    <label for='linkedin' class='col-md-2 control-label'><span class='fa fa-linkedin'></span>     Linkedin</label>
 					    <div class='col-md-4'>".
-					      Form::text('linkedin', $doctor->b_linkedin, array('class' => 'form-control')) .
-					    "</div>
+					      Form::text('linkedin', $doctor->b_linkedin, array('class' => 'form-control')) . "Ej: linkedin.com/in/ejemplo
+					    </div>
 
 					    <label for='youtube' class='col-md-2 control-label'><span class='fa fa-youtube'></span>     Youtube</label>
 					    <div class='col-md-4'>".
-					       Form::text('youtube', $doctor->b_youtube, array('class' => 'form-control')) .
-					    "</div>
+					       Form::text('youtube', $doctor->b_youtube, array('class' => 'form-control')) . "Ej: youtube.com/user/ejemplo
+					    </div>
 					  </div>
 					</div>
 
@@ -457,9 +528,10 @@ class BusinessController extends BaseController {
 
 					<div class='row'>
 					  <div class='form-group'>
-					    <label for='google-plus' class='col-md-2 control-label'><span class='fa fa-google-plus'></span>     Google+</label>
-					    <div class='col-md-4'>
-					      <input type='text' class='form-control' id='google-plus' value=''>
+					    <label for='google_plus' class='col-md-2 control-label'><span class='fa fa-google-plus'></span>     Google+</label>
+					    <div class='col-md-4'>".
+					      Form::text('google_plus', $doctor->b_google_plus, array('class' => 'form-control')) .
+					      "Ej: plus.google.com/ejemplo
 					    </div>
 					    <label for='website' class='col-md-2 control-label'><span class='fa fa-globe'></span>     Sitio Web Personal</label>
 					    <div class='col-md-4'>" . 

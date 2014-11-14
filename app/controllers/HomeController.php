@@ -5,9 +5,9 @@ class HomeController extends BaseController {
 	public function index()
 	{
 		//$business = Business::orderBy('b_joined_date','desc')->take(3)->get();
-		$business = BusinessRatingView::orderBy('b_joined_date', 'desc')->take(3)->get();
-		$comments = BusinessCommentsView::orderBy('C_datetime_created', 'desc')->take(3)->get();
-		$cats 	  = BusinessCategoriesView::orderBy('b_joined_date', 'desc')->get();
+		$business = BusinessRatingView::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->take(3)->get();
+		$comments = BusinessCommentsView::whereb_verified(1)->whereb_active(1)->orderBy('C_datetime_created', 'desc')->take(3)->get();
+		$cats 	  = BusinessCategoriesView::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
 		$articles = ArticleView::orderBy('A_created_at', 'desc')->take(3)->get();
 		return View::make('index', ['articles' => $articles,
 									'business' => $business,							

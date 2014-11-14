@@ -37,7 +37,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('U_password', 'remember_token');
 
-	public function isValid($cur_user)
+	public function isValid($cur_user, $update = '')
 	{
 		$this->rules = array (
 			'U_username'  => 'required|unique:users,U_username,'.$cur_user.',U_username',
@@ -46,10 +46,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'U_lastname'  => 'required',
 			'U_email' 	  => 'required|email|unique:users,U_email,'.$cur_user.',U_username'
 		);
+
+		if($update != '')
+		{
+			$this->rules['U_profile_image'] = 'image';
+		}
 		$messages = array('required' => 'Este campo es obligatorio',
 							'unique' => 'Este campo ya esta registrado con otro usuario.',
 							'email' => 'Incorrecto formato de correo electrónico',
-							'min' => 'Este campo requiere un mínimo de :min caracteres');
+							'min' => 'Este campo requiere un mínimo de :min caracteres',
+							'image' => 'La imagen tiene que ser formato jpeg, jpg o png');
 		$validation = Validator::make($this->attributes, $this->rules, $messages);
 
 		if ($validation->passes()) return true;
