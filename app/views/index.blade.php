@@ -231,6 +231,8 @@
             </div>
           </div>
         @endforeach
+      @else
+        <h4> Aún no hay doctores registrados </h4>
       @endif
   
     </div>   
@@ -299,6 +301,8 @@
                 </div>
               </div> 
             @endforeach
+          @else
+            <h4> Aún no hay reseñas registradas </h4>
           @endif
         </div>             
       </div>   
@@ -380,6 +384,8 @@
             </div>         
           </div>
           @endforeach
+        @else
+          <h4> Aún no hay artículos registrados </h4>
         @endif
 
         </div>

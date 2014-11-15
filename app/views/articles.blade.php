@@ -4,7 +4,7 @@
 <div class="container">  
   <div class="blog-container"> 
     <div class="row"> 
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="breadcrumb-container">
           <div class="container">  
             <div class="row">  
@@ -89,6 +89,8 @@
             <div class="space40"></div>
             <!-- Blog Post End -->
         @endforeach
+  @else
+    <h4> Aún no hay artículos registrados </h4>
 	@endif
 
   <div class="container">
@@ -101,7 +103,7 @@
           </div> 
 
         </div>
-  
+  <div class="col-md-1"></div>
 <div class="col-md-4">
 <div class="breadcrumb-container">
     <div class="container">  
@@ -158,6 +160,8 @@
       </a>
             
         @endforeach
+  @else
+   <h4> No se encontraron artículos </h4>
   @endif
 
         

@@ -16,7 +16,7 @@
   <div class="container">  
     <div class="blog-container"> 
       <div class="row"> 
-        <div class="col-md-8 blog-content">
+        <div class="col-md-7 blog-content">
           <!-- Blog Post -->
 
 <div class="space20"></div>
@@ -48,7 +48,7 @@
       </span>
       </h1>
       <a href="#"><!--Especialidades--></a><br>
-          {{ HTML::image('images_server/' . $doctor->b_image) }}
+         <div class="img-wrapper wrapper"> {{ HTML::image('images_server/' . $doctor->b_image) }}</div>
           
           <div class="space10"></div>
           <div class="post-info-container">
