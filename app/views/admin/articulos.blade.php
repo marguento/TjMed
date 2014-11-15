@@ -5,17 +5,17 @@
   {{ Session::get('var') }}
 @endif
 
-  <h2 class="sub-header">Administración artículo ({{$articles->count()}})</h2>
-  <center> <a href="{{url('admin/articulo/0')}}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>Nueva entrada</button></a> </center>
+  <h2 class="sub-header">{{ Lang::get('messages.amdmin_aa') }} ({{$articles->count()}})</h2>
+  <center> <a href="{{url('admin/articulo/0')}}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>{{ Lang::get('messages.new_entry_aa') }}</button></a> </center>
   <div class="space20"></div>
   <div class="table-responsive">
     <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="article_table" style="font-size:15px">
       <thead style="background:#0b7297">
         <tr>
-          <th>Título</th>
-          <th>Sinopsis</th>
-          <th>Autor</th>
-          <th>Fecha creación</th>
+          <th>{{ Lang::get('messages.titule_aa') }}</th>
+          <th>{{ Lang::get('messages.sinops_aa') }}</th>
+          <th>{{ Lang::get('messages.autor_aa') }}</th>
+          <th>{{ Lang::get('messages.creation_date_aa') }}</th>
         </tr>
       </thead>
       <tbody>

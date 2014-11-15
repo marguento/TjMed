@@ -24,35 +24,23 @@
       <div class="col-md-6">  
       
         <div class="row contact-data">
+ 
           <div class="col-md-6">
-            <h4>Direccion</h4>
-            Tijuana, B.C.
+            <h4>Escribenos tambien en los siguientes Temas</h4>  
+            <i class="fa fa-check-square-o"></i> Tienes alguna preguntas de como se usa la pagina?<br>
+            <i class="fa fa-check-square-o"></i> Te gustaria darnos sugerencias?<br>
+            <i class="fa fa-check-square-o"></i> Algo no funciona bien?<br>
+            <i class="fa fa-check-square-o"></i> Preguntanos por paquetes especiales.<br>            
             <div class="space40"></div>
           </div>  
-          <div class="col-md-6">
-            <h4>Horas de Oficina</h4>  
-            <strong>Lunes - Viernes:</strong> 09:00 - 17:00<br>
-            <strong>Sabados:</strong> 09:00 - 13:00<br>
-            <strong>Domingos:</strong> Closed<br>
-            <div class="space40"></div>
-          </div>  
-          <div class="col-md-6">
-            <h4>Informacion de Contacto</h4>  
-            <i class="fa fa-phone"></i> +48 880 440 110<br>
-            <i class="fa fa-envelope"></i> <a href="mailto:support@example.com">support@example.com</a><br>
-            <i class="fa fa-globe"></i> <a href="www.example.com" rel="external" target="_blank">www.example.com</a><br>
-            <div class="space40"></div>
-          </div>  
+ 
           <div class="col-md-6 social-4">
-            <h4>Media Socials</h4>
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-            <a href="#"><i class="fa fa-dropbox"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-flickr"></i></a>
-            <a href="#"><i class="fa fa-foursquare"></i></a>
-            <a href="#"><i class="fa fa-github"></i></a>
-            <a href="#"><i class="fa fa-google-plus"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
+            <h4>Media Social</h4>           
+            <a href="http://Facebook.com/tjmed.mx"><i class="fa fa-facebook"></i></a>
+            <a href="http://Twitter.com/TJMedmx"><i class="fa fa-twitter"></i></a>
+            <a href="mailto:TjMed.mx@gmail.com"><i class="fa fa-envelope"></i></a>
+            <a href="https://plus.google.com/u/0/103801568625839532131/posts"><i class="fa fa-google-plus"></i></a>
+            <a href="#https://vimeo.com/user34429078"><i class="fa fa-vimeo-square"></i></a>
           </div>  
           <div class="space40"></div>
         </div>

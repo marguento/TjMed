@@ -115,7 +115,7 @@
           <a href="{{ url('especialidad/28') }}">
           <article class="col-md-2 col-sm-2 boxed-project">
             <div class="img-container">
-                <img src="images/E_Odonto.png" alt="" width="263" height="263">   
+                <img src="images/e_Cir plastica.png" alt="" width="263" height="263">   
             </div>
             <div class="title" style="margin-bottom: 0px;">
               

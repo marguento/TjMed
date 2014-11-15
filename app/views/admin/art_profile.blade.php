@@ -12,12 +12,12 @@
 
 @if( $article->A_ID == 0)
   <?php
-    $name = "Nueva entrada";
+    $name = Lang::get('messages.new_entry_apa') ;
     ?>
 @else
   <?php
     $name = $article->A_title;
-    $pre = "Editar artículo: ";
+    $pre = Lang::get('messages.edith_apa') ;
   ?>
 @endif
 
@@ -42,7 +42,7 @@
   </div>
 </div>
 <br>
-<p> Agrega una imagen representativa del artículo (imagen menor de 2 MB)</p>
+<p> {{ Lang::get('messages.add_img_apa') }}</p>
 <div class="row">
   <div class="form-group">
     <div class="col-md-2"></div>
@@ -57,9 +57,9 @@
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
         <div>
-          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">{{ Lang::get('messages.select_apa') }}</span><span class="fileinput-exists">{{ Lang::get('messages.change_apa') }}</span>
           <input type="file" name="image"></span>
-          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{ Lang::get('messages.remove_apa') }}</a>
         </div>
       </div>
       <br>
@@ -69,7 +69,7 @@
 </div>
 
 <br><br>
-<h5> Llenar una descripción introductoria del artículo en 150 caracteres máximo </h5>
+<h5> {{ Lang::get('messages.description_apa') }} </h5>
 <div class="row">
   <div class="form-group">
     {{ Form::label('introduction_es', 'Introducción en español', array('class' => 'col-md-2 control-label')) }}
@@ -82,7 +82,7 @@
 
 <br><br>
 
-<h5> Llenar el contenido del artículo</h5>
+<h5> {{ Lang::get('messages.content_apa') }}</h5>
 <div class="row">
   <div class="form-group">
     {{ Form::label('content_es', 'Contenido en español', array('class' => 'col-md-2 control-label')) }}
@@ -106,8 +106,8 @@
 
 <br><br>
 
-<h5>Categorías</h5>
-<h5>Etiquetas</h5>
+<h5>{{ Lang::get('messages.categories_apa') }}</h5>
+<h5>{{ Lang::get('messages.labels_apa') }}</h5>
 
 <div class="space30"></div>
 
@@ -115,7 +115,7 @@
   <div class="form-group">
     <div class="col-md-5"></div>
     <div class="col-md-2">
-      <input type="submit" class="form-control btn btn-primary" name="submit" id="submit" value="Guardar">
+      <input type="submit" class="form-control btn btn-primary" name="submit" id="submit" value={{ Lang::get('messages.save_apa') }}>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
 <div class="container">  
   <ol class="breadcrumb">
     <li>{{ link_to('articulos', 'Volver a artículos') }}</li>
-    <li class="active" style="color:#083D5C">Entrada artículo</li>
+    <li class="active" style="color:#083D5C">{{ Lang::get('messages.entry_art_ap') }}</li>
   </ol>
   <div class="blog-container"> 
     <div class="row"> 
@@ -44,7 +44,7 @@
             <img src="{{url('images_server/' .$article->A_image)}}" alt="">
           </div>
             <div class="space25"></div> 
-              Categorías: <?php $i = 0; ?>
+              {{ Lang::get('messages.categories_ap') }} <?php $i = 0; ?>
               @foreach ($categories as $c)
                 @if ($i > 0)
                   ,
@@ -82,7 +82,7 @@
                       </span>
                     </span>
                     <span class="post-data">  
-                      <i class="fa fa-comment"></i> {{ $comments->count() }} Comentario(s)
+                      <i class="fa fa-comment"></i> {{ $comments->count() }} {{ Lang::get('messages.comments_ap') }}
                     </span> 
                   </div>  
                 </div>
@@ -103,7 +103,7 @@
           <div class="breadcrumb-container">
             <div class="container">  
               <div class="row">  
-                <div class="col-md-12"><h1>Artículos recomendados</h1></div>  
+                <div class="col-md-12"><h1>{{ Lang::get('messages.art_rec_ap') }}</h1></div>  
               </div> 
             </div> 
           </div> 
@@ -166,7 +166,7 @@
     <div id="comments">
       <div class="col-md-12">
         <div class="space40"></div>
-          <h3>Comentarios ({{ $comments->getTotal() }})</h3>
+          <h3>{{ Lang::get('messages.comments_ap') }} ({{ $comments->getTotal() }})</h3>
           <div class="space10"></div>
             @if ($comments->count())
               @foreach($comments as $comment)
@@ -205,7 +205,7 @@
                     </p>
                     <p>{{ $comment->C_content }}</p>
                     @if (Auth::check() && Auth::user()->U_username == $comment->C_user)
-                      <a style="cursor: pointer; color:red">Eliminar comentario</a>
+                      <a style="cursor: pointer; color:red">{{ Lang::get('messages.remove_c_ap') }}</a>
                       <?php 
                         $ban = 1; 
                         $ra = $comment->C_rating
@@ -225,20 +225,19 @@
                 </div>
               </div>
             @else
-              <h5> Aún no hay comentaios para este artículo, tú puedes ser el primero, 
-                no dudes en compartir tu opinión</h5>
+              <h5> {{ Lang::get('messages.na_comments_ap') }}</h5>
             @endif
             
             @if(Auth::check())
               @if ($ban == 0)
-                 <p>Calificación:
+                 <p>{{ Lang::get('messages.rate_ap') }}
                   <span id="rate_section" style="cursor: pointer;">
                     <a><span id="1" class="rating"><i class="fa fa-star-o"></i> </span></a><a><span id="2" class="rating"><i class="fa fa-star-o"></i> </span></a><a>
                     <span id="3" class="rating"><i class="fa fa-star-o"></i> </span></a><a><span id="4" class="rating"><i class="fa fa-star-o"></i> </span></a><a>
                     <span id="5" class="rating"><i class="fa fa-star-o"></i></span></a>
                   </span>
               @else
-                <p>Edita tu calificación registrada: 
+                <p>{{ Lang::get('messages.edith_cat_ap') }}
                 <span id="rate_section" style="cursor: pointer;">
                 <?php  $r = $rating = $ra;
                     $i = 1; ?>
@@ -254,7 +253,7 @@
               </span>
               @endif
               </p>
-                <p>Deja tu opinión</p>
+                <p>{{ Lang::get('messages.leave_uop_ap') }}</p>
                 {{ Form::open(array('url' => 'article/review')) }}
                 {{ Form::hidden('curr_article', $article->A_ID) }}
                 {{ Form::hidden('rating', 0, array('id'=> 'rate_value')) }}
@@ -262,12 +261,12 @@
                 <textarea class="form-control" name="content" rows="3" style="color:black;"></textarea>
                 <div class="space10"></div>
                   <center>
-                    <button class="btn btn-default btn-sm" type="submit">Agregar comentario</button>
+                    <button class="btn btn-default btn-sm" type="submit">{{ Lang::get('messages.add_c_ap') }}</button>
                   </center>
                 {{ Form::close() }}
             @else
               <a href="{{ url('registrar') }}" >
-                <button class="btn btn-primary color-2 rounded" style="float:right;">Inicia sesión o regístrate</button>
+                <button class="btn btn-primary color-2 rounded" style="float:right;">{{ Lang::get('messages.login_r_ap') }}</button>
               </a>
             @endif
           </div>
