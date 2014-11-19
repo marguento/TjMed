@@ -21,10 +21,10 @@ jQuery(document).ready(function($) {
 	 Tooltips
    --------------------------------------------------------	*/	
 
-    $('body').tooltip({
-        delay: { show: 300, hide: 0 },
-        selector: '[data-toggle=tooltip]:not([disabled])'
-    });
+    // $('body').tooltip({
+    //     delay: { show: 300, hide: 0 },
+    //     selector: '[data-toggle=tooltip]:not([disabled])'
+    // });
     
 /* --------------------------------------------------------	
 	 Inc Dec
@@ -74,7 +74,7 @@ jQuery(document).ready(function($) {
 	 Fixed Menu
    --------------------------------------------------------	*/	
 
-  $('.navbar').sticky({topSpacing:0});
+  // $('.navbar').sticky({topSpacing:0});
 
 /* --------------------------------------------------------	
 	 TinyNav
@@ -314,21 +314,21 @@ jQuery(document).ready(function($) {
 	 Slider Revolution
    --------------------------------------------------------	*/
 
-		var revapi;
+		// var revapi;
 
-		jQuery(document).ready(function() {
+		// jQuery(document).ready(function() {
 
-			   revapi = jQuery('.tp-banner').revolution(
-				{
-					delay:9000,
-					startwidth:1170,
-					startheight:500,
-					hideThumbs:10,
-					fullWidth:"on",
-					forceFullWidth:"on"
-				});
+		// 	   revapi = jQuery('.tp-banner').revolution(
+		// 		{
+		// 			delay:9000,
+		// 			startwidth:1170,
+		// 			startheight:500,
+		// 			hideThumbs:10,
+		// 			fullWidth:"on",
+		// 			forceFullWidth:"on"
+		// 		});
 
-		});	//ready
+		// });	//ready
     
 /* --------------------------------------------------------	
 	 Master Slider

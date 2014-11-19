@@ -385,12 +385,12 @@ header {
 /* --------------------------------------------------------	*/
 
 .navbar {
-  width:90%;
+  width:100%;
   min-height:40px;
   border:0px;
   padding:0px;
   margin:0px;
-  z-index:900;
+  z-index:1000;
   background:#0ab2db;
   
   -webkit-border-radius: 0px; 
@@ -409,6 +409,7 @@ header {
   position:relative;
   display:block;
   right:0px;
+  float:left;
   padding:0px;
   margin:0px;
   width: 100%;
@@ -421,7 +422,6 @@ header {
 .navbar .nav > li {
 	display:block;
   float:left;
-  z-index:1000;
 }
 
 .navbar .nav > li > a {
@@ -3783,13 +3783,13 @@ ul#css3menu1 li.toplast>a{
 
 @font-face {
 font-family: MyriadPro;
-src: url("../font/MyriadPro-Light.otf") format('truetype'), url("../font/myriadpro-light-webfont.eot") format('opentype'); /* IE */
+src: url("../font/myriadpro-light-webfont.eot") format('opentype'); /* IE */
 }
 
 @font-face {
 font-family: MyriadPro;
 font-weight: bold;
-src:  url("../font/MyriadPro-Regular.otf") format('truetype'), url("../font/MYRIADPROREGULAR.eot") format('opentype'); /* IE */
+src: url("../font/MYRIADPROREGULAR.eot") format('opentype'); /* IE */
 }
 
 .profile {
@@ -3869,20 +3869,14 @@ list-style-type: none;
 }
 
 #logo_img {
-  padding-bottom: 10px; 
-  padding-top: 10px; 
-  padding-left:10px;
-  width: 68px;
-  float:left;
-  z-index:1000;
-}
-
-#top_right {
-  margin-right:10px;
+  vertical-align:text-bottom; 
+  padding:10px 8px 10px 0px;
+  width:68px;
+  height:119px;
 }
 
 .lang_img {
-  width: 30px;
+  width: 3%;
 }
 
 .error_msg {
@@ -3922,11 +3916,9 @@ list-style-type: none;
 .img-wrapper img, .usr-wrapper img, .art-wrapper img, .user-wrapper img{
   position: relative;
   top: 50%;
-  -ms-transform: translateY(-50%); /* IE 9 */
-  -webkit-transform: translateY(-50%); /* Chrome, Safari, Opera */
-  transform: translateY(-50%);
-  width: 100%;
-  background-color: #F7FCFF;
+  transform:      translateY(-50%);
+    width: 100%;
+    background-color: #F7FCFF;
 }
 
 .usr-wrapper {
@@ -3947,15 +3939,4 @@ list-style-type: none;
   width: 262px; /* whatever set width */
   height: 186px;
    
-}
-
-#container_header 
-{
-  background-color: #0ab2db; 
-}
-
-.float_right
-{
-  float:right;
-  padding-right: 10px;
 }

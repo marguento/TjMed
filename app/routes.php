@@ -83,7 +83,7 @@ Route::post('mail', function() {
     });
     $var = '<div class="alert alert-success" role="alert">
                       <button type="button" class="close" data-dismiss="alert">&times;</button>
-                      <strong>¡Éxito!</strong> Tu correo ha sido recibido.
+                      Tu correo ha sido recibido.
                     </div>';
     return Redirect::to('contacto')->with('var', $var);
 });

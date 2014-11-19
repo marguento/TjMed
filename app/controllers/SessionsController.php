@@ -17,7 +17,7 @@ class SessionsController extends BaseController {
 			return Redirect::back();
 		}
 
-		return Redirect::back()->withInput();
+		return Redirect::back()->withInput()->with('v', 1);
 	}
 
 	public function destroy() 

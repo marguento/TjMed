@@ -124,7 +124,4 @@
 
 		
 	  
-	  <a href="#" class="back-to-top" style="display: none;"><span></span></a> 
-	  
-	</body>
-</html>
+	  <a href="#" class="back-to-top" style="display: none;"><span></span></a>

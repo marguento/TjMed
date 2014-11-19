@@ -252,7 +252,7 @@
             <h3>{{ Lang::get('messages.tittle_5') }}</h3>
           </div>  
         </div>
-        <iframe src="//player.vimeo.com/video/110233033" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+        <iframe src="//player.vimeo.com/video/111864448" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
       </div>
         
       <div class="col-md-9"> 

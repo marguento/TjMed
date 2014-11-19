@@ -11,6 +11,19 @@
 <!-- Styles -->
 {{ HTML::style('styles/style.css') }}
 
+<!--[if lt IE 10]>
+	{{ HTML::style('styles/styleIE11.css') }}
+<![endif]-->
+<!--[if lt IE 10]>
+	{{ HTML::style('styles/styleIE10.css') }}
+<![endif]-->
+<!--[if lt IE 9]>
+	{{ HTML::style('styles/styleIE9.css') }}
+<![endif]-->
+<!--[if lt IE 8]>
+	{{ HTML::style('styles/styleIE8.css') }}
+<![endif]-->
+
 {{ HTML::style('styles/jasny-bootstrap.min.css') }}
 
 <!-- LayerSlider Styles -->

@@ -1,7 +1,7 @@
 	  <!-- JavaScripts -->
 	  {{ HTML::script("js/jquery-1.10.2.js") }}                                                      
 	  
-	  {{ HTML::script("js/jquery.easing.js") }}
+	  <!-- {{ HTML::script("js/jquery.easing.js") }} -->
 	  <!--{{ HTML::script("js/jquery.sticky.js") }}-->
 	  {{ HTML::script("js/tinynav.min.js") }}      
 	  {{ HTML::script("js/animate.js") }}
@@ -28,7 +28,6 @@
 	  {{ HTML::script("https://maps.googleapis.com/maps/api/js?v=3.exp") }}
 	  {{ HTML::script("js/bootstrap.js") }}
 	  {{ HTML::script('js/jasny-bootstrap.min.js') }}
-	  {{ HTML::script('js/jquery.twbsPagination.min.js') }}
 	  
 	<script>
 	$(document).ready(function(){
@@ -48,33 +47,12 @@
 
 		$(".popup").popover();
 
-  //       var geocoder;
-		// var map;
-		// function initialize() {
-		//   geocoder = new google.maps.Geocoder();
-		//   var mapOptions = {
-		//     zoom: 15
-		//   }
-		//   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		//   codeAddress();
-		// }
 
-		// function codeAddress() {
-		//   var address = document.getElementById('address').value;
-		//   geocoder.geocode( { 'address': address}, function(results, status) {
-		//     if (status == google.maps.GeocoderStatus.OK) {
-		//       map.setCenter(results[0].geometry.location);
-		//       var marker = new google.maps.Marker({
-		//           map: map,
-		//           position: results[0].geometry.location
-		//       });
-		//     } else {
-		//       //alert('Geocode was not successful for the following reason: ' + status);
-		//     }
-		//   });
-		// }
-		// 	google.maps.event.addDomListener(window, 'load', initialize);
-
+		if($('#error_msg').val() == 1) 
+		{
+			$('#myModal').modal('show');
+		}
+	
 			var id = $('#category').val();
 			var dataString = 'id='+ id;
 
@@ -108,6 +86,5 @@
 				});
 			});
 
-			//$('.carousel').carousel();
 	});
 </script>

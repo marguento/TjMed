@@ -13,7 +13,7 @@
     @endif
     <div class="row"> 
       <div class="col-md-12">
-        <h1>Contactanos!</h1>
+        <h1>¡Contáctanos!</h1>
       </div>
     </div>    
   </div>
@@ -26,16 +26,17 @@
         <div class="row contact-data">
  
           <div class="col-md-6">
-            <h4>Escribenos tambien en los siguientes Temas</h4>  
-            <i class="fa fa-check-square-o"></i> Tienes alguna preguntas de como se usa la pagina?<br>
-            <i class="fa fa-check-square-o"></i> Te gustaria darnos sugerencias?<br>
-            <i class="fa fa-check-square-o"></i> Algo no funciona bien?<br>
-            <i class="fa fa-check-square-o"></i> Preguntanos por paquetes especiales.<br>            
+            <h4>Escríbenos también en los siguientes temas</h4>  
+            <i class="fa fa-check-square-o"></i> ¿Tienes dudas del uso de la página?<br>
+            <i class="fa fa-check-square-o"></i> ¿Te gustaría darnos sugerencias?<br>
+            <i class="fa fa-check-square-o"></i> ¿Algo no funciona bien?<br>
+            <i class="fa fa-check-square-o"></i> ¿Quieres aparecer en la página inicial?<br>
+            <i class="fa fa-check-square-o"></i> Pregúntanos por paquetes especiales.<br>            
             <div class="space40"></div>
           </div>  
  
           <div class="col-md-6 social-4">
-            <h4>Media Social</h4>           
+            <h4>Redes sociales</h4>           
             <a href="http://Facebook.com/tjmed.mx"><i class="fa fa-facebook"></i></a>
             <a href="http://Twitter.com/TJMedmx"><i class="fa fa-twitter"></i></a>
             <a href="mailto:TjMed.mx@gmail.com"><i class="fa fa-envelope"></i></a>
@@ -48,25 +49,25 @@
       </div> 
       <div class="col-md-6">  
         
-        <h4>Forma de Contacto</h4>    
+        <h4>Contacto</h4>    
         <!-- Form -->
        {{ Form::open(array('url' => 'mail')) }}
           <div class="row">            
             <div class="form-group col-sm-6">
               <label for="name2">Nombre</label>
-              <input class="form-control session" id="name" name="name" onblur="if(this.value == '') this.value='Name'" onfocus="if(this.value == 'Name') this.value=''" type="text" value="Nombre">
+              <input class="form-control session" id="name" name="name" type="text" placeholder="Nombre">
               <div class="error" id="err-name">Please enter name</div>
             </div>
             <div class="form-group col-sm-6">
               <label for="email2">E-mail</label>
-              <input class="form-control session" id="email" name="email" type="text" onfocus="if(this.value == 'E-mail') this.value='';" onblur="if(this.value == '') this.value='E-mail';" value="E-mail">
+              <input class="form-control session" id="email" name="email" type="text" placeholder="E-mail">
               <div class="error" id="err-emailvld">E-mail is not a valid format</div> 
             </div>
           </div>                
           <div class="row">            
             <div class="form-group col-md-12">
               <label for="message">Mensaje</label>
-              <textarea class="form-control session" id="message2" name="msg" onblur="if(this.value == '') this.value='Message'" onfocus="if(this.value == 'Message') this.value=''">Mensaje</textarea>
+              <textarea class="form-control session" id="message2" name="msg" placeholder="Mensaje"></textarea>
               <div class="error" id="err-message">Please enter message</div>     
             </div>
           </div> 

@@ -12,7 +12,7 @@
           <a href="#" style="margin:20px"><i class="fa fa-envelope-o" style="font-size:30px;margin-top:20px;margin-right:-23px;z-index:9;"></i>
             <span class="badge" style="float:right; margin-top:10px;z-index:10">42</span>
           </a>
-        </div> --><div class="col-sm-3"></div>
+        </div> --><div class="col-sm-2"></div>
          <div class="col-sm-3">
           <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
@@ -41,7 +41,7 @@
             <li id="doctor"><a href="{{ url('admin/doctores') }}"><span class="fa fa-user-md dash"></span>DOCTORES</a></li>
             <li id="especialidades"><a href="{{ url('admin/especialidades') }}"><span class="fa fa-stethoscope dash"></span>CATEGORIAS</a></li>
             <li id="articulo"><a href="{{ url('admin/articulos') }}" id="article_link"><span class="fa fa-file-text-o dash"></span>ARTICULOS</a></li>
-            <li id="tjmed"><a href="{{ url('/') }}" id="tjmed_link" target="_blank"><span class="fa fa-sign-out dash"></span>IR A TJMED</a></li>
+            <li id="tjmed"><a href="{{ url('/') }}" id="tjmed_link"><span class="fa fa-sign-out dash"></span>IR A TJMED</a></li>
           </ul>
           
         </div>

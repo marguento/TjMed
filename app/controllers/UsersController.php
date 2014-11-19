@@ -160,7 +160,7 @@ class UsersController extends BaseController {
 		$this->user->U_created_at	= date('Y-m-d H:i:s');
 		$this->user->U_level 		= 0;
 		$this->user->U_active		= 1;
-		$user->U_oauth_provider 	= 0; //No fb
+		$this->user->U_oauth_provider 	= 0; //No fb
 		$this->user->save();
 
 		if (Auth::attempt(Input::only('U_username', 'U_password')))
