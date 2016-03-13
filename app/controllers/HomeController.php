@@ -95,6 +95,15 @@ class HomeController extends BaseController {
 		return View::make('registro');
 	}
 
+	public function login()
+	{
+		if (Auth::check())
+		{
+			return Redirect::to('/');
+		}
+		return View::make('iniciarsesion');
+	}
+
 	public function switch_spanish() 
 	{
 		Session::put('my.locale', 'es');

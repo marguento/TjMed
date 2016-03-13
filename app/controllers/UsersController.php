@@ -226,5 +226,115 @@ class UsersController extends BaseController {
         }
         return $string;
 	}
+
+	public function forgot_password() 
+	{
+		$userdata = array('U_email' => Input::get('U_email'));
+		$rules = array('U_email' => 'required|email');
+		$messages = array('required' => 'Este campo es obligatorio',
+							'email' => 'Incorrecto formato de correo electrónico'
+					);
+		$validator = Validator::make($userdata, $rules, $messages);
+
+		if ($validator->fails()) {
+			return Redirect::back()
+				->withInput()
+				->withErrors($validator->messages());
+		} else {
+			$user = User::where('U_email', '=', Input::get('U_email'));
+
+			// If user exists with that email address
+			if ($user->count()) 
+			{
+				// Get user with email address
+				$user = $user->first();
+
+				// Generating reset code and temporary password
+				$resetcode = str_random(60);
+
+				$user->reset_code = $resetcode;
+
+				// Saving reset code and temporary password into the user with the email address
+				if ($user->save())
+				{
+					// Set data to email
+					$data = array(
+						'email' => $user->U_email,
+						'firstname' => $user->U_firstname,
+						'lastname' => $user->U_lastname,
+						'username' => $user->U_username, 
+						'link' => URL::to('resetpassword', $resetcode)
+					);
+
+					// Send email to the user with all the info to recover the pass
+					Mail::send('emails.auth.reminder', $data, function($message) use($user, $data) 
+					{
+						$message->to($user->U_email, $user->U_firstname . ' ' . $user->U_lastname)->subject('TjMed Recuperar Contraseña');
+					});
+
+					$var = '<div class="alert alert-success" role="alert">
+					          <button type="button" class="close" data-dismiss="alert">&times;</button>
+					          <strong>¡Éxito!</strong> Se te ha enviado un correo para recuperar tu contraseña.
+					        </div>';
+					return Redirect::back()->with('var', $var);
+				} 
+			} else {
+				$var = '<div class="alert alert-danger" role="alert">
+			          <button type="button" class="close" data-dismiss="alert">&times;</button>
+			          <strong>¡Error!</strong> No se encontró ese correo en la base de datos.
+			        </div>';
+				return Redirect::back()->with('var', $var);
+			}
+		}
+	}
+
+	public function resetpassword($resetcode) {
+		$user = User::where('reset_code', '=', $resetcode);
+		if ($user->count()) 
+		{ 
+			return View::make('resetpassword', ['user' => $user->first()]);
+		} else {
+			return View::make('resetpassword', ['user' => null]);
+		}
+	}
+
+	public function updatepassword() {
+		$userdata = array('password' => Input::get('password'),
+							'password_confirmation' => Input::get('password_confirmation')
+					);
+
+		$rules = array('password'  => 'required|min:8|Confirmed|AlphaNum',
+						'password_confirmation' => 'required|min:8|AlphaNum');
+
+		$messages = array('required' => 'Este campo es obligatorio',
+							'email' => 'Incorrecto formato de correo electrónico',
+							'Confirmed' => 'Las contraseñas no son iguales',
+							'AlphaNum' => 'Contraseña solo acepta alfa numéricos'
+					);
+
+		$validator = Validator::make($userdata, $rules, $messages);
+
+		if ($validator->fails()) {
+			return Redirect::back()
+				->withInput()
+				->withErrors($validator->messages());
+		} else {
+			$user = User::where('reset_code', '=', Input::get('reset_code'));
+			if ($user->count()) 
+			{
+				$user = $user->first();
+				$user->U_password = Hash::make(Input::get('password'));
+				$user->reset_code = '';
+
+				if ($user->save()) {
+					$var = '<div class="alert alert-success" role="alert">
+					          <button type="button" class="close" data-dismiss="alert">&times;</button>
+					          <strong>¡Éxito!</strong> Tu contraseña se ha actualizado, intenta iniciar sesión con ella.
+					        </div>';
+					return Redirect::to('iniciarsesion')->with('var', $var);
+				} 
+			} 
+		}
+	}
 }
 

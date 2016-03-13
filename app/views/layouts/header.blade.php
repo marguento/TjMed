@@ -119,6 +119,10 @@
 		  	</div>
 		  	{{ Form::close() }}
 		  	<center>
+		      <a href="{{ url('forgotpassword') }}">¿Olvidaste contraseña?</a>
+		    </center><br>
+
+		  	<center>
 		      <p> Ó inicia sesión con Facebook</p>
 		      <a href="{{ url('login/fb') }}"><button class="btn btn-default btn-sm"><span class="fa fa-facebook"></span> Iniciar Sesión con Facebook</button></a>
 		    </center><br>

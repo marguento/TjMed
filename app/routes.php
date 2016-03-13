@@ -9,6 +9,7 @@ Route::get('especialidad/{especialidad}', 'HomeController@speciality');
 Route::get('acerca', 'HomeController@about');
 Route::get('contacto', 'HomeController@contact');
 Route::get('registrar', 'HomeController@register');
+Route::get('iniciarsesion', 'HomeController@login');
 Route::get('perfil', 'HomeController@profile');
 
 Route::get('en', 'HomeController@switch_english');
@@ -88,6 +89,17 @@ Route::post('mail', function() {
     return Redirect::to('contacto')->with('var', $var);
 });
 
+// Forgot password section
+Route::get('forgotpassword', function() {
+    return View::make('forgotpassword')
+        ->with('title', 'Password Reset');
+});
+
+Route::post('forgotpassword', 'UsersController@forgot_password');
+
+Route::get('resetpassword/{resetcode}', 'UsersController@resetpassword');
+
+Route::post('updatepassword', 'UsersController@updatepassword');
 
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));
