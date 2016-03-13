@@ -26,6 +26,10 @@ body {
   border: 0;
 }
 
+.navbar {
+  width:100%;
+}
+
 /*
  * Sidebar
  */
