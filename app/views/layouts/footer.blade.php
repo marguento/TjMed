@@ -25,16 +25,6 @@
 							Tijuana, Baja California<br>
 							México<br>
 							<br>
-							<!--
-				            <div class="item-icon">
-				              <i class="fa fa-phone"></i>
-				              (613) 9999-0000-123<br>
-				            </div>
-				            <div class="item-icon">
-				              <i class="fa fa-phone"></i>
-				              (412) 7733-1111-456<br>
-				            </div>
-				        -->
 				            <div class="item-icon">
 				              <i class="fa fa-facebook"></i>
 				              {{ HTML::link('http://Facebook.com/tjmed.mx', 'Facebook')}}
@@ -45,7 +35,7 @@
 				            </div>
 				            <div class="item-icon">
 				              <i class="fa fa-envelope"></i>
-				              <a href="mailto:tjmed.mx@gmail.com">Gmail</a>
+				              <a href="mailto:contacto@tjmed.mx">{{ Lang::get('messages.contact_email') }}</a>
 				            </div>
 				            <div class="item-icon">
 				              <i class="fa fa-google-plus"></i>
@@ -68,25 +58,25 @@
               <div class="row">            
                 <div class="form-group col-sm-6">
                   <input class="form-control" id="name2" name="name" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_name') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_name') }}') this.value=''" type="text" value="{{ Lang::get('messages.contact_name') }}">
-                  <div class="error" id="err-name">Please enter name</div>
+                  <div class="error" id="err-name">{{ Lang::get('messages.name_v') }}</div>
                 </div>
                 <div class="form-group col-sm-6">
                   <input class="form-control" id="email2" name="email" type="text" onfocus="if(this.value == '{{ Lang::get('messages.contact_email') }}') this.value='';" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_email') }}';" value="{{ Lang::get('messages.contact_email') }}">
-                  <div class="error" id="err-emailvld">E-mail is not a valid format</div> 
+                  <div class="error" id="err-emailvld">{{ Lang::get('messages.email_v') }}</div> 
                 </div>
               </div>                
               <div class="row">            
                 <div class="form-group col-md-12">
                   <textarea class="form-control" id="message2" name="msg" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_message') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_message') }}') this.value=''">{{ Lang::get('messages.contact_message') }}</textarea>
-                  <div class="error" id="err-message">Please enter message</div>     
+                  <div class="error" id="err-message">{{ Lang::get('messages.message_v') }}</div>     
                 </div>
               </div> 
               <div class="row spacer30"></div>
               <div class="row">            
                 <div class="col-md-12 text-center">
-                  <div id="ajaxsuccess">E-mail was successfully sent.</div>
-                  <div class="error" id="err-form">There was a problem validating the form please check!</div>
-                  <div class="error" id="err-timedout">The connection to the server timed out!</div>
+                  <div id="ajaxsuccess">{{ Lang::get('messages.emailsuccess_v') }}</div>
+                  <div class="error" id="err-form">{{ Lang::get('messages.problemval_v') }}</div>
+                  <div class="error" id="err-timedout">{{ Lang::get('messages.connection_v') }}</div>
                   <div class="error" id="err-state"></div>                 
                   <button type="submit" class="btn btn-sm" id="send">{{ Lang::get('messages.contact_send') }}</button>
                 </div>
@@ -113,7 +103,7 @@
 				<div class="row">
 					<div class="col-md-8 col-sm-8">
 						<div class="copyright-info">
-							  {{ Lang::get('messages.copyright') }}
+							  {{ Lang::get('messages.copyright') }} <?php echo date("Y"); ?> {{ Lang::get('messages.copyright_2') }}
 						</div>
 					</div>  
 				</div> 

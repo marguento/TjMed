@@ -69,10 +69,12 @@
               </div>
               <div class="col-md-4">
                 <div class="social-2">
-                  <a style="cursor: pointer;"><i class="fa fa-envelope-o"></i></a>
-                  <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $doctor->b_telephone }}">
-                    <i class="fa fa-phone"></i>
-                  </a>
+                <a style="cursor: pointer;">
+                  <i class="fa fa-envelope-o" id="some-div"><span id="some-element">{{ $doctor->b_email }}</span></i>
+                </a>
+                <a style="cursor: pointer;">
+                  <i class="fa fa-phone" id="some-div"><span id="some-element">{{ $doctor->b_telephone }}</span></i>
+                </a>
                   @if($doctor->b_cellphone!= '')
                     <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $doctor->b_cellphone }}">
                     <i class="fa fa-mobile"></i>
@@ -91,7 +93,7 @@
                     <a href="{{ url('//' . $doctor->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                   @endif
                   @if($doctor->b_website != '')
-                    <a href="{{ url('//' . $doctor->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+                    <a href="{{ url('//www.' . $doctor->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
                   @endif
                 </div>  
               </div>

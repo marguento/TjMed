@@ -101,12 +101,14 @@
 		      </p>
           <div class="social-container">
             <div class="social-2">
-              <a style="cursor: pointer;"><i class="fa fa-envelope-o"></i></a>
-                <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $bus->b_telephone }}">
-                  <i class="fa fa-phone"></i>
+                <a style="cursor: pointer;">
+                  <i class="fa fa-envelope-o" id="some-div"><span id="some-element">{{ $bus->b_email }}</span></i>
                 </a>
-                <a style="cursor: pointer;" class="popup" data-container="body" data-toggle="popover" data-placement="right" data-content="{{ $bus->b_address }}">
-                  <i class="fa fa-map-marker"></i>
+                <a style="cursor: pointer;">
+                  <i class="fa fa-phone" id="some-div"><span id="some-element">{{ $bus->b_telephone }}</span></i>
+                </a>
+                <a style="cursor: pointer;">
+                  <i class="fa fa-map-marker" id="some-div"><span id="some-element">{{ $bus->b_address }}</span></i>
                 </a>
                 @if($bus->b_facebook != '')
                   <a href="{{ url('//www.facebook.com/' . $bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
@@ -121,7 +123,7 @@
                   <a href="{{ url('//www.linkedin.com/in/' . $bus->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                 @endif
                 @if($bus->b_website != '')
-                  <a href="{{ url('//' . $bus->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+                  <a href="{{ url('//www.' . $bus->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
                 @endif
             </div>  
           </div>              
