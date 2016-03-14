@@ -35,23 +35,11 @@
 		$('.bxslider').bxSlider({
 			auto: true,
 			mode: 'fade',
-			pause: 5000,
-			slideWidth: 5000
+			pause: 2000,
+			slideWidth: 2000
 		 });
 
-		$('.normal_login').hide();
-		$('#normal_button').click(function() {
-			$('.normal_login').show();
-			$('.login_buttons').hide();
-		});
-
 		$(".popup").popover();
-
-
-		if($('#error_msg').val() == 1) 
-		{
-			$('#myModal').modal('show');
-		}
 	
 			var id = $('#category').val();
 			var dataString = 'id='+ id;

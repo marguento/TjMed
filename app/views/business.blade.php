@@ -123,7 +123,11 @@
                   <a href="{{ url('//www.linkedin.com/in/' . $bus->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                 @endif
                 @if($bus->b_website != '')
+<<<<<<< Updated upstream
                   <a href="{{ url('//www.' . $bus->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+=======
+                  <a href="{{ url($bus->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+>>>>>>> Stashed changes
                 @endif
             </div>  
           </div>              

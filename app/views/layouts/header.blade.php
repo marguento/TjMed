@@ -16,7 +16,7 @@
 							<li id="username-li">
 								@if ( ! Auth::check())
 									<a href="{{url('registrar')}}"> {{ Lang::get('messages.register') }} -</a>  
-									<a href="#" data-toggle="modal" data-target="#myModal"> {{ Lang::get('messages.log_in') }}</a>
+									<a href="{{url('iniciarsesion')}}"> {{ Lang::get('messages.log_in') }}</a>
 								@else
 									@if(Auth::user()->U_level == 1)
 										<a href="{{url('admin')}}"><span class="fa fa-cog"></span> Admin site - </a>
@@ -84,49 +84,4 @@
 		</div> 
 	</div> 
 </header>
-
-<!-- Header End -->
-<div class="modal fade" id="myModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-	    	<div class="modal-header">
-	        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	        	<h4 class="modal-title">Inicia Sesión</h4>
-	      	</div>
-		    {{ Form::open(['route' => 'sessions.store']) }}
-		    <div class="modal-body">
-		    	@if (Session::has('v'))
-			    	{{ Form::hidden('error', 1, array('id' => 'error_msg')) }}
-				    <p><span class="error_msg">Alguno de los datos es incorrecto. Por favor, trata de nuevo.</span></p>
-				@endif
-		    	<p>Llena los campos para iniciar sesión normal</p>
-				<div class="form-group">
-				 	{{ Form::label('U_username', 'Nombre de usuario: ') }}
-					{{ Form::text('U_username', '', array('class' => 'form-control session', 'placeholder' => 'Ingrese nombre de usuario')) }}
-					
-				</div>
-				<div class="form-group">
-				  	{{ Form::label('U_password', 'Contraseña: ') }}
-				  	<br>
-					{{ Form::password('U_password', array('class' => 'form-control session', 'placeholder' => 'Ingrese contraseña')) }}
-
-					
-				</div>
-		    </div>
-		    
-		    <div class="modal-footer">
-		      	<center>{{ Form::submit('Iniciar sesión', array('class' => 'btn btn-primary')) }}</center>   	
-		  	</div>
-		  	{{ Form::close() }}
-		  	<center>
-		      <a href="{{ url('forgotpassword') }}">¿Olvidaste contraseña?</a>
-		    </center><br>
-
-		  	<center>
-		      <p> Ó inicia sesión con Facebook</p>
-		      <a href="{{ url('login/fb') }}"><button class="btn btn-default btn-sm"><span class="fa fa-facebook"></span> Iniciar Sesión con Facebook</button></a>
-		    </center><br>
-	    </div>
-	</div>
-</div>
 

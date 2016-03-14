@@ -274,6 +274,128 @@ class AdminController extends BaseController {
 		
 	}
 
+	public function banner()
+	{
+		$banners = Banner::all();
+
+		return View::make('admin/banner', ['banners' => $banners]);
+	}
+
+	public function add_banner() 
+	{
+		$banner = new Banner();
+		$banner->image_esp = Input::file('image_esp');
+		$banner->image_eng = Input::file('image_eng');
+
+		if (!$banner->isValid())
+		{
+			$error_msg = "Alguno de los datos es incorrecto. Por favor, trata de nuevo.";
+			
+			return Redirect::back()->withInput()->withErrors($banner->errors)->with('error_msg', $error_msg);
+		}
+
+		$maxHeight = 450;
+	    $maxWidth = 1920;
+	    list($width, $height) = getimagesize($banner->image_esp);
+	    list($width2, $height2) = getimagesize($banner->image_eng);
+
+	    if ($width != $maxWidth || $height != $maxHeight || $width2 != $maxWidth || $height2 != $maxHeight ) 
+	    {
+	    	$error_msg = "El tamaño de las dos imágenes debe ser 1920 x 450";
+	    	return Redirect::back()->withInput()->with('error_msg', $error_msg);
+	    }
+
+	    $destinationPath = public_path() . '/images_server';
+		$fileName_esp = 'banner_' . round(microtime(true) * 1000) . '_esp';
+		$fileName_eng = 'banner_' . round(microtime(true) * 1000) . '_eng';
+
+		Input::file('image_esp')->move($destinationPath, $fileName_esp);
+		Input::file('image_eng')->move($destinationPath, $fileName_eng);
+
+		$banner->image_esp = $fileName_esp;
+		$banner->image_eng = $fileName_eng;
+		$banner->active = 0;
+
+		$banner->save();
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Éxito!</strong> Banner agregado correctamente.
+		        </div>';
+		return Redirect::back()->with('var', $var);
+	}
+
+	public function delete_banner($id) 
+	{
+		$banner = Banner::find($id);
+		$banner->delete();
+
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Éxito!</strong> Banner eliminado correctamente.
+		        </div>';
+		return Redirect::back()->with('var', $var);
+	}
+
+	public function update_banner()
+	{
+		$banner = Banner::find(Input::get('rowid'));
+
+		if (Input::get('column') == 'image_esp') {
+			$tmp = $banner->image_eng;
+		} else {
+			$tmp = $banner->image_esp;
+		}
+
+		$banner->image_esp = Input::file('image_edit');
+		$banner->image_eng = Input::file('image_edit');
+
+		if (!$banner->isValid())
+		{
+			$error_msg = "Alguno de los datos es incorrecto. Por favor, trata de nuevo.";
+			$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Error!</strong> La imagen debe estar en formato jpg, png o jpeg.
+		        </div>';
+			return Redirect::back()->with('var', $var);
+		}
+
+		$maxHeight = 450;
+	    $maxWidth = 1920;
+	    list($width, $height) = getimagesize(Input::file('image_edit'));
+
+	    if ($width != $maxWidth || $height != $maxHeight) 
+	    {
+	    	$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Error!</strong> El tamaño de la imagen debe ser 1920 x 450.
+		        </div>';
+		        return Redirect::back()->with('var', $var);
+	    }
+
+	    $destinationPath = public_path() . '/images_server';
+
+	    if (Input::get('column') == 'image_esp') {
+	    	$fileName = 'banner_' . round(microtime(true) * 1000) . '_esp';
+	    	Input::file('image_edit')->move($destinationPath, $fileName);
+			$banner->image_eng = $tmp;
+			$banner->image_esp = $fileName;
+		} else {
+			$fileName_eng = 'banner_' . round(microtime(true) * 1000) . '_eng';
+			Input::file('image_edit')->move($destinationPath, $fileName);
+			$banner->image_esp = $tmp;
+			$banner->image_eng = $fileName;
+		}
+
+		$banner->save();
+
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Éxito!</strong> Banner editado correctamente.
+		        </div>';
+		return Redirect::back()->with('var', $var);
+		
+	}
+
 	public function editUser($id)
 	{
 		if(!Auth::check() || Auth::user()->U_level != 1)

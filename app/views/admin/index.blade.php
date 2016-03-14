@@ -41,6 +41,7 @@
             <li id="doctor"><a href="{{ url('admin/doctores') }}"><span class="fa fa-user-md dash"></span>DOCTORES</a></li>
             <li id="especialidades"><a href="{{ url('admin/especialidades') }}"><span class="fa fa-stethoscope dash"></span>CATEGORIAS</a></li>
             <li id="articulo"><a href="{{ url('admin/articulos') }}" id="article_link"><span class="fa fa-file-text-o dash"></span>ARTICULOS</a></li>
+            <li id="banner"><a href="{{ url('admin/banner') }}"><span class="fa fa-image dash"></span>BANNER</a></li>
             <li id="tjmed"><a href="{{ url('/') }}" id="tjmed_link"><span class="fa fa-sign-out dash"></span>IR A TJMED</a></li>
           </ul>
           

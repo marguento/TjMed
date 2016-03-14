@@ -181,3 +181,7 @@ ul li a {
 .navbar-brand:hover{
   color:#0FA1D5 !important;
 }
+
+.del_banner, .show_image {
+  cursor: pointer;
+}
