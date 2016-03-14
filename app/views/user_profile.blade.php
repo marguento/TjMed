@@ -153,6 +153,7 @@
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     {{ Lang::get('messages.website_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('website', Auth::user()->U_website, array('class' => 'form-control profile')) . Lang::get('messages.website_ej_up') }}
+      <br /><span class="error_msg">{{ $errors->first('U_website') }}</span>
     </div>
   </div>
 </div>

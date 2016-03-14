@@ -44,7 +44,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'U_password'  => 'required|min:8',
 			'U_firstname' => 'required',
 			'U_lastname'  => 'required',
-			'U_email' 	  => 'required|email|unique:users,U_email,'.$cur_user.',U_username'
+			'U_email' 	  => 'required|email|unique:users,U_email,'.$cur_user.',U_username',
+			'U_website'   => 'regex:"https?://.+"'
 		);
 
 		if($update != '')
@@ -55,6 +56,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 							'unique' => 'Este campo ya esta registrado con otro usuario.',
 							'email' => 'Incorrecto formato de correo electrónico',
 							'min' => 'Este campo requiere un mínimo de :min caracteres',
+							'regex' => 'Este campo requiere que pongas http:// o https:// al principio',
 							'image' => 'La imagen tiene que ser formato jpeg, jpg o png');
 		$validation = Validator::make($this->attributes, $this->rules, $messages);
 

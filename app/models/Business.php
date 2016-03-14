@@ -21,7 +21,8 @@ class Business extends Eloquent {
 			'b_telephone'  	=> 'required',
 			'b_email' 	  	=> 'required|email|unique:businesses,b_email,'.$cur_doctor.',B_ID',
 			'b_introduction'=> 'required',
-			'b_description' => 'required'
+			'b_description' => 'required',
+			'b_website'   	=> 'regex:"https?://.+"'
 		);
 
 		if($update != '')
@@ -32,6 +33,7 @@ class Business extends Eloquent {
 		$messages = array('required' => 'Este campo es obligatorio',
 							'unique' => 'Este campo ya esta en otro negocio',
 							'email' => 'Incorrecto formato de correo electrónico',
+							'regex' => 'Este campo requiere que pongas http:// o https:// al principio',
 							'image' => 'La imagen tiene que ser formato jpeg, jpg o png');
 		$validation = Validator::make($this->attributes, $this->rules, $messages);
 

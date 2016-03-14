@@ -5,8 +5,8 @@
 <div class="container">
 
   <ol class="breadcrumb">
-    <li>{{ link_to('/', 'Volver a inicio') }}</li>
-    <li class="active" style="color:#083D5C">Registrar negocio</li>
+    <li>{{ link_to('/', Lang::get('messages.back_ab')) }}</li>
+    <li class="active" style="color:#083D5C">{{ Lang::get('messages.reg_ab') }}</li>
   </ol>
 
   @if (Session::has('var'))
@@ -16,11 +16,11 @@
   @if(Auth::check() && Auth::user()->U_level == 1)
     <div class="alert alert-success" role="alert">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-        Como administrador, el registro se reflejará inmediatamente sin verificación previa.
+        {{ Lang::get('messages.admin_ab') }}
     </div>
   @endif
 
-<h2 class="sub-header">Agregar doctor o negocio médico</h2>
+<h2 class="sub-header">{{ Lang::get('messages.add_ab') }}</h2>
 <div class="space20"></div>
 
 {{ Form::open(array('url' => 'doctores/store', 'files'=> true)) }}
@@ -29,13 +29,13 @@
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('name', 'Nombre (*)', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('name', Lang::get('messages.contact_name') .' (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('name', '', array('class' => 'session form-control focus')) }}
       <span class="error_msg">{{ $errors->first('b_name') }}</span>
     </div>
 
-    {{ Form::label('address', 'Dirección (*)', array('class' => 'col-sm-2 control-label')) }}
+    {{ Form::label('address', Lang::get('messages.address_title') .' (*)', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('address', '', array('class' => 'session form-control', 'id' => 'address')) }}
       <span class="error_msg">{{ $errors->first('b_address') }}</span>
@@ -47,19 +47,19 @@
 <div id="map-canvas" style="width:100%; height:250px"></div>
 <br>
 <div class="row">
-¿No encuentras la dirección? Mueve el marcador manualmente y colocalo en la ubicación deseada <a href="#" data-toggle="modal" data-target="#help_map">¿Necesitas ayuda?</a>
+{{ Lang::get('messages.dir_ab') }} <a href="#" data-toggle="modal" data-target="#help_map">{{ Lang::get('messages.needhelp_ab') }}</a>
 </div>
 
 <br>
-<b>¿Tomar en cuenta la ubicación de la dirección o el marcador?</b><br><br>
+<b>{{ Lang::get('messages.dirmark_ab') }}</b><br><br>
 <div class="row">
   <div class="form-group">
-    {{ Form::label('map_c', 'Dirección', array('class' => 'col-sm-1 control-label')) }}
+    {{ Form::label('map_c', Lang::get('messages.address_title') , array('class' => 'col-sm-1 control-label')) }}
     <div class="col-md-1">
       {{ Form::radio('map_c', '0', true) }}
     </div>
 
-    {{ Form::label('map_c', 'Marcador (coordenadas)', array('class' => 'col-md-1 control-label')) }}
+    {{ Form::label('map_c', Lang::get('messages.mark_ab'), array('class' => 'col-md-1 control-label')) }}
     <div class="col-md-1" class="error">
       {{ Form::radio('map_c', '1') }}
     </div>
@@ -72,13 +72,13 @@
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('email', 'Correo Electrónico (*)', array('class' => 'col-sm-2 control-label')) }}
+    {{ Form::label('email', Lang::get('messages.contact_email') .' (*)', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('email', '', array('class' => 'session form-control')) }}
       <span class="error_msg">{{ $errors->first('b_email') }}</span>
     </div>
 
-    {{ Form::label('telephone', 'Teléfono (*)', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('telephone', Lang::get('messages.tel_ab') .' (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4" class="error">
       {{ Form::text('telephone', '', array('class' => 'session form-control focus')) }}
       <span class="error_msg">{{ $errors->first('b_telephone') }}</span>
@@ -92,22 +92,22 @@
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('cellphone', 'Celular', array('class' => 'col-sm-2 control-label')) }}
+    {{ Form::label('cellphone', Lang::get('messages.cel_ab'), array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('cellphone', '', array('class' => 'session form-control')) }}
     </div>
   </div>
-    {{ Form::label('user_owner', '¿Usted es dueño de este negocio?', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('user_owner', Lang::get('messages.owner_ab'), array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::select('user_owner', ['No', 'Si'], '', ['class' => 'session form-control', 'id' => 'user_owner']) }}
   </div>
 </div>
 <br>
-<p> Agrega una especialidad representativa del negocio médico ó doctor </p>
+<p>{{ Lang::get('messages.addesp_ab') }}</p>
 
 <div class="row">
   <div class="form-group">
-{{ Form::label('specialty', 'Especialidad', array('class' => 'col-md-2 control-label')) }}
+{{ Form::label('specialty', Lang::get('messages.special_ab'), array('class' => 'col-md-2 control-label')) }}
 <div class="col-md-4">
       <select name="specialty" class="form-control" id="specialty" style="color:black; font-size:14px">
         @if ($specialties->count())
@@ -117,7 +117,7 @@
         @endif
       </select>
     </div>
-    {{ Form::label('other', 'Otra especialidad', array('class' => 'col-sm-2 control-label')) }}
+    {{ Form::label('other', Lang::get('messages.otherspe_ab'), array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('other', '', array('class' => 'session form-control')) }}
     </div>
@@ -125,11 +125,11 @@
   </div>
     <br>
 
-<p> Agrega una introducción breve de 150 caracteres de lo más representativo del negocio</p>
+<p>{{ Lang::get('messages.addintro_ab') }}</p>
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('introduction', 'Introducción (*)', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('introduction', Lang::get('messages.intro_ab') .' (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-10">
       {{ Form::textarea('introduction', '', ['class' => 'session form-control', 'size' => '1x2', 'maxlength' => '150']) }}
       <span class="error_msg">{{ $errors->first('b_introduction') }}</span>
@@ -138,10 +138,10 @@
 </div>
 
 <br>
-<p> Agrega una descripción más detallada sobre el negocio</p>
+<p>{{ Lang::get('messages.addespdetail_ab') }}</p>
 <div class="row">
   <div class="form-group">
-    {{ Form::label('description', 'Descripción (*)', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('description', Lang::get('messages.des_ab') .' (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-10">
       {{ Form::textarea('description', '', ['class' => 'session form-control', 'size' => '1x5']) }}
       <span class="error_msg">{{ $errors->first('b_description') }}</span>
@@ -150,8 +150,8 @@
 </div>
 
 <br>
-<p> Agrega una imagen representativa del negocio, esto ayudará a verificar más facilmente la autenticidad del negocio</p>
-<h5> Imagenes menores de 2MB </h5>
+<p>{{ Lang::get('messages.addimg_ab') }}</p>
+<h5>{{ Lang::get('messages.belowtwo_ab') }}</h5>
 <div class="row">
   <div class="form-group">
     <div class="col-md-2"></div>
@@ -162,9 +162,9 @@
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 270px;"></div>
         <div>
-          <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+          <span class="btn btn-default btn-file"><span class="fileinput-new">{{ Lang::get('messages.select_apa') }}</span><span class="fileinput-exists">{{ Lang::get('messages.change_apa') }}</span>
           <input type="file" name="image"></span>
-          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+          <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{ Lang::get('messages.remove_apa') }}</a>
         </div>
       </div><br>
       <span class="error_msg">{{ $errors->first('b_image') }}</span>
@@ -175,15 +175,15 @@
 </div>
 
 <br>
-<p> Redes sociales (opcionales)</p>
+<p>{{ Lang::get('messages.socialopcion_ab') }}</p>
 
 <div class="row">
   <div class="form-group">
-    <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook <br>Ej: facebook.com/ejemplo</label>
+    <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook <br>{{ Lang::get('messages.face_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('facebook', '', array('class' => 'session form-control')) }}
     </div>
-    <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter <br>Ej: twitter.com/ejemplo</label>
+    <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter <br>{{ Lang::get('messages.twitter_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('twitter', '', array('class' => 'session form-control')) }}
     </div>
@@ -194,12 +194,12 @@
 
 <div class="row">
   <div class="form-group">
-    <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin <br>Ej: linkedin.com/in/ejemplo</label>
+    <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin <br>{{ Lang::get('messages.linke_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('linkedin', '', array('class' => 'session form-control')) }}
     </div>
 
-    <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube <br>Ej: youtube.com/user/ejemplo</label>
+    <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube <br>{{ Lang::get('messages.youtube_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('youtube', '', array('class' => 'session form-control')) }}
     </div>
@@ -210,26 +210,27 @@
 
 <div class="row">
   <div class="form-group">
-     <label for="google_plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+ <br>Ej: plus.google.com/ejemplo</label>
+     <label for="google_plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+ <br>{{ Lang::get('messages.google_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('google_plus', '', array('class' => 'session form-control')) }}
     </div>
-    <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     Sitio Web Personal</label>
+    <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     {{ Lang::get('messages.website_up') }}<br>{{ Lang::get('messages.website_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('website', '', array('class' => 'session form-control')) }}
+      <span class="error_msg">{{ $errors->first('b_website') }}</span>
     </div>
   </div>
 </div>
 
 <br>
 
-<p> Puedes dejar otro teléfono de contacto para que los administradores puedan corroborar los datos más facilmente </p>
+<p>{{ Lang::get('messages.othertel_ab') }}</p>
 
 <br>
 
 <div class="row">
   <div class="form-group">
-    <label for="contact-phone" class="col-md-2 control-label">Teléfono de Contacto</label>
+    <label for="contact-phone" class="col-md-2 control-label">{{ Lang::get('messages.conctacttel_ab') }}</label>
     <div class="col-md-4">
       {{ Form::text('contact-phone', '', array('class' => 'session form-control')) }}
     </div>
@@ -242,7 +243,7 @@
   <div class="form-group">
     <div class="col-md-5"></div>
     <div class="col-md-2">
-      {{ Form::submit('Guardar', array('class' => 'btn btn-primary')) }}
+      {{ Form::submit(Lang::get('messages.save_apa'), array('class' => 'btn btn-primary')) }}
     </div>
   </div>
 </div>
@@ -253,19 +254,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
-          <span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Registrar dirección del negocio</h4>
+          <span class="sr-only">{{ Lang::get('messages.close_abm') }}</span></button>
+        <h4 class="modal-title">{{ Lang::get('messages.register_abm') }}</h4>
       </div>
       <div class="modal-body">
-        <p>Puedes ingresar las coordenadas de tu direccion directamente. <a href="//maps.google.com" target="_blank">Ingresa aquí</a></p>
+        <p>{{ Lang::get('messages.coor_abm') }} <a href="//maps.google.com" target="_blank">{{ Lang::get('messages.signin_abm') }}</a></p>
         <div class="row">
           <div class="form-group">
-            {{ Form::label('latitude', 'Latitud', array('class' => 'col-sm-2 control-label')) }}
+            {{ Form::label('latitude', Lang::get('messages.lat_abm'), array('class' => 'col-sm-2 control-label')) }}
             <div class="col-md-4">
               {{ Form::text('latitude', '', array('class' => 'session form-control', 'id' => 'latitude')) }}
             </div>
 
-            {{ Form::label('longitude', 'Longitud', array('class' => 'col-md-2 control-label')) }}
+            {{ Form::label('longitude', Lang::get('messages.lon_abm'), array('class' => 'col-md-2 control-label')) }}
             <div class="col-md-4">
               {{ Form::text('longitude', '', array('class' => 'session form-control focus', 'id' => 'longitude')) }}
             </div>
@@ -275,8 +276,8 @@
         <img src="{{url('images/map.png')}}">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-danger" id="accept_btn">Aceptar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ Lang::get('messages.close_abm') }}</button>
+        <button type="button" class="btn btn-danger" id="accept_btn">{{ Lang::get('messages.accepted_abm') }}</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
