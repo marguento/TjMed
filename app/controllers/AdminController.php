@@ -336,6 +336,18 @@ class AdminController extends BaseController {
 		return Redirect::back()->with('var', $var);
 	}
 
+	public function show_banner($id, $active) {
+		$banner = Banner::find($id);
+		$banner->active = $active;
+		$banner->save();
+
+		$var = '<div class="alert alert-success" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          <strong>¡Éxito!</strong> Cambios del banner guardados correctamente.
+		        </div>';
+		return Redirect::back()->with('var', $var);
+	}
+
 	public function update_banner()
 	{
 		$banner = Banner::find(Input::get('rowid'));

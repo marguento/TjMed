@@ -1,20 +1,24 @@
 @extends('layouts.default')
 @section('content')
 
-
 <!-- PRIMER RENGLON -->
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <div class="item active">
-      <img src="images/{{ Lang::get('messages.banner1') }}" alt="...">
-      <div class="carousel-caption">
+  @if ($banners->count())
+    <?php $i = 0; ?>
+    @foreach ($banners as $banner)
+      @if ($i == 0)
+        <?php $class = "active"; ?>
+      @else
+        <?php $class = ""; ?>
+      @endif
+      <div class="item {{ $class }}">
+        <img src="images_server/{{ $banner->image }}" alt="...">
+        <div class="carousel-caption"></div>
       </div>
-    </div>
-    <div class="item">
-      <img src="images/{{ Lang::get('messages.banner2') }}" alt="...">
-      <div class="carousel-caption">
-      </div>
-    </div>
+      <?php $i++; ?>
+    @endforeach
+  @endif
   </div>
 </div>
 <div class="space60"></div>

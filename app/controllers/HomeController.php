@@ -9,10 +9,20 @@ class HomeController extends BaseController {
 		$comments = BusinessCommentsView::whereb_verified(1)->whereb_active(1)->orderBy('C_datetime_created', 'desc')->take(3)->get();
 		$cats 	  = BusinessCategoriesView::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
 		$articles = ArticleView::orderBy('A_created_at', 'desc')->take(3)->get();
+		if (!Session::has('my.locale')) {
+			Session::put('my.locale', 'es');
+		}
+
+		if (Session::get('my.locale') == 'es') {
+			$banners = Banner::select('image_esp as image')->where('active', 1)->get();
+		} else {
+			$banners = Banner::select('image_eng as image')->where('active', 1)->get();
+		}
 		return View::make('index', ['articles' => $articles,
 									'business' => $business,							
 									'comments' => $comments,
-									'cats'	   => $cats]);
+									'cats'	   => $cats,
+									'banners'  => $banners]);
 	}
 
 	public function business()

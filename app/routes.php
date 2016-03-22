@@ -47,6 +47,7 @@ Route::get('admin/banner', 'AdminController@banner');
 Route::post('banner/store', 'AdminController@add_banner');
 Route::get('admin/banner/delete/{id}', 'AdminController@delete_banner');
 Route::post('banner/update', 'AdminController@update_banner');
+Route::get('admin/banner/show/{id}/{active}', 'AdminController@show_banner');
 
 Route::post('getSpecialties', 'BusinessController@getSpecialties');
 Route::post('doctores/update', 'BusinessController@update');

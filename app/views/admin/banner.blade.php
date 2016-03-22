@@ -33,9 +33,9 @@
                         <td id="{{ $banner->image_eng }}" rowid="{{ $banner->ID }}" column="image_eng" class="show_image">{{ HTML::image('images_server/' . $banner->image_eng, 'Banner inglés', array( 'width' => 300)) }}</td>
                         <td>
                             @if ($banner->active)
-                                {{ Form::checkbox('active', $banner->active, true); }}
+                                {{ Form::checkbox('active', $banner->active, true, ['class' => 'active_banner', 'id' => $banner->ID]); }}
                             @else 
-                                {{ Form::checkbox('active', $banner->active, false); }}
+                                {{ Form::checkbox('active', $banner->active, false, ['class' => 'active_banner', 'id' => $banner->ID]); }}
                             @endif
                         </td>
                         <td id="{{ $banner->ID }}" class="del_banner"><center><i class="fa fa-times"></i></center></td>
@@ -158,6 +158,26 @@
 </div><!-- /.modal -->
 
 <div class="modal fade" id="show_banner_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Mostrar banner</h4>
+      </div>
+      <div class="modal-body" id="show_banner_content">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+        <button type="button" class="btn btn-danger" id="show_banner_verified">Actualizar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="show_banner_modal">
   <div class="modal-dialog" style="width:1200px">
     <div class="modal-content" style="width:1200px">
     <div class="modal-header" style="border-bottom:none">
@@ -222,6 +242,23 @@
 
         $("input:file").change(function () {
             $("#change_banner").removeAttr('disabled');
+        });
+
+        $(".active_banner").change(function() {
+            var id = $(this).attr('id');
+            if (this.checked) {
+                var msg = "¿Está seguro de mostrar el banner en la página principal?";
+                var active = 1;
+            } else {
+                var msg = "¿Está seguro de remover el banner de la página principal?"
+                var active = 0;
+            }
+            $("#show_banner_content").text(msg);
+            $("#show_banner_modal").modal("show");
+
+            $("#show_banner_verified").click(function() {
+                window.location.href = 'banner/show/' + id + '/' + active;
+            });
         });
     });
 </script>
