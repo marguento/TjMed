@@ -132,6 +132,20 @@ class AdminController extends BaseController {
 		}
 	}
 
+	public function delete_article($id) {
+		ArticleHasImages::where('AI_article', $id)->delete();
+		ArticleHasComments::where('AHC_article', $id)->delete();
+		ArticleHasTags::where('AT_article', $id)->delete();
+		ArticleHasArticleCategories::where('AAC_article', $id)->delete();
+		Article::destroy($id);
+
+		$var = '<div class="alert alert-success" role="alert">
+			          <button type="button" class="close" data-dismiss="alert">&times;</button>
+			          <strong>¡Éxito!</strong> Artículo eliminado.
+			        </div>';
+		return Redirect::back()->with('var', $var);
+	}
+
 	public function specialties()
 	{
 		if(!Auth::check() || Auth::user()->U_level != 1)

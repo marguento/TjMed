@@ -42,12 +42,15 @@ Route::get('admin/delete/{username}', 'UsersController@destroy');
 Route::post('doctores/add_cat', 'AdminController@add_cat');
 Route::post('doctores/add_tag', 'AdminController@add_tag');
 
-/* Banner routes */
+/* Admin Banner routes */
 Route::get('admin/banner', 'AdminController@banner');
 Route::post('banner/store', 'AdminController@add_banner');
 Route::get('admin/banner/delete/{id}', 'AdminController@delete_banner');
 Route::post('banner/update', 'AdminController@update_banner');
 Route::get('admin/banner/show/{id}/{active}', 'AdminController@show_banner');
+
+/* Admin Article routes */
+Route::get('admin/article/delete/{id}', 'AdminController@delete_article');
 
 Route::post('getSpecialties', 'BusinessController@getSpecialties');
 Route::post('doctores/update', 'BusinessController@update');

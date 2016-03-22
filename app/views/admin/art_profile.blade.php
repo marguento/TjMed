@@ -106,9 +106,6 @@
 
 <br><br>
 
-<h5>{{ Lang::get('messages.categories_apa') }}</h5>
-<h5>{{ Lang::get('messages.labels_apa') }}</h5>
-
 <div class="space30"></div>
 
 <div class="row">

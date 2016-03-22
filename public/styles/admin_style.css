@@ -182,6 +182,6 @@ ul li a {
   color:#0FA1D5 !important;
 }
 
-.del_banner, .show_image {
+.del_banner, .show_image, .del_article {
   cursor: pointer;
 }
