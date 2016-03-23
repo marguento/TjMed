@@ -84,15 +84,18 @@
 
 <div class="row">
   <div class="form-group">
-    <div class="col-md-5"></div>
+    <div class="col-md-4"></div>
     <div class="col-md-2">
       <input type="submit" class="form-control btn btn-primary" name="submit" id="submit" value="Guardar">
     </div>
+    
+    <div class="col-md-2">
+      <button type="button" class="form-control btn btn-danger del_category" id="{{ $category->C_ID }}" style="color: #fff; background-color: #d9534f">Eliminar categoria</button>
+    </div>
   </div>
 </div>
-<div class="col-md-4"></div>
 {{ Form::close() }}
-
+<div class="col-md-4"></div>
 <div class="space40"></div>
 <h3 class="sub-header">Especialidades de esta categoría ({{ $category->s_count }})</h3>
 
@@ -127,8 +130,38 @@
           </div>
         </div>
 
+<div class="modal fade" id="del_category_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Eliminar categoría</h4>
+      </div>
+      <div class="modal-body">
+        ¿Esta seguro de realizar la siguiente acción? <br> 
+        <b><u>Al eliminar esta categoría se eliminarán todas las especialidades relacionadas a ella.</b></u>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+        <button type="button" class="btn btn-danger" id="del_category_verified">Eliminar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script>
 $('#especialidades').addClass('active');
+
+$(".del_category").click(function() {
+    var id = $(this).attr('id');
+    $('#del_category_modal').modal('show');
+
+    $("#del_category_verified").click(function() {
+      window.location.href = 'delete/' + id;
+    });
+  });
  
 </script>
 @stop

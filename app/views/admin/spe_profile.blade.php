@@ -114,16 +114,50 @@
 
 <div class="row">
   <div class="form-group">
-    <div class="col-md-5"></div>
+    <div class="col-md-4"></div>
     <div class="col-md-2">
       <input type="submit" class="form-control btn btn-primary" name="submit" id="submit" value="Guardar">
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="form-control btn btn-danger del_specialty" id="{{ $specialty->S_ID }}" style="color: #fff; background-color: #d9534f">Eliminar especialidad</button>
     </div>
   </div>
 </div>
 <div class="col-md-4"></div>
 {{ Form::close() }}
 
+<div class="modal fade" id="del_specialty_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Eliminar especialidad</h4>
+      </div>
+      <div class="modal-body">
+        ¿Esta seguro de realizar la siguiente acción? <br> 
+        <b><u>Al eliminar esta especialidad se eliminarán todas las relaciones que tenga con negocios.</b></u>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+        <button type="button" class="btn btn-danger" id="del_specialty_verified">Eliminar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script>
   $('#especialidades').addClass('active');
+
+  $(".del_specialty").click(function() {
+    var id = $(this).attr('id');
+    console.log(id);
+    $('#del_specialty_modal').modal('show');
+
+    $("#del_specialty_verified").click(function() {
+      window.location.href = '../delete/' + id;
+    });
+  });
 </script>
 @stop

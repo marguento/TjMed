@@ -28,6 +28,7 @@ Route::get('admin/articulo/{id_a}', 'AdminController@article');
 Route::post('article/update', 'AdminController@art_update');
 
 Route::get('admin/especialidades', 'AdminController@specialties');
+Route::get('admin/especialidad/delete/{id}', 'AdminController@delete_specialty');
 Route::get('admin/especialidad/{id_specialty}/{id_c}', 'AdminController@specialty');
 Route::post('specialty/update', 'AdminController@spe_update');
 Route::get('admin/categoria/{id_category}', 'AdminController@category');
@@ -51,6 +52,9 @@ Route::get('admin/banner/show/{id}/{active}', 'AdminController@show_banner');
 
 /* Admin Article routes */
 Route::get('admin/article/delete/{id}', 'AdminController@delete_article');
+
+/* Admin category-specialty routes */
+Route::get('admin/categoria/delete/{id}', 'AdminController@delete_category');
 
 Route::post('getSpecialties', 'BusinessController@getSpecialties');
 Route::post('doctores/update', 'BusinessController@update');

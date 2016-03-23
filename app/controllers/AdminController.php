@@ -172,6 +172,36 @@ class AdminController extends BaseController {
 		}
 	}
 
+	public function delete_category($id) {
+		$specialties = Specialty::where('S_id_category', $id)->get();
+		foreach($specialties as $specialty) {
+			BusinessHasSpecialties::where('specialties_S_ID', $specialty->S_ID)->delete();
+			Specialty::destroy($specialty->S_ID);
+		}
+
+		Category::destroy($id);
+
+		$var = '<div class="alert alert-success" role="alert">
+			          <button type="button" class="close" data-dismiss="alert">&times;</button>
+			          <strong>¡Éxito!</strong> Categoría de especialidades eliminada.
+			        </div>';
+		return Redirect::to("/admin/especialidades")->with('var', $var);
+	}
+
+	public function delete_specialty($id) {
+		$specialty = Specialty::find($id);
+		$category_id = $specialty->S_id_category;
+
+		BusinessHasSpecialties::where('specialties_S_ID', $specialty->S_ID)->delete();
+		Specialty::destroy($id);
+		
+		$var = '<div class="alert alert-success" role="alert">
+			          <button type="button" class="close" data-dismiss="alert">&times;</button>
+			          <strong>¡Éxito!</strong> Especialidad eliminada.
+			        </div>';
+		return Redirect::to("/admin/categoria/" . $category_id)->with('var', $var);
+	}
+
 	public function spe_update() 
 	{
 		if(!Auth::check() || Auth::user()->U_level != 1)
