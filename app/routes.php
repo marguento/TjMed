@@ -94,7 +94,7 @@ Route::post('mail', function() {
         'msg' => Input::get('msg')
     ];
     Mail::send('emails.welcome', $data, function($message) {
-        $message->to('tjmed.mx@gmail.com', 'TjMed')->subject('Contacto');
+        $message->to('support@tjmed.mx', 'TjMed')->subject('Contacto');
     });
     $var = '<div class="alert alert-success" role="alert">
                       <button type="button" class="close" data-dismiss="alert">&times;</button>

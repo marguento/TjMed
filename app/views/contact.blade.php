@@ -51,7 +51,7 @@
         
         <h4>{{ Lang::get('messages.contact') }}</h4>    
         <!-- Form -->
-       {{ Form::open(array('url' => 'mail')) }}
+       {{ Form::open(array('url' => 'mail', 'id' => 'ajax-form')) }}
           <div class="row">            
             <div class="form-group col-sm-6">
               <label for="name2">{{ Lang::get('messages.contact_name') }}</label>
@@ -67,7 +67,7 @@
           <div class="row">            
             <div class="form-group col-md-12">
               <label for="message">{{ Lang::get('messages.contact_message') }}</label>
-              <textarea class="form-control session" id="message2" name="msg" placeholder="{{ Lang::get('messages.contact_message') }}"></textarea>
+              <textarea class="form-control session" id="message" name="msg" placeholder="{{ Lang::get('messages.contact_message') }}"></textarea>
               <div class="error" id="err-message">{{ Lang::get('messages.message_v') }}</div>     
             </div>
           </div> 

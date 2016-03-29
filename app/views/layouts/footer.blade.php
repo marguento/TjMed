@@ -54,31 +54,31 @@
             <div class="space5"></div>
             
             <!-- Form -->
-            {{ Form::open(array('url' => 'mail')) }}
+            {{ Form::open(array('url' => 'mail', 'id' => 'ajax-form2')) }}
               <div class="row">            
                 <div class="form-group col-sm-6">
                   <input class="form-control" id="name2" name="name" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_name') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_name') }}') this.value=''" type="text" value="{{ Lang::get('messages.contact_name') }}">
-                  <div class="error" id="err-name">{{ Lang::get('messages.name_v') }}</div>
+                  <div class="error" id="err-name2">{{ Lang::get('messages.name_v') }}</div>
                 </div>
                 <div class="form-group col-sm-6">
                   <input class="form-control" id="email2" name="email" type="text" onfocus="if(this.value == '{{ Lang::get('messages.contact_email') }}') this.value='';" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_email') }}';" value="{{ Lang::get('messages.contact_email') }}">
-                  <div class="error" id="err-emailvld">{{ Lang::get('messages.email_v') }}</div> 
+                  <div class="error" id="err-emailvld2">{{ Lang::get('messages.email_v') }}</div> 
                 </div>
               </div>                
               <div class="row">            
                 <div class="form-group col-md-12">
                   <textarea class="form-control" id="message2" name="msg" onblur="if(this.value == '') this.value='{{ Lang::get('messages.contact_message') }}'" onfocus="if(this.value == '{{ Lang::get('messages.contact_message') }}') this.value=''">{{ Lang::get('messages.contact_message') }}</textarea>
-                  <div class="error" id="err-message">{{ Lang::get('messages.message_v') }}</div>     
+                  <div class="error" id="err-message2">{{ Lang::get('messages.message_v') }}</div>     
                 </div>
               </div> 
               <div class="row spacer30"></div>
               <div class="row">            
                 <div class="col-md-12 text-center">
-                  <div id="ajaxsuccess">{{ Lang::get('messages.emailsuccess_v') }}</div>
-                  <div class="error" id="err-form">{{ Lang::get('messages.problemval_v') }}</div>
-                  <div class="error" id="err-timedout">{{ Lang::get('messages.connection_v') }}</div>
-                  <div class="error" id="err-state"></div>                 
-                  <button type="submit" class="btn btn-sm" id="send">{{ Lang::get('messages.contact_send') }}</button>
+                  <div id="ajaxsuccess2" style="display:none;">{{ Lang::get('messages.emailsuccess_v') }}</div>
+                  <div class="error" id="err-form2">{{ Lang::get('messages.problemval_v') }}</div>
+                  <div class="error" id="err-timedout2">{{ Lang::get('messages.connection_v') }}</div>
+                  <div class="error" id="err-state2"></div>                 
+                  <button type="submit" class="btn btn-sm" id="send2">{{ Lang::get('messages.contact_send') }}</button>
                 </div>
               </div>
             {{ Form::close() }}  

@@ -356,8 +356,8 @@ jQuery(document).ready(function($) {
 
 		var error = false; // we will set this true if the form isn't valid
 
-		var name = $('input#name2').val(); // get the value of the input field
-		if(name == "" || name == " " || name == "Name") {
+		var name = $('input#name').val(); // get the value of the input field
+		if(name == "" || name == " " || name == "Name" || name == "Nombre") {
     $('#err-name').show(500);
     $('#err-name').delay(4000);
     $('#err-name').animate({
@@ -369,10 +369,17 @@ jQuery(document).ready(function($) {
 		}
 
 		var email_compare = /^([a-z0-9_.-]+)@([da-z.-]+).([a-z.]{2,6})$/; // Syntax to compare against input
-		var email = $('input#email2').val().toLowerCase(); // get the value of the input field
-		if (email == "" || email == " " || email == "E-mail") { // check if the field is empty
-			$('#err-email').fadeIn('slow'); // error - empty
-			error = true;
+		var email = $('input#email').val().toLowerCase(); // get the value of the input field
+    console.log(email);
+		if (email == "" || email == " " || email == "E-mail" || email == "Correo Electrónico") { // check if the field is empty
+			$('#err-emailvld').show(500);
+      $('#err-emailvld').delay(4000);
+      $('#err-emailvld').animate({
+        height: 'toggle'  
+      }, 500, function() {
+        // Animation complete.
+      });         
+        error = true;
 		}else if (!email_compare.test(email)) { // if it's not empty check the format against our email_compare variable
 
     $('#err-emailvld').show(500);
@@ -385,8 +392,8 @@ jQuery(document).ready(function($) {
 			error = true;
 		}
     
-		var message = $('textarea#message2').val(); // get the value of the input field
-		if(message == "" || message == " " || message == "Message") {
+		var message = $('textarea#message').val(); // get the value of the input field
+		if(message == "" || message == " " || message == "Message" || message == "Mensaje") {
 
       
     $('#err-message').show(500);
@@ -448,7 +455,105 @@ jQuery(document).ready(function($) {
 	}); // end click function
      
 
+/* -------------------------------------------------------- 
+   Contact Form Footer, to be deleted
+   -------------------------------------------------------- */
+  
+  $('#send2').click(function(){ // when the button is clicked the code executes
+    $('.error').fadeOut('slow'); // reset the error messages (hides them)
 
+    var error = false; // we will set this true if the form isn't valid
+
+    var name = $('input#name2').val(); // get the value of the input field
+    if(name == "" || name == " " || name == "Name" || name == "Nombre") {
+    $('#err-name2').show(500);
+    $('#err-name2').delay(4000);
+    $('#err-name2').animate({
+      height: 'toggle'  
+    }, 500, function() {
+      // Animation complete.
+    }); 
+      error = true; // change the error state to true
+    }
+
+    var email_compare = /^([a-z0-9_.-]+)@([da-z.-]+).([a-z.]{2,6})$/; // Syntax to compare against input
+    var email = $('input#email2').val().toLowerCase(); // get the value of the input field
+    if (email == "" || email == " " || email == "E-mail" || email == "Correo Electrónico") { // check if the field is empty
+      $('#err-email2').fadeIn('slow'); // error - empty
+      error = true;
+    }else if (!email_compare.test(email)) { // if it's not empty check the format against our email_compare variable
+
+    $('#err-emailvld2').show(500);
+    $('#err-emailvld2').delay(4000);
+    $('#err-emailvld2').animate({
+      height: 'toggle'  
+    }, 500, function() {
+      // Animation complete.
+    });         
+      error = true;
+    }
+    
+    var message = $('textarea#message2').val(); // get the value of the input field
+    if(message == "" || message == " " || message == "Message" || message == "Mensaje") {
+
+      
+    $('#err-message2').show(500);
+    $('#err-message2').delay(4000);
+    $('#err-message2').animate({
+      height: 'toggle'  
+    }, 500, function() {
+      // Animation complete.
+    });            
+      error = true; // change the error state to true
+    } 
+
+    if(error == true) {
+
+    $('#err-form2').show(500);
+    $('#err-form2').delay(4000);
+    $('#err-form2').animate({
+      height: 'toggle'  
+    }, 500, function() {
+      // Animation complete.
+    });         
+      return false;
+    }
+
+    var data_string = $('#ajax-form2').serialize(); // Collect data from form
+    //alert(data_string);
+
+    $.ajax({
+      type: "POST",
+      url: $('#ajax-form2').attr('action'),
+      data: data_string,
+      timeout: 6000,
+      error: function(request,error) {
+        if (error == "timeout") {
+          $('#err-timedout2').slideDown('slow');
+        }
+        else {
+          $('#err-state2').slideDown('slow');
+          $("#err-state2").html('An error occurred: ' + error + '');
+        }
+      },
+      success: function() {
+
+        
+    $('#ajaxsuccess2').show(500);
+    $('#ajaxsuccess2').delay(4000);
+    $('#ajaxsuccess2').animate({
+      height: 'toggle'  
+    }, 500, function() {
+    });           
+
+        $("#name2").val('');
+        $("#email2").val('');
+        $("#message2").val('');
+      }
+    });
+
+    return false; // stops user browser being directed to the php file
+  }); // end click function
 
 
 
