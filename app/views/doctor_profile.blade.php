@@ -81,19 +81,19 @@
                   </a>
                   @endif
                   @if($doctor->b_facebook != '')
-                    <a href="//{{$doctor->b_facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="{{ url($doctor->b_facebook) }}" target="_blank"><i class="fa fa-facebook"></i></a>
                   @endif
                   @if($doctor->b_twitter != '')
-                    <a href="{{ url('//' . $doctor->b_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="{{ url($doctor->b_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
                   @endif
                   @if($doctor->b_youtube != '')
-                    <a href="{{ url('//' . $doctor->b_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                    <a href="{{ url($doctor->b_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
                   @endif
                   @if($doctor->b_linkedin != '')
-                    <a href="{{ url('//' . $doctor->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    <a href="{{ url($doctor->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                   @endif
                   @if($doctor->b_website != '')
-                    <a href="{{ url('//www.' . $doctor->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+                    <a href="{{ url($doctor->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
                   @endif
                 </div>  
               </div>
