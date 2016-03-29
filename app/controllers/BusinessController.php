@@ -96,7 +96,8 @@ class BusinessController extends BaseController {
 		$doctor->b_longitude	= Input::get('longitude');
 		$doctor->b_map			= Input::get('map_c');
 		$doctor->b_aimed 		= Input::get('aimed');
-		// print_r($doctor);
+		$doctor->b_alternative_phone = Input::get('alternative_phone');
+
 		$update = '';
 		if (Input::hasFile('image'))
 		{
@@ -169,6 +170,7 @@ class BusinessController extends BaseController {
 		$doctor->b_longitude	= Input::get('longitude');
 		$doctor->b_map			= Input::get('map_c');
 		$doctor->b_aimed 		= Input::get('aimed');
+		$doctor->b_alternative_phone = Input::get('alternative_phone');
 
 		if($add_user == 0) {
 			if( Auth::user()->U_level == 1)

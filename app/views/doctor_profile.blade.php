@@ -164,13 +164,18 @@
             <div id="map-canvas"></div>
 
             <div class="space25"></div>
-            Atención a: 
+            <b>Atención a: </b>
             @if ($doctor->b_aimed == 0)
               Familiares
             @elseif ($doctor->b_aimed == 1)
               Adultos
             @else
               Niños
+            @endif
+            @if ($doctor->b_alternative_phone != "" && !empty($doctor->b_alternative_phone))
+              <div class="space10"></div>
+              <b>Teléfono opcional: </b>
+              {{ $doctor->b_alternative_phone }}
             @endif
 
             <div class="space40"></div>

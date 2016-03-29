@@ -96,13 +96,26 @@
     <div class="col-md-4">
       {{ Form::text('cellphone', '', array('class' => 'session form-control')) }}
     </div>
-  </div>
-    {{ Form::label('user_owner', Lang::get('messages.owner_ab'), array('class' => 'col-md-2 control-label')) }}
+      {{ Form::label('alternative_phone', 'Teléfono opcional:', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
-      {{ Form::select('user_owner', ['No', 'Si'], '', ['class' => 'session form-control', 'id' => 'user_owner']) }}
+      {{ Form::text('alternative_phone', '', array('class' => 'form-control')) }}
+    </div>
   </div>
 </div>
+
 <br>
+
+<div class="row">
+  <div>
+    {{ Form::label('user_owner', Lang::get('messages.owner_ab'), array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-4">
+      {{ Form::select('user_owner', ['No', 'Si'], '', ['class' => 'form-control', 'id' => 'user_owner', 'style' => 'color:black; font-size:14px;']) }}
+    </div>
+  </div>
+</div>
+
+<br>
+
 <p>{{ Lang::get('messages.addesp_ab') }}</p>
 
 <div class="row">

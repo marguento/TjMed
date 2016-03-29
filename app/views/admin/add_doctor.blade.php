@@ -85,11 +85,10 @@
     <div class="col-md-4">
       {{ Form::text('cellphone', '', array('class' => 'form-control')) }}
     </div>
-  </div>
-    {{ Form::label('user_owner', 'Usuario Propietario:', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('alternative_phone', 'Teléfono opcional:', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
-    {{ Form::select('user_owner', $user_owner, 'none', ['class' => 'form-control', 'id' => 'user_owner']) }}
-  </div>
+      {{ Form::text('alternative_phone', '', array('class' => 'form-control')) }}
+    </div>
 </div>
 
 <br>
@@ -99,6 +98,10 @@
     {{ Form::label('aimed', 'Atención a:', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
     {{ Form::select('aimed', $aimed, '', ['class' => 'form-control', 'id' => 'aimed']) }}
+  </div>
+  {{ Form::label('user_owner', 'Usuario Propietario:', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-4">
+    {{ Form::select('user_owner', $user_owner, 'none', ['class' => 'form-control', 'id' => 'user_owner']) }}
   </div>
   </div>
 </div>

@@ -621,7 +621,8 @@ class AdminController extends BaseController {
 			$doctor->b_map			= Input::get('map_c');
 			$doctor->b_verified		= 1;
 			$doctor->b_aimed 		= Input::get('aimed');
-			// print_r($doctor);
+			$doctor->b_alternative_phone = Input::get('alternative_phone');
+
 
 			$update = '';
 			if (Input::hasFile('image'))

@@ -142,6 +142,17 @@
     <div class="col-md-4">
       {{ Form::text('cellphone', $doctor->b_cellphone, array('class' => 'form-control')) }}
     </div>
+    {{ Form::label('alternative_phone', 'Teléfono opcional:', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-4">
+      {{ Form::text('alternative_phone', $doctor->b_alternative_phone, array('class' => 'form-control')) }}
+  </div>
+</div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="form-group">
     {{ Form::label('aimed', 'Atención a:', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
     {{ Form::select('aimed', $aimed, $doctor->b_aimed, ['class' => 'form-control', 'id' => 'aimed']) }}
