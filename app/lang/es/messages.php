@@ -246,6 +246,12 @@
 		'incorrectpass_lg'	=> 'Alguno de los datos es incorrecto. Por favor, trata de nuevo.',	
 		//recuperar contrasena
 		'recoverypass_rp'	=> 'Recuperar contraseña',	
-		'addemail_rp'		=> 'Por favor introduce tu correo electrónico',				
+		'addemail_rp'		=> 'Por favor introduce tu correo electrónico',	
+		'error_lg'			=> '¡Error!',	
+		'notfound_lg'		=> 'No se encontró el enlace de verificación en la base de datos, por favor comprueba que sea correctos.',	
+		'uppass_lg'			=> 'Actualiza tu contraseña',
+		'uppass_lg2'		=> 'Actualizar tu contraseña',
+		'newpass_lg'		=> 'Nueva Contraseña',
+		'repitpass_lg'		=> 'Repita contraseña',									
 	);
 

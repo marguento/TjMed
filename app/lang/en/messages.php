@@ -236,5 +236,11 @@
 		'incorrectpass_lg'	=> 'Login incorrect. Please try again!',
 		//recuperar contrasena
 		'recoverypass_rp'	=> 'Recover password',	
-		'addemail_rp'		=> 'Please enter your email',																						
+		'addemail_rp'		=> 'Please enter your email',
+		'error_lg'			=> '¡Error!',	
+		'notfound_lg'		=> 'No verification link found in the database, please check that is correct.',	
+		'uppass_lg'			=> 'Update your password',
+		'uppass_lg2'		=> 'Update your password',
+		'newpass_lg'		=> 'New Password',
+		'repitpass_lg'		=> 'Repeat password',																									
 	);
