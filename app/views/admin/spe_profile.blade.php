@@ -152,7 +152,6 @@
 
   $(".del_specialty").click(function() {
     var id = $(this).attr('id');
-    console.log(id);
     $('#del_specialty_modal').modal('show');
 
     $("#del_specialty_verified").click(function() {

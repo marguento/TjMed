@@ -68,7 +68,7 @@
 										  		
 										  			<input id="search" name="search" type="text" class="form-control" placeholder="{{ Lang::get('messages.search_text') }}" style="width:85%"> 
 										  			
-										  			<a href="#" onclick="document.getElementById('search_form').submit();" style="width:15%">
+										  			<a href="#" id="search-submit" style="width:15%">
 										  				&nbsp;&nbsp;<span class="fa fa-search fa-2x" id="search_button" ></span>
 										  			</a>
 										  		
@@ -84,3 +84,21 @@
 		</div> 
 	</div> 
 </header>
+
+<div class="modal fade" id="modal_search">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span></button>
+        <h4 class="modal-title">¡Error!</h4>
+      </div>
+      <div class="modal-body">
+        Campo de búsqueda vacío. Introduzca su búsqueda.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

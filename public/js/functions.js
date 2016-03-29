@@ -555,8 +555,16 @@ jQuery(document).ready(function($) {
     return false; // stops user browser being directed to the php file
   }); // end click function
 
-
-
+/* -------------------------------------------------------- 
+   Validate empty form front end
+   -------------------------------------------------------- */
+   $('#search-submit').click(function() {
+      if($("#search").val() != "") {
+        $('#search_form').submit();
+      } else {
+        $('#modal_search').modal('show');
+      }
+   });
 });
 
 

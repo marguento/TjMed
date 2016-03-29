@@ -20,14 +20,14 @@
 	  {{ HTML::script("js/layerslider.kreaturamedia.jquery.js") }}
 	  {{ HTML::script("js/jquery.themepunch.plugins.min.js") }}
 	  {{ HTML::script("js/jquery.themepunch.revolution.min.js") }}
-	  {{ HTML::script("js/masterslider.js") }}  
-	  {{ HTML::script("js/functions.js") }}
-	  {{ HTML::script("//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js") }}
+	  {{ HTML::script("js/masterslider.js") }}
+	  {{ HTML::script("js/jquery.magnific-popup.min.js") }}
 	  {{ HTML::script("js/jquery.bxslider.min.js") }}
 	  {{ HTML::script("js/modernizr.js") }}
 	  {{ HTML::script("https://maps.googleapis.com/maps/api/js?v=3.exp") }}
 	  {{ HTML::script("js/bootstrap.js") }}
 	  {{ HTML::script('js/jasny-bootstrap.min.js') }}
+	  {{ HTML::script("js/functions.js") }}
 	  
 	<script>
 	$(document).ready(function(){
