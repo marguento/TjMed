@@ -63,7 +63,7 @@
 										    <li id="contacto">{{ link_to("contacto", Lang::get('messages.contact'), array('id'=>'menu_first')) }}</li>
 										    </ul>
 										    <div style="width:300px">
-										{{ Form::open(array('url' => 'doctores')) }}
+										{{ Form::open(array('url' => 'doctores', 'class' => 'form', 'id' => 'search_form')) }}
 										  	<div class="input-group">
 										  		
 										  			<input id="search" name="search" type="text" class="form-control" placeholder="{{ Lang::get('messages.search_text') }}" style="width:85%"> 
