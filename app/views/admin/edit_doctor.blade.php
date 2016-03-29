@@ -142,6 +142,10 @@
     <div class="col-md-4">
       {{ Form::text('cellphone', $doctor->b_cellphone, array('class' => 'form-control')) }}
     </div>
+    {{ Form::label('aimed', 'Atención a:', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-4">
+    {{ Form::select('aimed', $aimed, $doctor->b_aimed, ['class' => 'form-control', 'id' => 'aimed']) }}
+  </div>
   </div>
 </div>
 
@@ -203,6 +207,72 @@
 
 
   </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="form-group">
+    <label for="business_hours" class="col-md-2 control-label">Horas de atención</label>
+    <div class="col-md-10">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Lunes</th>
+              <th>Martes</th>
+              <th>Miércoles</th>
+              <th>Jueves</th>
+              <th>Viernes</th>
+              <th>Sábado</th>
+              <th>Domingo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1ero Abierto</td>
+              @for ($i = 1; $i < 8; $i++)
+                @if($hours->count())
+                  <td>{{ Form::text('open_1[' . $i .']', $hours[$i-1]->open_hour_1, array('class' => 'form-control')) }}</td>
+                @else
+                  <td>{{ Form::text('open_1[' . $i .']', '', array('class' => 'form-control')) }}</td>
+                @endif
+              @endfor
+            </tr>
+            <tr>
+              <td>1ero Cerrado</td>
+              @for ($i = 1; $i < 8; $i++)
+                @if($hours->count())
+                  <td>{{ Form::text('close_1[' . $i .']', $hours[$i-1]->close_hour_1, array('class' => 'form-control')) }}</td>
+                @else
+                  <td>{{ Form::text('close_1[' . $i .']', '', array('class' => 'form-control')) }}</td>
+                @endif
+              @endfor
+            </tr>
+            <tr>
+              <td>2do Abierto</td>
+              @for ($i = 1; $i < 8; $i++)
+                @if($hours->count())
+                  <td>{{ Form::text('open_2[' . $i .']', $hours[$i-1]->open_hour_2, array('class' => 'form-control')) }}</td>
+                @else
+                  <td>{{ Form::text('open_2[' . $i .']', '', array('class' => 'form-control')) }}</td>
+                @endif
+              @endfor
+            </tr>
+            <tr>
+              <td>2do Cerrado</td>
+              @for ($i = 1; $i < 8; $i++)
+                @if($hours->count())
+                  <td>{{ Form::text('close_2[' . $i .']', $hours[$i-1]->close_hour_2, array('class' => 'form-control')) }}</td>
+                @else
+                  <td>{{ Form::text('close_2[' . $i .']', '', array('class' => 'form-control')) }}</td>
+                @endif
+              @endfor
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
 </div>
 
 <br>

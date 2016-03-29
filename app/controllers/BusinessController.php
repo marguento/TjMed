@@ -95,6 +95,7 @@ class BusinessController extends BaseController {
 		$doctor->b_latitude		= Input::get('latitude');
 		$doctor->b_longitude	= Input::get('longitude');
 		$doctor->b_map			= Input::get('map_c');
+		$doctor->b_aimed 		= Input::get('aimed');
 		// print_r($doctor);
 		$update = '';
 		if (Input::hasFile('image'))
@@ -121,6 +122,17 @@ class BusinessController extends BaseController {
 		}
 
 		$doctor->save();
+
+		// Save business hours
+		for($i=1; $i<8;$i++) {
+			$business_hours = BusinessHours::firstOrNew(array('id_business' => $doctor->B_ID, 'day' => $i));
+			$business_hours->open_hour_1 = Input::get('open_1')[$i];
+			$business_hours->close_hour_1 = Input::get('close_1')[$i];
+			$business_hours->open_hour_2 = Input::get('open_2')[$i];
+			$business_hours->close_hour_2 = Input::get('close_2')[$i];
+			$business_hours->save();
+		}
+
 		$var = '<div class="alert alert-success" role="alert">
 		          <button type="button" class="close" data-dismiss="alert">&times;</button>
 		          <strong>¡Éxito!</strong> Doctor actualizado correctamente.
@@ -130,6 +142,7 @@ class BusinessController extends BaseController {
 
 	public function store()
 	{
+		var_dump(Input::get('open_1')[1]);
 		if( ! Auth::check())
 		{
 			return Redirect::to('/');
@@ -156,6 +169,7 @@ class BusinessController extends BaseController {
 		$doctor->b_latitude		= Input::get('latitude');
 		$doctor->b_longitude	= Input::get('longitude');
 		$doctor->b_map			= Input::get('map_c');
+		$doctor->b_aimed 		= Input::get('aimed');
 
 		if($add_user == 0) {
 			if( Auth::user()->U_level == 1)
@@ -198,6 +212,18 @@ class BusinessController extends BaseController {
 
 		$doctor->b_image = $fileName;
 		$doctor->save();
+
+		// Save business hours
+		for($i=1; $i<8;$i++) {
+			$business_hours = new BusinessHours();
+			$business_hours->open_hour_1 = Input::get('open_1')[$i];
+			$business_hours->close_hour_1 = Input::get('close_1')[$i];
+			$business_hours->open_hour_2 = Input::get('open_2')[$i];
+			$business_hours->close_hour_2 = Input::get('close_2')[$i];
+			$business_hours->day = $i;
+			$business_hours->id_business = $doctor->B_ID;
+			$business_hours->save();
+		}
 
 		$tag_name = Input::get('other');
 		if( $tag_name != "")
@@ -254,16 +280,33 @@ class BusinessController extends BaseController {
 			return Redirect::to('registrar')->with('var', $var);
 		} 
 
+		$aimed = array();
+		$aimed[0] = "Familiar";
+		$aimed[1] = "Adultos";
+		$aimed[2] = "Niños";
+
 		$specialties = Specialty::all();
-		return View::make('add_business', ['specialties' => $specialties]);
+		return View::make('add_business', ['specialties' => $specialties,
+											'aimed' => $aimed]);
 	}
 
 	public function show($b_id) 
 	{
+		$aimed = array();
+		$aimed[0] = "Familiar";
+		$aimed[1] = "Adultos";
+		$aimed[2] = "Niños";
+
 		$doctor = Business::whereb_id($b_id)->first();
 		$b_cat = BusinessView::whereb_id($b_id)->get();
 		$comments = BusinessCommentsView::whereb_id($b_id)->orderBy('C_datetime_created', 'desc')->paginate(5);
 		$tags = BusinessTagsView::whereb_id($b_id)->get();
+		$hours = BusinessHours::where('id_business','=',$b_id)->get();
+		$hour_count = BusinessHours::where('id_business','=',$b_id)->where(function($query)
+						{
+							$query->where('open_hour_1','!=','')
+								  ->orWhere('close_hour_1', '!=', '');
+						})->count();
 
 		$sum = 0;
 		foreach($comments as $comment)
@@ -280,7 +323,10 @@ class BusinessController extends BaseController {
 												'b_cat' => $b_cat,
 												'comments' => $comments,
 												'rating' => $rating,
-												'tags' => $tags]);
+												'tags' => $tags,
+												'hours' => $hours,
+												'aimed' => $aimed,
+												'hour_count' => $hour_count]);
 	}
 
 	public function add_review() 

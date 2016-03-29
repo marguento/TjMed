@@ -125,6 +125,17 @@
   </div>
     <br>
 
+<div class="row">
+  <div class="form-group">
+    {{ Form::label('aimed', 'Atención a:', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-4">
+    {{ Form::select('aimed', $aimed, '', ['class' => 'form-control', 'id' => 'aimed', 'style' => 'color:black; font-size:14px;']) }}
+  </div>
+  </div>
+</div>
+
+<br>
+
 <p>{{ Lang::get('messages.addintro_ab') }}</p>
 
 <div class="row">
@@ -175,6 +186,56 @@
 </div>
 
 <br>
+
+<div class="row">
+  <div class="form-group">
+    <label for="business_hours" class="col-md-2 control-label">Horas de atención</label>
+    <div class="col-md-10">
+        <table class="table table-bordered" id="business_hours">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Lunes</th>
+              <th>Martes</th>
+              <th>Miércoles</th>
+              <th>Jueves</th>
+              <th>Viernes</th>
+              <th>Sábado</th>
+              <th>Domingo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1ero Abierto</td>
+              @for ($i = 1; $i < 8; $i++)
+                  <td>{{ Form::text('open_1[' . $i .']', '', array('class' => 'form-control')) }}</td>
+              @endfor
+            </tr>
+            <tr>
+              <td>1ero Cerrado</td>
+              @for ($i = 1; $i < 8; $i++)
+                  <td>{{ Form::text('close_1[' . $i .']', '', array('class' => 'form-control')) }}</td>
+              @endfor
+            </tr>
+            <tr>
+              <td>2do Abierto</td>
+              @for ($i = 1; $i < 8; $i++)
+                  <td>{{ Form::text('open_2[' . $i .']', '', array('class' => 'form-control')) }}</td>
+              @endfor
+            </tr>
+            <tr>
+              <td>2do Cerrado</td>
+              @for ($i = 1; $i < 8; $i++)
+                  <td>{{ Form::text('close_2[' . $i .']', '', array('class' => 'form-control')) }}</td>
+              @endfor
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<br>
+
 <p>{{ Lang::get('messages.socialopcion_ab') }}</p>
 
 <div class="row">

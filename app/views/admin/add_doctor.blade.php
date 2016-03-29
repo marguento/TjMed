@@ -96,6 +96,17 @@
 
 <div class="row">
   <div class="form-group">
+    {{ Form::label('aimed', 'Atención a:', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-4">
+    {{ Form::select('aimed', $aimed, '', ['class' => 'form-control', 'id' => 'aimed']) }}
+  </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="form-group">
     {{ Form::label('introduction', 'Introducción', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-10">
       {{ Form::textarea('introduction', '', ['class' => 'form-control', 'size' => '1x5']) }}
@@ -149,6 +160,53 @@
 
 <br>
 
+<div class="row">
+  <div class="form-group">
+    <label for="business_hours" class="col-md-2 control-label">Horas de atención</label>
+    <div class="col-md-10">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Lunes</th>
+              <th>Martes</th>
+              <th>Miércoles</th>
+              <th>Jueves</th>
+              <th>Viernes</th>
+              <th>Sábado</th>
+              <th>Domingo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1ero Abierto</td>
+              @for ($i = 1; $i < 8; $i++)
+                  <td>{{ Form::text('open_1[' . $i .']', '', array('class' => 'form-control')) }}</td>
+              @endfor
+            </tr>
+            <tr>
+              <td>1ero Cerrado</td>
+              @for ($i = 1; $i < 8; $i++)
+                  <td>{{ Form::text('close_1[' . $i .']', '', array('class' => 'form-control')) }}</td>
+              @endfor
+            </tr>
+            <tr>
+              <td>2do Abierto</td>
+              @for ($i = 1; $i < 8; $i++)
+                  <td>{{ Form::text('open_2[' . $i .']', '', array('class' => 'form-control')) }}</td>
+              @endfor
+            </tr>
+            <tr>
+              <td>2do Cerrado</td>
+              @for ($i = 1; $i < 8; $i++)
+                  <td>{{ Form::text('close_2[' . $i .']', '', array('class' => 'form-control')) }}</td>
+              @endfor
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+<br>
 <div class="row">
   <div class="form-group">
     <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook</label>

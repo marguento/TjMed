@@ -3988,3 +3988,7 @@ list-style-type: none;
 #some-div:hover #some-element {
   display: block;
 }
+
+#business_hours > tbody > tr > td > input{
+  color: #000;
+}

@@ -114,6 +114,44 @@
         <div class="col-md-4 blog-right-sidebar">
         
           <div class="">
+          @if($hour_count)
+            <div class="space25"></div>
+            <h4> Horario de atención </h4>
+            <?php 
+              $days = array();
+              $days[1] = 'Lunes';
+              $days[2] = 'Martes';
+              $days[3] = 'Miércoles';
+              $days[4] = 'Jueves';
+              $days[5] = 'Viernes';
+              $days[6] = 'Sábado';
+              $days[7] = 'Domingo';
+
+              $i = 1;
+            ?>
+
+            @foreach ($hours as $hour)
+              <div class="row">
+                <div class="col-md-4">
+                  <b>{{ $days[$i] }}</b> 
+                </div>
+                <div class="col-md-8">
+                  @if ($hour->open_hour_1 == '00:00' && $hour->close_hour_1 == '00:00')
+                    24 horas
+                  @elseif ($hour->open_hour_1 == '' && $hour->close_hour_1 == '')
+                    Cerrado
+                  @else
+                    {{ $hour->open_hour_1}} - {{ $hour->close_hour_1}}
+                    @if ($hour->open_hour_2 != '' && $hour->close_hour_2 != '') 
+                      a {{ $hour->open_hour_2}} - {{ $hour->close_hour_2}}
+                    @endif
+                  @endif
+                  <br>
+                </div>
+                <?php $i++; ?>
+              </div>
+            @endforeach
+          @endif
             <div class="space25"></div>
             <h4>{{ Lang::get('messages.location_title') }}</h4>
             <h5>{{ Lang::get('messages.address_title') }}: {{ $doctor->b_address }}</h5>
@@ -124,6 +162,16 @@
             <input id="longitude" type="hidden" value="{{ $doctor->b_longitude }}">
             <input id="map_c" type="hidden" value="{{ $doctor->b_map }}">
             <div id="map-canvas"></div>
+
+            <div class="space25"></div>
+            Atención a: 
+            @if ($doctor->b_aimed == 0)
+              Familiares
+            @elseif ($doctor->b_aimed == 1)
+              Adultos
+            @else
+              Niños
+            @endif
 
             <div class="space40"></div>
             <h4>{{ Lang::get('messages.tittle_1') }}</4>

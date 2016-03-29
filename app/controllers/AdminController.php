@@ -290,6 +290,11 @@ class AdminController extends BaseController {
 
 	public function edit_doctor($id)
 	{
+		$aimed = array();
+		$aimed[0] = "Familiar";
+		$aimed[1] = "Adultos";
+		$aimed[2] = "Niños";
+
 		if($id != 0) {
 			$doctor = BusinessRatingView::whereb_id($id)->first();
 			$users = User::all();
@@ -297,6 +302,7 @@ class AdminController extends BaseController {
 			$cat_v = CategoriesView::whereb_id($id)->get();
 			$tag_v = TagsView::whereb_id($id)->get();
 			$comments = BusinessCommentsView::whereb_id($id)->whereC_active(1)->get();
+			$hours = BusinessHours::where('id_business','=',$id)->get();
 			$user_owner = [];
 			foreach($users as $user) {
 				$user_owner[$user->U_username] = $user->U_username;
@@ -306,14 +312,17 @@ class AdminController extends BaseController {
 													'categories' => $categories,
 													'cat_v' => $cat_v,
 													'tag_v' => $tag_v,
-													'comments' => $comments]);
+													'comments' => $comments,
+													'hours' => $hours,
+													'aimed' => $aimed]);
 		} else {
 			$users = User::all();
 			$user_owner = [];
 			foreach($users as $user) {
 				$user_owner[$user->U_username] = $user->U_username;
 			}
-			return View::make('admin/add_doctor', ['user_owner' => $user_owner]);
+			return View::make('admin/add_doctor', ['user_owner' => $user_owner,
+													'aimed' => $aimed]);
 		}
 		
 	}
@@ -611,6 +620,7 @@ class AdminController extends BaseController {
 			$doctor->b_longitude	= Input::get('longitude');
 			$doctor->b_map			= Input::get('map_c');
 			$doctor->b_verified		= 1;
+			$doctor->b_aimed 		= Input::get('aimed');
 			// print_r($doctor);
 
 			$update = '';
