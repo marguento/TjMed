@@ -8,44 +8,44 @@
 	@endif
 
 	<ol class="breadcrumb">
-	  <li>{{ link_to('/', 'Volver a inicio') }}</li>
-	  <li class="active" style="color:#083D5C">Iniciar sesión</li>
+	  <li>{{ link_to('/', Lang::get('messages.back_ab')) }}</li>
+	  <li class="active" style="color:#083D5C">{{ Lang::get('messages.login_lg') }}</li>
 	</ol>
 
-	<h2 class="sub-header">Inicia sesión</h2>
+	<h2 class="sub-header">{{ Lang::get('messages.login_lg') }}</h2>
 
 		    {{ Form::open(['route' => 'sessions.store']) }}
 		    <div class="modal-body">
 		    	@if (Session::has('v'))
 			    	{{ Form::hidden('error', 1, array('id' => 'error_msg')) }}
-				    <p><span class="error_msg">Alguno de los datos es incorrecto. Por favor, trata de nuevo.</span></p>
+				    <p><span class="error_msg">{{ Lang::get('messages.incorrectpass_lg') }}</span></p>
 				@endif
-		    	<p>Llena los campos para iniciar sesión normal</p>
+		    	<p>{{ Lang::get('messages.fill_lg') }}</p>
 				<div class="form-group">
-				 	{{ Form::label('U_username', 'Nombre de usuario: ') }}
-					{{ Form::text('U_username', '', array('class' => 'form-control session', 'placeholder' => 'Ingrese nombre de usuario')) }}
+				 	{{ Form::label('U_username', Lang::get('messages.username_up')) }}
+					{{ Form::text('U_username', '', array('class' => 'form-control session', 'placeholder' => Lang::get('messages.user_lg'))) }}
 					
 				</div>
 				<div class="form-group">
-				  	{{ Form::label('U_password', 'Contraseña: ') }}
+				  	{{ Form::label('U_password', Lang::get('messages.password_au')) }}
 				  	<br>
-					{{ Form::password('U_password', array('class' => 'form-control session', 'placeholder' => 'Ingrese contraseña')) }}
+					{{ Form::password('U_password', array('class' => 'form-control session', 'placeholder' => Lang::get('messages.password_lg'))) }}
 
 					
 				</div>
 		    </div>
 		    
 		    <div class="modal-footer">
-		      	<center>{{ Form::submit('Iniciar sesión', array('class' => 'btn btn-primary')) }}</center>   	
+		      	<center>{{ Form::submit(Lang::get('messages.log_in'), array('class' => 'btn btn-primary')) }}</center>   	
 		  	</div>
 		  	{{ Form::close() }}
 		  	<center>
-		      <a href="{{ url('forgotpassword') }}">¿Olvidaste contraseña?</a>
+		      <a href="{{ url('forgotpassword') }}">{{ Lang::get('messages.forgetpass_lg') }}</a>
 		    </center><br>
 
 		  	<center>
-		      <p> Ó inicia sesión con Facebook</p>
-		      <a href="{{ url('login/fb') }}"><button class="btn btn-default btn-sm"><span class="fa fa-facebook"></span> Iniciar Sesión con Facebook</button></a>
+		      <p>{{ Lang::get('messages.ologinfb_lg') }}</p>
+		      <a href="{{ url('login/fb') }}"><button class="btn btn-default btn-sm"><span class="fa fa-facebook"></span> {{ Lang::get('messages.facebook_au') }}</button></a>
 		    </center><br>
 </div>
 <div class="space60"></div>

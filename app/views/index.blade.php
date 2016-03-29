@@ -1,6 +1,7 @@
 @extends('layouts.default')
 @section('content')
 
+
 <!-- PRIMER RENGLON -->
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">

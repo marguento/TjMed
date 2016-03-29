@@ -232,9 +232,20 @@
 		'accepted_abm'		=> 'Aceptar',
 		//registo de usuario
 		'reguser_au'		=> 'Registro',	
-		'password_au'		=> 'Contraseñ',	
+		'password_au'		=> 'Contraseña',	
 		'repitpass_au'		=> 'Repita contraseña',	
 		'register_au'		=> 'Regístrate',	
-		'facebook_au'		=> 'Registrarme con Facebook',							
+		'facebook_au'		=> 'Registrarme con Facebook',
+		//inicio de sesion	
+		'login_lg'			=> 'Inicia Sesión',	
+		'fill_lg'			=> 'Llena los campos para iniciar sesión normal',	
+		'user_lg'			=> 'Ingrese nombre de usuario',	
+		'password_lg'		=> 'Ingrese contraseña',	
+		'ologinfb_lg'		=> 'Ó inicia sesión con Facebook',
+		'forgetpass_lg'		=> '¿Olvidaste contraseña?',
+		'incorrectpass_lg'	=> 'Alguno de los datos es incorrecto. Por favor, trata de nuevo.',	
+		//recuperar contrasena
+		'recoverypass_rp'	=> 'Recuperar contraseña',	
+		'addemail_rp'		=> 'Por favor introduce tu correo electrónico',				
 	);
 
