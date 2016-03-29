@@ -283,10 +283,12 @@
     <div class="col-md-4">
       {{ Form::text('facebook', $doctor->b_facebook, array('class' => 'form-control')) . 
       'Ej: facebook.com/ejemplo'}}
+      <span class="error_msg">{{ $errors->first('b_facebook') }}</span>
     </div>
     <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter</label>
     <div class="col-md-4">
       {{ Form::text('twitter', $doctor->b_twitter, array('class' => 'form-control')) . 'Ej: twitter.com/ejemplo'}}
+      <span class="error_msg">{{ $errors->first('b_twitter') }}</span>
     </div>
   </div>
 </div>
@@ -298,11 +300,13 @@
     <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin</label>
     <div class="col-md-4">
       {{ Form::text('linkedin', $doctor->b_linkedin, array('class' => 'form-control')) . 'Ej: linkedin.com/in/ejemplo'}}
+      <span class="error_msg">{{ $errors->first('b_linkedin') }}</span>
     </div>
 
     <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube</label>
     <div class="col-md-4">
       {{ Form::text('youtube', $doctor->b_youtube, array('class' => 'form-control')) . 'Ej: youtube.com/user/ejemplo'}}
+      <span class="error_msg">{{ $errors->first('b_youtube') }}</span>
     </div>
   </div>
 </div>
@@ -314,10 +318,12 @@
     <label for="google_plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+</label>
     <div class="col-md-4">
       {{ Form::text('google_plus', $doctor->b_google_plus, array('class' => 'form-control')) . 'Ej: plus.google.com/ejemplo'}}
+      <span class="error_msg">{{ $errors->first('b_google_plus') }}</span>
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     Sitio Web Personal</label>
     <div class="col-md-4">
       {{ Form::text('website', $doctor->b_website, array('class' => 'form-control')) }}
+      <span class="error_msg">{{ $errors->first('b_website') }}</span>
     </div>
   </div>
 </div>
