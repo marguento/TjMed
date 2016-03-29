@@ -142,7 +142,6 @@ class BusinessController extends BaseController {
 
 	public function store()
 	{
-		var_dump(Input::get('open_1')[1]);
 		if( ! Auth::check())
 		{
 			return Redirect::to('/');

@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'tjmed.mx@gmail.com', 'name' => 'TjMed'),
+	'from' => array('address' => 'support@tjmed.mx', 'name' => 'TjMed'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'tjmed.mx@gmail.com',
+	'username' => 'support@tjmed.mx',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'tjmed2014',
+	'password' => 'support20201@',
 
 	/*
 	|--------------------------------------------------------------------------

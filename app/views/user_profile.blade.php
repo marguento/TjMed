@@ -118,10 +118,12 @@
     <div class="col-md-4">
       {{ Form::text('facebook', Auth::user()->U_facebook, array('class' => 'form-control profile')) . 
       Lang::get('messages.face_ej_up') }}
+      <br /><span class="error_msg">{{ $errors->first('U_facebook') }}</span>
     </div>
     <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     {{ Lang::get('messages.twitter_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('twitter', Auth::user()->U_twitter, array('class' => 'form-control profile')) . Lang::get('messages.twitter_ej_up') }}
+      <br /><span class="error_msg">{{ $errors->first('U_twitter') }}</span>
     </div>
   </div>
 </div>
@@ -133,11 +135,13 @@
     <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     {{ Lang::get('messages.linkedin_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('linkedin', Auth::user()->U_linkedin, array('class' => 'form-control profile')) . Lang::get('messages.linke_ej_up') }}
+      <br /><span class="error_msg">{{ $errors->first('U_linkedin') }}</span>
     </div>
 
     <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     {{ Lang::get('messages.youtube_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('youtube', Auth::user()->U_youtube, array('class' => 'form-control profile')) . Lang::get('messages.youtube_ej_up') }}
+      <br /><span class="error_msg">{{ $errors->first('U_youtube') }}</span>
     </div>
   </div>
 </div>
@@ -149,6 +153,7 @@
     <label for="google-plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     {{ Lang::get('messages.google_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('google_plus', Auth::user()->U_google_plus, array('class' => 'form-control profile')) . Lang::get('messages.google_ej_up') }}
+      <br /><span class="error_msg">{{ $errors->first('U_google_plus') }}</span>
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     {{ Lang::get('messages.website_up') }}</label>
     <div class="col-md-4">
@@ -315,7 +320,7 @@
             </div>
             <div class="col-md-4">
               <h3>{{Auth::user()->U_firstname . ' ' . Auth::user()->U_lastname}}</h3>
-              <p>Tijuana, Baja California, México <a href="#" style="margin-left:10px;"><span class="fa fa-pencil-square-o"></span> {{$reviews->count()}} {{ Lang::get('messages.total_reviews_up') }}</a></p>
+              <p>{{ $location }}<a href="#" style="margin-left:10px;"><span class="fa fa-pencil-square-o"></span> {{$reviews->count()}} {{ Lang::get('messages.total_reviews_up') }}</a></p>
               
               @if(Auth::user()->U_description)
               <h5>Acerca de mí</h5>
@@ -324,22 +329,22 @@
                 <div class="social-container">
                   <div class="social-2">
                     @if(Auth::user()->U_facebook != '')
-                      <a href="{{ url('//' . Auth::user()->U_facebook) }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                      <a href="{{ url(Auth::user()->U_facebook) }}" target="_blank"><i class="fa fa-facebook"></i></a>
                     @endif
                     @if(Auth::user()->U_twitter != '')
-                      <a href="{{ url('//' . Auth::user()->U_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                      <a href="{{ url(Auth::user()->U_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
                     @endif
                     @if(Auth::user()->U_google_plus != '')
-                      <a href="{{ url('//' . Auth::user()->U_google_plus) }}" target="_blank"><i class="fa fa-google-plus"></i></a>
+                      <a href="{{ url(Auth::user()->U_google_plus) }}" target="_blank"><i class="fa fa-google-plus"></i></a>
                     @endif
                     @if(Auth::user()->U_youtube != '')
-                      <a href="{{ url('//' . Auth::user()->U_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                      <a href="{{ url(Auth::user()->U_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
                     @endif
                     @if(Auth::user()->U_linkedin != '')
-                      <a href="{{ url('//' . Auth::user()->U_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                      <a href="{{ url(Auth::user()->U_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                     @endif
                     @if(Auth::user()->U_website != '')
-                      <a href="{{ url('//' . Auth::user()->U_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+                      <a href="{{ url(Auth::user()->U_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
                     @endif
                   </div>  
                 </div> 

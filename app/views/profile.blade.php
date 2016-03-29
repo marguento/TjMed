@@ -30,7 +30,7 @@
       </div>
       <div class="col-md-4">
         <h3>{{$user->U_firstname . ' ' . $user->U_lastname}}</h3>
-        <p>Tijuana, Baja California, México <a href="#" style="margin-left:10px;"><span class="fa fa-pencil-square-o"></span>  reseña(s)</a></p>
+        <p>{{ $location }} <a href="#" style="margin-left:10px;"><span class="fa fa-pencil-square-o"></span>  reseña(s)</a></p>
               
               @if($user->U_description)
               <h5>Acerca de mí</h5>
@@ -39,19 +39,19 @@
                 <div class="social-container">
                   <div class="social-2">
                     @if($user->U_facebook != '')
-                      <a href="{{ url('//www.facebook.com/' . $user->U_facebook) }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                      <a href="{{ url($user->U_facebook) }}" target="_blank"><i class="fa fa-facebook"></i></a>
                     @endif
                     @if($user->U_twitter != '')
-                      <a href="{{ url('//www.twitter.com/' . $user->U_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                      <a href="{{ url($user->U_twitter) }}" target="_blank"><i class="fa fa-twitter"></i></a>
                     @endif
                     @if($user->U_youtube != '')
-                      <a href="{{ url('//www.youtube.com/user/' . $user->U_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                      <a href="{{ url($user->U_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
                     @endif
                     @if($user->U_linkedin != '')
-                      <a href="{{ url('//www.linkedin.com/in/' . $user->U_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                      <a href="{{ url($user->U_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                     @endif
                     @if($user->U_website != '')
-                      <a href="{{ url('//' . $user->U_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
+                      <a href="{{ url($user->U_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
                     @endif
                   </div>  
                 </div> 

@@ -22,7 +22,12 @@ class Business extends Eloquent {
 			'b_email' 	  	=> 'required|email|unique:businesses,b_email,'.$cur_doctor.',B_ID',
 			'b_introduction'=> 'required',
 			'b_description' => 'required',
-			'b_website'   	=> 'regex:"https?://.+"'
+			'b_website'   	=> 'regex:"https?://.+"',
+			'b_facebook'   	=> 'regex:"https?://.+"',
+			'b_twitter'   	=> 'regex:"https?://.+"',
+			'b_youtube'   	=> 'regex:"https?://.+"',
+			'b_google_plus' => 'regex:"https?://.+"',
+			'b_linkedin'	=> 'regex:"https?://.+"'
 		);
 
 		if($update != '')

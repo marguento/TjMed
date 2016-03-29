@@ -243,10 +243,12 @@
     <label for="facebook" class="col-md-2 control-label"><span class="fa fa-facebook"></span>     Facebook <br>{{ Lang::get('messages.face_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('facebook', '', array('class' => 'session form-control')) }}
+      <span class="error_msg">{{ $errors->first('b_facebook') }}</span>
     </div>
     <label for="twitter" class="col-md-2 control-label"><span class="fa fa-twitter"></span>     Twitter <br>{{ Lang::get('messages.twitter_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('twitter', '', array('class' => 'session form-control')) }}
+      <span class="error_msg">{{ $errors->first('b_twitter') }}</span>
     </div>
   </div>
 </div>
@@ -258,11 +260,13 @@
     <label for="linkedin" class="col-md-2 control-label"><span class="fa fa-linkedin"></span>     Linkedin <br>{{ Lang::get('messages.linke_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('linkedin', '', array('class' => 'session form-control')) }}
+      <span class="error_msg">{{ $errors->first('b_linkedin') }}</span>
     </div>
 
     <label for="youtube" class="col-md-2 control-label"><span class="fa fa-youtube"></span>     Youtube <br>{{ Lang::get('messages.youtube_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('youtube', '', array('class' => 'session form-control')) }}
+      <span class="error_msg">{{ $errors->first('b_youtube') }}</span>
     </div>
   </div>
 </div>
@@ -274,6 +278,7 @@
      <label for="google_plus" class="col-md-2 control-label"><span class="fa fa-google-plus"></span>     Google+ <br>{{ Lang::get('messages.google_ej_up') }}</label>
     <div class="col-md-4">
       {{ Form::text('google_plus', '', array('class' => 'session form-control')) }}
+      <span class="error_msg">{{ $errors->first('b_google_plus') }}</span>
     </div>
     <label for="website" class="col-md-2 control-label"><span class="fa fa-globe"></span>     {{ Lang::get('messages.website_up') }}<br>{{ Lang::get('messages.website_ej_up') }}</label>
     <div class="col-md-4">

@@ -45,7 +45,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'U_firstname' => 'required',
 			'U_lastname'  => 'required',
 			'U_email' 	  => 'required|email|unique:users,U_email,'.$cur_user.',U_username',
-			'U_website'   => 'regex:"https?://.+"'
+			'U_website'   => 'regex:"https?://.+"',
+			'U_facebook'  => 'regex:"https?://.+"',
+			'U_twitter'   => 'regex:"https?://.+"',
+			'U_youtube'   => 'regex:"https?://.+"',
+			'U_website'   => 'regex:"https?://.+"',
+			'U_linkedin'  => 'regex:"https?://.+"',
+			'U_google_plus' => 'regex:"https?://.+"'
 		);
 
 		if($update != '')

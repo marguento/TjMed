@@ -90,10 +90,21 @@ class HomeController extends BaseController {
 			$user_c = 157;
 		}
 
+		$country = Country::where('idCountry', '=', $user_c)->first();
+		$state = State::where('idestados', '=', Auth::user()->U_state)->first();
+		$city = City::where('idmunicipios', '=', Auth::user()->U_city)->first();
+
+		if ($state != "" && $city != "") {
+			$location = $city->municipio . ', ' . $state->estado . ', ' . $country->countryName;
+		} else {
+			$location = $country->countryName;
+		}
+		
+
 		$reviews = UserReviewView::whereC_user(Auth::user()->U_username)->get();
 
 		return View::make('user_profile', ['countries' => $countries, 'user_c' => $user_c,
-		 									'reviews' => $reviews]);
+		 									'reviews' => $reviews, 'location' => $location]);
 	}
 
 	public function register()
@@ -129,7 +140,24 @@ class HomeController extends BaseController {
 	public function user($id)
 	{
 		$user = User::whereU_username($id)->first();
-		return View::make('profile', ['user' => $user]);
+
+		if ($user->U_country != "")
+		{
+			$user_c = $user->U_country;
+		} else {
+			$user_c = 157;
+		}
+
+		$country = Country::where('idCountry', '=', $user_c)->first();
+		$state = State::where('idestados', '=', $user->U_state)->first();
+		$city = City::where('idmunicipios', '=', $user->U_city)->first();
+
+		if ($state != "" && $city != "") {
+			$location = $city->municipio . ', ' . $state->estado . ', ' . $country->countryName;
+		} else {
+			$location = $country->countryName;
+		}
+		return View::make('profile', ['user' => $user, 'location' => $location]);
 	}
 
 }

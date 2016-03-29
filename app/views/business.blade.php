@@ -111,23 +111,19 @@
                   <i class="fa fa-map-marker" id="some-div"><span id="some-element">{{ $bus->b_address }}</span></i>
                 </a>
                 @if($bus->b_facebook != '')
-                  <a href="{{ url('//www.facebook.com/' . $bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
+                  <a href="{{ url($bus->b_facebook) }}"><i class="fa fa-facebook"></i></a>
                 @endif
                 @if($bus->b_twitter != '')
-                  <a href="{{ url('//www.twitter.com/' . $bus->b_twitter) }}"><i class="fa fa-twitter"></i></a>
+                  <a href="{{ url($bus->b_twitter) }}"><i class="fa fa-twitter"></i></a>
                 @endif
                 @if($bus->b_youtube != '')
-                  <a href="{{ url('//www.youtube.com/user/' . $bus->b_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                  <a href="{{ url($bus->b_youtube) }}" target="_blank"><i class="fa fa-youtube"></i></a>
                 @endif
                 @if($bus->b_linkedin != '')
-                  <a href="{{ url('//www.linkedin.com/in/' . $bus->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                  <a href="{{ url($bus->b_linkedin) }}" target="_blank"><i class="fa fa-linkedin"></i></a>
                 @endif
                 @if($bus->b_website != '')
-<<<<<<< Updated upstream
-                  <a href="{{ url('//www.' . $bus->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
-=======
                   <a href="{{ url($bus->b_website) }}" target="_blank"><i class="fa fa-globe"></i></a>
->>>>>>> Stashed changes
                 @endif
             </div>  
           </div>              
