@@ -298,6 +298,50 @@ class UsersController extends BaseController {
 		}
 	}
 
+	public function changepassword() {
+		$userdata = array('password' => Input::get('password'),
+							'password_confirmation' => Input::get('password_confirmation')
+					);
+
+		$rules = array('password'  => 'required|min:8|Confirmed|AlphaNum',
+						'password_confirmation' => 'required|min:8|AlphaNum');
+
+		$messages = array('required' => 'Este campo es obligatorio',
+							'email' => 'Incorrecto formato de correo electrónico',
+							'Confirmed' => 'Las contraseñas no son iguales',
+							'AlphaNum' => 'Contraseña solo acepta alfa numéricos'
+					);
+
+		$validator = Validator::make($userdata, $rules, $messages);
+
+		if ($validator->fails()) {
+			return Redirect::back()
+				->withInput()
+				->withErrors($validator->messages())->with('password_error', 1);
+		} else {
+
+			if (Hash::check(Input::get('old_password'), Auth::user()->U_password))
+			{
+			    $user = Auth::user();
+				$user->U_password = Hash::make(Input::get('password'));
+
+				if ($user->save()) {
+					$var = '<div class="alert alert-success" role="alert">
+					          <button type="button" class="close" data-dismiss="alert">&times;</button>
+					          <strong>¡Éxito!</strong> Tu contraseña se ha actualizado.
+					        </div>';
+					return Redirect::back()->with('var', $var);
+				} 
+			} else {
+				$var = '<div class="alert alert-danger" role="alert">
+					          <button type="button" class="close" data-dismiss="alert">&times;</button>
+					          <strong>Error</strong> Contraseña no coincide con la almacenada.
+					        </div>';
+					return Redirect::back()->with('var', $var)->with('password_error', 1);
+			} 
+		}
+	}
+
 	public function updatepassword() {
 		$userdata = array('password' => Input::get('password'),
 							'password_confirmation' => Input::get('password_confirmation')

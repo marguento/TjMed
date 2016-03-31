@@ -114,6 +114,7 @@ Route::post('forgotpassword', 'UsersController@forgot_password');
 Route::get('resetpassword/{resetcode}', 'UsersController@resetpassword');
 
 Route::post('updatepassword', 'UsersController@updatepassword');
+Route::post('changepassword', 'UsersController@changepassword');
 
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));
