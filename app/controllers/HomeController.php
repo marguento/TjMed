@@ -140,6 +140,7 @@ class HomeController extends BaseController {
 	public function user($id)
 	{
 		$user = User::whereU_username($id)->first();
+		$reviews = UserReviewView::whereC_user($id)->get();
 
 		if ($user->U_country != "")
 		{
@@ -157,7 +158,7 @@ class HomeController extends BaseController {
 		} else {
 			$location = $country->countryName;
 		}
-		return View::make('profile', ['user' => $user, 'location' => $location]);
+		return View::make('profile', ['user' => $user, 'location' => $location, 'reviews' => $reviews]);
 	}
 
 }
