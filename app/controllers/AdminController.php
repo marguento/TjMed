@@ -445,7 +445,7 @@ class AdminController extends BaseController {
 			$banner->image_eng = $tmp;
 			$banner->image_esp = $fileName;
 		} else {
-			$fileName_eng = 'banner_' . round(microtime(true) * 1000) . '_eng';
+			$fileName = 'banner_' . round(microtime(true) * 1000) . '_eng';
 			Input::file('image_edit')->move($destinationPath, $fileName);
 			$banner->image_esp = $tmp;
 			$banner->image_eng = $fileName;

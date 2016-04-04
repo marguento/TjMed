@@ -90,6 +90,7 @@
       {{ Form::text('alternative_phone', '', array('class' => 'form-control')) }}
     </div>
 </div>
+</div>
 
 <br>
 

@@ -122,10 +122,6 @@
               @else
               <h5>{{ Lang::get('messages.no_reviews_up') }}</h5>
               @endif
-
-
-
-              
             </div>
           </div>
         </div>

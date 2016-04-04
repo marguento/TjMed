@@ -177,7 +177,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="show_banner_modal">
+<div class="modal fade" id="change_banner_modal">
   <div class="modal-dialog" style="width:1200px">
     <div class="modal-content" style="width:1200px">
     <div class="modal-header" style="border-bottom:none">
@@ -227,17 +227,21 @@
 
         $(".show_image").click(function() {
             var img = $(this).attr('id');
+            console.log(img);
             var rowid = $(this).attr('rowid');
+            console.log(rowid);
             var column = $(this).attr('column');
+            console.log(column);
             var img_str = "<img src='../images_server/" + img + "'/>";
             var img_attr = "<input name='rowid' type='hidden' value='" + rowid + "'>" +
                             "<input name='column' type='hidden' value='" + column + "'>";
+                            console.log(img_attr);
             $(".image_attr").html(img_attr);
             $(".image-placement").html(img_str);
             $("#change_banner").prop('disabled', true);
             $(".fileinput").removeClass('fileinput-exists');
             $(".fileinput").addClass('fileinput-new');
-            $('#show_banner_modal').modal('show');
+            $('#change_banner_modal').modal('show');
         });
 
         $("input:file").change(function () {
