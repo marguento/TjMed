@@ -292,8 +292,8 @@ class AdminController extends BaseController {
 	{
 		$aimed = array();
 		$aimed[0] = "Familiar";
-		$aimed[1] = "Adultos";
-		$aimed[2] = "Niños";
+		$aimed[1] = "Sólo adultos";
+		$aimed[2] = "Sólo niños";
 
 		if($id != 0) {
 			$doctor = BusinessRatingView::whereb_id($id)->first();

@@ -283,8 +283,8 @@ class BusinessController extends BaseController {
 
 		$aimed = array();
 		$aimed[0] = "Familiar";
-		$aimed[1] = "Adultos";
-		$aimed[2] = "Niños";
+		$aimed[1] = "Sólo adultos";
+		$aimed[2] = "Sólo niños";
 
 		$specialties = Specialty::all();
 		return View::make('add_business', ['specialties' => $specialties,
@@ -295,8 +295,8 @@ class BusinessController extends BaseController {
 	{
 		$aimed = array();
 		$aimed[0] = "Familiar";
-		$aimed[1] = "Adultos";
-		$aimed[2] = "Niños";
+		$aimed[1] = "Sólo adultos";
+		$aimed[2] = "Sólo niños";
 
 		$doctor = Business::whereb_id($b_id)->first();
 		$b_cat = BusinessView::whereb_id($b_id)->get();
