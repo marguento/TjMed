@@ -166,7 +166,15 @@
 
 <div class="row">
   <div class="form-group">
-    <label for="business_hours" class="col-md-2 control-label">Horas de atención</label>
+    <label for="business_hours" class="col-md-1 control-label">Horas de atención</label>
+    <div class="col-md-1">
+      <button type="button" 
+        class="btn btn-default btn-xs" 
+        id="hour_help" 
+        data-container="body" 
+        data-toggle="popover" 
+        data-placement="right">?</button>
+    </div>
     <div class="col-md-10">
         <table class="table table-bordered">
           <thead>
@@ -312,6 +320,20 @@
 
 $(document).ready(function() {
   $('#doctor').addClass('active');
+  var popoverTemplate = ['<div class="popover">',
+        '<div class="arrow"></div>',
+        '<h3 class="popover-title"></h3>',
+        '<div class="popover-content">',
+        '</div>',
+        '</div>'].join('');
+
+  var title = "Horario reglas";
+
+    var content = ['<ul><li style="line-height:24px;"> Introducir el horario en el siguiente formato: "18:00"</li>',
+            '<li style="line-height:24px;"> 00:00 a 00:00 en el primer set significa 24 horas </li>',
+            '<li style="line-height:24px;"> Si se dejan todos los campos vacíos de un día, se tomará como Cerrado </li></ul>' ].join('');
+
+  $('#hour_help').popover({template:popoverTemplate,content:content, title:title, html:true});
 
   var geocoder = new google.maps.Geocoder();
   var mapOptions = {
