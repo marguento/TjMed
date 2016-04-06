@@ -17,16 +17,28 @@
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('name', 'Nombre', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('name', 'Nombre (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('name', '', array('class' => 'form-control focus')) }}
       <span class="error_msg">{{ $errors->first('b_name') }}</span>
     </div>
 
-    {{ Form::label('address', 'Dirección', array('class' => 'col-sm-2 control-label')) }}
+    {{ Form::label('address', 'Dirección (*)', array('class' => 'col-sm-2 control-label')) }}
     <div class="col-md-4">
       {{ Form::text('address', '', array('class' => 'form-control')) }}
       <span class="error_msg">{{ $errors->first('b_address') }}</span>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="form-group">
+    {{ Form::label('name_eng', 'Nombre en inglés (*)', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-4">
+      {{ Form::text('name_eng', '', array('class' => 'form-control focus')) }}
+      <span class="error_msg">{{ $errors->first('b_name_eng') }}</span>
     </div>
   </div>
 </div>
@@ -111,7 +123,7 @@
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('introduction', 'Introducción', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('introduction', 'Introducción (*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-10">
       {{ Form::textarea('introduction', '', ['class' => 'form-control', 'size' => '1x5']) }}
       <span class="error_msg">{{ $errors->first('b_introduction') }}</span>
@@ -123,10 +135,34 @@
 
 <div class="row">
   <div class="form-group">
-    {{ Form::label('description', 'Descripción', array('class' => 'col-md-2 control-label')) }}
+    {{ Form::label('introduction_eng', 'Introducción en inglés(*)', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-10">
+      {{ Form::textarea('introduction_eng', '', ['class' => 'form-control', 'size' => '1x5']) }}
+      <span class="error_msg">{{ $errors->first('b_introduction_eng') }}</span>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="form-group">
+    {{ Form::label('description', 'Descripción(*)', array('class' => 'col-md-2 control-label')) }}
     <div class="col-md-10">
       {{ Form::textarea('description', '', ['class' => 'form-control', 'size' => '1x5']) }}
       <span class="error_msg">{{ $errors->first('b_description') }}</span>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="form-group">
+    {{ Form::label('description_eng', 'Descripción en inglés(*)', array('class' => 'col-md-2 control-label')) }}
+    <div class="col-md-10">
+      {{ Form::textarea('description_eng', '', ['class' => 'form-control', 'size' => '1x5']) }}
+      <span class="error_msg">{{ $errors->first('b_description_eng') }}</span>
     </div>
   </div>
 </div>

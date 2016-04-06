@@ -43,8 +43,24 @@ class BusinessController extends BaseController {
 		} else {
 			$business = BusinessRatingView::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->paginate(5);
 		}
-		$categories = Category::all();
-		$b_cat = BusinessView::all();
+
+		if (!Session::has('my.locale')) {
+			Session::put('my.locale', 'es');
+		}
+		
+		if (Session::get('my.locale') == 'es') {
+			$b_cat = BusinessView::all();
+			$categories = Category::all();
+		} else {
+			$b_cat = BusinessViewEng::all();
+			$categories = Category::select('C_ID', 
+											'C_name_en as C_name', 
+											'C_introduction_en as C_introduction', 
+											'C_description_en as C_description', 
+											'C_image')->get();
+			//var_dump($business);
+		}
+		
 		return View::make('business', ['business' => $business, 
 							'categories' => $categories,
 							'b_cat' => $b_cat]);
@@ -78,12 +94,15 @@ class BusinessController extends BaseController {
 		$doctor = Business::whereb_id(Input::get('curr_doctor'))->first();
 
 		$doctor->b_name 		= Input::get('name');
+		$doctor->b_name_eng 	= Input::get('name_eng');
 		$doctor->b_address		= Input::get('address');
 		$doctor->b_email 		= Input::get('email');
 		$doctor->b_telephone	= Input::get('telephone');
 		$doctor->b_cellphone	= Input::get('cellphone');
 		$doctor->b_introduction = Input::get('introduction');
+		$doctor->b_introduction_eng = Input::get('introduction_eng');
 		$doctor->b_description	= Input::get('description');
+		$doctor->b_description_eng	= Input::get('description_eng');
 		$doctor->b_facebook		= Input::get('facebook');
 		$doctor->b_twitter		= Input::get('twitter');
 		$doctor->b_google_plus	= Input::get('google_plus');
@@ -150,12 +169,15 @@ class BusinessController extends BaseController {
 		$doctor = new Business();
 		$add_user				= Input::get('add_user');
 		$doctor->b_name 		= Input::get('name');
+		$doctor->b_name_eng 	= Input::get('name_eng');
 		$doctor->b_address		= Input::get('address');
 		$doctor->b_email 		= Input::get('email');
 		$doctor->b_telephone	= Input::get('telephone');
 		$doctor->b_cellphone	= Input::get('cellphone');
 		$doctor->b_introduction = Input::get('introduction');
+		$doctor->b_introduction_eng = Input::get('introduction_eng');
 		$doctor->b_description	= Input::get('description');
+		$doctor->b_description_eng	= Input::get('description_eng');
 		$doctor->b_facebook		= Input::get('facebook');
 		$doctor->b_twitter		= Input::get('twitter');
 		$doctor->b_google_plus	= Input::get('google_plus');
@@ -298,8 +320,28 @@ class BusinessController extends BaseController {
 		$aimed[1] = "Sólo adultos";
 		$aimed[2] = "Sólo niños";
 
+		if (!Session::has('my.locale')) {
+			Session::put('my.locale', 'es');
+		}
+
 		$doctor = Business::whereb_id($b_id)->first();
-		$b_cat = BusinessView::whereb_id($b_id)->get();
+		if (is_null($doctor)) {
+			$var = '<div class="alert alert-danger" role="alert">
+		          <button type="button" class="close" data-dismiss="alert">&times;</button>
+		          Médico o negocio no registrado. 
+		        </div>';
+			return Redirect::to('doctores')->with('var', $var);
+		} 
+
+		if (Session::get('my.locale') == 'es') {
+			$b_cat = BusinessView::whereb_id($b_id)->get();
+		} else {
+			$b_cat = BusinessViewEng::whereb_id($b_id)->get();
+			$doctor->b_name = $doctor->b_name_eng;
+			$doctor->b_introduction = $doctor->b_introduction_eng;
+			$doctor->b_description = $doctor->b_description_eng;
+		}
+
 		$comments = BusinessCommentsView::whereb_id($b_id)->orderBy('C_datetime_created', 'desc')->paginate(5);
 		$tags = BusinessTagsView::whereb_id($b_id)->get();
 		$hours = BusinessHours::where('id_business','=',$b_id)->get();

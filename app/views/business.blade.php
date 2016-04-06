@@ -8,7 +8,8 @@
     <li class="active" style="color:#083D5C">{{ Lang::get('messages.search') }}</li>
   </ol>
 
-  <div class="blog-container">      
+  <div class="blog-container">
+  <br>
   @if (Session::has('var'))
     {{ Session::get('var') }}
   @endif 

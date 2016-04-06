@@ -50,26 +50,81 @@ class HomeController extends BaseController {
 
 	public function specialties()
 	{
-		$categories = Category::all();
-		$cs = CategoriesSpecialitiesView::orderBy('S_name')->get();
+		if (!Session::has('my.locale')) {
+			Session::put('my.locale', 'es');
+		}
+
+		if (Session::get('my.locale') == 'es') {
+			$categories = Category::all();
+			$cs = CategoriesSpecialitiesView::orderBy('S_name')->get();
+			
+		} else {
+			$categories = Category::select('C_ID', 
+											'C_name_en as C_name', 
+											'C_introduction_en as C_introduction', 
+											'C_description_en as C_description', 
+											'C_image')->get();
+			$cs = CategoriesSpecialtiesEngView::orderBy('S_ID')->get();
+		}
+
 		return View::make('specialties', ['categories' => $categories,
-											'cs' => $cs]);
+												'cs' => $cs]);	
 	}
 
 	public function speciality($s_id)
 	{
-		$speciality = CategoriesSpecialitiesView::wheres_id($s_id)->first();
-		$business = BusinessAtributtesView::wheres_id($s_id)->orderBy('rating', 'desc')->orderBy('comments_count', 'desc')->take(5)->get();
+		if (!Session::has('my.locale')) {
+			Session::put('my.locale', 'es');
+		}
+
+		if (Session::get('my.locale') == 'es') {
+			$speciality = CategoriesSpecialitiesView::wheres_id($s_id)->first();
+			$business = BusinessAtributtesView::wheres_id($s_id)->orderBy('rating', 'desc')->orderBy('comments_count', 'desc')->take(5)->get();
+		} else {
+			$speciality = CategoriesSpecialtiesEngView::wheres_id($s_id)->first();
+			$business = BusinessAtributtesView::wheres_id($s_id)->orderBy('rating', 'desc')->orderBy('comments_count', 'desc')->take(5)->get();
+		}
 		return View::make('speciality_profile', ['speciality' => $speciality,
 													'business' => $business]);
 	}
 
 	public function category($c_id)
 	{
-		$category = Category::wherec_id($c_id)->first();
-		$specialties = Specialty::wheres_id_category($c_id)->get();
-		$business = BusinessAtributtesView::wherec_id($c_id)->orderBy('rating', 'desc')
-		->orderBy('comments_count', 'desc')->groupBy('B_ID')->take(5)->get();
+		if (!Session::has('my.locale')) {
+			Session::put('my.locale', 'es');
+		}
+
+		if (Session::get('my.locale') == 'es') {
+			$category = Category::wherec_id($c_id)->first();
+			$specialties = Specialty::wheres_id_category($c_id)->get();
+			$business = BusinessAtributtesView::wherec_id($c_id)
+												->orderBy('rating', 'desc')
+												->orderBy('comments_count', 'desc')
+												->groupBy('B_ID')
+												->take(5)
+												->get();
+		} else {
+			$category = Category::select('C_ID', 
+											'C_name_en as C_name', 
+											'C_introduction_en as C_introduction', 
+											'C_description_en as C_description', 
+											'C_image')
+								->wherec_id($c_id)
+								->first();
+			$specialties = Specialty::select('S_ID', 
+											'S_name_en as S_name', 
+											'S_introduction_en as S_introduction', 
+											'S_description_en as S_description')
+									->wheres_id_category($c_id)
+									->get();
+			$business = BusinessAtributtesView::wherec_id($c_id)
+												->orderBy('rating', 'desc')
+												->orderBy('comments_count', 'desc')
+												->groupBy('B_ID')
+												->take(5)
+												->get();
+		}
+		
 		return View::make('categorias', ['category' => $category,
 											'specialties' => $specialties,
 											'business' => $business]);
