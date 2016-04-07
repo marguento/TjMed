@@ -116,6 +116,7 @@ class BusinessController extends BaseController {
 		$doctor->b_map			= Input::get('map_c');
 		$doctor->b_aimed 		= Input::get('aimed');
 		$doctor->b_alternative_phone = Input::get('alternative_phone');
+		$doctor->b_alternative_phone2 = Input::get('alternative_phone2');
 
 		$update = '';
 		if (Input::hasFile('image'))
@@ -193,6 +194,7 @@ class BusinessController extends BaseController {
 		$doctor->b_map			= Input::get('map_c');
 		$doctor->b_aimed 		= Input::get('aimed');
 		$doctor->b_alternative_phone = Input::get('alternative_phone');
+		$doctor->b_alternative_phone2 = Input::get('alternative_phone2');
 
 		if($add_user == 0) {
 			if( Auth::user()->U_level == 1)

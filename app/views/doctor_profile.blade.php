@@ -164,6 +164,7 @@
             <div id="map-canvas"></div>
 
             <div class="space25"></div>
+            <h5> Otros datos del médico o negocio </h5>
             <b>Atención: </b>
             @if ($doctor->b_aimed == 0)
               Familiar
@@ -172,10 +173,17 @@
             @else
               Sólo niños
             @endif
+
             @if ($doctor->b_alternative_phone != "" && !empty($doctor->b_alternative_phone))
               <div class="space10"></div>
               <b>Teléfono opcional: </b>
               {{ $doctor->b_alternative_phone }}
+            @endif
+
+            @if ($doctor->b_alternative_phone2 != "" && !empty($doctor->b_alternative_phone2))
+              <div class="space10"></div>
+              <b>Teléfono opcional 2: </b>
+              {{ $doctor->b_alternative_phone2 }}
             @endif
 
             <div class="space40"></div>

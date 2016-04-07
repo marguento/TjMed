@@ -622,6 +622,7 @@ class AdminController extends BaseController {
 			$doctor->b_verified		= 1;
 			$doctor->b_aimed 		= Input::get('aimed');
 			$doctor->b_alternative_phone = Input::get('alternative_phone');
+			$doctor->b_alternative_phone2 = Input::get('alternative_phone2');
 
 
 			$update = '';
