@@ -15,6 +15,10 @@ class SessionsController extends BaseController {
 		if (Auth::attempt(Input::only('U_username', 'U_password')))
 		{
 			return Redirect::back();
+		} 
+
+		if (Auth::attempt(['U_email'=> Input::get('U_username'), 'U_password' => Input::get('U_password')])) {
+			return Redirect::back();
 		}
 
 		return Redirect::back()->withInput()->with('v', 1);
