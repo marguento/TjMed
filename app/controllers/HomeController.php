@@ -4,20 +4,46 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		//$business = Business::orderBy('b_joined_date','desc')->take(3)->get();
-		$business = BusinessRatingView::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->take(3)->get();
-		$comments = BusinessCommentsView::whereb_verified(1)->whereb_active(1)->orderBy('C_datetime_created', 'desc')->take(3)->get();
-		$cats 	  = BusinessCategoriesView::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
-		$articles = ArticleView::orderBy('A_created_at', 'desc')->take(3)->get();
 		if (!Session::has('my.locale')) {
 			Session::put('my.locale', 'es');
 		}
 
 		if (Session::get('my.locale') == 'es') {
+			$bNameColumn = 'b_name';
+			$bIntroColumn = 'b_introduction';
 			$banners = Banner::select('image_esp as image')->where('active', 1)->get();
 		} else {
+			$bNameColumn = 'b_name_eng AS b_name';
+			$bIntroColumn = 'b_introduction_eng AS b_introduction';
 			$banners = Banner::select('image_eng as image')->where('active', 1)->get();
 		}
+
+		$business = Business::join('users', 'users.U_username', '=', 'businesses.b_created_user')
+			->select($bNameColumn, 
+				$bIntroColumn,
+				'b_image', 
+				'B_ID', 
+				'b_email', 
+				'b_telephone', 
+				'b_address',
+				'b_facebook',
+				'b_twitter',
+				'b_youtube',
+				'b_linkedin',
+				'b_website',
+				DB::raw('truncate(ifnull(((select sum(vbc.C_rating) from tjmed.v_business_comments vbc where (vbc.B_ID = businesses.B_ID)) 
+					/ (select count(`vb`.`C_rating`) from `tjmed`.`v_business_comments` `vb` where (`vb`.`B_ID` = `businesses`.`B_ID`))),0),1) AS `rating`'),
+				DB::raw('(select count(vb.B_ID) from tjmed.v_business_comments AS vb where (vb.B_ID = businesses.B_ID)) AS comments_count'))
+			->where('b_verified', '=', 1)
+			->where('b_active', '=' , 1)
+			->orderBy('b_joined_date', 'desc')
+			->take(3)
+			->get();
+
+		$comments = BusinessCommentsView::whereb_verified(1)->whereb_active(1)->orderBy('C_datetime_created', 'desc')->take(3)->get();
+		$cats 	  = BusinessCategoriesView::whereb_verified(1)->whereb_active(1)->orderBy('b_joined_date', 'desc')->get();
+		$articles = ArticleView::orderBy('A_created_at', 'desc')->take(3)->get();
+		
 		return View::make('index', ['articles' => $articles,
 									'business' => $business,							
 									'comments' => $comments,

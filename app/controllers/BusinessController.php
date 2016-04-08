@@ -265,6 +265,14 @@ class BusinessController extends BaseController {
 			$tag->save();
 		}
 
+		// $user = new User();
+		// $user->U_username = '';
+		// $user->U_password = '';
+
+		// $user_has_business = new UserHasBusiness();
+		// $user_has_business->UB_user = $user->U_username;
+		// $user_has_business->UB_business = $business->B_ID;
+
 		if($add_user == 1) {
 			$var = '<div class="alert alert-success" role="alert">
 			          <button type="button" class="close" data-dismiss="alert">&times;</button>
